@@ -1,0 +1,25 @@
+{
+  "unidad": "Unidad 2",
+  "titulo": "Pilas y Colas",
+  "competencias": "Implementa y utiliza estructuras de datos tipo pila y cola para resolver problemas de ingeniería y ciencias, aplicando los principios de inserción y extracción de datos.",
+  "temas": [
+    {
+      "numero": "2.1",
+      "titulo": "Pilas",
+      "subtemas": [
+        "2.1.1 Descripción",
+        "2.1.2 Operaciones",
+        "2.1.3 Ejemplo de aplicación"
+      ]
+    },
+    {
+      "numero": "2.2",
+      "titulo": "Colas",
+      "subtemas": [
+        "2.2.1 Descripción",
+        "2.2.2 Operaciones",
+        "2.2.3 Ejemplo de aplicación"
+      ]
+    }
+  ]
+}

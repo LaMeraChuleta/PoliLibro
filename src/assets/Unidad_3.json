@@ -1,0 +1,33 @@
+{
+  "unidad": "Unidad 3",
+  "titulo": "Recursividad y Grafos",
+  "competencias": "Aplica técnicas de recursividad y estructuras de grafos para el diseño y análisis de algoritmos eficientes en la resolución de problemas de ingeniería y ciencias.",
+  "temas": [
+    {
+      "numero": "3.1",
+      "titulo": "Recursividad",
+      "subtemas": [
+        "3.1.1 Descripción",
+        "3.1.2 Recursión e iteración"
+      ]
+    },
+    {
+      "numero": "3.2",
+      "titulo": "Grafos",
+      "subtemas": [
+        "3.2.1 Descripción",
+        "3.2.2 Grafos dirigidos y no dirigidos",
+        "3.2.3 Matriz de adyacencia"
+      ]
+    },
+    {
+      "numero": "3.3",
+      "titulo": "Algoritmos de búsqueda",
+      "subtemas": [
+        "3.3.1 Búsqueda en anchura",
+        "3.3.2 Búsqueda en profundidad",
+        "3.3.3 Algoritmos de camino corto"
+      ]
+    }
+  ]
+}

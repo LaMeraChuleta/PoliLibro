@@ -1,0 +1,22 @@
+{
+  "5.1": {
+    "titulo": "Programación concurrente",
+    "subtemas": {
+      "5.1.1": "Descripción",
+      "5.1.2": "Comparación entre programación concurrente y secuencial",
+      "5.1.3": "Procesos e hilos",
+      "5.1.4": "Sincronización: semáforos",
+      "5.1.5": "Comunicación entre hilos"
+    }
+  },
+  "5.2": {
+    "titulo": "Solución de problemas de sincronización",
+    "subtemas": {
+      "5.2.1": "Análisis de problemas de sincronización",
+      "5.2.2": "Técnicas de solución"
+    }
+  },
+  "5.3": {
+    "titulo": "Bibliotecas especializadas del lenguaje Python"
+  }
+}
