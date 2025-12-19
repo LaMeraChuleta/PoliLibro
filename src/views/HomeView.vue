@@ -8,9 +8,7 @@
       <nav class="mt-4">
         <ul class="space-y-2">
           <li v-for="(item, index) in temario" :key="index">
-            <button
-              class="w-full text-left px-4 py-2 rounded-lg hover:bg-gray-100 text-gray-700 font-medium"
-            >
+            <button class="w-full text-left px-4 py-2 rounded-lg hover:bg-gray-100 text-gray-700 font-medium">
               {{ item }}
             </button>
           </li>
