@@ -1,6 +1,6 @@
 <template>
     <div class="bg-cover bg-center flex items-center p-5 text-white h-32"
-        style="background-image: url('/src/assets/fondo.png')">
+        style="background-image: url('@/fondo.png')">
 
         <div class=" sapce-y-2">
             <h1 class="font-bold text-4xl">{{ temario.unidad }}</h1>
