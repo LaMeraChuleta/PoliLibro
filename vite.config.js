@@ -10,7 +10,9 @@ export default defineConfig({
     vue(),
     vueDevTools(),
   ],
-  base: "https:/LaMeraChuleta.github.io/PoliLibro/",
+   base: process.env.NODE_ENV === 'production' 
+    ? '/PoliLibro/'  // Para GitHub Pages
+    : '/',   
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))

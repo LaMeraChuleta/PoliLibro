@@ -1,6 +1,6 @@
 <template>
     <div class="bg-cover bg-center flex items-center p-5 text-white h-32"
-        style="background-image: url('@/fondo.png')">
+        :style="`background-image: url(${fondo})`">
 
         <div class=" sapce-y-2">
             <h1 class="font-bold text-4xl">{{ temario.unidad }}</h1>
@@ -40,6 +40,7 @@
 <script setup>
 
 import temarioJSON from '@/assets/Unidad_1.json'
+import fondo from '@/assets/fondo.png'
 import { ref } from 'vue'
 
 const temario = ref(temarioJSON)
