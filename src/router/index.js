@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import Tema_1_1_1 from  '../views/Unidad_1/1_1_1.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,6 +9,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
+    },
+    {
+      path: '/Unidad/1.1.1',
+      name: 'unidad_1.1.1.',
+      component: Tema_1_1_1
     },
     // {
     //   path: '/about',
