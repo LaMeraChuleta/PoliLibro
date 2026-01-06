@@ -13,6 +13,11 @@ import Tema_1_4_2 from '../views/Unidad_1/1_4_2.vue'
 import Tema_1_4_3 from '../views/Unidad_1/1_4_3.vue'
 import Tema_1_4_4 from '../views/Unidad_1/1_4_4.vue'
 
+
+import Tema_2_1_1 from '../views/Unidad_2/2_1_1.vue'
+import Tema_2_1_2 from '../views/Unidad_2/2_1_2.vue'
+import Tema_2_1_3 from '../views/Unidad_2/2_1_3.vue'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -81,6 +86,21 @@ const router = createRouter({
       name: 'unidad_1.4.4',
       component: Tema_1_4_4
     },
+    {
+      path: '/Unidad/2.1.1',
+      name: 'unidad_2.1.1',
+      component: Tema_2_1_1
+    },
+    {
+      path: '/Unidad/2.1.2',
+      name: 'unidad_2.1.2',
+      component: Tema_2_1_2
+    },
+    {
+      path: '/Unidad/2.1.3',
+      name: 'unidad_2.1.3',
+      component: Tema_2_1_3
+    }
 
     // {
     //   path: '/about',
