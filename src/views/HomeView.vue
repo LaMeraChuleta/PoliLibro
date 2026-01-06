@@ -1,5 +1,5 @@
 <template>
-  <div class="flex w-full h-screen bg-gray-100">
+  <div class="flex w-full bg-gray-100">
     <!-- Sidebar -->
     <aside class="w-64 bg-white shadow-md border-r border-gray-200">
       <div class="p-4 border-b border-gray-200">
@@ -18,13 +18,15 @@
 
     <!-- Contenido principal -->
     <main class="flex-1 p-6">
-      <HeaderUnidad></HeaderUnidad>
+      <HeaderUnidad1></HeaderUnidad1>
+      <HeaderUnidad2></HeaderUnidad2>
     </main>
   </div>
 </template>
 
 <script setup>
-import HeaderUnidad from '@/components/HeaderUnidad.vue';
+import HeaderUnidad1 from '@/components/HeaderUnidad1.vue';
+import HeaderUnidad2 from '@/components/HeaderUnidad2.vue';
 
 const temario = [
   "Introducción a la carrera",

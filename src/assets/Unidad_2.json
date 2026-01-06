@@ -6,6 +6,7 @@
     {
       "numero": "2.1",
       "titulo": "Pilas",
+      "showSubTemas": true,
       "subtemas": [
         "2.1.1 Descripción",
         "2.1.2 Operaciones",
@@ -15,6 +16,7 @@
     {
       "numero": "2.2",
       "titulo": "Colas",
+      "showSubTemas": true,
       "subtemas": [
         "2.2.1 Descripción",
         "2.2.2 Operaciones",
