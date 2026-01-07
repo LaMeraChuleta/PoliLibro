@@ -15,7 +15,7 @@
 
         </div>
         <div class="w-2/3">
-            <p>{{ temario.competencias }}</p>
+            <p class=" text-lg">{{ temario.competencias }}</p>
 
             <div v-for="value in temario.temas">
 
@@ -25,8 +25,10 @@
                 </div>
                 
                 <template v-if="value.showSubTemas">
-                    <div class="ml-10" v-for="subvalue in value.subtemas">
-                        <p>{{ subvalue }}</p>
+                    <div class="ml-10 p-1" v-for="subvalue in value.subtemas">
+                        <router-link :to="`/Unidad/${subvalue.slice(0, 5)}`" class="text-blue-600 hover:underline">
+                            {{ subvalue }}
+                        </router-link>
                     </div>
                 </template>
             </div>
@@ -39,7 +41,7 @@
 
 <script setup>
 
-import temarioJSON from '@/assets/Unidad_1.json'
+import temarioJSON from '@/assets/Unidad_3.json'
 import fondo from '@/assets/fondo.png'
 import { ref } from 'vue'
 

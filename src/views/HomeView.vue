@@ -20,6 +20,7 @@
     <main class="flex-1 p-6">
       <HeaderUnidad1></HeaderUnidad1>
       <HeaderUnidad2></HeaderUnidad2>
+      <HeaderUnidad3></HeaderUnidad3>
     </main>
   </div>
 </template>
@@ -27,6 +28,7 @@
 <script setup>
 import HeaderUnidad1 from '@/components/HeaderUnidad1.vue';
 import HeaderUnidad2 from '@/components/HeaderUnidad2.vue';
+import HeaderUnidad3 from '@/components/HeaderUnidad3.vue';
 
 const temario = [
   "Introducción a la carrera",

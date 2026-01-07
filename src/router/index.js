@@ -21,6 +21,15 @@ import Tema_2_2_1 from '../views/Unidad_2/2_2_1.vue'
 import Tema_2_2_2 from '../views/Unidad_2/2_2_2.vue'
 import Tema_2_2_3 from '../views/Unidad_2/2_2_3.vue'
 
+
+import Tema_3_1_1 from '../views/Unidad_3/3_1_1.vue'
+import Tema_3_1_2 from '../views/Unidad_3/3_1_2.vue'
+import Tema_3_2_1 from '../views/Unidad_3/3_2_1.vue'
+import Tema_3_2_2 from '../views/Unidad_3/3_2_2.vue'
+import Tema_3_2_3 from '../views/Unidad_3/3_2_3.vue'
+import Tema_3_3_1 from '../views/Unidad_3/3_3_1.vue'
+import Tema_3_3_2 from '../views/Unidad_3/3_3_2.vue'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -118,7 +127,43 @@ const router = createRouter({
       path: '/Unidad/2.2.3',
       name: 'unidad_2.2.3',
       component: Tema_2_2_3
+    },
+    {
+      path: '/Unidad/3.1.1',
+      name: 'unidad_3.1.1',
+      component: Tema_3_1_1
+    },
+    {
+      path: '/Unidad/3.1.2',
+      name: 'unidad_3.1.2',
+      component: Tema_3_1_2
+    },
+    {
+      path: '/Unidad/3.2.1',
+      name: 'unidad_3.2.1',
+      component: Tema_3_2_1
+    },
+    {
+      path: '/Unidad/3.2.2',
+      name: 'unidad_3.2.2',
+      component: Tema_3_2_2
+    },
+    {
+      path: '/Unidad/3.2.3',
+      name: 'unidad_3.2.3',
+      component: Tema_3_2_3
+    },
+    {
+      path: '/Unidad/3.3.1',
+      name: 'unidad_3.3.1',
+      component: Tema_3_3_1
+    },
+    {
+      path: '/Unidad/3.3.2',
+      name: 'unidad_3.3.2',
+      component: Tema_3_3_2
     }
+
 
 
     // {

@@ -6,6 +6,7 @@
     {
       "numero": "3.1",
       "titulo": "Recursividad",
+      "showSubTemas": true,
       "subtemas": [
         "3.1.1 Descripción",
         "3.1.2 Recursión e iteración"
@@ -14,6 +15,7 @@
     {
       "numero": "3.2",
       "titulo": "Grafos",
+      "showSubTemas": true,
       "subtemas": [
         "3.2.1 Descripción",
         "3.2.2 Grafos dirigidos y no dirigidos",
@@ -23,6 +25,7 @@
     {
       "numero": "3.3",
       "titulo": "Algoritmos de búsqueda",
+      "showSubTemas": true,
       "subtemas": [
         "3.3.1 Búsqueda en anchura",
         "3.3.2 Búsqueda en profundidad",
