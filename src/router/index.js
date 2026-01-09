@@ -29,6 +29,19 @@ import Tema_3_2_2 from '../views/Unidad_3/3_2_2.vue'
 import Tema_3_2_3 from '../views/Unidad_3/3_2_3.vue'
 import Tema_3_3_1 from '../views/Unidad_3/3_3_1.vue'
 import Tema_3_3_2 from '../views/Unidad_3/3_3_2.vue'
+import Tema_3_3_3 from '../views/Unidad_3/3_3_3.vue'
+
+
+import Tema_4_1_1 from '../views/Unidad_4/4_1_1.vue'
+import Tema_4_1_2 from '../views/Unidad_4/4_1_2.vue'
+import Tema_4_1_3 from '../views/Unidad_4/4_1_3.vue'
+
+
+import Tema_5_1_1 from '../views/Unidad_5/5_1_1.vue'
+import Tema_5_1_2 from '../views/Unidad_5/5_1_2.vue'
+import Tema_5_1_3 from '../views/Unidad_5/5_1_3.vue'
+import Tema_5_1_4 from '../views/Unidad_5/5_1_4.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -162,7 +175,48 @@ const router = createRouter({
       path: '/Unidad/3.3.2',
       name: 'unidad_3.3.2',
       component: Tema_3_3_2
+    },
+    {
+      path: '/Unidad/3.3.3',
+      name: 'unidad_3.3.3',
+      component: Tema_3_3_3
+    },
+    {
+      path: '/Unidad/4.1.1',
+      name: 'unidad_4.1.1',
+      component: Tema_4_1_1
+    },
+    {
+      path: '/Unidad/4.1.2',
+      name: 'unidad_4.1.2',
+      component: Tema_4_1_2
+    },
+    {
+      path: '/Unidad/4.1.3',
+      name: 'unidad_4.1.3',
+      component: Tema_4_1_3
+    },
+    {
+      path: '/Unidad/5.1.1',
+      name: 'unidad_5.1.1',
+      component: Tema_5_1_1
+    },
+    {
+      path: '/Unidad/5.1.2',
+      name: 'unidad_5.1.2',
+      component: Tema_5_1_2
+    },
+    {
+      path: '/Unidad/5.1.3',
+      name: 'unidad_5.1.3',
+      component: Tema_5_1_3
+    },
+    {
+      path: '/Unidad/5.1.4',
+      name: 'unidad_5.1.4',
+      component: Tema_5_1_4
     }
+
 
 
 

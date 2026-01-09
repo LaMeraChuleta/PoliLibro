@@ -1,11 +1,12 @@
 {
   "unidad": "Unidad 4",
-  "titulo": "Árboles Binarios de Búsqueda",
+  "titulo": "Árboles",
   "competencias": "Implementa estructuras de árboles binarios de búsqueda para organizar, almacenar y recuperar información de manera eficiente en la solución de problemas computacionales.",
   "temas": [
     {
       "numero": "4.1",
       "titulo": "Árboles binarios de búsqueda",
+      "showSubTemas": true,
       "subtemas": [
         "4.1.1 Descripción",
         "4.1.2 Recorridos: pre, in y post orden",

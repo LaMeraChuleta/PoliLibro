@@ -21,6 +21,8 @@
       <HeaderUnidad1></HeaderUnidad1>
       <HeaderUnidad2></HeaderUnidad2>
       <HeaderUnidad3></HeaderUnidad3>
+      <HeaderUnidad4></HeaderUnidad4>
+      <HeaderUnidad5></HeaderUnidad5>
     </main>
   </div>
 </template>
@@ -29,6 +31,8 @@
 import HeaderUnidad1 from '@/components/HeaderUnidad1.vue';
 import HeaderUnidad2 from '@/components/HeaderUnidad2.vue';
 import HeaderUnidad3 from '@/components/HeaderUnidad3.vue';
+import HeaderUnidad4 from '@/components/HeaderUnidad4.vue';
+import HeaderUnidad5 from '@/components/HeaderUnidad5.vue';
 
 const temario = [
   "Introducción a la carrera",

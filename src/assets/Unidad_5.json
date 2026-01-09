@@ -1,22 +1,36 @@
 {
-  "5.1": {
-    "titulo": "Programación concurrente",
-    "subtemas": {
-      "5.1.1": "Descripción",
-      "5.1.2": "Comparación entre programación concurrente y secuencial",
-      "5.1.3": "Procesos e hilos",
-      "5.1.4": "Sincronización: semáforos",
-      "5.1.5": "Comunicación entre hilos"
+  "unidad": "Unidad 5",
+  "titulo": "Programación concurrente",
+  "competencias": "Resuelve problemas de ingeniería y ciencias usando programación concurrente.",
+  "temas": [
+    {
+      "numero": "5.1",
+      "titulo": "Programación concurrente",
+      "showSubTemas": true,
+      "subtemas": [
+        "5.1.1 Descripción",
+        "5.1.2 Comparación entre programación concurrente y secuencial",
+        "5.1.3 Procesos e hilos",
+        "5.1.4 Sincronización: semáforos",
+        "5.1.5 Comunicación entre hilos"
+      ]
+    },
+    {
+      "numero": "5.2",
+      "titulo": "Solución de problemas de sincronización",
+      "showSubTemas": true,
+      "subtemas": [
+        "5.2.1 Análisis de problemas de sincronización",
+        "5.2.2 Técnicas de solución"        
+      ]
+    },
+    {
+      "numero": "5.3",
+      "titulo": "Bibliotecas especializadas del lenguaje Python",
+      "showSubTemas": true,
+      "subtemas": [
+        "5.3.1 Bibliotecas especializadas del lenguaje Python"        
+      ]
     }
-  },
-  "5.2": {
-    "titulo": "Solución de problemas de sincronización",
-    "subtemas": {
-      "5.2.1": "Análisis de problemas de sincronización",
-      "5.2.2": "Técnicas de solución"
-    }
-  },
-  "5.3": {
-    "titulo": "Bibliotecas especializadas del lenguaje Python"
-  }
+  ]
 }

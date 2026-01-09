@@ -47,10 +47,8 @@ import { ref } from 'vue'
 const temario = ref(temarioJSON)
 
 function test(numeroTema) {
-
-    console.log(temario)
-    var tema = temario.value.temas.find(x => x.numero == numeroTema)
-    console.log(tema)
+    
+    var tema = temario.value.temas.find(x => x.numero == numeroTema)    
     tema.showSubTemas = !tema.showSubTemas
 
 }

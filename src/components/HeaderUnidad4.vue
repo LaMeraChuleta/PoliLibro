@@ -41,17 +41,15 @@
 
 <script setup>
 
-import temarioJSON from '@/assets/Unidad_2.json'
+import temarioJSON from '@/assets/Unidad_4.json'
 import fondo from '@/assets/fondo.png'
 import { ref } from 'vue'
 
 const temario = ref(temarioJSON)
 
-function test(numeroTema){
-
+function test(numeroTema){    
     var tema = temario.value.temas.find(x => x.numero == numeroTema)      
     tema.showSubTemas = !tema.showSubTemas  
-
 }
 
 </script>
