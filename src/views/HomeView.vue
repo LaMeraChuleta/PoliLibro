@@ -141,14 +141,6 @@
     </aside>
 
     <!-- Contenido principal -->
-<<<<<<< HEAD
-    <main class="flex-1 p-6">
-      <HeaderUnidad1></HeaderUnidad1>
-      <HeaderUnidad2></HeaderUnidad2>
-      <HeaderUnidad3></HeaderUnidad3>
-      <HeaderUnidad4></HeaderUnidad4>
-      <HeaderUnidad5></HeaderUnidad5>
-=======
     <main 
       class="flex-1 p-6 transition-all duration-300 ease-in-out"
     >
@@ -168,27 +160,22 @@
           <HeaderUnidad1 />
           <HeaderUnidad2 />
           <HeaderUnidad3 />
+          <HeaderUnidad4 />
+          <HeaderUnidad5 />
         </div>
   
       </div>
->>>>>>> a9fc1c14ed933e3233c43b8e12a842845de1c7ff
     </main>
   </div>
 </template>
 
 <script setup>
-<<<<<<< HEAD
-import HeaderUnidad1 from '@/components/HeaderUnidad1.vue';
-import HeaderUnidad2 from '@/components/HeaderUnidad2.vue';
-import HeaderUnidad3 from '@/components/HeaderUnidad3.vue';
-import HeaderUnidad4 from '@/components/HeaderUnidad4.vue';
-import HeaderUnidad5 from '@/components/HeaderUnidad5.vue';
-=======
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import HeaderUnidad1 from '@/components/HeaderUnidad1.vue'
 import HeaderUnidad2 from '@/components/HeaderUnidad2.vue'
 import HeaderUnidad3 from '@/components/HeaderUnidad3.vue'
->>>>>>> a9fc1c14ed933e3233c43b8e12a842845de1c7ff
+import HeaderUnidad4 from '@/components/HeaderUnidad4.vue'
+import HeaderUnidad5 from '@/components/HeaderUnidad5.vue'
 
 // Estado reactivo
 const sidebarOpen = ref(false)

@@ -41,6 +41,10 @@ import Tema_5_1_1 from '../views/Unidad_5/5_1_1.vue'
 import Tema_5_1_2 from '../views/Unidad_5/5_1_2.vue'
 import Tema_5_1_3 from '../views/Unidad_5/5_1_3.vue'
 import Tema_5_1_4 from '../views/Unidad_5/5_1_4.vue'
+import Tema_5_1_5 from '../views/Unidad_5/5_1_5.vue'
+import Tema_5_2_1 from '../views/Unidad_5/5_2_1.vue'
+import Tema_5_2_2 from '../views/Unidad_5/5_2_2.vue'
+import Tema_5_3_1 from '../views/Unidad_5/5_3_1.vue'
 
 
 const router = createRouter({
@@ -215,7 +219,28 @@ const router = createRouter({
       path: '/Unidad/5.1.4',
       name: 'unidad_5.1.4',
       component: Tema_5_1_4
+    },
+    {
+      path: '/Unidad/5.1.5',
+      name: 'unidad_5.1.5',
+      component: Tema_5_1_5
+    },
+    {
+      path: '/Unidad/5.2.1',
+      name: 'unidad_5.2.1',
+      component: Tema_5_2_1
+    },
+    {
+      path: '/Unidad/5.2.2',
+      name: 'unidad_5.2.2',
+      component: Tema_5_2_2
+    },
+    {
+      path: '/Unidad/5.3.1',
+      name: 'unidad_5.3.1',
+      component: Tema_5_3_1
     }
+
 
 
 
