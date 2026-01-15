@@ -1,322 +1,285 @@
 <template>
   <div class="container mx-auto px-4 py-6">
-    <!-- Sección 1.4.2 -->
-    <section class="bg-white rounded-lg p-6 mb-6">
-      <!-- Título -->
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 bg-yellow-500 text-white rounded-full flex items-center justify-center font-bold mr-3">
-          4.2
-        </span>
-        <div>
-          <h2 class="text-2xl font-bold text-gray-800">1.4.2 Valores HASH</h2>
-          <p class="text-gray-600">Fundamento de la eficiencia en diccionarios y conjuntos</p>
-        </div>
-      </div>
-
+    <HeaderTitle numero="1.4" titulo="1.4.2 Valores HASH">
       <!-- Explicación teórica -->
       <div class="mb-8">
         <p class="text-gray-700 mb-4">
-          Los <strong class="text-yellow-600">valores hash</strong> son números enteros únicos que Python genera 
-          para cada objeto. Son la base del funcionamiento eficiente de diccionarios y conjuntos, 
+          Los <strong class="text-yellow-600">valores hash</strong> son números enteros únicos que Python genera
+          para cada objeto. Son la base del funcionamiento eficiente de diccionarios y conjuntos,
           permitiendo búsquedas en tiempo constante O(1).
         </p>
         <p class="text-gray-700">
-          Cada clave en un diccionario debe ser un objeto <strong>hashable</strong> (inmutable), 
+          Cada clave en un diccionario debe ser un objeto <strong>hashable</strong> (inmutable),
           lo que garantiza que su hash no cambie durante la vida del diccionario.
         </p>
       </div>
+    </HeaderTitle>
 
-      <!-- Características principales -->
-      <div class="grid md:grid-cols-3 gap-6 mb-8">
-        <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-5">
-          <div class="w-12 h-12 bg-yellow-500 text-white rounded-lg flex items-center justify-center mb-4">
-            <i class="fas fa-fingerprint text-xl"></i>
-          </div>
-          <h3 class="text-lg font-bold text-yellow-800 mb-2">Identificador Único</h3>
-          <p class="text-yellow-700 text-sm">Cada objeto tiene un hash distinto</p>
+
+    <!-- Características principales -->
+    <div class="grid md:grid-cols-3 gap-6 mb-8">
+      <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-5">
+        <div class="w-12 h-12 bg-yellow-500 text-white rounded-lg flex items-center justify-center mb-4">
+          <i class="fas fa-fingerprint text-xl"></i>
         </div>
-        <div class="bg-green-50 border border-green-200 rounded-xl p-5">
-          <div class="w-12 h-12 bg-green-500 text-white rounded-lg flex items-center justify-center mb-4">
-            <i class="fas fa-bolt text-xl"></i>
-          </div>
-          <h3 class="text-lg font-bold text-green-800 mb-2">Búsqueda Rápida</h3>
-          <p class="text-green-700 text-sm">Acceso O(1) usando hash como índice</p>
-        </div>
-        <div class="bg-red-50 border border-red-200 rounded-xl p-5">
-          <div class="w-12 h-12 bg-red-500 text-white rounded-lg flex items-center justify-center mb-4">
-            <i class="fas fa-lock text-xl"></i>
-          </div>
-          <h3 class="text-lg font-bold text-red-800 mb-2">Inmutabilidad</h3>
-          <p class="text-red-700 text-sm">Solo objetos inmutables son hashables</p>
-        </div>
+        <h3 class="text-lg font-bold text-yellow-800 mb-2">Identificador Único</h3>
+        <p class="text-yellow-700 text-sm">Cada objeto tiene un hash distinto</p>
       </div>
+      <div class="bg-green-50 border border-green-200 rounded-xl p-5">
+        <div class="w-12 h-12 bg-green-500 text-white rounded-lg flex items-center justify-center mb-4">
+          <i class="fas fa-bolt text-xl"></i>
+        </div>
+        <h3 class="text-lg font-bold text-green-800 mb-2">Búsqueda Rápida</h3>
+        <p class="text-green-700 text-sm">Acceso O(1) usando hash como índice</p>
+      </div>
+      <div class="bg-red-50 border border-red-200 rounded-xl p-5">
+        <div class="w-12 h-12 bg-red-500 text-white rounded-lg flex items-center justify-center mb-4">
+          <i class="fas fa-lock text-xl"></i>
+        </div>
+        <h3 class="text-lg font-bold text-red-800 mb-2">Inmutabilidad</h3>
+        <p class="text-red-700 text-sm">Solo objetos inmutables son hashables</p>
+      </div>
+    </div>
 
-      <!-- Explicación visual del proceso hash -->
-      <div class="mb-8 p-6 bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800 text-center">Proceso de Hashing</h3>
-        <div class="flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-8">
-          <div class="text-center">
-            <div class="mb-2 font-medium text-blue-600">Clave</div>
-            <div class="w-24 h-24 bg-blue-100 border-2 border-blue-300 rounded-lg flex items-center justify-center">
-              <div class="text-center">
-                <div class="font-bold text-lg">"nombre"</div>
-                <div class="text-sm text-blue-600">string</div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="text-gray-400">
-            <i class="fas fa-arrow-right text-2xl"></i>
-          </div>
-          
-          <div class="text-center">
-            <div class="mb-2 font-medium text-green-600">Función hash()</div>
-            <div class="w-24 h-24 bg-green-100 border-2 border-green-300 rounded-lg flex items-center justify-center">
-              <div class="text-center">
-                <div class="font-bold text-lg">hash()</div>
-                <div class="text-sm text-green-600">función</div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="text-gray-400">
-            <i class="fas fa-arrow-right text-2xl"></i>
-          </div>
-          
-          <div class="text-center">
-            <div class="mb-2 font-medium text-purple-600">Valor Hash</div>
-            <div class="w-24 h-24 bg-purple-100 border-2 border-purple-300 rounded-lg flex items-center justify-center">
-              <div class="text-center">
-                <div class="font-bold text-lg">-841182801</div>
-                <div class="text-sm text-purple-600">entero único</div>
-              </div>
+    <!-- Explicación visual del proceso hash -->
+    <div class="mb-8 p-6 bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800 text-center">Proceso de Hashing</h3>
+      <div class="flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-8">
+        <div class="text-center">
+          <div class="mb-2 font-medium text-blue-600">Clave</div>
+          <div class="w-24 h-24 bg-blue-100 border-2 border-blue-300 rounded-lg flex items-center justify-center">
+            <div class="text-center">
+              <div class="font-bold text-lg">"nombre"</div>
+              <div class="text-sm text-blue-600">string</div>
             </div>
           </div>
         </div>
-        <p class="text-center text-gray-600 mt-6">El hash se usa como índice interno para acceso rápido</p>
-      </div>
 
-      <!-- Tabla de tipos hashables vs no hashables -->
-      <div class="mb-8 p-6 bg-gray-50 rounded-xl">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Tipos hashables vs no hashables</h3>
-        <div class="overflow-x-auto">
-          <table class="min-w-full bg-white border border-gray-200 rounded-lg">
-            <thead class="bg-gray-100">
-              <tr>
-                <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Tipo</th>
-                <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Hashable</th>
-                <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Razón</th>
-                <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Ejemplo de clave</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="hover:bg-green-50">
-                <td class="py-3 px-4 border-b font-medium">String</td>
-                <td class="py-3 px-4 border-b"><span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Sí</span></td>
-                <td class="py-3 px-4 border-b">Inmutable</td>
-                <td class="py-3 px-4 border-b font-mono">"nombre"</td>
-              </tr>
-              <tr class="hover:bg-green-50">
-                <td class="py-3 px-4 border-b font-medium">Entero</td>
-                <td class="py-3 px-4 border-b"><span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Sí</span></td>
-                <td class="py-3 px-4 border-b">Inmutable</td>
-                <td class="py-3 px-4 border-b font-mono">42</td>
-              </tr>
-              <tr class="hover:bg-green-50">
-                <td class="py-3 px-4 border-b font-medium">Tupla</td>
-                <td class="py-3 px-4 border-b"><span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Sí*</span></td>
-                <td class="py-3 px-4 border-b">Inmutable si todos sus elementos son hashables</td>
-                <td class="py-3 px-4 border-b font-mono">(1, "a", True)</td>
-              </tr>
-              <tr class="hover:bg-red-50">
-                <td class="py-3 px-4 border-b font-medium">Lista</td>
-                <td class="py-3 px-4 border-b"><span class="px-2 py-1 bg-red-100 text-red-800 rounded-full text-xs">No</span></td>
-                <td class="py-3 px-4 border-b">Mutable (puede cambiar)</td>
-                <td class="py-3 px-4 border-b font-mono text-red-600">[1, 2, 3] ✗</td>
-              </tr>
-              <tr class="hover:bg-red-50">
-                <td class="py-3 px-4 font-medium">Diccionario</td>
-                <td class="py-3 px-4"><span class="px-2 py-1 bg-red-100 text-red-800 rounded-full text-xs">No</span></td>
-                <td class="py-3 px-4">Mutable</td>
-                <td class="py-3 px-4 font-mono text-red-600">{"a": 1} ✗</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="text-gray-400">
+          <i class="fas fa-arrow-right text-2xl"></i>
         </div>
-        <p class="text-sm text-gray-500 mt-2">*Las tuplas son hashables solo si todos sus elementos son hashables</p>
-      </div>
 
-      <!-- Ejemplo 1: Funcion hash() básica -->
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 1: Uso básico de hash()</h3>
-        <PythonRunner 
-          :code="ejemplo1Code"
-          title="hash_basico.py"
-          :showLineNumbers="true"
-          initialHeight="240px"
-        />
-      </div>
-
-      <!-- Ejemplo 2: Tipos hashables vs no hashables -->
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 2: Verificación de hashabilidad</h3>
-        <PythonRunner 
-          :code="ejemplo2Code"
-          title="hashabilidad.py"
-          :showLineNumbers="true"
-          initialHeight="260px"
-        />
-      </div>
-
-      <!-- Ejemplo 3: Sistema de cache con hash -->
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 3: Sistema de caché usando hash</h3>
-        <p class="text-gray-700 mb-4">
-          Los valores hash permiten crear sistemas de caché eficientes:
-        </p>
-        <PythonRunner 
-          :code="ejemplo3Code"
-          title="cache_sistema.py"
-          :showLineNumbers="true"
-          initialHeight="280px"
-        />
-      </div>
-
-      <!-- Ejercicio práctico -->
-      <div class="mb-8 p-6 bg-gradient-to-r from-yellow-50 to-green-50 rounded-lg">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio práctico: Validación de claves</h3>
-        <p class="text-gray-700 mb-4">
-          <strong>Situación:</strong> Crea un sistema que valide si diferentes tipos de datos pueden ser usados como claves en diccionarios.
-        </p>
-        
-        <PythonRunner 
-          :code="ejercicioCode"
-          title="validacion_claves.py"
-          :showLineNumbers="true"
-          initialHeight="250px"
-          :showReset="true"
-          :showSolution="true"
-          :solutionCode="solucionCode"
-        />
-      </div>
-
-      <!-- Colisiones de hash -->
-      <div class="mb-8 p-6 bg-gradient-to-r from-red-50 to-orange-50 border border-red-200 rounded-xl">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">⚠️ Colisiones de Hash</h3>
-        <div class="space-y-4">
-          <div class="flex items-start">
-            <div class="w-8 h-8 bg-red-100 text-red-700 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
-              <i class="fas fa-exclamation-triangle"></i>
-            </div>
-            <div>
-              <h4 class="font-medium text-gray-800">¿Qué es una colisión?</h4>
-              <p class="text-gray-700 text-sm">Ocurre cuando dos objetos diferentes generan el mismo valor hash. Python maneja esto internamente, pero reduce el rendimiento.</p>
+        <div class="text-center">
+          <div class="mb-2 font-medium text-green-600">Función hash()</div>
+          <div class="w-24 h-24 bg-green-100 border-2 border-green-300 rounded-lg flex items-center justify-center">
+            <div class="text-center">
+              <div class="font-bold text-lg">hash()</div>
+              <div class="text-sm text-green-600">función</div>
             </div>
           </div>
-          <div class="flex items-start">
-            <div class="w-8 h-8 bg-yellow-100 text-yellow-700 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
-              <i class="fas fa-balance-scale"></i>
-            </div>
-            <div>
-              <h4 class="font-medium text-gray-800">Igualdad vs Hash</h4>
-              <p class="text-gray-700 text-sm">Si <code class="bg-gray-800 text-yellow-300 px-1 rounded">a == b</code>, entonces <code class="bg-gray-800 text-yellow-300 px-1 rounded">hash(a) == hash(b)</code>. Lo contrario no siempre es cierto (colisiones).</p>
-            </div>
-          </div>
-          <div class="flex items-start">
-            <div class="w-8 h-8 bg-green-100 text-green-700 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
-              <i class="fas fa-shield-alt"></i>
-            </div>
-            <div>
-              <h4 class="font-medium text-gray-800">Inmutabilidad crítica</h4>
-              <p class="text-gray-700 text-sm">Si un objeto cambia después de ser usado como clave, su hash cambiaría y sería imposible encontrarlo en el diccionario.</p>
+        </div>
+
+        <div class="text-gray-400">
+          <i class="fas fa-arrow-right text-2xl"></i>
+        </div>
+
+        <div class="text-center">
+          <div class="mb-2 font-medium text-purple-600">Valor Hash</div>
+          <div class="w-24 h-24 bg-purple-100 border-2 border-purple-300 rounded-lg flex items-center justify-center">
+            <div class="text-center">
+              <div class="font-bold text-lg">-841182801</div>
+              <div class="text-sm text-purple-600">entero único</div>
             </div>
           </div>
         </div>
       </div>
+      <p class="text-center text-gray-600 mt-6">El hash se usa como índice interno para acceso rápido</p>
+    </div>
 
-      <!-- Quiz funcional -->
-      <div class="p-6 bg-gray-50 rounded-lg">
-        <h3 class="text-xl font-semibold mb-6 text-gray-800">Quiz de valores hash</h3>
-        
-        <div class="mb-6">
-          <p class="text-gray-700 mb-3 font-medium">1. {{ preguntas[0].texto }}</p>
-          <div class="space-y-2">
-            <label v-for="(opcion, index) in preguntas[0].opciones" :key="index"
-              class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-yellow-300"
-              :class="{ 'border-yellow-500 border-2': respuestasSeleccionadas[0] === index }">
-              <input 
-                type="radio" 
-                :name="'pregunta1'"
-                :value="index"
-                @change="respuestasSeleccionadas[0] = index"
-                class="mr-3"
-              >
-              <span>{{ opcion.texto }}</span>
-            </label>
+    <!-- Tabla de tipos hashables vs no hashables -->
+    <div class="mb-8 p-6 bg-gray-50 rounded-xl">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Tipos hashables vs no hashables</h3>
+      <div class="overflow-x-auto">
+        <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Tipo</th>
+              <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Hashable</th>
+              <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Razón</th>
+              <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Ejemplo de clave</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="hover:bg-green-50">
+              <td class="py-3 px-4 border-b font-medium">String</td>
+              <td class="py-3 px-4 border-b"><span
+                  class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Sí</span></td>
+              <td class="py-3 px-4 border-b">Inmutable</td>
+              <td class="py-3 px-4 border-b font-mono">"nombre"</td>
+            </tr>
+            <tr class="hover:bg-green-50">
+              <td class="py-3 px-4 border-b font-medium">Entero</td>
+              <td class="py-3 px-4 border-b"><span
+                  class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Sí</span></td>
+              <td class="py-3 px-4 border-b">Inmutable</td>
+              <td class="py-3 px-4 border-b font-mono">42</td>
+            </tr>
+            <tr class="hover:bg-green-50">
+              <td class="py-3 px-4 border-b font-medium">Tupla</td>
+              <td class="py-3 px-4 border-b"><span
+                  class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Sí*</span></td>
+              <td class="py-3 px-4 border-b">Inmutable si todos sus elementos son hashables</td>
+              <td class="py-3 px-4 border-b font-mono">(1, "a", True)</td>
+            </tr>
+            <tr class="hover:bg-red-50">
+              <td class="py-3 px-4 border-b font-medium">Lista</td>
+              <td class="py-3 px-4 border-b"><span
+                  class="px-2 py-1 bg-red-100 text-red-800 rounded-full text-xs">No</span></td>
+              <td class="py-3 px-4 border-b">Mutable (puede cambiar)</td>
+              <td class="py-3 px-4 border-b font-mono text-red-600">[1, 2, 3] ✗</td>
+            </tr>
+            <tr class="hover:bg-red-50">
+              <td class="py-3 px-4 font-medium">Diccionario</td>
+              <td class="py-3 px-4"><span class="px-2 py-1 bg-red-100 text-red-800 rounded-full text-xs">No</span></td>
+              <td class="py-3 px-4">Mutable</td>
+              <td class="py-3 px-4 font-mono text-red-600">{"a": 1} ✗</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm text-gray-500 mt-2">*Las tuplas son hashables solo si todos sus elementos son hashables</p>
+    </div>
+
+    <!-- Ejemplo 1: Funcion hash() básica -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 1: Uso básico de hash()</h3>
+      <PythonRunner :code="ejemplo1Code" title="hash_basico.py" :showLineNumbers="true" initialHeight="240px" />
+    </div>
+
+    <!-- Ejemplo 2: Tipos hashables vs no hashables -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 2: Verificación de hashabilidad</h3>
+      <PythonRunner :code="ejemplo2Code" title="hashabilidad.py" :showLineNumbers="true" initialHeight="260px" />
+    </div>
+
+    <!-- Ejemplo 3: Sistema de cache con hash -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 3: Sistema de caché usando hash</h3>
+      <p class="text-gray-700 mb-4">
+        Los valores hash permiten crear sistemas de caché eficientes:
+      </p>
+      <PythonRunner :code="ejemplo3Code" title="cache_sistema.py" :showLineNumbers="true" initialHeight="280px" />
+    </div>
+
+    <!-- Ejercicio práctico -->
+    <div class="mb-8 p-6 bg-gradient-to-r from-yellow-50 to-green-50 rounded-lg">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio práctico: Validación de claves</h3>
+      <p class="text-gray-700 mb-4">
+        <strong>Situación:</strong> Crea un sistema que valide si diferentes tipos de datos pueden ser usados como
+        claves en diccionarios.
+      </p>
+
+      <PythonRunner :code="ejercicioCode" title="validacion_claves.py" :showLineNumbers="true" initialHeight="250px"
+        :showReset="true" :showSolution="true" :solutionCode="solucionCode" />
+    </div>
+
+    <!-- Colisiones de hash -->
+    <div class="mb-8 p-6 bg-gradient-to-r from-red-50 to-orange-50 border border-red-200 rounded-xl">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">⚠️ Colisiones de Hash</h3>
+      <div class="space-y-4">
+        <div class="flex items-start">
+          <div class="w-8 h-8 bg-red-100 text-red-700 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+            <i class="fas fa-exclamation-triangle"></i>
+          </div>
+          <div>
+            <h4 class="font-medium text-gray-800">¿Qué es una colisión?</h4>
+            <p class="text-gray-700 text-sm">Ocurre cuando dos objetos diferentes generan el mismo valor hash. Python
+              maneja esto internamente, pero reduce el rendimiento.</p>
           </div>
         </div>
-
-        <div class="mb-6">
-          <p class="text-gray-700 mb-3 font-medium">2. {{ preguntas[1].texto }}</p>
-          <div class="space-y-2">
-            <label v-for="(opcion, index) in preguntas[1].opciones" :key="index"
-              class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-yellow-300"
-              :class="{ 'border-yellow-500 border-2': respuestasSeleccionadas[1] === index }">
-              <input 
-                type="radio" 
-                :name="'pregunta2'"
-                :value="index"
-                @change="respuestasSeleccionadas[1] = index"
-                class="mr-3"
-              >
-              <span>{{ opcion.texto }}</span>
-            </label>
+        <div class="flex items-start">
+          <div
+            class="w-8 h-8 bg-yellow-100 text-yellow-700 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+            <i class="fas fa-balance-scale"></i>
+          </div>
+          <div>
+            <h4 class="font-medium text-gray-800">Igualdad vs Hash</h4>
+            <p class="text-gray-700 text-sm">Si <code class="bg-gray-800 text-yellow-300 px-1 rounded">a == b</code>,
+              entonces <code class="bg-gray-800 text-yellow-300 px-1 rounded">hash(a) == hash(b)</code>. Lo contrario no
+              siempre es cierto (colisiones).</p>
           </div>
         </div>
-
-        <div class="mb-6">
-          <p class="text-gray-700 mb-3 font-medium">3. {{ preguntas[2].texto }}</p>
-          <div class="space-y-2">
-            <label v-for="(opcion, index) in preguntas[2].opciones" :key="index"
-              class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-yellow-300"
-              :class="{ 'border-yellow-500 border-2': respuestasSeleccionadas[2] === index }">
-              <input 
-                type="radio" 
-                :name="'pregunta3'"
-                :value="index"
-                @change="respuestasSeleccionadas[2] = index"
-                class="mr-3"
-              >
-              <span>{{ opcion.texto }}</span>
-            </label>
+        <div class="flex items-start">
+          <div
+            class="w-8 h-8 bg-green-100 text-green-700 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+            <i class="fas fa-shield-alt"></i>
           </div>
-        </div>
-
-        <div class="flex items-center justify-between">
-          <button @click="verificarQuiz" 
-                  class="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition font-medium">
-            Verificar respuestas
-          </button>
-          
-          <button @click="reiniciarQuiz" 
-                  class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition">
-            Reiniciar quiz
-          </button>
-        </div>
-
-        <div v-if="mostrarResultados" class="mt-6 p-4 rounded-lg" 
-             :class="resultadoClass">
-          <p class="font-medium">{{ resultadoMensaje }}</p>
-          <p class="text-sm mt-2">Correctas: {{ respuestasCorrectas }}/3</p>
+          <div>
+            <h4 class="font-medium text-gray-800">Inmutabilidad crítica</h4>
+            <p class="text-gray-700 text-sm">Si un objeto cambia después de ser usado como clave, su hash cambiaría y
+              sería imposible encontrarlo en el diccionario.</p>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+
+    <!-- Quiz funcional -->
+    <div class="p-6 bg-gray-50 rounded-lg">
+      <h3 class="text-xl font-semibold mb-6 text-gray-800">Quiz de valores hash</h3>
+
+      <div class="mb-6">
+        <p class="text-gray-700 mb-3 font-medium">1. {{ preguntas[0].texto }}</p>
+        <div class="space-y-2">
+          <label v-for="(opcion, index) in preguntas[0].opciones" :key="index"
+            class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-yellow-300"
+            :class="{ 'border-yellow-500 border-2': respuestasSeleccionadas[0] === index }">
+            <input type="radio" :name="'pregunta1'" :value="index" @change="respuestasSeleccionadas[0] = index"
+              class="mr-3">
+            <span>{{ opcion.texto }}</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <p class="text-gray-700 mb-3 font-medium">2. {{ preguntas[1].texto }}</p>
+        <div class="space-y-2">
+          <label v-for="(opcion, index) in preguntas[1].opciones" :key="index"
+            class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-yellow-300"
+            :class="{ 'border-yellow-500 border-2': respuestasSeleccionadas[1] === index }">
+            <input type="radio" :name="'pregunta2'" :value="index" @change="respuestasSeleccionadas[1] = index"
+              class="mr-3">
+            <span>{{ opcion.texto }}</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <p class="text-gray-700 mb-3 font-medium">3. {{ preguntas[2].texto }}</p>
+        <div class="space-y-2">
+          <label v-for="(opcion, index) in preguntas[2].opciones" :key="index"
+            class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-yellow-300"
+            :class="{ 'border-yellow-500 border-2': respuestasSeleccionadas[2] === index }">
+            <input type="radio" :name="'pregunta3'" :value="index" @change="respuestasSeleccionadas[2] = index"
+              class="mr-3">
+            <span>{{ opcion.texto }}</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <button @click="verificarQuiz"
+          class="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition font-medium">
+          Verificar respuestas
+        </button>
+
+        <button @click="reiniciarQuiz"
+          class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition">
+          Reiniciar quiz
+        </button>
+      </div>
+
+      <div v-if="mostrarResultados" class="mt-6 p-4 rounded-lg" :class="resultadoClass">
+        <p class="font-medium">{{ resultadoMensaje }}</p>
+        <p class="text-sm mt-2">Correctas: {{ respuestasCorrectas }}/3</p>
+      </div>
+    </div>    
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
+import HeaderTitle from "@/components/HeaderTitle.vue"
 
 // Códigos de ejemplo (seguros, sin caracteres problemáticos)
 const ejemplo1Code = `# Uso básico de la función hash()
@@ -722,7 +685,7 @@ const verificarQuiz = () => {
 
   respuestasCorrectas.value = correctas
   mostrarResultados.value = true
-  
+
   if (correctas === preguntas.length) {
     resultadoMensaje.value = '¡Excelente! Comprendes los valores hash y hashabilidad'
     resultadoClass.value = 'bg-green-100 text-green-800 border border-green-300'

@@ -1,204 +1,161 @@
 <template>
   <div class="container mx-auto px-4 py-6">
-    <!-- Sección 1.2.1 -->
-    <section class="bg-white rounded-lg p-6 mb-6">
-      <!-- Título -->
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold mr-3">
-          2.1
-        </span>
-        <div>
-          <h2 class="text-2xl font-bold text-gray-800">1.2.1 Descripción y características de listas</h2>
-          <p class="text-gray-600">Acceso a elementos y tamaño en Python</p>
-        </div>
-      </div>
-
-      <!-- Explicación teórica -->
+    <HeaderTitle numero="1.2" titulo="1.2.1 Descripción y características (acceso a elementos, tamaño)">
+      <!-- Contenido teórico -->
       <div class="mb-8">
         <p class="text-gray-700 mb-4">
-          Las <strong class="text-blue-600">listas</strong> son contenedores ordenados y mutables que permiten almacenar 
+          Las <strong class="text-blue-600">listas</strong> son contenedores ordenados y mutables que permiten almacenar
           múltiples elementos en una secuencia. Son una de las estructuras de datos más versátiles en Python.
         </p>
         <p class="text-gray-700">
-          Las listas permiten <strong>acceso por índice</strong>, tienen <strong>tamaño dinámico</strong> y pueden 
+          Las listas permiten <strong>acceso por índice</strong>, tienen <strong>tamaño dinámico</strong> y pueden
           contener elementos de diferentes tipos. Su flexibilidad las hace ideales para muchas aplicaciones.
         </p>
       </div>
-
-      <!-- Características clave -->
-      <div class="grid md:grid-cols-2 gap-6 mb-8">
-        <div class="bg-blue-50 border border-blue-200 rounded-xl p-5">
-          <div class="w-12 h-12 bg-blue-500 text-white rounded-lg flex items-center justify-center mb-4">
-            <i class="fas fa-list-ol text-xl"></i>
-          </div>
-          <h3 class="text-lg font-bold text-blue-800 mb-2">Acceso por índice</h3>
-          <p class="text-blue-700">Elementos accesibles mediante índices positivos (0, 1, 2...) y negativos (-1, -2...)</p>
+    </HeaderTitle>
+    <!-- Características clave -->
+    <div class="grid md:grid-cols-2 gap-6 mb-8">
+      <div class="bg-blue-50 border border-blue-200 rounded-xl p-5">
+        <div class="w-12 h-12 bg-blue-500 text-white rounded-lg flex items-center justify-center mb-4">
+          <i class="fas fa-list-ol text-xl"></i>
         </div>
-        <div class="bg-green-50 border border-green-200 rounded-xl p-5">
-          <div class="w-12 h-12 bg-green-500 text-white rounded-lg flex items-center justify-center mb-4">
-            <i class="fas fa-expand-alt text-xl"></i>
-          </div>
-          <h3 class="text-lg font-bold text-green-800 mb-2">Tamaño dinámico</h3>
-          <p class="text-green-700">Crece o reduce automáticamente según se agregan o eliminan elementos</p>
-        </div>
-      </div>
-
-      <!-- Ejemplo 1: Creación y acceso básico -->
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 1: Creación y acceso básico</h3>
-        <PythonRunner 
-          :code="ejemplo1Code"
-          title="acceso_basico.py"
-          :showLineNumbers="true"
-          initialHeight="220px"
-        />
-      </div>
-
-      <!-- Diagrama visual de índices -->
-      <div class="mb-8 p-6 bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Índices positivos y negativos</h3>
-        <div class="flex justify-center items-center space-x-4 overflow-x-auto py-4">
-          <div class="text-center">
-            <p class="font-medium text-gray-700 mb-2">Índices positivos</p>
-            <div class="flex space-x-2">
-              <div v-for="(item, index) in ['A', 'B', 'C', 'D', 'E']" :key="index"
-                   class="w-16 h-16 flex flex-col items-center justify-center bg-blue-100 border-2 border-blue-300 rounded-lg">
-                <span class="text-sm text-gray-600">lista[{{index}}]</span>
-                <span class="font-bold text-blue-700">{{item}}</span>
-              </div>
-            </div>
-          </div>
-          <div class="text-gray-400">
-            <i class="fas fa-arrows-alt-h text-2xl"></i>
-          </div>
-          <div class="text-center">
-            <p class="font-medium text-gray-700 mb-2">Índices negativos</p>
-            <div class="flex space-x-2">
-              <div v-for="(item, index) in ['A', 'B', 'C', 'D', 'E']" :key="index"
-                   class="w-16 h-16 flex flex-col items-center justify-center bg-green-100 border-2 border-green-300 rounded-lg">
-                <span class="text-sm text-gray-600">lista[{{-5 + index}}]</span>
-                <span class="font-bold text-green-700">{{item}}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Ejemplo 2: Slicing y tamaño -->
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 2: Slicing y operaciones de tamaño</h3>
-        <PythonRunner 
-          :code="ejemplo2Code"
-          title="slicing_tamaño.py"
-          :showLineNumbers="true"
-          initialHeight="280px"
-        />
-      </div>
-
-      <!-- Ejemplo 3: Sistema de inventario -->
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 3: Sistema de inventario</h3>
-        <p class="text-gray-700 mb-4">
-          En un sistema de inventario, usamos listas para gestionar productos:
+        <h3 class="text-lg font-bold text-blue-800 mb-2">Acceso por índice</h3>
+        <p class="text-blue-700">Elementos accesibles mediante índices positivos (0, 1, 2...) y negativos (-1, -2...)
         </p>
-        <PythonRunner 
-          :code="ejemplo3Code"
-          title="inventario.py"
-          :showLineNumbers="true"
-          initialHeight="300px"
-        />
       </div>
+      <div class="bg-green-50 border border-green-200 rounded-xl p-5">
+        <div class="w-12 h-12 bg-green-500 text-white rounded-lg flex items-center justify-center mb-4">
+          <i class="fas fa-expand-alt text-xl"></i>
+        </div>
+        <h3 class="text-lg font-bold text-green-800 mb-2">Tamaño dinámico</h3>
+        <p class="text-green-700">Crece o reduce automáticamente según se agregan o eliminan elementos</p>
+      </div>
+    </div>
 
+    <!-- Ejemplo 1: Creación y acceso básico -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 1: Creación y acceso básico</h3>
+      <PythonRunner :code="ejemplo1Code" title="acceso_basico.py" :showLineNumbers="true" initialHeight="220px" />
+    </div>
 
-      <!-- Quiz funcional -->
-      <div class="p-6 bg-gray-50 rounded-lg">
-        <h3 class="text-xl font-semibold mb-6 text-gray-800">Quiz de comprensión</h3>
-        
-        <!-- Pregunta 1 -->
-        <div class="mb-6">
-          <p class="text-gray-700 mb-3 font-medium">1. {{ preguntas[0].texto }}</p>
-          <div class="space-y-2">
-            <label v-for="(opcion, index) in preguntas[0].opciones" :key="index"
-              class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300"
-              :class="{ 'border-blue-500 border-2': respuestasSeleccionadas[0] === index }">
-              <input 
-                type="radio" 
-                :name="'pregunta1'"
-                :value="index"
-                @change="respuestasSeleccionadas[0] = index"
-                class="mr-3"
-              >
-              <span>{{ opcion.texto }}</span>
-            </label>
+    <!-- Diagrama visual de índices -->
+    <div class="mb-8 p-6 bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Índices positivos y negativos</h3>
+      <div class="flex justify-center items-center space-x-4 overflow-x-auto py-4">
+        <div class="text-center">
+          <p class="font-medium text-gray-700 mb-2">Índices positivos</p>
+          <div class="flex space-x-2">
+            <div v-for="(item, index) in ['A', 'B', 'C', 'D', 'E']" :key="index"
+              class="w-16 h-16 flex flex-col items-center justify-center bg-blue-100 border-2 border-blue-300 rounded-lg">
+              <span class="text-sm text-gray-600">lista[{{ index }}]</span>
+              <span class="font-bold text-blue-700">{{ item }}</span>
+            </div>
           </div>
         </div>
-
-        <!-- Pregunta 2 -->
-        <div class="mb-6">
-          <p class="text-gray-700 mb-3 font-medium">2. {{ preguntas[1].texto }}</p>
-          <div class="space-y-2">
-            <label v-for="(opcion, index) in preguntas[1].opciones" :key="index"
-              class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300"
-              :class="{ 'border-blue-500 border-2': respuestasSeleccionadas[1] === index }">
-              <input 
-                type="radio" 
-                :name="'pregunta2'"
-                :value="index"
-                @change="respuestasSeleccionadas[1] = index"
-                class="mr-3"
-              >
-              <span>{{ opcion.texto }}</span>
-            </label>
+        <div class="text-gray-400">
+          <i class="fas fa-arrows-alt-h text-2xl"></i>
+        </div>
+        <div class="text-center">
+          <p class="font-medium text-gray-700 mb-2">Índices negativos</p>
+          <div class="flex space-x-2">
+            <div v-for="(item, index) in ['A', 'B', 'C', 'D', 'E']" :key="index"
+              class="w-16 h-16 flex flex-col items-center justify-center bg-green-100 border-2 border-green-300 rounded-lg">
+              <span class="text-sm text-gray-600">lista[{{ -5 + index }}]</span>
+              <span class="font-bold text-green-700">{{ item }}</span>
+            </div>
           </div>
-        </div>
-
-        <!-- Pregunta 3 -->
-        <div class="mb-6">
-          <p class="text-gray-700 mb-3 font-medium">3. {{ preguntas[2].texto }}</p>
-          <div class="space-y-2">
-            <label v-for="(opcion, index) in preguntas[2].opciones" :key="index"
-              class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300"
-              :class="{ 'border-blue-500 border-2': respuestasSeleccionadas[2] === index }">
-              <input 
-                type="radio" 
-                :name="'pregunta3'"
-                :value="index"
-                @change="respuestasSeleccionadas[2] = index"
-                class="mr-3"
-              >
-              <span>{{ opcion.texto }}</span>
-            </label>
-          </div>
-        </div>
-
-        <!-- Botones -->
-        <div class="flex items-center justify-between">
-          <button @click="verificarQuiz" 
-                  class="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition font-medium">
-            Verificar respuestas
-          </button>
-          
-          <button @click="reiniciarQuiz" 
-                  class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition">
-            Reiniciar quiz
-          </button>
-        </div>
-
-        <!-- Resultados -->
-        <div v-if="mostrarResultados" class="mt-6 p-4 rounded-lg" 
-             :class="resultadoClass">
-          <p class="font-medium">{{ resultadoMensaje }}</p>
-          <p class="text-sm mt-2">Correctas: {{ respuestasCorrectas }}/3</p>
         </div>
       </div>
-    </section>
+    </div>
+
+    <!-- Ejemplo 2: Slicing y tamaño -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 2: Slicing y operaciones de tamaño</h3>
+      <PythonRunner :code="ejemplo2Code" title="slicing_tamaño.py" :showLineNumbers="true" initialHeight="280px" />
+    </div>
+
+    <!-- Ejemplo 3: Sistema de inventario -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 3: Sistema de inventario</h3>
+      <p class="text-gray-700 mb-4">
+        En un sistema de inventario, usamos listas para gestionar productos:
+      </p>
+      <PythonRunner :code="ejemplo3Code" title="inventario.py" :showLineNumbers="true" initialHeight="300px" />
+    </div>
+
+
+    <!-- Quiz funcional -->
+    <div class="p-6 bg-gray-50 rounded-lg">
+      <h3 class="text-xl font-semibold mb-6 text-gray-800">Quiz de comprensión</h3>
+
+      <!-- Pregunta 1 -->
+      <div class="mb-6">
+        <p class="text-gray-700 mb-3 font-medium">1. {{ preguntas[0].texto }}</p>
+        <div class="space-y-2">
+          <label v-for="(opcion, index) in preguntas[0].opciones" :key="index"
+            class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300"
+            :class="{ 'border-blue-500 border-2': respuestasSeleccionadas[0] === index }">
+            <input type="radio" :name="'pregunta1'" :value="index" @change="respuestasSeleccionadas[0] = index"
+              class="mr-3">
+            <span>{{ opcion.texto }}</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Pregunta 2 -->
+      <div class="mb-6">
+        <p class="text-gray-700 mb-3 font-medium">2. {{ preguntas[1].texto }}</p>
+        <div class="space-y-2">
+          <label v-for="(opcion, index) in preguntas[1].opciones" :key="index"
+            class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300"
+            :class="{ 'border-blue-500 border-2': respuestasSeleccionadas[1] === index }">
+            <input type="radio" :name="'pregunta2'" :value="index" @change="respuestasSeleccionadas[1] = index"
+              class="mr-3">
+            <span>{{ opcion.texto }}</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Pregunta 3 -->
+      <div class="mb-6">
+        <p class="text-gray-700 mb-3 font-medium">3. {{ preguntas[2].texto }}</p>
+        <div class="space-y-2">
+          <label v-for="(opcion, index) in preguntas[2].opciones" :key="index"
+            class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300"
+            :class="{ 'border-blue-500 border-2': respuestasSeleccionadas[2] === index }">
+            <input type="radio" :name="'pregunta3'" :value="index" @change="respuestasSeleccionadas[2] = index"
+              class="mr-3">
+            <span>{{ opcion.texto }}</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Botones -->
+      <div class="flex items-center justify-between">
+        <button @click="verificarQuiz"
+          class="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition font-medium">
+          Verificar respuestas
+        </button>
+
+        <button @click="reiniciarQuiz"
+          class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition">
+          Reiniciar quiz
+        </button>
+      </div>
+
+      <!-- Resultados -->
+      <div v-if="mostrarResultados" class="mt-6 p-4 rounded-lg" :class="resultadoClass">
+        <p class="font-medium">{{ resultadoMensaje }}</p>
+        <p class="text-sm mt-2">Correctas: {{ respuestasCorrectas }}/3</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
-
+import HeaderTitle from "@/components/HeaderTitle.vue"
 // Códigos de ejemplo
 const ejemplo1Code = `# Acceso básico a elementos de lista
 
@@ -355,7 +312,7 @@ const verificarQuiz = () => {
   // Actualizar estado
   respuestasCorrectas.value = correctas
   mostrarResultados.value = true
-  
+
   // Determinar mensaje y color
   if (correctas === preguntas.length) {
     resultadoMensaje.value = '¡Excelente! Dominas el acceso a listas en Python 🎉'

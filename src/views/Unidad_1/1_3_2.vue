@@ -1,19 +1,7 @@
 <template>
-  <div class="container mx-auto px-4 py-6">
-    <!-- Sección 1.3.2 -->
-    <section class="bg-white rounded-lg p-6 mb-6">
-      <!-- Título -->
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 bg-purple-500 text-white rounded-full flex items-center justify-center font-bold mr-3">
-          3.2
-        </span>
-        <div>
-          <h2 class="text-2xl font-bold text-gray-800">1.3.2 Operaciones sobre conjuntos</h2>
-          <p class="text-gray-600">Creación, inserción, unión, diferencia y complemento</p>
-        </div>
-      </div>
-
-      <!-- Explicación teórica -->
+  <div class="container mx-auto px-4 py-6">           
+    <HeaderTitle numero="1.3" titulo="1.3.2 Operaciones sobre conjuntos">
+    <!-- Explicación teórica -->
       <div class="mb-8">
         <p class="text-gray-700 mb-4">
           Los conjuntos en Python soportan operaciones matemáticas que los hacen especialmente útiles 
@@ -24,6 +12,7 @@
           de manera eficiente y elegante.
         </p>
       </div>
+    </HeaderTitle>
 
       <!-- Operaciones principales -->
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
@@ -290,14 +279,14 @@
           <p class="font-medium">{{ resultadoMensaje }}</p>
           <p class="text-sm mt-2">Correctas: {{ respuestasCorrectas }}/3</p>
         </div>
-      </div>
-    </section>
+      </div>    
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
+import HeaderTitle from "@/components/HeaderTitle.vue"
 
 // Códigos de ejemplo
 const ejemplo1Code = `# Operaciones básicas con conjuntos

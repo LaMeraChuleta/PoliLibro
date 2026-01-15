@@ -1,272 +1,239 @@
 <template>
   <div class="container mx-auto px-4 py-6">
-    <!-- Sección 1.3.3 -->
-    <section class="bg-white rounded-lg p-6 mb-6">
-      <!-- Título -->
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 bg-purple-500 text-white rounded-full flex items-center justify-center font-bold mr-3">
-          3.3
-        </span>
-        <div>
-          <h2 class="text-2xl font-bold text-gray-800">1.3.3 Aplicaciones de conjuntos</h2>
-          <p class="text-gray-600">Casos de uso prácticos en programación real</p>
-        </div>
-      </div>
 
+    <HeaderTitle numero="1.3" titulo="1.3.3 Aplicaciones de conjuntos">
       <!-- Explicación teórica -->
       <div class="mb-8">
         <p class="text-gray-700 mb-4">
-          Los conjuntos son una herramienta poderosa en Python con aplicaciones prácticas 
-          en diversos dominios. Su capacidad para manejar elementos únicos y realizar 
+          Los conjuntos son una herramienta poderosa en Python con aplicaciones prácticas
+          en diversos dominios. Su capacidad para manejar elementos únicos y realizar
           operaciones eficientes los hace ideales para problemas específicos.
         </p>
         <p class="text-gray-700">
-          Desde sistemas de recomendación hasta limpieza de datos, los conjuntos ofrecen 
+          Desde sistemas de recomendación hasta limpieza de datos, los conjuntos ofrecen
           soluciones elegantes y eficientes para problemas comunes de programación.
         </p>
       </div>
+    </HeaderTitle>
 
-      <!-- Aplicaciones comunes -->
-      <div class="grid md:grid-cols-3 gap-6 mb-8">
-        <div class="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-xl p-5">
-          <div class="w-12 h-12 bg-blue-500 text-white rounded-lg flex items-center justify-center mb-4">
-            <i class="fas fa-filter text-xl"></i>
-          </div>
-          <h3 class="text-lg font-bold text-blue-800 mb-2">Limpieza de Datos</h3>
-          <ul class="text-blue-700 text-sm space-y-1">
-            <li>• Eliminar duplicados</li>
-            <li>• Encontrar valores únicos</li>
-            <li>• Validar integridad</li>
-          </ul>
+
+    <!-- Aplicaciones comunes -->
+    <div class="grid md:grid-cols-3 gap-6 mb-8">
+      <div class="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-xl p-5">
+        <div class="w-12 h-12 bg-blue-500 text-white rounded-lg flex items-center justify-center mb-4">
+          <i class="fas fa-filter text-xl"></i>
         </div>
-        <div class="bg-gradient-to-br from-green-50 to-green-100 border border-green-200 rounded-xl p-5">
-          <div class="w-12 h-12 bg-green-500 text-white rounded-lg flex items-center justify-center mb-4">
-            <i class="fas fa-sitemap text-xl"></i>
-          </div>
-          <h3 class="text-lg font-bold text-green-800 mb-2">Análisis Relacional</h3>
-          <ul class="text-green-700 text-sm space-y-1">
-            <li>• Comparar grupos</li>
-            <li>• Encontrar relaciones</li>
-            <li>• Identificar diferencias</li>
-          </ul>
+        <h3 class="text-lg font-bold text-blue-800 mb-2">Limpieza de Datos</h3>
+        <ul class="text-blue-700 text-sm space-y-1">
+          <li>• Eliminar duplicados</li>
+          <li>• Encontrar valores únicos</li>
+          <li>• Validar integridad</li>
+        </ul>
+      </div>
+      <div class="bg-gradient-to-br from-green-50 to-green-100 border border-green-200 rounded-xl p-5">
+        <div class="w-12 h-12 bg-green-500 text-white rounded-lg flex items-center justify-center mb-4">
+          <i class="fas fa-sitemap text-xl"></i>
         </div>
-        <div class="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-xl p-5">
-          <div class="w-12 h-12 bg-purple-500 text-white rounded-lg flex items-center justify-center mb-4">
-            <i class="fas fa-user-friends text-xl"></i>
-          </div>
-          <h3 class="text-lg font-bold text-purple-800 mb-2">Sistemas Sociales</h3>
-          <ul class="text-purple-700 text-sm space-y-1">
-            <li>• Amigos en común</li>
-            <li>• Grupos de interés</li>
-            <li>• Recomendaciones</li>
-          </ul>
+        <h3 class="text-lg font-bold text-green-800 mb-2">Análisis Relacional</h3>
+        <ul class="text-green-700 text-sm space-y-1">
+          <li>• Comparar grupos</li>
+          <li>• Encontrar relaciones</li>
+          <li>• Identificar diferencias</li>
+        </ul>
+      </div>
+      <div class="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-xl p-5">
+        <div class="w-12 h-12 bg-purple-500 text-white rounded-lg flex items-center justify-center mb-4">
+          <i class="fas fa-user-friends text-xl"></i>
         </div>
+        <h3 class="text-lg font-bold text-purple-800 mb-2">Sistemas Sociales</h3>
+        <ul class="text-purple-700 text-sm space-y-1">
+          <li>• Amigos en común</li>
+          <li>• Grupos de interés</li>
+          <li>• Recomendaciones</li>
+        </ul>
       </div>
+    </div>
 
-      <!-- Ejemplo 1: Sistema de amigos en redes sociales -->
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 1: Sistema de amigos en redes sociales</h3>
-        <PythonRunner 
-          :code="ejemplo1Code"
-          title="red_social.py"
-          :showLineNumbers="true"
-          initialHeight="320px"
-        />
-      </div>
+    <!-- Ejemplo 1: Sistema de amigos en redes sociales -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 1: Sistema de amigos en redes sociales</h3>
+      <PythonRunner :code="ejemplo1Code" title="red_social.py" :showLineNumbers="true" initialHeight="320px" />
+    </div>
 
-      <!-- Ejemplo 2: Análisis de datos de ventas -->
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 2: Análisis de datos de clientes</h3>
-        <PythonRunner 
-          :code="ejemplo2Code"
-          title="analisis_clientes.py"
-          :showLineNumbers="true"
-          initialHeight="300px"
-        />
-      </div>
+    <!-- Ejemplo 2: Análisis de datos de ventas -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 2: Análisis de datos de clientes</h3>
+      <PythonRunner :code="ejemplo2Code" title="analisis_clientes.py" :showLineNumbers="true" initialHeight="300px" />
+    </div>
 
-      <!-- Ejemplo 3: Sistema de inventario con conjuntos -->
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 3: Sistema de categorías de productos</h3>
-        <PythonRunner 
-          :code="ejemplo3Code"
-          title="categorias_productos.py"
-          :showLineNumbers="true"
-          initialHeight="280px"
-        />
-      </div>
+    <!-- Ejemplo 3: Sistema de inventario con conjuntos -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 3: Sistema de categorías de productos</h3>
+      <PythonRunner :code="ejemplo3Code" title="categorias_productos.py" :showLineNumbers="true"
+        initialHeight="280px" />
+    </div>
 
-      <!-- Ejercicio práctico -->
-      <div class="mb-8 p-6 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio práctico: Sistema de recomendación de cursos</h3>
-        <p class="text-gray-700 mb-4">
-          <strong>Situación:</strong> Crea un sistema que recomienda cursos basados en intereses comunes de estudiantes.
-        </p>
-        
-        <PythonRunner 
-          :code="ejercicioCode"
-          title="recomendacion_cursos.py"
-          :showLineNumbers="true"
-          initialHeight="300px"
-          :showReset="true"
-          :showSolution="true"
-          :solutionCode="solucionCode"
-        />
-      </div>
+    <!-- Ejercicio práctico -->
+    <div class="mb-8 p-6 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio práctico: Sistema de recomendación de cursos</h3>
+      <p class="text-gray-700 mb-4">
+        <strong>Situación:</strong> Crea un sistema que recomienda cursos basados en intereses comunes de estudiantes.
+      </p>
 
-      <!-- Casos de uso reales -->
-      <div class="mb-8 p-6 bg-gray-50 rounded-xl">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Casos de uso en la industria</h3>
-        <div class="space-y-6">
-          <div class="flex items-start">
-            <div class="w-10 h-10 bg-red-100 text-red-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-              <i class="fas fa-shopping-cart"></i>
-            </div>
-            <div>
-              <h4 class="font-bold text-gray-800 mb-2">E-commerce</h4>
-              <p class="text-gray-700">Identificar productos únicos en carritos de compra, encontrar clientes que compran categorías similares, eliminar productos duplicados en inventario.</p>
-            </div>
+      <PythonRunner :code="ejercicioCode" title="recomendacion_cursos.py" :showLineNumbers="true" initialHeight="300px"
+        :showReset="true" :showSolution="true" :solutionCode="solucionCode" />
+    </div>
+
+    <!-- Casos de uso reales -->
+    <div class="mb-8 p-6 bg-gray-50 rounded-xl">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Casos de uso en la industria</h3>
+      <div class="space-y-6">
+        <div class="flex items-start">
+          <div
+            class="w-10 h-10 bg-red-100 text-red-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+            <i class="fas fa-shopping-cart"></i>
           </div>
-          
-          <div class="flex items-start">
-            <div class="w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-              <i class="fas fa-chart-line"></i>
-            </div>
-            <div>
-              <h4 class="font-bold text-gray-800 mb-2">Análisis de Datos</h4>
-              <p class="text-gray-700">Encontrar valores únicos en datasets grandes, comparar grupos de usuarios, identificar outliers usando operaciones de conjuntos.</p>
-            </div>
+          <div>
+            <h4 class="font-bold text-gray-800 mb-2">E-commerce</h4>
+            <p class="text-gray-700">Identificar productos únicos en carritos de compra, encontrar clientes que compran
+              categorías similares, eliminar productos duplicados en inventario.</p>
           </div>
-          
-          <div class="flex items-start">
-            <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-              <i class="fas fa-shield-alt"></i>
-            </div>
-            <div>
-              <h4 class="font-bold text-gray-800 mb-2">Seguridad</h4>
-              <p class="text-gray-700">Manejar listas de IPs bloqueadas, verificar permisos de usuarios, detectar accesos sospechosos comparando patrones de comportamiento.</p>
-            </div>
+        </div>
+
+        <div class="flex items-start">
+          <div
+            class="w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-gray-800 mb-2">Análisis de Datos</h4>
+            <p class="text-gray-700">Encontrar valores únicos en datasets grandes, comparar grupos de usuarios,
+              identificar outliers usando operaciones de conjuntos.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start">
+          <div
+            class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-gray-800 mb-2">Seguridad</h4>
+            <p class="text-gray-700">Manejar listas de IPs bloqueadas, verificar permisos de usuarios, detectar accesos
+              sospechosos comparando patrones de comportamiento.</p>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- Consejos de optimización -->
-      <div class="mb-8 p-6 bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-200 rounded-xl">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">💡 Consejos de optimización</h3>
-        <div class="space-y-4">
-          <div class="flex items-start">
-            <div class="w-8 h-8 bg-yellow-100 text-yellow-700 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
-              <i class="fas fa-bolt"></i>
-            </div>
-            <div>
-              <h4 class="font-medium text-gray-800">Eficiencia en búsquedas</h4>
-              <p class="text-gray-700 text-sm">Usa conjuntos cuando necesites verificar membresía frecuentemente. <code class="bg-gray-800 text-yellow-300 px-1 rounded">elemento in conjunto</code> es O(1) en promedio.</p>
-            </div>
+    <!-- Consejos de optimización -->
+    <div class="mb-8 p-6 bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-200 rounded-xl">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">💡 Consejos de optimización</h3>
+      <div class="space-y-4">
+        <div class="flex items-start">
+          <div
+            class="w-8 h-8 bg-yellow-100 text-yellow-700 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+            <i class="fas fa-bolt"></i>
           </div>
-          <div class="flex items-start">
-            <div class="w-8 h-8 bg-green-100 text-green-700 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
-              <i class="fas fa-magic"></i>
-            </div>
-            <div>
-              <h4 class="font-medium text-gray-800">Eliminar duplicados rápidamente</h4>
-              <p class="text-gray-700 text-sm">Convierte una lista a conjunto y de vuelta a lista: <code class="bg-gray-800 text-green-300 px-1 rounded">lista_unica = list(set(lista_con_duplicados))</code></p>
-            </div>
+          <div>
+            <h4 class="font-medium text-gray-800">Eficiencia en búsquedas</h4>
+            <p class="text-gray-700 text-sm">Usa conjuntos cuando necesites verificar membresía frecuentemente. <code
+                class="bg-gray-800 text-yellow-300 px-1 rounded">elemento in conjunto</code> es O(1) en promedio.</p>
           </div>
-          <div class="flex items-start">
-            <div class="w-8 h-8 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
-              <i class="fas fa-exchange-alt"></i>
-            </div>
-            <div>
-              <h4 class="font-medium text-gray-800">Operaciones por lotes</h4>
-              <p class="text-gray-700 text-sm">Usa <code class="bg-gray-800 text-blue-300 px-1 rounded">update()</code> en lugar de múltiples <code class="bg-gray-800 text-blue-300 px-1 rounded">add()</code> para agregar muchos elementos.</p>
-            </div>
+        </div>
+        <div class="flex items-start">
+          <div
+            class="w-8 h-8 bg-green-100 text-green-700 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+            <i class="fas fa-magic"></i>
+          </div>
+          <div>
+            <h4 class="font-medium text-gray-800">Eliminar duplicados rápidamente</h4>
+            <p class="text-gray-700 text-sm">Convierte una lista a conjunto y de vuelta a lista: <code
+                class="bg-gray-800 text-green-300 px-1 rounded">lista_unica = list(set(lista_con_duplicados))</code></p>
+          </div>
+        </div>
+        <div class="flex items-start">
+          <div
+            class="w-8 h-8 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+            <i class="fas fa-exchange-alt"></i>
+          </div>
+          <div>
+            <h4 class="font-medium text-gray-800">Operaciones por lotes</h4>
+            <p class="text-gray-700 text-sm">Usa <code class="bg-gray-800 text-blue-300 px-1 rounded">update()</code> en
+              lugar de múltiples <code class="bg-gray-800 text-blue-300 px-1 rounded">add()</code> para agregar muchos
+              elementos.</p>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- Quiz funcional -->
-      <div class="p-6 bg-gray-50 rounded-lg">
-        <h3 class="text-xl font-semibold mb-6 text-gray-800">Quiz de aplicaciones de conjuntos</h3>
-        
-        <div class="mb-6">
-          <p class="text-gray-700 mb-3 font-medium">1. {{ preguntas[0].texto }}</p>
-          <div class="space-y-2">
-            <label v-for="(opcion, index) in preguntas[0].opciones" :key="index"
-              class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-purple-300"
-              :class="{ 'border-purple-500 border-2': respuestasSeleccionadas[0] === index }">
-              <input 
-                type="radio" 
-                :name="'pregunta1'"
-                :value="index"
-                @change="respuestasSeleccionadas[0] = index"
-                class="mr-3"
-              >
-              <span>{{ opcion.texto }}</span>
-            </label>
-          </div>
-        </div>
+    <!-- Quiz funcional -->
+    <div class="p-6 bg-gray-50 rounded-lg">
+      <h3 class="text-xl font-semibold mb-6 text-gray-800">Quiz de aplicaciones de conjuntos</h3>
 
-        <div class="mb-6">
-          <p class="text-gray-700 mb-3 font-medium">2. {{ preguntas[1].texto }}</p>
-          <div class="space-y-2">
-            <label v-for="(opcion, index) in preguntas[1].opciones" :key="index"
-              class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-purple-300"
-              :class="{ 'border-purple-500 border-2': respuestasSeleccionadas[1] === index }">
-              <input 
-                type="radio" 
-                :name="'pregunta2'"
-                :value="index"
-                @change="respuestasSeleccionadas[1] = index"
-                class="mr-3"
-              >
-              <span>{{ opcion.texto }}</span>
-            </label>
-          </div>
-        </div>
-
-        <div class="mb-6">
-          <p class="text-gray-700 mb-3 font-medium">3. {{ preguntas[2].texto }}</p>
-          <div class="space-y-2">
-            <label v-for="(opcion, index) in preguntas[2].opciones" :key="index"
-              class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-purple-300"
-              :class="{ 'border-purple-500 border-2': respuestasSeleccionadas[2] === index }">
-              <input 
-                type="radio" 
-                :name="'pregunta3'"
-                :value="index"
-                @change="respuestasSeleccionadas[2] = index"
-                class="mr-3"
-              >
-              <span>{{ opcion.texto }}</span>
-            </label>
-          </div>
-        </div>
-
-        <div class="flex items-center justify-between">
-          <button @click="verificarQuiz" 
-                  class="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition font-medium">
-            Verificar respuestas
-          </button>
-          
-          <button @click="reiniciarQuiz" 
-                  class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition">
-            Reiniciar quiz
-          </button>
-        </div>
-
-        <div v-if="mostrarResultados" class="mt-6 p-4 rounded-lg" 
-             :class="resultadoClass">
-          <p class="font-medium">{{ resultadoMensaje }}</p>
-          <p class="text-sm mt-2">Correctas: {{ respuestasCorrectas }}/3</p>
+      <div class="mb-6">
+        <p class="text-gray-700 mb-3 font-medium">1. {{ preguntas[0].texto }}</p>
+        <div class="space-y-2">
+          <label v-for="(opcion, index) in preguntas[0].opciones" :key="index"
+            class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-purple-300"
+            :class="{ 'border-purple-500 border-2': respuestasSeleccionadas[0] === index }">
+            <input type="radio" :name="'pregunta1'" :value="index" @change="respuestasSeleccionadas[0] = index"
+              class="mr-3">
+            <span>{{ opcion.texto }}</span>
+          </label>
         </div>
       </div>
-    </section>
+
+      <div class="mb-6">
+        <p class="text-gray-700 mb-3 font-medium">2. {{ preguntas[1].texto }}</p>
+        <div class="space-y-2">
+          <label v-for="(opcion, index) in preguntas[1].opciones" :key="index"
+            class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-purple-300"
+            :class="{ 'border-purple-500 border-2': respuestasSeleccionadas[1] === index }">
+            <input type="radio" :name="'pregunta2'" :value="index" @change="respuestasSeleccionadas[1] = index"
+              class="mr-3">
+            <span>{{ opcion.texto }}</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <p class="text-gray-700 mb-3 font-medium">3. {{ preguntas[2].texto }}</p>
+        <div class="space-y-2">
+          <label v-for="(opcion, index) in preguntas[2].opciones" :key="index"
+            class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-purple-300"
+            :class="{ 'border-purple-500 border-2': respuestasSeleccionadas[2] === index }">
+            <input type="radio" :name="'pregunta3'" :value="index" @change="respuestasSeleccionadas[2] = index"
+              class="mr-3">
+            <span>{{ opcion.texto }}</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <button @click="verificarQuiz"
+          class="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition font-medium">
+          Verificar respuestas
+        </button>
+
+        <button @click="reiniciarQuiz"
+          class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition">
+          Reiniciar quiz
+        </button>
+      </div>
+
+      <div v-if="mostrarResultados" class="mt-6 p-4 rounded-lg" :class="resultadoClass">
+        <p class="font-medium">{{ resultadoMensaje }}</p>
+        <p class="text-sm mt-2">Correctas: {{ respuestasCorrectas }}/3</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
+import HeaderTitle from "@/components/HeaderTitle.vue"
 
 // Códigos de ejemplo
 const ejemplo1Code = `# Sistema de amigos en redes sociales
@@ -772,7 +739,7 @@ const verificarQuiz = () => {
 
   respuestasCorrectas.value = correctas
   mostrarResultados.value = true
-  
+
   if (correctas === preguntas.length) {
     resultadoMensaje.value = '¡Excelente! Comprendes las aplicaciones prácticas de conjuntos'
     resultadoClass.value = 'bg-green-100 text-green-800 border border-green-300'

@@ -1,275 +1,229 @@
 <template>
-  <div class="container mx-auto px-4 py-6">
-    <!-- Sección 1.3.1 -->
-    <section class="bg-white rounded-lg p-6 mb-6">
-      <!-- Título -->
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 bg-purple-500 text-white rounded-full flex items-center justify-center font-bold mr-3">
-          3.1
-        </span>
-        <div>
-          <h2 class="text-2xl font-bold text-gray-800">1.3.1 Descripción y características de conjuntos</h2>
-          <p class="text-gray-600">Acceso a elementos, membresía y tamaño en Python</p>
-        </div>
-      </div>
-
+  <div class="container mx-auto px-4 py-6">    
+    <HeaderTitle numero="1.3" titulo="1.3.1 Descripción y características de conjuntos">
+      <!-- Contenido teórico -->
       <!-- Explicación teórica -->
       <div class="mb-8">
         <p class="text-gray-700 mb-4">
-          Los <strong class="text-purple-600">conjuntos (sets)</strong> son colecciones desordenadas de elementos únicos. 
+          Los <strong class="text-purple-600">conjuntos (sets)</strong> son colecciones desordenadas de elementos
+          únicos.
           A diferencia de las listas, no mantienen un orden específico y eliminan automáticamente los duplicados.
         </p>
         <p class="text-gray-700">
-          Son ideales cuando necesitas verificar rápidamente si un elemento pertenece a una colección 
+          Son ideales cuando necesitas verificar rápidamente si un elemento pertenece a una colección
           o cuando necesitas operaciones matemáticas entre conjuntos.
         </p>
       </div>
+    </HeaderTitle>
 
-      <!-- Características principales -->
-      <div class="grid md:grid-cols-3 gap-6 mb-8">
-        <div class="bg-purple-50 border border-purple-200 rounded-xl p-5">
-          <div class="w-12 h-12 bg-purple-500 text-white rounded-lg flex items-center justify-center mb-4">
-            <i class="fas fa-random text-xl"></i>
-          </div>
-          <h3 class="text-lg font-bold text-purple-800 mb-2">Sin orden</h3>
-          <p class="text-purple-700 text-sm">Los elementos no tienen posición fija</p>
+
+    <!-- Características principales -->
+    <div class="grid md:grid-cols-3 gap-6 mb-8">
+      <div class="bg-purple-50 border border-purple-200 rounded-xl p-5">
+        <div class="w-12 h-12 bg-purple-500 text-white rounded-lg flex items-center justify-center mb-4">
+          <i class="fas fa-random text-xl"></i>
         </div>
-        <div class="bg-green-50 border border-green-200 rounded-xl p-5">
-          <div class="w-12 h-12 bg-green-500 text-white rounded-lg flex items-center justify-center mb-4">
-            <i class="fas fa-ban text-xl"></i>
-          </div>
-          <h3 class="text-lg font-bold text-green-800 mb-2">Sin duplicados</h3>
-          <p class="text-green-700 text-sm">Elementos únicos automáticamente</p>
+        <h3 class="text-lg font-bold text-purple-800 mb-2">Sin orden</h3>
+        <p class="text-purple-700 text-sm">Los elementos no tienen posición fija</p>
+      </div>
+      <div class="bg-green-50 border border-green-200 rounded-xl p-5">
+        <div class="w-12 h-12 bg-green-500 text-white rounded-lg flex items-center justify-center mb-4">
+          <i class="fas fa-ban text-xl"></i>
         </div>
-        <div class="bg-blue-50 border border-blue-200 rounded-xl p-5">
-          <div class="w-12 h-12 bg-blue-500 text-white rounded-lg flex items-center justify-center mb-4">
-            <i class="fas fa-search text-xl"></i>
-          </div>
-          <h3 class="text-lg font-bold text-blue-800 mb-2">Búsqueda rápida</h3>
-          <p class="text-blue-700 text-sm">Membresía O(1) en promedio</p>
+        <h3 class="text-lg font-bold text-green-800 mb-2">Sin duplicados</h3>
+        <p class="text-green-700 text-sm">Elementos únicos automáticamente</p>
+      </div>
+      <div class="bg-blue-50 border border-blue-200 rounded-xl p-5">
+        <div class="w-12 h-12 bg-blue-500 text-white rounded-lg flex items-center justify-center mb-4">
+          <i class="fas fa-search text-xl"></i>
         </div>
+        <h3 class="text-lg font-bold text-blue-800 mb-2">Búsqueda rápida</h3>
+        <p class="text-blue-700 text-sm">Membresía O(1) en promedio</p>
       </div>
+    </div>
 
-      <!-- Comparación con listas -->
-      <div class="mb-8 p-6 bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Conjuntos vs Listas</h3>
-        <div class="overflow-x-auto">
-          <table class="min-w-full bg-white border border-gray-200 rounded-lg">
-            <thead class="bg-gray-100">
-              <tr>
-                <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Característica</th>
-                <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Lista</th>
-                <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Conjunto</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="hover:bg-gray-50">
-                <td class="py-3 px-4 border-b">Orden</td>
-                <td class="py-3 px-4 border-b">✅ Mantiene orden</td>
-                <td class="py-3 px-4 border-b">❌ Sin orden</td>
-              </tr>
-              <tr class="hover:bg-gray-50">
-                <td class="py-3 px-4 border-b">Duplicados</td>
-                <td class="py-3 px-4 border-b">✅ Permitidos</td>
-                <td class="py-3 px-4 border-b">❌ Automáticamente eliminados</td>
-              </tr>
-              <tr class="hover:bg-gray-50">
-                <td class="py-3 px-4 border-b">Acceso por índice</td>
-                <td class="py-3 px-4 border-b">✅ lista[0], lista[1]</td>
-                <td class="py-3 px-4 border-b">❌ No disponible</td>
-              </tr>
-              <tr class="hover:bg-gray-50">
-                <td class="py-3 px-4">Búsqueda (elemento in)</td>
-                <td class="py-3 px-4">❌ O(n) - Lento para grandes listas</td>
-                <td class="py-3 px-4">✅ O(1) - Muy rápido</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+    <!-- Comparación con listas -->
+    <div class="mb-8 p-6 bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Conjuntos vs Listas</h3>
+      <div class="overflow-x-auto">
+        <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Característica</th>
+              <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Lista</th>
+              <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Conjunto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="hover:bg-gray-50">
+              <td class="py-3 px-4 border-b">Orden</td>
+              <td class="py-3 px-4 border-b">✅ Mantiene orden</td>
+              <td class="py-3 px-4 border-b">❌ Sin orden</td>
+            </tr>
+            <tr class="hover:bg-gray-50">
+              <td class="py-3 px-4 border-b">Duplicados</td>
+              <td class="py-3 px-4 border-b">✅ Permitidos</td>
+              <td class="py-3 px-4 border-b">❌ Automáticamente eliminados</td>
+            </tr>
+            <tr class="hover:bg-gray-50">
+              <td class="py-3 px-4 border-b">Acceso por índice</td>
+              <td class="py-3 px-4 border-b">✅ lista[0], lista[1]</td>
+              <td class="py-3 px-4 border-b">❌ No disponible</td>
+            </tr>
+            <tr class="hover:bg-gray-50">
+              <td class="py-3 px-4">Búsqueda (elemento in)</td>
+              <td class="py-3 px-4">❌ O(n) - Lento para grandes listas</td>
+              <td class="py-3 px-4">✅ O(1) - Muy rápido</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+    </div>
 
-      <!-- Ejemplo 1: Creación y características básicas -->
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 1: Creación y características básicas</h3>
-        <PythonRunner 
-          :code="ejemplo1Code"
-          title="conjuntos_basicos.py"
-          :showLineNumbers="true"
-          initialHeight="240px"
-        />
-      </div>
+    <!-- Ejemplo 1: Creación y características básicas -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 1: Creación y características básicas</h3>
+      <PythonRunner :code="ejemplo1Code" title="conjuntos_basicos.py" :showLineNumbers="true" initialHeight="240px" />
+    </div>
 
-      <!-- Ejemplo 2: Verificación de membresía -->
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 2: Verificación de membresía</h3>
-        <PythonRunner 
-          :code="ejemplo2Code"
-          title="membresia.py"
-          :showLineNumbers="true"
-          initialHeight="260px"
-        />
-      </div>
+    <!-- Ejemplo 2: Verificación de membresía -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 2: Verificación de membresía</h3>
+      <PythonRunner :code="ejemplo2Code" title="membresia.py" :showLineNumbers="true" initialHeight="260px" />
+    </div>
 
-      <!-- Ejemplo 3: Sistema de etiquetas únicas -->
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 3: Sistema de etiquetas únicas en blog</h3>
-        <p class="text-gray-700 mb-4">
-          En un sistema de blog, los conjuntos son perfectos para manejar etiquetas únicas:
-        </p>
-        <PythonRunner 
-          :code="ejemplo3Code"
-          title="blog_etiquetas.py"
-          :showLineNumbers="true"
-          initialHeight="280px"
-        />
-      </div>
+    <!-- Ejemplo 3: Sistema de etiquetas únicas -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 3: Sistema de etiquetas únicas en blog</h3>
+      <p class="text-gray-700 mb-4">
+        En un sistema de blog, los conjuntos son perfectos para manejar etiquetas únicas:
+      </p>
+      <PythonRunner :code="ejemplo3Code" title="blog_etiquetas.py" :showLineNumbers="true" initialHeight="280px" />
+    </div>
 
-      <!-- Ejercicio práctico -->
-      <div class="mb-8 p-6 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio práctico: Sistema de votación</h3>
-        <p class="text-gray-700 mb-4">
-          <strong>Situación:</strong> Implementa un sistema de votación donde cada persona solo pueda votar una vez.
-        </p>
-        
-        <PythonRunner 
-          :code="ejercicioCode"
-          title="sistema_votacion.py"
-          :showLineNumbers="true"
-          initialHeight="250px"
-          :showReset="true"
-          :showSolution="true"
-          :solutionCode="solucionCode"
-        />
-      </div>
+    <!-- Ejercicio práctico -->
+    <div class="mb-8 p-6 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio práctico: Sistema de votación</h3>
+      <p class="text-gray-700 mb-4">
+        <strong>Situación:</strong> Implementa un sistema de votación donde cada persona solo pueda votar una vez.
+      </p>
 
-      <!-- Diagrama visual -->
-      <div class="mb-8 p-6 bg-gray-50 rounded-xl">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Visualización: Conjunto vs Lista</h3>
-        <div class="flex flex-col md:flex-row justify-center items-center gap-8">
-          <div class="text-center">
-            <div class="mb-2 font-medium text-red-600">Lista (con duplicados)</div>
-            <div class="flex space-x-2">
-              <div class="w-12 h-12 bg-red-100 border-2 border-red-300 rounded-lg flex items-center justify-center">
-                A
-              </div>
-              <div class="w-12 h-12 bg-red-100 border-2 border-red-300 rounded-lg flex items-center justify-center">
-                B
-              </div>
-              <div class="w-12 h-12 bg-red-100 border-2 border-red-300 rounded-lg flex items-center justify-center">
-                A
-              </div>
-              <div class="w-12 h-12 bg-red-100 border-2 border-red-300 rounded-lg flex items-center justify-center">
-                C
-              </div>
+      <PythonRunner :code="ejercicioCode" title="sistema_votacion.py" :showLineNumbers="true" initialHeight="250px"
+        :showReset="true" :showSolution="true" :solutionCode="solucionCode" />
+    </div>
+
+    <!-- Diagrama visual -->
+    <div class="mb-8 p-6 bg-gray-50 rounded-xl">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Visualización: Conjunto vs Lista</h3>
+      <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+        <div class="text-center">
+          <div class="mb-2 font-medium text-red-600">Lista (con duplicados)</div>
+          <div class="flex space-x-2">
+            <div class="w-12 h-12 bg-red-100 border-2 border-red-300 rounded-lg flex items-center justify-center">
+              A
             </div>
-            <div class="text-sm text-gray-600 mt-2">4 elementos (A aparece 2 veces)</div>
-          </div>
-          
-          <div class="text-gray-400">
-            <i class="fas fa-arrow-right text-2xl"></i>
-          </div>
-          
-          <div class="text-center">
-            <div class="mb-2 font-medium text-green-600">Conjunto (sin duplicados)</div>
-            <div class="flex space-x-2">
-              <div class="w-12 h-12 bg-green-100 border-2 border-green-300 rounded-lg flex items-center justify-center">
-                A
-              </div>
-              <div class="w-12 h-12 bg-green-100 border-2 border-green-300 rounded-lg flex items-center justify-center">
-                B
-              </div>
-              <div class="w-12 h-12 bg-green-100 border-2 border-green-300 rounded-lg flex items-center justify-center">
-                C
-              </div>
+            <div class="w-12 h-12 bg-red-100 border-2 border-red-300 rounded-lg flex items-center justify-center">
+              B
             </div>
-            <div class="text-sm text-gray-600 mt-2">3 elementos (A solo aparece 1 vez)</div>
+            <div class="w-12 h-12 bg-red-100 border-2 border-red-300 rounded-lg flex items-center justify-center">
+              A
+            </div>
+            <div class="w-12 h-12 bg-red-100 border-2 border-red-300 rounded-lg flex items-center justify-center">
+              C
+            </div>
           </div>
+          <div class="text-sm text-gray-600 mt-2">4 elementos (A aparece 2 veces)</div>
+        </div>
+
+        <div class="text-gray-400">
+          <i class="fas fa-arrow-right text-2xl"></i>
+        </div>
+
+        <div class="text-center">
+          <div class="mb-2 font-medium text-green-600">Conjunto (sin duplicados)</div>
+          <div class="flex space-x-2">
+            <div class="w-12 h-12 bg-green-100 border-2 border-green-300 rounded-lg flex items-center justify-center">
+              A
+            </div>
+            <div class="w-12 h-12 bg-green-100 border-2 border-green-300 rounded-lg flex items-center justify-center">
+              B
+            </div>
+            <div class="w-12 h-12 bg-green-100 border-2 border-green-300 rounded-lg flex items-center justify-center">
+              C
+            </div>
+          </div>
+          <div class="text-sm text-gray-600 mt-2">3 elementos (A solo aparece 1 vez)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quiz funcional -->
+    <div class="p-6 bg-gray-50 rounded-lg">
+      <h3 class="text-xl font-semibold mb-6 text-gray-800">Quiz de conjuntos</h3>
+
+      <div class="mb-6">
+        <p class="text-gray-700 mb-3 font-medium">1. {{ preguntas[0].texto }}</p>
+        <div class="space-y-2">
+          <label v-for="(opcion, index) in preguntas[0].opciones" :key="index"
+            class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-purple-300"
+            :class="{ 'border-purple-500 border-2': respuestasSeleccionadas[0] === index }">
+            <input type="radio" :name="'pregunta1'" :value="index" @change="respuestasSeleccionadas[0] = index"
+              class="mr-3">
+            <span>{{ opcion.texto }}</span>
+          </label>
         </div>
       </div>
 
-      <!-- Quiz funcional -->
-      <div class="p-6 bg-gray-50 rounded-lg">
-        <h3 class="text-xl font-semibold mb-6 text-gray-800">Quiz de conjuntos</h3>
-        
-        <div class="mb-6">
-          <p class="text-gray-700 mb-3 font-medium">1. {{ preguntas[0].texto }}</p>
-          <div class="space-y-2">
-            <label v-for="(opcion, index) in preguntas[0].opciones" :key="index"
-              class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-purple-300"
-              :class="{ 'border-purple-500 border-2': respuestasSeleccionadas[0] === index }">
-              <input 
-                type="radio" 
-                :name="'pregunta1'"
-                :value="index"
-                @change="respuestasSeleccionadas[0] = index"
-                class="mr-3"
-              >
-              <span>{{ opcion.texto }}</span>
-            </label>
-          </div>
-        </div>
-
-        <div class="mb-6">
-          <p class="text-gray-700 mb-3 font-medium">2. {{ preguntas[1].texto }}</p>
-          <div class="space-y-2">
-            <label v-for="(opcion, index) in preguntas[1].opciones" :key="index"
-              class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-purple-300"
-              :class="{ 'border-purple-500 border-2': respuestasSeleccionadas[1] === index }">
-              <input 
-                type="radio" 
-                :name="'pregunta2'"
-                :value="index"
-                @change="respuestasSeleccionadas[1] = index"
-                class="mr-3"
-              >
-              <span>{{ opcion.texto }}</span>
-            </label>
-          </div>
-        </div>
-
-        <div class="mb-6">
-          <p class="text-gray-700 mb-3 font-medium">3. {{ preguntas[2].texto }}</p>
-          <div class="space-y-2">
-            <label v-for="(opcion, index) in preguntas[2].opciones" :key="index"
-              class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-purple-300"
-              :class="{ 'border-purple-500 border-2': respuestasSeleccionadas[2] === index }">
-              <input 
-                type="radio" 
-                :name="'pregunta3'"
-                :value="index"
-                @change="respuestasSeleccionadas[2] = index"
-                class="mr-3"
-              >
-              <span>{{ opcion.texto }}</span>
-            </label>
-          </div>
-        </div>
-
-        <div class="flex items-center justify-between">
-          <button @click="verificarQuiz" 
-                  class="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition font-medium">
-            Verificar respuestas
-          </button>
-          
-          <button @click="reiniciarQuiz" 
-                  class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition">
-            Reiniciar quiz
-          </button>
-        </div>
-
-        <div v-if="mostrarResultados" class="mt-6 p-4 rounded-lg" 
-             :class="resultadoClass">
-          <p class="font-medium">{{ resultadoMensaje }}</p>
-          <p class="text-sm mt-2">Correctas: {{ respuestasCorrectas }}/3</p>
+      <div class="mb-6">
+        <p class="text-gray-700 mb-3 font-medium">2. {{ preguntas[1].texto }}</p>
+        <div class="space-y-2">
+          <label v-for="(opcion, index) in preguntas[1].opciones" :key="index"
+            class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-purple-300"
+            :class="{ 'border-purple-500 border-2': respuestasSeleccionadas[1] === index }">
+            <input type="radio" :name="'pregunta2'" :value="index" @change="respuestasSeleccionadas[1] = index"
+              class="mr-3">
+            <span>{{ opcion.texto }}</span>
+          </label>
         </div>
       </div>
-    </section>
+
+      <div class="mb-6">
+        <p class="text-gray-700 mb-3 font-medium">3. {{ preguntas[2].texto }}</p>
+        <div class="space-y-2">
+          <label v-for="(opcion, index) in preguntas[2].opciones" :key="index"
+            class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-purple-300"
+            :class="{ 'border-purple-500 border-2': respuestasSeleccionadas[2] === index }">
+            <input type="radio" :name="'pregunta3'" :value="index" @change="respuestasSeleccionadas[2] = index"
+              class="mr-3">
+            <span>{{ opcion.texto }}</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <button @click="verificarQuiz"
+          class="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition font-medium">
+          Verificar respuestas
+        </button>
+
+        <button @click="reiniciarQuiz"
+          class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition">
+          Reiniciar quiz
+        </button>
+      </div>
+
+      <div v-if="mostrarResultados" class="mt-6 p-4 rounded-lg" :class="resultadoClass">
+        <p class="font-medium">{{ resultadoMensaje }}</p>
+        <p class="text-sm mt-2">Correctas: {{ respuestasCorrectas }}/3</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
+import HeaderTitle from "@/components/HeaderTitle.vue"
 
 // Códigos de ejemplo
 const ejemplo1Code = `# Creación y características básicas de conjuntos
@@ -517,7 +471,7 @@ const verificarQuiz = () => {
 
   respuestasCorrectas.value = correctas
   mostrarResultados.value = true
-  
+
   if (correctas === preguntas.length) {
     resultadoMensaje.value = '¡Excelente! Dominas los conjuntos en Python'
     resultadoClass.value = 'bg-green-100 text-green-800 border border-green-300'

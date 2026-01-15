@@ -1,20 +1,8 @@
 <template>
   <div class="container mx-auto px-4 py-6">
-    <!-- Sección 1.2.2 -->
-    <section class="bg-white rounded-lg p-6 mb-6">
-      <!-- Título -->
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold mr-3">
-          2.2
-        </span>
-        <div>
-          <h2 class="text-2xl font-bold text-gray-800">1.2.2 Operaciones sobre listas</h2>
-          <p class="text-gray-600">Inserción, eliminación, búsqueda, actualización y concatenación</p>
-        </div>
-      </div>
-
-      <!-- Explicación teórica -->
-      <div class="mb-8">
+   <HeaderTitle numero="1.2" titulo="1.2.2 Operaciones sobre listas">
+      <!-- Contenido teórico -->
+        <div class="mb-8">
         <p class="text-gray-700 mb-4">
           Las listas en Python soportan una variedad de operaciones que permiten manipular sus elementos. 
           Dominar estas operaciones es esencial para trabajar eficientemente con datos en Python.
@@ -24,6 +12,8 @@
           de métodos intuitivos que mantienen la flexibilidad y eficiencia de las listas.
         </p>
       </div>
+    </HeaderTitle>
+
 
       <!-- Operaciones principales en tarjetas -->
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
@@ -247,14 +237,14 @@
           <p class="font-medium">{{ resultadoMensaje }}</p>
           <p class="text-sm mt-2">Correctas: {{ respuestasCorrectas }}/3</p>
         </div>
-      </div>
-    </section>
+      </div>    
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
+import HeaderTitle from "@/components/HeaderTitle.vue"
 
 // Códigos de ejemplo
 const ejemplo1Code = `# Inserción y eliminación en listas

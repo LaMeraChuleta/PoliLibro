@@ -1,201 +1,150 @@
 <template>
   <div class="container mx-auto px-4 py-6">
-    <!-- Sección 1.4.4 -->
-    <section class="bg-white rounded-lg p-6 mb-6">
-      <!-- Título -->
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 bg-purple-500 text-white rounded-full flex items-center justify-center font-bold mr-3">
-          4.4
-        </span>
-        <div>
-          <h2 class="text-2xl font-bold text-gray-800">1.4.4 Aplicaciones de Diccionarios</h2>
-          <p class="text-gray-600">Casos de uso reales y aplicaciones prácticas</p>
-        </div>
-      </div>
-
+    <HeaderTitle numero="1.4" titulo="1.4.4 Aplicaciones de Diccionarios">
       <!-- Explicación teórica -->
       <div class="mb-8">
         <p class="text-gray-700 mb-4">
-          Los diccionarios no son solo estructuras teóricas, son herramientas poderosas que se utilizan en 
+          Los diccionarios no son solo estructuras teóricas, son herramientas poderosas que se utilizan en
           <strong class="text-purple-600">aplicaciones del mundo real</strong>. En este capítulo exploraremos
           casos prácticos donde los diccionarios resuelven problemas comunes de programación.
         </p>
         <p class="text-gray-700">
-          Desde contar palabras hasta gestionar configuraciones complejas, los diccionarios ofrecen 
+          Desde contar palabras hasta gestionar configuraciones complejas, los diccionarios ofrecen
           soluciones eficientes y elegantes para problemas cotidianos en desarrollo de software.
         </p>
       </div>
+    </HeaderTitle>
 
-      <!-- Aplicaciones principales -->
-      <div class="grid md:grid-cols-4 gap-4 mb-8">
-        <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
-          <div class="w-10 h-10 bg-blue-500 text-white rounded-lg flex items-center justify-center mb-3">
-            <span class="text-lg font-bold">C</span>
-          </div>
-          <h3 class="font-bold text-blue-800 mb-1">Contadores</h3>
-          <p class="text-blue-700 text-sm">Contar frecuencia de elementos</p>
+    <!-- Aplicaciones principales -->
+    <div class="grid md:grid-cols-4 gap-4 mb-8">
+      <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+        <div class="w-10 h-10 bg-blue-500 text-white rounded-lg flex items-center justify-center mb-3">
+          <span class="text-lg font-bold">C</span>
         </div>
-        <div class="bg-green-50 border border-green-200 rounded-xl p-4">
-          <div class="w-10 h-10 bg-green-500 text-white rounded-lg flex items-center justify-center mb-3">
-            <span class="text-lg font-bold">M</span>
-          </div>
-          <h3 class="font-bold text-green-800 mb-1">Mapeo</h3>
-          <p class="text-green-700 text-sm">Relacionar datos equivalentes</p>
+        <h3 class="font-bold text-blue-800 mb-1">Contadores</h3>
+        <p class="text-blue-700 text-sm">Contar frecuencia de elementos</p>
+      </div>
+      <div class="bg-green-50 border border-green-200 rounded-xl p-4">
+        <div class="w-10 h-10 bg-green-500 text-white rounded-lg flex items-center justify-center mb-3">
+          <span class="text-lg font-bold">M</span>
         </div>
-        <div class="bg-red-50 border border-red-200 rounded-xl p-4">
-          <div class="w-10 h-10 bg-red-500 text-white rounded-lg flex items-center justify-center mb-3">
-            <span class="text-lg font-bold">G</span>
-          </div>
-          <h3 class="font-bold text-red-800 mb-1">Agrupación</h3>
-          <p class="text-red-700 text-sm">Agrupar elementos por categoría</p>
+        <h3 class="font-bold text-green-800 mb-1">Mapeo</h3>
+        <p class="text-green-700 text-sm">Relacionar datos equivalentes</p>
+      </div>
+      <div class="bg-red-50 border border-red-200 rounded-xl p-4">
+        <div class="w-10 h-10 bg-red-500 text-white rounded-lg flex items-center justify-center mb-3">
+          <span class="text-lg font-bold">G</span>
         </div>
-        <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
-          <div class="w-10 h-10 bg-yellow-500 text-white rounded-lg flex items-center justify-center mb-3">
-            <span class="text-lg font-bold">S</span>
-          </div>
-          <h3 class="font-bold text-yellow-800 mb-1">Configuración</h3>
-          <p class="text-yellow-700 text-sm">Almacenar configuraciones</p>
+        <h3 class="font-bold text-red-800 mb-1">Agrupación</h3>
+        <p class="text-red-700 text-sm">Agrupar elementos por categoría</p>
+      </div>
+      <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
+        <div class="w-10 h-10 bg-yellow-500 text-white rounded-lg flex items-center justify-center mb-3">
+          <span class="text-lg font-bold">S</span>
+        </div>
+        <h3 class="font-bold text-yellow-800 mb-1">Configuración</h3>
+        <p class="text-yellow-700 text-sm">Almacenar configuraciones</p>
+      </div>
+    </div>
+
+    <!-- Ejemplo 1: Contador de palabras -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Aplicación 1: Contador de Palabras</h3>
+      <PythonRunner :code="ejemplo1Code" title="contador_palabras.py" :show-line-numbers="true" :initial-height="280" />
+    </div>
+
+    <!-- Ejemplo 2: Sistema de configuración -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Aplicación 2: Sistema de Configuración</h3>
+      <PythonRunner :code="ejemplo2Code" title="sistema_configuracion.py" :show-line-numbers="true"
+        :initial-height="320" />
+    </div>
+
+    <!-- Ejemplo 3: Agrupación de datos -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Aplicación 3: Agrupación de Estudiantes</h3>
+      <p class="text-gray-700 mb-4">
+        Los diccionarios son ideales para agrupar datos por categorías comunes:
+      </p>
+      <PythonRunner :code="ejemplo3Code" title="agrupacion_estudiantes.py" :show-line-numbers="true"
+        :initial-height="300" />
+    </div>
+
+    <!-- Ejercicio práctico -->
+    <div class="mb-8 p-6 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio práctico: Sistema de Votación</h3>
+      <p class="text-gray-700 mb-4">
+        <strong>Situación:</strong> Crea un sistema para contar votos en una elección estudiantil.
+      </p>
+
+      <PythonRunner :code="ejercicioCode" title="sistema_votacion.py" :show-line-numbers="true" :initial-height="260"
+        :show-reset="true" :show-solution="true" :solution-code="solucionCode" />
+    </div>
+
+    <!-- Quiz funcional -->
+    <div class="p-6 bg-gray-50 rounded-lg">
+      <h3 class="text-xl font-semibold mb-6 text-gray-800">Quiz de Aplicaciones de Diccionarios</h3>
+
+      <div class="mb-6">
+        <p class="text-gray-700 mb-3 font-medium">1. {{ preguntas[0].texto }}</p>
+        <div class="space-y-2">
+          <label v-for="(opcion, index) in preguntas[0].opciones" :key="index"
+            class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-purple-300"
+            :class="{ 'border-purple-500 border-2': respuestasSeleccionadas[0] === index }">
+            <input type="radio" name="pregunta1" :value="index" v-model="respuestasSeleccionadas[0]" class="mr-3">
+            <span>{{ opcion.texto }}</span>
+          </label>
         </div>
       </div>
 
-      <!-- Ejemplo 1: Contador de palabras -->
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Aplicación 1: Contador de Palabras</h3>
-        <PythonRunner 
-          :code="ejemplo1Code"
-          title="contador_palabras.py"
-          :show-line-numbers="true"
-          :initial-height="280"
-        />
-      </div>
-
-      <!-- Ejemplo 2: Sistema de configuración -->
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Aplicación 2: Sistema de Configuración</h3>
-        <PythonRunner 
-          :code="ejemplo2Code"
-          title="sistema_configuracion.py"
-          :show-line-numbers="true"
-          :initial-height="320"
-        />
-      </div>
-
-      <!-- Ejemplo 3: Agrupación de datos -->
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Aplicación 3: Agrupación de Estudiantes</h3>
-        <p class="text-gray-700 mb-4">
-          Los diccionarios son ideales para agrupar datos por categorías comunes:
-        </p>
-        <PythonRunner 
-          :code="ejemplo3Code"
-          title="agrupacion_estudiantes.py"
-          :show-line-numbers="true"
-          :initial-height="300"
-        />
-      </div>
-
-      <!-- Ejercicio práctico -->
-      <div class="mb-8 p-6 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio práctico: Sistema de Votación</h3>
-        <p class="text-gray-700 mb-4">
-          <strong>Situación:</strong> Crea un sistema para contar votos en una elección estudiantil.
-        </p>
-        
-        <PythonRunner 
-          :code="ejercicioCode"
-          title="sistema_votacion.py"
-          :show-line-numbers="true"
-          :initial-height="260"
-          :show-reset="true"
-          :show-solution="true"
-          :solution-code="solucionCode"
-        />
-      </div>
-
-      <!-- Quiz funcional -->
-      <div class="p-6 bg-gray-50 rounded-lg">
-        <h3 class="text-xl font-semibold mb-6 text-gray-800">Quiz de Aplicaciones de Diccionarios</h3>
-        
-        <div class="mb-6">
-          <p class="text-gray-700 mb-3 font-medium">1. {{ preguntas[0].texto }}</p>
-          <div class="space-y-2">
-            <label v-for="(opcion, index) in preguntas[0].opciones" :key="index"
-              class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-purple-300"
-              :class="{ 'border-purple-500 border-2': respuestasSeleccionadas[0] === index }">
-              <input 
-                type="radio" 
-                name="pregunta1"
-                :value="index"
-                v-model="respuestasSeleccionadas[0]"
-                class="mr-3"
-              >
-              <span>{{ opcion.texto }}</span>
-            </label>
-          </div>
-        </div>
-
-        <div class="mb-6">
-          <p class="text-gray-700 mb-3 font-medium">2. {{ preguntas[1].texto }}</p>
-          <div class="space-y-2">
-            <label v-for="(opcion, index) in preguntas[1].opciones" :key="index"
-              class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-purple-300"
-              :class="{ 'border-purple-500 border-2': respuestasSeleccionadas[1] === index }">
-              <input 
-                type="radio" 
-                name="pregunta2"
-                :value="index"
-                v-model="respuestasSeleccionadas[1]"
-                class="mr-3"
-              >
-              <span>{{ opcion.texto }}</span>
-            </label>
-          </div>
-        </div>
-
-        <div class="mb-6">
-          <p class="text-gray-700 mb-3 font-medium">3. {{ preguntas[2].texto }}</p>
-          <div class="space-y-2">
-            <label v-for="(opcion, index) in preguntas[2].opciones" :key="index"
-              class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-purple-300"
-              :class="{ 'border-purple-500 border-2': respuestasSeleccionadas[2] === index }">
-              <input 
-                type="radio" 
-                name="pregunta3"
-                :value="index"
-                v-model="respuestasSeleccionadas[2]"
-                class="mr-3"
-              >
-              <span>{{ opcion.texto }}</span>
-            </label>
-          </div>
-        </div>
-
-        <div class="flex items-center justify-between">
-          <button @click="verificarQuiz" 
-                  class="px-6 py-3 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition font-medium">
-            Verificar respuestas
-          </button>
-          
-          <button @click="reiniciarQuiz" 
-                  class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition">
-            Reiniciar quiz
-          </button>
-        </div>
-
-        <div v-if="mostrarResultados" class="mt-6 p-4 rounded-lg" 
-             :class="resultadoClass">
-          <p class="font-medium">{{ resultadoMensaje }}</p>
-          <p class="text-sm mt-2">Correctas: {{ respuestasCorrectas }}/3</p>
+      <div class="mb-6">
+        <p class="text-gray-700 mb-3 font-medium">2. {{ preguntas[1].texto }}</p>
+        <div class="space-y-2">
+          <label v-for="(opcion, index) in preguntas[1].opciones" :key="index"
+            class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-purple-300"
+            :class="{ 'border-purple-500 border-2': respuestasSeleccionadas[1] === index }">
+            <input type="radio" name="pregunta2" :value="index" v-model="respuestasSeleccionadas[1]" class="mr-3">
+            <span>{{ opcion.texto }}</span>
+          </label>
         </div>
       </div>
-    </section>
+
+      <div class="mb-6">
+        <p class="text-gray-700 mb-3 font-medium">3. {{ preguntas[2].texto }}</p>
+        <div class="space-y-2">
+          <label v-for="(opcion, index) in preguntas[2].opciones" :key="index"
+            class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-purple-300"
+            :class="{ 'border-purple-500 border-2': respuestasSeleccionadas[2] === index }">
+            <input type="radio" name="pregunta3" :value="index" v-model="respuestasSeleccionadas[2]" class="mr-3">
+            <span>{{ opcion.texto }}</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <button @click="verificarQuiz"
+          class="px-6 py-3 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition font-medium">
+          Verificar respuestas
+        </button>
+
+        <button @click="reiniciarQuiz"
+          class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition">
+          Reiniciar quiz
+        </button>
+      </div>
+
+      <div v-if="mostrarResultados" class="mt-6 p-4 rounded-lg" :class="resultadoClass">
+        <p class="font-medium">{{ resultadoMensaje }}</p>
+        <p class="text-sm mt-2">Correctas: {{ respuestasCorrectas }}/3</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
-
+import HeaderTitle from "@/components/HeaderTitle.vue"
 // Ejemplo 1: Contador de palabras
 const ejemplo1Code = `# Aplicacion: Contador de Palabras en un Texto
 
@@ -895,7 +844,7 @@ const verificarQuiz = () => {
 
   respuestasCorrectas.value = correctas
   mostrarResultados.value = true
-  
+
   if (correctas === preguntas.length) {
     resultadoMensaje.value = '¡Excelente! Comprendes las aplicaciones prácticas de diccionarios'
     resultadoClass.value = 'bg-green-100 text-green-800 border border-green-300'

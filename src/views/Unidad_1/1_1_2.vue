@@ -1,241 +1,196 @@
 <template>
-  <div class="container mx-auto px-4 py-6">
-    <!-- Sección 1.1.2 -->
-    <section class="bg-white rounded-lg p-6 mb-6">
-      <!-- Título -->
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold mr-3">
-          1.2
-        </span>
-        <div>
-          <h2 class="text-2xl font-bold text-gray-800">1.1.2 Descripción y características de los contenedores</h2>
-          <p class="text-gray-600">Contenedores nativos en Python</p>
-        </div>
-      </div>
-
-      <!-- Explicación teórica -->
+  <div class="container mx-auto px-4 py-6">    
+    <HeaderTitle numero="1.2" titulo="1.1.2 Descripción y características de los contenedores">
+      <!-- Contenido teórico -->
       <div class="mb-8">
         <p class="text-gray-700 mb-4">
-          Los <strong class="text-blue-600">contenedores</strong> son estructuras de datos que permiten almacenar múltiples elementos en una sola variable. Python ofrece cuatro contenedores principales, cada uno con características únicas que determinan cuándo usarlos.
+          Los <strong class="text-blue-600">contenedores</strong> son estructuras de datos que permiten almacenar
+          múltiples elementos en una sola variable. Python ofrece cuatro contenedores principales, cada uno con
+          características únicas que determinan cuándo usarlos.
         </p>
         <p class="text-gray-700">
-          Comprender las diferencias entre <strong>mutabilidad</strong>, <strong>orden</strong> y <strong>unicidad de elementos</strong> es clave para seleccionar el contenedor adecuado para cada situación.
+          Comprender las diferencias entre <strong>mutabilidad</strong>, <strong>orden</strong> y <strong>unicidad de
+            elementos</strong> es clave para seleccionar el contenedor adecuado para cada situación.
         </p>
       </div>
+    </HeaderTitle>
 
-      <!-- Tabla comparativa -->
-      <div class="mb-8 overflow-x-auto">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Características de contenedores Python</h3>
-        <table class="min-w-full bg-white border border-gray-200 rounded-lg">
-          <thead class="bg-gray-50">
-            <tr>
-              <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Contenedor</th>
-              <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Ordenado</th>
-              <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Mutable</th>
-              <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Elementos únicos</th>
-              <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Sintaxis</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="hover:bg-blue-50">
-              <td class="py-3 px-4 border-b font-medium">Lista</td>
-              <td class="py-3 px-4 border-b">
-                <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Sí</span>
-              </td>
-              <td class="py-3 px-4 border-b">
-                <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Sí</span>
-              </td>
-              <td class="py-3 px-4 border-b">
-                <span class="px-2 py-1 bg-red-100 text-red-800 rounded-full text-xs">No</span>
-              </td>
-              <td class="py-3 px-4 border-b font-mono text-blue-600">[ ]</td>
-            </tr>
-            <tr class="hover:bg-green-50">
-              <td class="py-3 px-4 border-b font-medium">Tupla</td>
-              <td class="py-3 px-4 border-b">
-                <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Sí</span>
-              </td>
-              <td class="py-3 px-4 border-b">
-                <span class="px-2 py-1 bg-red-100 text-red-800 rounded-full text-xs">No</span>
-              </td>
-              <td class="py-3 px-4 border-b">
-                <span class="px-2 py-1 bg-red-100 text-red-800 rounded-full text-xs">No</span>
-              </td>
-              <td class="py-3 px-4 border-b font-mono text-green-600">( )</td>
-            </tr>
-            <tr class="hover:bg-purple-50">
-              <td class="py-3 px-4 border-b font-medium">Conjunto</td>
-              <td class="py-3 px-4 border-b">
-                <span class="px-2 py-1 bg-red-100 text-red-800 rounded-full text-xs">No</span>
-              </td>
-              <td class="py-3 px-4 border-b">
-                <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Sí</span>
-              </td>
-              <td class="py-3 px-4 border-b">
-                <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Sí</span>
-              </td>
-              <td class="py-3 px-4 border-b font-mono text-purple-600">{ }</td>
-            </tr>
-            <tr class="hover:bg-yellow-50">
-              <td class="py-3 px-4 font-medium">Diccionario</td>
-              <td class="py-3 px-4">
-                <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Sí*</span>
-              </td>
-              <td class="py-3 px-4">
-                <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Sí</span>
-              </td>
-              <td class="py-3 px-4">
-                <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Claves únicas</span>
-              </td>
-              <td class="py-3 px-4 font-mono text-yellow-600">{ }</td>
-            </tr>
-          </tbody>
-        </table>
-        <p class="text-sm text-gray-500 mt-2">*Los diccionarios mantienen orden de inserción desde Python 3.7</p>
-      </div>
+    <!-- Tabla comparativa -->
+    <div class="mb-8 overflow-x-auto">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Características de contenedores Python</h3>
+      <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+        <thead class="bg-gray-50">
+          <tr>
+            <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Contenedor</th>
+            <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Ordenado</th>
+            <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Mutable</th>
+            <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Elementos únicos</th>
+            <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Sintaxis</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="hover:bg-blue-50">
+            <td class="py-3 px-4 border-b font-medium">Lista</td>
+            <td class="py-3 px-4 border-b">
+              <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Sí</span>
+            </td>
+            <td class="py-3 px-4 border-b">
+              <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Sí</span>
+            </td>
+            <td class="py-3 px-4 border-b">
+              <span class="px-2 py-1 bg-red-100 text-red-800 rounded-full text-xs">No</span>
+            </td>
+            <td class="py-3 px-4 border-b font-mono text-blue-600">[ ]</td>
+          </tr>
+          <tr class="hover:bg-green-50">
+            <td class="py-3 px-4 border-b font-medium">Tupla</td>
+            <td class="py-3 px-4 border-b">
+              <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Sí</span>
+            </td>
+            <td class="py-3 px-4 border-b">
+              <span class="px-2 py-1 bg-red-100 text-red-800 rounded-full text-xs">No</span>
+            </td>
+            <td class="py-3 px-4 border-b">
+              <span class="px-2 py-1 bg-red-100 text-red-800 rounded-full text-xs">No</span>
+            </td>
+            <td class="py-3 px-4 border-b font-mono text-green-600">( )</td>
+          </tr>
+          <tr class="hover:bg-purple-50">
+            <td class="py-3 px-4 border-b font-medium">Conjunto</td>
+            <td class="py-3 px-4 border-b">
+              <span class="px-2 py-1 bg-red-100 text-red-800 rounded-full text-xs">No</span>
+            </td>
+            <td class="py-3 px-4 border-b">
+              <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Sí</span>
+            </td>
+            <td class="py-3 px-4 border-b">
+              <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Sí</span>
+            </td>
+            <td class="py-3 px-4 border-b font-mono text-purple-600">{ }</td>
+          </tr>
+          <tr class="hover:bg-yellow-50">
+            <td class="py-3 px-4 font-medium">Diccionario</td>
+            <td class="py-3 px-4">
+              <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Sí*</span>
+            </td>
+            <td class="py-3 px-4">
+              <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Sí</span>
+            </td>
+            <td class="py-3 px-4">
+              <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Claves únicas</span>
+            </td>
+            <td class="py-3 px-4 font-mono text-yellow-600">{ }</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="text-sm text-gray-500 mt-2">*Los diccionarios mantienen orden de inserción desde Python 3.7</p>
+    </div>
 
-      <!-- Ejemplo 1: Sintaxis básica -->
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 1: Creación de contenedores</h3>
-        <PythonRunner 
-          :code="ejemplo1Code"
-          title="creacion_contenedores.py"
-          :showLineNumbers="true"
-          initialHeight="180px"
-        />
-      </div>
+    <!-- Ejemplo 1: Sintaxis básica -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 1: Creación de contenedores</h3>
+      <PythonRunner :code="ejemplo1Code" title="creacion_contenedores.py" :showLineNumbers="true"
+        initialHeight="180px" />
+    </div>
 
-      <!-- Ejemplo 2: Características en práctica -->
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 2: Mutabilidad y orden</h3>
-        <PythonRunner 
-          :code="ejemplo2Code"
-          title="caracteristicas.py"
-          :showLineNumbers="true"
-          initialHeight="220px"
-        />
-      </div>
+    <!-- Ejemplo 2: Características en práctica -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 2: Mutabilidad y orden</h3>
+      <PythonRunner :code="ejemplo2Code" title="caracteristicas.py" :showLineNumbers="true" initialHeight="220px" />
+    </div>
 
-      <!-- Ejemplo 3: Sistema de gestión de estudiantes -->
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 3: Sistema de gestión de estudiantes</h3>
-        <p class="text-gray-700 mb-4">
-          En un sistema educativo, diferentes contenedores tienen diferentes usos:
-        </p>
-        <PythonRunner 
-          :code="ejemplo3Code"
-          title="gestion_estudiantes.py"
-          :showLineNumbers="true"
-          initialHeight="300px"
-        />
-      </div>
+    <!-- Ejemplo 3: Sistema de gestión de estudiantes -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 3: Sistema de gestión de estudiantes</h3>
+      <p class="text-gray-700 mb-4">
+        En un sistema educativo, diferentes contenedores tienen diferentes usos:
+      </p>
+      <PythonRunner :code="ejemplo3Code" title="gestion_estudiantes.py" :showLineNumbers="true" initialHeight="300px" />
+    </div>
 
-      <!-- Ejercicio práctico -->
-      <div class="mb-8 p-6 bg-blue-50 rounded-lg">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio práctico</h3>
-        <p class="text-gray-700 mb-4">
-          <strong>Situación:</strong> Crea un sistema para gestionar una biblioteca usando los 4 tipos de contenedores.
-        </p>
-        
-        <PythonRunner 
-          :code="ejercicioCode"
-          title="biblioteca.py"
-          :showLineNumbers="true"
-          initialHeight="250px"
-          :showReset="true"
-          :showSolution="true"
-          :solutionCode="solucionCode"
-        />
-      </div>
+    <!-- Ejercicio práctico -->
+    <div class="mb-8 p-6 bg-blue-50 rounded-lg">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio práctico</h3>
+      <p class="text-gray-700 mb-4">
+        <strong>Situación:</strong> Crea un sistema para gestionar una biblioteca usando los 4 tipos de contenedores.
+      </p>
 
-      <!-- Quiz funcional -->
-      <div class="p-6 bg-gray-50 rounded-lg">
-        <h3 class="text-xl font-semibold mb-6 text-gray-800">Quiz de comprensión</h3>
-        
-        <!-- Pregunta 1 -->
-        <div class="mb-6">
-          <p class="text-gray-700 mb-3 font-medium">1. {{ preguntas[0].texto }}</p>
-          <div class="space-y-2">
-            <label v-for="(opcion, index) in preguntas[0].opciones" :key="index"
-              class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300"
-              :class="{ 'border-blue-500 border-2': respuestasSeleccionadas[0] === index }">
-              <input 
-                type="radio" 
-                :name="'pregunta1'"
-                :value="index"
-                @change="respuestasSeleccionadas[0] = index"
-                class="mr-3"
-              >
-              <span>{{ opcion.texto }}</span>
-            </label>
-          </div>
-        </div>
+      <PythonRunner :code="ejercicioCode" title="biblioteca.py" :showLineNumbers="true" initialHeight="250px"
+        :showReset="true" :showSolution="true" :solutionCode="solucionCode" />
+    </div>
 
-        <!-- Pregunta 2 -->
-        <div class="mb-6">
-          <p class="text-gray-700 mb-3 font-medium">2. {{ preguntas[1].texto }}</p>
-          <div class="space-y-2">
-            <label v-for="(opcion, index) in preguntas[1].opciones" :key="index"
-              class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300"
-              :class="{ 'border-blue-500 border-2': respuestasSeleccionadas[1] === index }">
-              <input 
-                type="radio" 
-                :name="'pregunta2'"
-                :value="index"
-                @change="respuestasSeleccionadas[1] = index"
-                class="mr-3"
-              >
-              <span>{{ opcion.texto }}</span>
-            </label>
-          </div>
-        </div>
+    <!-- Quiz funcional -->
+    <div class="p-6 bg-gray-50 rounded-lg">
+      <h3 class="text-xl font-semibold mb-6 text-gray-800">Quiz de comprensión</h3>
 
-        <!-- Pregunta 3 -->
-        <div class="mb-6">
-          <p class="text-gray-700 mb-3 font-medium">3. {{ preguntas[2].texto }}</p>
-          <div class="space-y-2">
-            <label v-for="(opcion, index) in preguntas[2].opciones" :key="index"
-              class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300"
-              :class="{ 'border-blue-500 border-2': respuestasSeleccionadas[2] === index }">
-              <input 
-                type="radio" 
-                :name="'pregunta3'"
-                :value="index"
-                @change="respuestasSeleccionadas[2] = index"
-                class="mr-3"
-              >
-              <span>{{ opcion.texto }}</span>
-            </label>
-          </div>
-        </div>
-
-        <!-- Botones -->
-        <div class="flex items-center justify-between">
-          <button @click="verificarQuiz" 
-                  class="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition font-medium">
-            Verificar respuestas
-          </button>
-          
-          <button @click="reiniciarQuiz" 
-                  class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition">
-            Reiniciar quiz
-          </button>
-        </div>
-
-        <!-- Resultados -->
-        <div v-if="mostrarResultados" class="mt-6 p-4 rounded-lg" 
-             :class="resultadoClass">
-          <p class="font-medium">{{ resultadoMensaje }}</p>
-          <p class="text-sm mt-2">Correctas: {{ respuestasCorrectas }}/3</p>
+      <!-- Pregunta 1 -->
+      <div class="mb-6">
+        <p class="text-gray-700 mb-3 font-medium">1. {{ preguntas[0].texto }}</p>
+        <div class="space-y-2">
+          <label v-for="(opcion, index) in preguntas[0].opciones" :key="index"
+            class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300"
+            :class="{ 'border-blue-500 border-2': respuestasSeleccionadas[0] === index }">
+            <input type="radio" :name="'pregunta1'" :value="index" @change="respuestasSeleccionadas[0] = index"
+              class="mr-3">
+            <span>{{ opcion.texto }}</span>
+          </label>
         </div>
       </div>
-    </section>
+
+      <!-- Pregunta 2 -->
+      <div class="mb-6">
+        <p class="text-gray-700 mb-3 font-medium">2. {{ preguntas[1].texto }}</p>
+        <div class="space-y-2">
+          <label v-for="(opcion, index) in preguntas[1].opciones" :key="index"
+            class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300"
+            :class="{ 'border-blue-500 border-2': respuestasSeleccionadas[1] === index }">
+            <input type="radio" :name="'pregunta2'" :value="index" @change="respuestasSeleccionadas[1] = index"
+              class="mr-3">
+            <span>{{ opcion.texto }}</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Pregunta 3 -->
+      <div class="mb-6">
+        <p class="text-gray-700 mb-3 font-medium">3. {{ preguntas[2].texto }}</p>
+        <div class="space-y-2">
+          <label v-for="(opcion, index) in preguntas[2].opciones" :key="index"
+            class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300"
+            :class="{ 'border-blue-500 border-2': respuestasSeleccionadas[2] === index }">
+            <input type="radio" :name="'pregunta3'" :value="index" @change="respuestasSeleccionadas[2] = index"
+              class="mr-3">
+            <span>{{ opcion.texto }}</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Botones -->
+      <div class="flex items-center justify-between">
+        <button @click="verificarQuiz"
+          class="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition font-medium">
+          Verificar respuestas
+        </button>
+
+        <button @click="reiniciarQuiz"
+          class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition">
+          Reiniciar quiz
+        </button>
+      </div>
+
+      <!-- Resultados -->
+      <div v-if="mostrarResultados" class="mt-6 p-4 rounded-lg" :class="resultadoClass">
+        <p class="font-medium">{{ resultadoMensaje }}</p>
+        <p class="text-sm mt-2">Correctas: {{ respuestasCorrectas }}/3</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
+import HeaderTitle from "@/components/HeaderTitle.vue"
 
 // Códigos de ejemplo
 const ejemplo1Code = `# Diferentes formas de crear contenedores
@@ -421,7 +376,7 @@ const verificarQuiz = () => {
   // Actualizar estado
   respuestasCorrectas.value = correctas
   mostrarResultados.value = true
-  
+
   // Determinar mensaje y color
   if (correctas === preguntas.length) {
     resultadoMensaje.value = '¡Excelente! Dominas los contenedores de Python 🎉'

@@ -1,201 +1,154 @@
 <template>
   <div class="container mx-auto px-4 py-6">
-    <!-- Sección 1.4.3 -->
-    <section class="bg-white rounded-lg p-6 mb-6">
-      <!-- Título -->
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold mr-3">
-          4.3
-        </span>
-        <div>
-          <h2 class="text-2xl font-bold text-gray-800">1.4.3 Operaciones sobre Diccionarios</h2>
-          <p class="text-gray-600">Manipulación y gestión eficiente de datos en diccionarios</p>
-        </div>
-      </div>
 
+    <HeaderTitle numero="1.4" titulo="1.4.3 Operaciones sobre Diccionarios">
       <!-- Explicación teórica -->
       <div class="mb-8">
         <p class="text-gray-700 mb-4">
-          Los diccionarios son estructuras de datos dinámicas que nos permiten realizar 
-          diversas operaciones para manipular la información almacenada. 
-          <strong class="text-blue-600">Agregar, modificar, eliminar y verificar</strong> 
+          Los diccionarios son estructuras de datos dinámicas que nos permiten realizar
+          diversas operaciones para manipular la información almacenada.
+          <strong class="text-blue-600">Agregar, modificar, eliminar y verificar</strong>
           elementos son operaciones fundamentales para trabajar eficientemente con diccionarios.
         </p>
         <p class="text-gray-700">
-          En este capítulo aprenderás estas operaciones mediante un ejemplo práctico de 
+          En este capítulo aprenderás estas operaciones mediante un ejemplo práctico de
           <strong>gestión de inventario de una librería</strong>.
         </p>
       </div>
+    </HeaderTitle>
 
-      <!-- Operaciones principales -->
-      <div class="grid md:grid-cols-4 gap-4 mb-8">
-        <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
-          <div class="w-10 h-10 bg-blue-500 text-white rounded-lg flex items-center justify-center mb-3">
-            <span class="text-lg font-bold">+</span>
-          </div>
-          <h3 class="font-bold text-blue-800 mb-1">Agregar</h3>
-          <p class="text-blue-700 text-sm">Añadir nuevos pares clave-valor</p>
+    <!-- Operaciones principales -->
+    <div class="grid md:grid-cols-4 gap-4 mb-8">
+      <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+        <div class="w-10 h-10 bg-blue-500 text-white rounded-lg flex items-center justify-center mb-3">
+          <span class="text-lg font-bold">+</span>
         </div>
-        <div class="bg-green-50 border border-green-200 rounded-xl p-4">
-          <div class="w-10 h-10 bg-green-500 text-white rounded-lg flex items-center justify-center mb-3">
-            <span class="text-lg font-bold">E</span>
-          </div>
-          <h3 class="font-bold text-green-800 mb-1">Modificar</h3>
-          <p class="text-green-700 text-sm">Actualizar valores existentes</p>
+        <h3 class="font-bold text-blue-800 mb-1">Agregar</h3>
+        <p class="text-blue-700 text-sm">Añadir nuevos pares clave-valor</p>
+      </div>
+      <div class="bg-green-50 border border-green-200 rounded-xl p-4">
+        <div class="w-10 h-10 bg-green-500 text-white rounded-lg flex items-center justify-center mb-3">
+          <span class="text-lg font-bold">E</span>
         </div>
-        <div class="bg-red-50 border border-red-200 rounded-xl p-4">
-          <div class="w-10 h-10 bg-red-500 text-white rounded-lg flex items-center justify-center mb-3">
-            <span class="text-lg font-bold">X</span>
-          </div>
-          <h3 class="font-bold text-red-800 mb-1">Eliminar</h3>
-          <p class="text-red-700 text-sm">Remover elementos específicos</p>
+        <h3 class="font-bold text-green-800 mb-1">Modificar</h3>
+        <p class="text-green-700 text-sm">Actualizar valores existentes</p>
+      </div>
+      <div class="bg-red-50 border border-red-200 rounded-xl p-4">
+        <div class="w-10 h-10 bg-red-500 text-white rounded-lg flex items-center justify-center mb-3">
+          <span class="text-lg font-bold">X</span>
         </div>
-        <div class="bg-purple-50 border border-purple-200 rounded-xl p-4">
-          <div class="w-10 h-10 bg-purple-500 text-white rounded-lg flex items-center justify-center mb-3">
-            <span class="text-lg font-bold">?</span>
-          </div>
-          <h3 class="font-bold text-purple-800 mb-1">Verificar</h3>
-          <p class="text-purple-700 text-sm">Comprobar existencia de claves</p>
+        <h3 class="font-bold text-red-800 mb-1">Eliminar</h3>
+        <p class="text-red-700 text-sm">Remover elementos específicos</p>
+      </div>
+      <div class="bg-purple-50 border border-purple-200 rounded-xl p-4">
+        <div class="w-10 h-10 bg-purple-500 text-white rounded-lg flex items-center justify-center mb-3">
+          <span class="text-lg font-bold">?</span>
+        </div>
+        <h3 class="font-bold text-purple-800 mb-1">Verificar</h3>
+        <p class="text-purple-700 text-sm">Comprobar existencia de claves</p>
+      </div>
+    </div>
+
+    <!-- Ejemplo 1: Operaciones básicas -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 1: Operaciones Básicas</h3>
+      <PythonRunner :code="ejemplo1Code" title="operaciones_basicas.py" :show-line-numbers="true"
+        :initial-height="280" />
+    </div>
+
+    <!-- Ejemplo 2: Sistema de inventario -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 2: Sistema de Inventario</h3>
+      <PythonRunner :code="ejemplo2Code" title="inventario_libreria.py" :show-line-numbers="true"
+        :initial-height="320" />
+    </div>
+
+    <!-- Ejemplo 3: Métodos útiles de diccionarios -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 3: Métodos Útiles</h3>
+      <p class="text-gray-700 mb-4">
+        Python proporciona métodos incorporados para trabajar con diccionarios:
+      </p>
+      <PythonRunner :code="ejemplo3Code" title="metodos_diccionarios.py" :show-line-numbers="true"
+        :initial-height="300" />
+    </div>
+
+    <!-- Ejercicio práctico -->
+    <div class="mb-8 p-6 bg-gradient-to-r from-blue-50 to-green-50 rounded-lg">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio práctico: Gestión de Estudiantes</h3>
+      <p class="text-gray-700 mb-4">
+        <strong>Situación:</strong> Crea un sistema para gestionar las calificaciones de estudiantes en diferentes
+        materias.
+      </p>
+
+      <PythonRunner :code="ejercicioCode" title="gestion_estudiantes.py" :show-line-numbers="true" :initial-height="260"
+        :show-reset="true" :show-solution="true" :solution-code="solucionCode" />
+    </div>
+
+    <!-- Quiz funcional -->
+    <div class="p-6 bg-gray-50 rounded-lg">
+      <h3 class="text-xl font-semibold mb-6 text-gray-800">Quiz de Operaciones con Diccionarios</h3>
+
+      <div class="mb-6">
+        <p class="text-gray-700 mb-3 font-medium">1. {{ preguntas[0].texto }}</p>
+        <div class="space-y-2">
+          <label v-for="(opcion, index) in preguntas[0].opciones" :key="index"
+            class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300"
+            :class="{ 'border-blue-500 border-2': respuestasSeleccionadas[0] === index }">
+            <input type="radio" name="pregunta1" :value="index" v-model="respuestasSeleccionadas[0]" class="mr-3">
+            <span>{{ opcion.texto }}</span>
+          </label>
         </div>
       </div>
 
-      <!-- Ejemplo 1: Operaciones básicas -->
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 1: Operaciones Básicas</h3>
-        <PythonRunner 
-          :code="ejemplo1Code"
-          title="operaciones_basicas.py"
-          :show-line-numbers="true"
-          :initial-height="280"
-        />
-      </div>
-
-      <!-- Ejemplo 2: Sistema de inventario -->
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 2: Sistema de Inventario</h3>
-        <PythonRunner 
-          :code="ejemplo2Code"
-          title="inventario_libreria.py"
-          :show-line-numbers="true"
-          :initial-height="320"
-        />
-      </div>
-
-      <!-- Ejemplo 3: Métodos útiles de diccionarios -->
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 3: Métodos Útiles</h3>
-        <p class="text-gray-700 mb-4">
-          Python proporciona métodos incorporados para trabajar con diccionarios:
-        </p>
-        <PythonRunner 
-          :code="ejemplo3Code"
-          title="metodos_diccionarios.py"
-          :show-line-numbers="true"
-          :initial-height="300"
-        />
-      </div>
-
-      <!-- Ejercicio práctico -->
-      <div class="mb-8 p-6 bg-gradient-to-r from-blue-50 to-green-50 rounded-lg">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio práctico: Gestión de Estudiantes</h3>
-        <p class="text-gray-700 mb-4">
-          <strong>Situación:</strong> Crea un sistema para gestionar las calificaciones de estudiantes en diferentes materias.
-        </p>
-        
-        <PythonRunner 
-          :code="ejercicioCode"
-          title="gestion_estudiantes.py"
-          :show-line-numbers="true"
-          :initial-height="260"
-          :show-reset="true"
-          :show-solution="true"
-          :solution-code="solucionCode"
-        />
-      </div>
-
-      <!-- Quiz funcional -->
-      <div class="p-6 bg-gray-50 rounded-lg">
-        <h3 class="text-xl font-semibold mb-6 text-gray-800">Quiz de Operaciones con Diccionarios</h3>
-        
-        <div class="mb-6">
-          <p class="text-gray-700 mb-3 font-medium">1. {{ preguntas[0].texto }}</p>
-          <div class="space-y-2">
-            <label v-for="(opcion, index) in preguntas[0].opciones" :key="index"
-              class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300"
-              :class="{ 'border-blue-500 border-2': respuestasSeleccionadas[0] === index }">
-              <input 
-                type="radio" 
-                name="pregunta1"
-                :value="index"
-                v-model="respuestasSeleccionadas[0]"
-                class="mr-3"
-              >
-              <span>{{ opcion.texto }}</span>
-            </label>
-          </div>
-        </div>
-
-        <div class="mb-6">
-          <p class="text-gray-700 mb-3 font-medium">2. {{ preguntas[1].texto }}</p>
-          <div class="space-y-2">
-            <label v-for="(opcion, index) in preguntas[1].opciones" :key="index"
-              class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300"
-              :class="{ 'border-blue-500 border-2': respuestasSeleccionadas[1] === index }">
-              <input 
-                type="radio" 
-                name="pregunta2"
-                :value="index"
-                v-model="respuestasSeleccionadas[1]"
-                class="mr-3"
-              >
-              <span>{{ opcion.texto }}</span>
-            </label>
-          </div>
-        </div>
-
-        <div class="mb-6">
-          <p class="text-gray-700 mb-3 font-medium">3. {{ preguntas[2].texto }}</p>
-          <div class="space-y-2">
-            <label v-for="(opcion, index) in preguntas[2].opciones" :key="index"
-              class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300"
-              :class="{ 'border-blue-500 border-2': respuestasSeleccionadas[2] === index }">
-              <input 
-                type="radio" 
-                name="pregunta3"
-                :value="index"
-                v-model="respuestasSeleccionadas[2]"
-                class="mr-3"
-              >
-              <span>{{ opcion.texto }}</span>
-            </label>
-          </div>
-        </div>
-
-        <div class="flex items-center justify-between">
-          <button @click="verificarQuiz" 
-                  class="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition font-medium">
-            Verificar respuestas
-          </button>
-          
-          <button @click="reiniciarQuiz" 
-                  class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition">
-            Reiniciar quiz
-          </button>
-        </div>
-
-        <div v-if="mostrarResultados" class="mt-6 p-4 rounded-lg" 
-             :class="resultadoClass">
-          <p class="font-medium">{{ resultadoMensaje }}</p>
-          <p class="text-sm mt-2">Correctas: {{ respuestasCorrectas }}/3</p>
+      <div class="mb-6">
+        <p class="text-gray-700 mb-3 font-medium">2. {{ preguntas[1].texto }}</p>
+        <div class="space-y-2">
+          <label v-for="(opcion, index) in preguntas[1].opciones" :key="index"
+            class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300"
+            :class="{ 'border-blue-500 border-2': respuestasSeleccionadas[1] === index }">
+            <input type="radio" name="pregunta2" :value="index" v-model="respuestasSeleccionadas[1]" class="mr-3">
+            <span>{{ opcion.texto }}</span>
+          </label>
         </div>
       </div>
-    </section>
+
+      <div class="mb-6">
+        <p class="text-gray-700 mb-3 font-medium">3. {{ preguntas[2].texto }}</p>
+        <div class="space-y-2">
+          <label v-for="(opcion, index) in preguntas[2].opciones" :key="index"
+            class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300"
+            :class="{ 'border-blue-500 border-2': respuestasSeleccionadas[2] === index }">
+            <input type="radio" name="pregunta3" :value="index" v-model="respuestasSeleccionadas[2]" class="mr-3">
+            <span>{{ opcion.texto }}</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <button @click="verificarQuiz"
+          class="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition font-medium">
+          Verificar respuestas
+        </button>
+
+        <button @click="reiniciarQuiz"
+          class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition">
+          Reiniciar quiz
+        </button>
+      </div>
+
+      <div v-if="mostrarResultados" class="mt-6 p-4 rounded-lg" :class="resultadoClass">
+        <p class="font-medium">{{ resultadoMensaje }}</p>
+        <p class="text-sm mt-2">Correctas: {{ respuestasCorrectas }}/3</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
+import HeaderTitle from "@/components/HeaderTitle.vue"
 
 // Códigos de ejemplo
 const ejemplo1Code = `# Operaciones Basicas en Diccionarios
@@ -643,7 +596,7 @@ const verificarQuiz = () => {
 
   respuestasCorrectas.value = correctas
   mostrarResultados.value = true
-  
+
   if (correctas === preguntas.length) {
     resultadoMensaje.value = '¡Excelente! Dominas las operaciones con diccionarios'
     resultadoClass.value = 'bg-green-100 text-green-800 border border-green-300'

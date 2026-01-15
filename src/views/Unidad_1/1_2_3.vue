@@ -1,110 +1,87 @@
 <template>
   <div class="container mx-auto px-4 py-6">
-    <section class="bg-white rounded-lg p-6 mb-6">
-      <div class="flex items-center mb-6">
-        <span class="w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold mr-3">
-          2.3
-        </span>
-        <div>
-          <h2 class="text-2xl font-bold text-gray-800">1.2.3 Aplicaciones de listas</h2>
-          <p class="text-gray-600">Casos de uso prácticos en programación</p>
+
+    <HeaderTitle numero="1.2" titulo="1.2.3 Aplicaciones de listas">
+      <!-- Contenido teórico -->
+      <div class="mb-8">
+        <p class="text-gray-600">Casos de uso prácticos en programación</p>
+      </div>
+    </HeaderTitle>
+
+
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 1: Sistema de inventario</h3>
+      <PythonRunner :code="ejemplo1Code" title="inventario.py" :showLineNumbers="true" initialHeight="280px" />
+    </div>
+
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 2: Análisis de ventas</h3>
+      <PythonRunner :code="ejemplo2Code" title="analisis_ventas.py" :showLineNumbers="true" initialHeight="300px" />
+    </div>
+
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 3: Pila usando listas</h3>
+      <PythonRunner :code="ejemplo3Code" title="pila_stack.py" :showLineNumbers="true" initialHeight="250px" />
+    </div>
+
+    <div class="mb-8 p-6 bg-blue-50 rounded-lg">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio: Gestión académica</h3>
+      <PythonRunner :code="ejercicioCode" title="gestion_academica.py" :showLineNumbers="true" initialHeight="280px"
+        :showReset="true" :showSolution="true" :solutionCode="solucionCode" />
+    </div>
+
+    <div class="p-6 bg-gray-50 rounded-lg">
+      <h3 class="text-xl font-semibold mb-6 text-gray-800">Quiz de aplicaciones</h3>
+
+      <div class="mb-6">
+        <p class="text-gray-700 mb-3 font-medium">1. ¿Para qué se usan comúnmente las listas en aplicaciones reales?
+        </p>
+        <div class="space-y-2">
+          <label class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300">
+            <input type="radio" name="pregunta1" value="0" class="mr-3">
+            <span>Solo para almacenar números</span>
+          </label>
+          <label class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300">
+            <input type="radio" name="pregunta1" value="1" class="mr-3">
+            <span>Gestión de inventarios, análisis de datos y estructuras como pilas</span>
+          </label>
+          <label class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300">
+            <input type="radio" name="pregunta1" value="2" class="mr-3">
+            <span>Solo para ordenar datos</span>
+          </label>
         </div>
       </div>
 
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 1: Sistema de inventario</h3>
-        <PythonRunner 
-          :code="ejemplo1Code"
-          title="inventario.py"
-          :showLineNumbers="true"
-          initialHeight="280px"
-        />
-      </div>
-
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 2: Análisis de ventas</h3>
-        <PythonRunner 
-          :code="ejemplo2Code"
-          title="analisis_ventas.py"
-          :showLineNumbers="true"
-          initialHeight="300px"
-        />
-      </div>
-
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 3: Pila usando listas</h3>
-        <PythonRunner 
-          :code="ejemplo3Code"
-          title="pila_stack.py"
-          :showLineNumbers="true"
-          initialHeight="250px"
-        />
-      </div>
-
-      <div class="mb-8 p-6 bg-blue-50 rounded-lg">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio: Gestión académica</h3>
-        <PythonRunner 
-          :code="ejercicioCode"
-          title="gestion_academica.py"
-          :showLineNumbers="true"
-          initialHeight="280px"
-          :showReset="true"
-          :showSolution="true"
-          :solutionCode="solucionCode"
-        />
-      </div>
-
-      <div class="p-6 bg-gray-50 rounded-lg">
-        <h3 class="text-xl font-semibold mb-6 text-gray-800">Quiz de aplicaciones</h3>
-        
-        <div class="mb-6">
-          <p class="text-gray-700 mb-3 font-medium">1. ¿Para qué se usan comúnmente las listas en aplicaciones reales?</p>
-          <div class="space-y-2">
-            <label class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300">
-              <input type="radio" name="pregunta1" value="0" class="mr-3">
-              <span>Solo para almacenar números</span>
-            </label>
-            <label class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300">
-              <input type="radio" name="pregunta1" value="1" class="mr-3">
-              <span>Gestión de inventarios, análisis de datos y estructuras como pilas</span>
-            </label>
-            <label class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300">
-              <input type="radio" name="pregunta1" value="2" class="mr-3">
-              <span>Solo para ordenar datos</span>
-            </label>
-          </div>
+      <div class="mb-6">
+        <p class="text-gray-700 mb-3 font-medium">2. ¿Por qué son útiles las listas para implementar una pila?</p>
+        <div class="space-y-2">
+          <label class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300">
+            <input type="radio" name="pregunta2" value="0" class="mr-3">
+            <span>Porque tienen tamaño fijo</span>
+          </label>
+          <label class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300">
+            <input type="radio" name="pregunta2" value="1" class="mr-3">
+            <span>Porque append() y pop() son eficientes al final</span>
+          </label>
+          <label class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300">
+            <input type="radio" name="pregunta2" value="2" class="mr-3">
+            <span>Porque permiten acceso aleatorio rápido</span>
+          </label>
         </div>
-
-        <div class="mb-6">
-          <p class="text-gray-700 mb-3 font-medium">2. ¿Por qué son útiles las listas para implementar una pila?</p>
-          <div class="space-y-2">
-            <label class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300">
-              <input type="radio" name="pregunta2" value="0" class="mr-3">
-              <span>Porque tienen tamaño fijo</span>
-            </label>
-            <label class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300">
-              <input type="radio" name="pregunta2" value="1" class="mr-3">
-              <span>Porque append() y pop() son eficientes al final</span>
-            </label>
-            <label class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300">
-              <input type="radio" name="pregunta2" value="2" class="mr-3">
-              <span>Porque permiten acceso aleatorio rápido</span>
-            </label>
-          </div>
-        </div>
-
-        <button @click="verificarQuiz" 
-                class="mt-6 px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition font-medium">
-          Verificar respuestas
-        </button>
       </div>
-    </section>
+
+      <button @click="verificarQuiz"
+        class="mt-6 px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition font-medium">
+        Verificar respuestas
+      </button>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+
 import PythonRunner from '@/components/PythonRun.vue'
+import HeaderTitle from "@/components/HeaderTitle.vue"
 
 // Códigos SIMPLIFICADOS para evitar errores de sintaxis
 const ejemplo1Code = `# Sistema de inventario simple
@@ -249,16 +226,16 @@ for i in range(len(estudiantes)):
 const verificarQuiz = () => {
   const respuesta1 = document.querySelector('input[name="pregunta1"]:checked')
   const respuesta2 = document.querySelector('input[name="pregunta2"]:checked')
-  
+
   if (!respuesta1 || !respuesta2) {
     alert('Por favor responde todas las preguntas')
     return
   }
-  
+
   let correctas = 0
   if (respuesta1.value === '1') correctas++
   if (respuesta2.value === '1') correctas++
-  
+
   alert(`Respuestas correctas: ${correctas}/2\\n\\nRespuestas correctas:\\n1. Gestión de inventarios, análisis de datos...\\n2. Porque append() y pop() son eficientes al final`)
 }
 </script>
