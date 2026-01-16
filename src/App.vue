@@ -137,8 +137,8 @@ const temario = ref([
   "Unidad I-Contenedores",
   "Unidad II-Pilas y Colas",
   "Unidad III-Recursividad y Grafos",
-  "Unidad IV-",
-  "Unidad V-",
+  "Unidad IV-Árboles",
+  "Unidad V-Programación concurrente",
 ])
 
 // Computed properties
