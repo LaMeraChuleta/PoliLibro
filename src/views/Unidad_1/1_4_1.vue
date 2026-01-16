@@ -1,84 +1,37 @@
 <template>
-  <div class="container mx-auto px-4 py-6"> 
+  <div class="container mx-auto px-4 py-6">
 
-      <HeaderTitle numero="1.4" titulo="1.4.1 Conceptos y características de diccionarios">
-        <!-- Explicación teórica -->
-        <div class="mb-8">
-          <p class="text-gray-600">Estructuras clave-valor en Python</p>
-        </div>
-      </HeaderTitle>
-
-
-
+    <HeaderTitle numero="1.4" titulo="1.4.1 Conceptos y características de diccionarios">
+      <!-- Explicación teórica -->
       <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 1: Creación y acceso básico</h3>
-        <PythonRunner :code="ejemplo1Code" title="diccionario_basico.py" :showLineNumbers="true"
-          initialHeight="280px" />
+        <p class="text-gray-600">Estructuras clave-valor en Python</p>
       </div>
+    </HeaderTitle>
 
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 2: Métodos comunes</h3>
-        <PythonRunner :code="ejemplo2Code" title="metodos_diccionario.py" :showLineNumbers="true"
-          initialHeight="300px" />
-      </div>
 
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 3: Sistema de inventario simplificado</h3>
-        <PythonRunner :code="ejemplo3Code" title="inventario.py" :showLineNumbers="true" initialHeight="280px" />
-      </div>
 
-      <div class="mb-8 p-6 bg-gradient-to-r from-yellow-50 to-green-50 rounded-lg">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio: Gestión de estudiantes</h3>
-        <PythonRunner :code="ejercicioCode" title="gestion_estudiantes.py" :showLineNumbers="true" initialHeight="250px"
-          :showReset="true" :showSolution="true" :solutionCode="solucionCode" />
-      </div>
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 1: Creación y acceso básico</h3>
+      <PythonRunner :code="ejemplo1Code" title="diccionario_basico.py" :showLineNumbers="true" initialHeight="280px" />
+    </div>
 
-      <div class="p-6 bg-gray-50 rounded-lg">
-        <h3 class="text-xl font-semibold mb-6 text-gray-800">Quiz de diccionarios</h3>
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 2: Métodos comunes</h3>
+      <PythonRunner :code="ejemplo2Code" title="metodos_diccionario.py" :showLineNumbers="true" initialHeight="300px" />
+    </div>
 
-        <div class="mb-6">
-          <p class="text-gray-700 mb-3 font-medium">1. ¿Qué característica principal diferencia a los diccionarios de
-            las listas?</p>
-          <div class="space-y-2">
-            <label class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-yellow-300">
-              <input type="radio" name="pregunta1" value="0" class="mr-3">
-              <span>Los diccionarios son inmutables</span>
-            </label>
-            <label class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-yellow-300">
-              <input type="radio" name="pregunta1" value="1" class="mr-3">
-              <span>Los diccionarios usan claves personalizadas en lugar de índices numéricos</span>
-            </label>
-            <label class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-yellow-300">
-              <input type="radio" name="pregunta1" value="2" class="mr-3">
-              <span>Los diccionarios no permiten valores repetidos</span>
-            </label>
-          </div>
-        </div>
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 3: Sistema de inventario simplificado</h3>
+      <PythonRunner :code="ejemplo3Code" title="inventario.py" :showLineNumbers="true" initialHeight="280px" />
+    </div>
 
-        <div class="mb-6">
-          <p class="text-gray-700 mb-3 font-medium">2. ¿Cuál método es más seguro para acceder a un valor en un
-            diccionario?</p>
-          <div class="space-y-2">
-            <label class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-yellow-300">
-              <input type="radio" name="pregunta2" value="0" class="mr-3">
-              <span>diccionario[clave] - Acceso directo</span>
-            </label>
-            <label class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-yellow-300">
-              <input type="radio" name="pregunta2" value="1" class="mr-3">
-              <span>diccionario.get(clave) - Devuelve None si no existe</span>
-            </label>
-            <label class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-yellow-300">
-              <input type="radio" name="pregunta2" value="2" class="mr-3">
-              <span>diccionario.find(clave) - Método de búsqueda</span>
-            </label>
-          </div>
-        </div>
+    <div class="mb-8 p-6 bg-gradient-to-r from-yellow-50 to-green-50 rounded-lg">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio: Gestión de estudiantes</h3>
+      <PythonRunner :code="ejercicioCode" title="gestion_estudiantes.py" :showLineNumbers="true" initialHeight="250px"
+        :showReset="true" :showSolution="true" :solutionCode="solucionCode" />
+    </div>
 
-        <button @click="verificarQuiz"
-          class="mt-6 px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition font-medium">
-          Verificar respuestas
-        </button>
-      </div>    
+    <QuizQuestions :preguntas="preguntas" titulo="Quiz de diccionarios"></QuizQuestions>
   </div>
 </template>
 
@@ -86,6 +39,7 @@
 
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
+import QuizQuestions from '@/components/QuizQuestions.vue'
 
 // Códigos CORREGIDOS (sin caracteres problemáticos)
 const ejemplo1Code = `# Creación y acceso básico a diccionarios
@@ -336,19 +290,34 @@ carreras = set(info["carrera"] for info in estudiantes.values())
 print(f"Carreras: {', '.join(carreras)}")`
 
 // Quiz simplificado
-const verificarQuiz = () => {
-  const respuesta1 = document.querySelector('input[name="pregunta1"]:checked')
-  const respuesta2 = document.querySelector('input[name="pregunta2"]:checked')
-
-  if (!respuesta1 || !respuesta2) {
-    alert('Por favor responde todas las preguntas')
-    return
+const preguntas = [
+ {
+    texto: "¿Qué es un diccionario en Python?",
+    opciones: [
+      { texto: "Estructura ordenada", correcta: false },
+      { texto: "Colección sin claves", correcta: false },
+      { texto: "Estructura clave-valor", correcta: true },
+      { texto: "Solo números", correcta: false }
+    ]
+  },
+  {
+    texto: "¿Qué característica define a los diccionarios?",
+    opciones: [
+      { texto: "Claves únicas, valores repetidos", correcta: true },
+      { texto: "Claves repetidas", correcta: false },
+      { texto: "Siempre ordenados", correcta: false },
+      { texto: "Un solo tipo de dato", correcta: false }
+    ]
+  },
+  {
+    texto: "¿Qué puede usarse como clave en un diccionario?",
+    opciones: [
+      { texto: "Cualquier tipo de dato", correcta: false },
+      { texto: "Solo enteros", correcta: false },
+      { texto: "Tipos inmutables", correcta: true },
+      { texto: "Solo cadenas", correcta: false }
+    ]
   }
+]
 
-  let correctas = 0
-  if (respuesta1.value === '1') correctas++
-  if (respuesta2.value === '1') correctas++
-
-  alert(`Respuestas correctas: ${correctas}/2\\n\\nRespuestas correctas:\\n1. Los diccionarios usan claves personalizadas...\\n2. diccionario.get(clave) - Devuelve None si no existe`)
-}
 </script>

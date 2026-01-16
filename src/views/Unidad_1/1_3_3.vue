@@ -168,72 +168,15 @@
     </div>
 
     <!-- Quiz funcional -->
-    <div class="p-6 bg-gray-50 rounded-lg">
-      <h3 class="text-xl font-semibold mb-6 text-gray-800">Quiz de aplicaciones de conjuntos</h3>
-
-      <div class="mb-6">
-        <p class="text-gray-700 mb-3 font-medium">1. {{ preguntas[0].texto }}</p>
-        <div class="space-y-2">
-          <label v-for="(opcion, index) in preguntas[0].opciones" :key="index"
-            class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-purple-300"
-            :class="{ 'border-purple-500 border-2': respuestasSeleccionadas[0] === index }">
-            <input type="radio" :name="'pregunta1'" :value="index" @change="respuestasSeleccionadas[0] = index"
-              class="mr-3">
-            <span>{{ opcion.texto }}</span>
-          </label>
-        </div>
-      </div>
-
-      <div class="mb-6">
-        <p class="text-gray-700 mb-3 font-medium">2. {{ preguntas[1].texto }}</p>
-        <div class="space-y-2">
-          <label v-for="(opcion, index) in preguntas[1].opciones" :key="index"
-            class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-purple-300"
-            :class="{ 'border-purple-500 border-2': respuestasSeleccionadas[1] === index }">
-            <input type="radio" :name="'pregunta2'" :value="index" @change="respuestasSeleccionadas[1] = index"
-              class="mr-3">
-            <span>{{ opcion.texto }}</span>
-          </label>
-        </div>
-      </div>
-
-      <div class="mb-6">
-        <p class="text-gray-700 mb-3 font-medium">3. {{ preguntas[2].texto }}</p>
-        <div class="space-y-2">
-          <label v-for="(opcion, index) in preguntas[2].opciones" :key="index"
-            class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-purple-300"
-            :class="{ 'border-purple-500 border-2': respuestasSeleccionadas[2] === index }">
-            <input type="radio" :name="'pregunta3'" :value="index" @change="respuestasSeleccionadas[2] = index"
-              class="mr-3">
-            <span>{{ opcion.texto }}</span>
-          </label>
-        </div>
-      </div>
-
-      <div class="flex items-center justify-between">
-        <button @click="verificarQuiz"
-          class="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition font-medium">
-          Verificar respuestas
-        </button>
-
-        <button @click="reiniciarQuiz"
-          class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition">
-          Reiniciar quiz
-        </button>
-      </div>
-
-      <div v-if="mostrarResultados" class="mt-6 p-4 rounded-lg" :class="resultadoClass">
-        <p class="font-medium">{{ resultadoMensaje }}</p>
-        <p class="text-sm mt-2">Correctas: {{ respuestasCorrectas }}/3</p>
-      </div>
-    </div>
+    <QuizQuestions :preguntas="preguntas" titulo="Quiz de aplicaciones de conjuntos"></QuizQuestions>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+  
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
+import QuizQuestions from '@/components/QuizQuestions.vue'
 
 // Códigos de ejemplo
 const ejemplo1Code = `# Sistema de amigos en redes sociales
@@ -715,46 +658,4 @@ const preguntas = [
   }
 ]
 
-// Estado del quiz
-const respuestasSeleccionadas = ref([null, null, null])
-const mostrarResultados = ref(false)
-const respuestasCorrectas = ref(0)
-const resultadoMensaje = ref('')
-const resultadoClass = ref('')
-
-// Funciones del quiz
-const verificarQuiz = () => {
-  if (respuestasSeleccionadas.value.includes(null)) {
-    alert('Por favor responde todas las preguntas')
-    return
-  }
-
-  let correctas = 0
-  preguntas.forEach((pregunta, index) => {
-    const respuestaIndex = respuestasSeleccionadas.value[index]
-    if (respuestaIndex !== null && pregunta.opciones[respuestaIndex].correcta) {
-      correctas++
-    }
-  })
-
-  respuestasCorrectas.value = correctas
-  mostrarResultados.value = true
-
-  if (correctas === preguntas.length) {
-    resultadoMensaje.value = '¡Excelente! Comprendes las aplicaciones prácticas de conjuntos'
-    resultadoClass.value = 'bg-green-100 text-green-800 border border-green-300'
-  } else if (correctas >= 2) {
-    resultadoMensaje.value = '¡Buen trabajo! Revisa los casos de uso avanzados'
-    resultadoClass.value = 'bg-yellow-100 text-yellow-800 border border-yellow-300'
-  } else {
-    resultadoMensaje.value = 'Sigue practicando con los ejemplos de aplicaciones'
-    resultadoClass.value = 'bg-red-100 text-red-800 border border-red-300'
-  }
-}
-
-const reiniciarQuiz = () => {
-  respuestasSeleccionadas.value = [null, null, null]
-  mostrarResultados.value = false
-  respuestasCorrectas.value = 0
-}
 </script>

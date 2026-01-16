@@ -30,51 +30,8 @@
         :showReset="true" :showSolution="true" :solutionCode="solucionCode" />
     </div>
 
-    <div class="p-6 bg-gray-50 rounded-lg">
-      <h3 class="text-xl font-semibold mb-6 text-gray-800">Quiz de aplicaciones</h3>
-
-      <div class="mb-6">
-        <p class="text-gray-700 mb-3 font-medium">1. ¿Para qué se usan comúnmente las listas en aplicaciones reales?
-        </p>
-        <div class="space-y-2">
-          <label class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300">
-            <input type="radio" name="pregunta1" value="0" class="mr-3">
-            <span>Solo para almacenar números</span>
-          </label>
-          <label class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300">
-            <input type="radio" name="pregunta1" value="1" class="mr-3">
-            <span>Gestión de inventarios, análisis de datos y estructuras como pilas</span>
-          </label>
-          <label class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300">
-            <input type="radio" name="pregunta1" value="2" class="mr-3">
-            <span>Solo para ordenar datos</span>
-          </label>
-        </div>
-      </div>
-
-      <div class="mb-6">
-        <p class="text-gray-700 mb-3 font-medium">2. ¿Por qué son útiles las listas para implementar una pila?</p>
-        <div class="space-y-2">
-          <label class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300">
-            <input type="radio" name="pregunta2" value="0" class="mr-3">
-            <span>Porque tienen tamaño fijo</span>
-          </label>
-          <label class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300">
-            <input type="radio" name="pregunta2" value="1" class="mr-3">
-            <span>Porque append() y pop() son eficientes al final</span>
-          </label>
-          <label class="flex items-center p-3 bg-white rounded-lg border cursor-pointer hover:border-blue-300">
-            <input type="radio" name="pregunta2" value="2" class="mr-3">
-            <span>Porque permiten acceso aleatorio rápido</span>
-          </label>
-        </div>
-      </div>
-
-      <button @click="verificarQuiz"
-        class="mt-6 px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition font-medium">
-        Verificar respuestas
-      </button>
-    </div>
+    <!-- Quiz funcional -->
+    <QuizQuestions :preguntas="preguntas" titulo="Quiz de aplicaciones de lista"></QuizQuestions>
   </div>
 </template>
 
@@ -82,6 +39,7 @@
 
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
+import QuizQuestions from '@/components/QuizQuestions.vue'
 
 // Códigos SIMPLIFICADOS para evitar errores de sintaxis
 const ejemplo1Code = `# Sistema de inventario simple
@@ -222,20 +180,34 @@ for i in range(len(estudiantes)):
     if calificaciones[i] > 80:
         print(f"  • {estudiantes[i]}: {calificaciones[i]}")`
 
-// Quiz simplificado
-const verificarQuiz = () => {
-  const respuesta1 = document.querySelector('input[name="pregunta1"]:checked')
-  const respuesta2 = document.querySelector('input[name="pregunta2"]:checked')
-
-  if (!respuesta1 || !respuesta2) {
-    alert('Por favor responde todas las preguntas')
-    return
+const preguntas= [
+  {
+    texto: "¿Para qué se usan comúnmente las listas en Python?",
+    opciones: [
+      { texto: "Almacenar datos ordenados", correcta: true },
+      { texto: "Guardar pares clave-valor", correcta: false },
+      { texto: "Ejecutar ciclos", correcta: false },
+      { texto: "Definir funciones", correcta: false }
+    ]
+  },
+  {
+    texto: "¿Cuál es una aplicación típica de las listas?",
+    opciones: [
+      { texto: "Registrar calificaciones de alumnos", correcta: true },
+      { texto: "Almacenar configuraciones del sistema", correcta: false },
+      { texto: "Definir estructuras inmutables", correcta: false },
+      { texto: "Reemplazar diccionarios", correcta: false }
+    ]
+  },
+  {
+    texto: "¿Qué ventaja ofrecen las listas frente a otros tipos de datos?",
+    opciones: [
+      { texto: "Permiten modificar, agregar y eliminar elementos", correcta: true },
+      { texto: "Son más rápidas que cualquier estructura", correcta: false },
+      { texto: "No permiten duplicados", correcta: false },
+      { texto: "Solo almacenan un tipo de dato", correcta: false }
+    ]
   }
+]
 
-  let correctas = 0
-  if (respuesta1.value === '1') correctas++
-  if (respuesta2.value === '1') correctas++
-
-  alert(`Respuestas correctas: ${correctas}/2\\n\\nRespuestas correctas:\\n1. Gestión de inventarios, análisis de datos...\\n2. Porque append() y pop() son eficientes al final`)
-}
 </script>
