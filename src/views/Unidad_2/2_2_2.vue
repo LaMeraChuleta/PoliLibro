@@ -1,23 +1,13 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 p-4 md:p-8">
+  <div class="container mx-auto px-4 py-6">
     <!-- Header -->
-    <header class="max-w-4xl mx-auto mb-8 md:mb-12">
-      <div class="flex items-center gap-2 text-gray-600 mb-2">
-        <span class="font-mono text-sm">Unidad 2.2.2</span>
-        <span class="text-gray-400">•</span>
-        <span class="text-sm">Colas</span>
-      </div>
-      <h1 class="text-3xl md:text-4xl font-bold text-gray-800">
-        Operaciones Básicas en Colas
-      </h1>
+    <HeaderTitle numero="2" titulo="2.2.2 Operaciones">
       <p class="mt-4 text-gray-600 max-w-3xl">
-        Las colas siguen el principio FIFO (First In, First Out). En esta sección aprenderás las operaciones fundamentales para manipular estructuras de datos tipo cola en Python.
+        Las colas siguen el principio FIFO (First In, First Out). En esta sección aprenderás las operaciones
+        fundamentales para manipular estructuras de datos tipo cola en Python.
       </p>
-    </header>
+    </HeaderTitle>
 
-
-
-    <main class="max-w-4xl mx-auto space-y-8">
     <!-- Tarjetas de Conceptos Clave -->
     <section class="mb-12">
       <h2 class="text-2xl font-bold text-gray-800 mb-6">Conceptos Clave</h2>
@@ -26,31 +16,35 @@
           <div class="text-2xl font-mono text-blue-600 mb-3">+</div>
           <h3 class="font-bold text-gray-800 mb-2">Encolar</h3>
           <p class="text-gray-600 text-sm">
-            Añadir un elemento al final de la cola. En Python usamos <code>append()</code> en listas o <code>put()</code> en queue.
+            Añadir un elemento al final de la cola. En Python usamos <code>append()</code> en listas o
+            <code>put()</code> en queue.
           </p>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
           <div class="text-2xl font-mono text-blue-600 mb-3">X</div>
           <h3 class="font-bold text-gray-800 mb-2">Desencolar</h3>
           <p class="text-gray-600 text-sm">
-            Eliminar y retornar el elemento del frente. Se usa <code>pop(0)</code> en listas o <code>get()</code> en queue.
+            Eliminar y retornar el elemento del frente. Se usa <code>pop(0)</code> en listas o <code>get()</code> en
+            queue.
           </p>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
           <div class="text-2xl font-mono text-blue-600 mb-3">E</div>
           <h3 class="font-bold text-gray-800 mb-2">Frente</h3>
           <p class="text-gray-600 text-sm">
-            Consultar el primer elemento sin eliminarlo. Accedemos con <code>cola[0]</code> en listas o <code>queue[0]</code> en deque.
+            Consultar el primer elemento sin eliminarlo. Accedemos con <code>cola[0]</code> en listas o
+            <code>queue[0]</code> en deque.
           </p>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
           <div class="text-2xl font-mono text-blue-600 mb-3">?</div>
           <h3 class="font-bold text-gray-800 mb-2">Búsqueda</h3>
           <p class="text-gray-600 text-sm">
-            Verificar si un elemento existe usando <code>in</code>. Las colas no están optimizadas para búsquedas (O(n)).
+            Verificar si un elemento existe usando <code>in</code>. Las colas no están optimizadas para búsquedas
+            (O(n)).
           </p>
         </div>
       </div>
@@ -59,7 +53,7 @@
     <!-- Ejemplos de Código -->
     <section class="mb-12">
       <h2 class="text-2xl font-bold text-gray-800 mb-6">Ejemplos Prácticos</h2>
-      
+
       <div class="space-y-10">
         <!-- Ejemplo 1 -->
         <div>
@@ -69,7 +63,7 @@
           </div>
           <PythonRunner :code="ejemplo1Code" />
         </div>
-        
+
         <!-- Ejemplo 2 -->
         <div>
           <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 2: Fila de Banco</h3>
@@ -78,7 +72,7 @@
           </div>
           <PythonRunner :code="ejemplo2Code" />
         </div>
-        
+
         <!-- Ejemplo 3 -->
         <div>
           <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 3: Búsqueda y Verificación</h3>
@@ -109,17 +103,16 @@
             <PythonRunner :code="ejercicioCode" />
           </div>
         </div>
-        
-        <button
-          @click="mostrarSolucion = !mostrarSolucion"
-          class="flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-800 transition-colors"
-        >
+
+        <button @click="mostrarSolucion = !mostrarSolucion"
+          class="flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-800 transition-colors">
           <span>{{ mostrarSolucion ? 'Ocultar' : 'Mostrar' }} solución</span>
-          <svg class="w-4 h-4" :class="{ 'rotate-180': mostrarSolucion }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          <svg class="w-4 h-4" :class="{ 'rotate-180': mostrarSolucion }" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
-        
+
         <div v-if="mostrarSolucion" class="mt-6 pt-6 border-t border-gray-200">
           <h4 class="font-bold text-gray-800 mb-3">Solución Propuesta:</h4>
           <PythonRunner :code="solucionCode" />
@@ -128,62 +121,14 @@
     </section>
 
     <!-- Quiz -->
-    <section>
-      <h2 class="text-2xl font-bold text-gray-800 mb-6">Evaluación de Conceptos</h2>
-      <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
-        <div v-for="(pregunta, index) in preguntas" :key="index" class="mb-8 last:mb-0">
-          <h3 class="font-semibold text-gray-800 mb-4">
-            {{ index + 1 }}. {{ pregunta.texto }}
-          </h3>
-          <div class="space-y-3">
-            <label
-              v-for="opcion in pregunta.opciones"
-              :key="opcion.valor"
-              class="flex items-center gap-3 p-3 rounded-lg border border-gray-300 hover:bg-gray-50 cursor-pointer"
-              :class="{
-                'border-green-500 bg-green-50': respuestasSeleccionadas[index] === opcion.valor && opcion.correcta,
-                'border-red-500 bg-red-50': respuestasSeleccionadas[index] === opcion.valor && !opcion.correcta && mostrarResultados
-              }"
-            >
-              <input
-                type="radio"
-                :name="'pregunta-' + index"
-                :value="opcion.valor"
-                v-model="respuestasSeleccionadas[index]"
-                class="text-blue-600"
-              >
-              <span class="flex-1">{{ opcion.texto }}</span>
-            </label>
-          </div>
-        </div>
-        
-        <div class="flex flex-col sm:flex-row gap-4 justify-between items-center pt-6 border-t border-gray-200">
-          <div v-if="mostrarResultados" class="text-lg font-semibold">
-            <span :class="puntuacion >= 2 ? 'text-green-600' : 'text-red-600'">
-              {{ puntuacion }}/{{ preguntas.length }} correctas
-            </span>
-          </div>
-          <div v-else class="text-gray-500">
-            Selecciona todas las respuestas
-          </div>
-          
-          <button
-            @click="validarQuiz"
-            class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
-          >
-            Verificar Respuestas
-          </button>
-        </div>
-      </div>
-    </section>    
-
-    </main>
-  </div>  
+    <QuizQuestions :preguntas="preguntas" titulo="Quiz de Operaciones"></QuizQuestions>
+  </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
+import HeaderTitle from "@/components/HeaderTitle.vue"
+import QuizQuestions from '@/components/QuizQuestions.vue'
 
 // Ejemplo 1: Operaciones básicas
 const ejemplo1Code = `# Operaciones básicas en colas usando listas
@@ -354,48 +299,33 @@ sistema.estado_actual()`
 // Quiz
 const preguntas = [
   {
-    texto: "¿Qué operación utilizamos para agregar un elemento al final de una cola implementada con lista?",
+    texto: "¿Qué operación se usa para agregar un elemento a una cola?",
     opciones: [
-      { texto: "insert(0, elemento)", valor: "a", correcta: false },
-      { texto: "append(elemento)", valor: "b", correcta: true },
-      { texto: "push(elemento)", valor: "c", correcta: false },
-      { texto: "add(elemento)", valor: "d", correcta: false }
+      { texto: "push", correcta: false },
+      { texto: "enqueue", correcta: true },
+      { texto: "pop", correcta: false },
+      { texto: "peek", correcta: false }
     ]
   },
   {
-    texto: "¿Cuál es la principal desventaja de usar listas de Python para implementar colas?",
+    texto: "¿Qué operación elimina el primer elemento de una cola?",
     opciones: [
-      { texto: "No permiten almacenar diferentes tipos de datos", valor: "a", correcta: false },
-      { texto: "pop(0) tiene complejidad O(n) debido al desplazamiento", valor: "b", correcta: true },
-      { texto: "Ocupan más memoria que otras estructuras", valor: "c", correcta: false },
-      { texto: "No se puede acceder a elementos por índice", valor: "d", correcta: false }
+      { texto: "dequeue", correcta: true },
+      { texto: "remove", correcta: false },
+      { texto: "pop", correcta: false },
+      { texto: "insert", correcta: false }
     ]
   },
   {
-    texto: "En una cola FIFO, ¿cuál elemento se eliminará primero?",
+    texto: "¿Para qué sirve la operación peek en una cola?",
     opciones: [
-      { texto: "El que tiene mayor valor", valor: "a", correcta: false },
-      { texto: "El que fue agregado más recientemente", valor: "b", correcta: false },
-      { texto: "El que lleva más tiempo en la cola", valor: "c", correcta: true },
-      { texto: "Un elemento aleatorio", valor: "d", correcta: false }
+      { texto: "Eliminar el primer elemento", correcta: false },
+      { texto: "Ver el primer elemento sin eliminarlo", correcta: true },
+      { texto: "Vaciar la cola", correcta: false },
+      { texto: "Agregar un elemento", correcta: false }
     ]
   }
 ]
 
-const respuestasSeleccionadas = ref([null, null, null])
-const mostrarResultados = ref(false)
 
-const puntuacion = computed(() => {
-  return preguntas.reduce((total, pregunta, index) => {
-    const respuesta = respuestasSeleccionadas.value[index]
-    const opcionCorrecta = pregunta.opciones.find(op => op.correcta)
-    return total + (respuesta === opcionCorrecta?.valor ? 1 : 0)
-  }, 0)
-})
-
-const validarQuiz = () => {
-  mostrarResultados.value = true
-}
-
-const mostrarSolucion = ref(false)
 </script>

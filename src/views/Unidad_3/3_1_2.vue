@@ -1,188 +1,135 @@
 <template>
-  <div class="min-h-screen bg-gray-50 p-4 md:p-8">
+  <div class="container mx-auto px-4 py-6">
     <!-- Header -->
-    <header class="max-w-4xl mx-auto mb-8 md:mb-12 border-b border-gray-300 pb-6">
-      <div class="flex items-center gap-2 text-gray-600 mb-2">
-        <span class="font-mono text-sm">Unidad 3.1.2</span>
-        <span class="text-gray-400">•</span>
-        <span class="text-sm">Recursividad</span>
-      </div>
-      <h1 class="text-3xl md:text-4xl font-bold text-gray-800">
-        Recursión vs Iteración
-      </h1>
+    <HeaderTitle numero="3" titulo="3.1.2 Recursión e iteración">
       <p class="mt-4 text-gray-600 max-w-3xl">
-        La recursión y la iteración son dos enfoques diferentes para resolver problemas repetitivos. Comprender sus ventajas, desventajas y cuándo usar cada uno es crucial para escribir código eficiente y mantenible.
+        La recursión y la iteración son dos enfoques diferentes para resolver problemas repetitivos. Comprender sus
+        ventajas, desventajas y cuándo usar cada uno es crucial para escribir código eficiente y mantenible.
       </p>
-    </header>
+    </HeaderTitle>
 
-    <!-- Contenido principal -->
-    <main class="max-w-4xl mx-auto space-y-8">
-      
-      <!-- Tarjetas de Conceptos Clave -->
-      <section>
-        <h2 class="text-2xl font-bold text-gray-800 mb-6">Conceptos Clave</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
-            <div class="text-2xl font-mono text-blue-600 mb-3">+</div>
-            <h3 class="font-bold text-gray-800 mb-2">Eficiencia Memoria</h3>
-            <p class="text-gray-600 text-sm">
-              La iteración generalmente usa menos memoria (O(1)) que la recursión (O(n)) debido a la pila de llamadas.
-            </p>
-          </div>
-          
-          <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
-            <div class="text-2xl font-mono text-blue-600 mb-3">X</div>
-            <h3 class="font-bold text-gray-800 mb-2">Claridad del Código</h3>
-            <p class="text-gray-600 text-sm">
-              La recursión suele ser más elegante para problemas naturalmente recursivos (árboles, backtracking).
-            </p>
-          </div>
-          
-          <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
-            <div class="text-2xl font-mono text-blue-600 mb-3">E</div>
-            <h3 class="font-bold text-gray-800 mb-2">Transformación</h3>
-            <p class="text-gray-600 text-sm">
-              Cualquier función recursiva puede convertirse a iterativa usando una pila explícita para simular la pila de llamadas.
-            </p>
-          </div>
-          
-          <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
-            <div class="text-2xl font-mono text-blue-600 mb-3">?</div>
-            <h3 class="font-bold text-gray-800 mb-2">Selección</h3>
-            <p class="text-gray-600 text-sm">
-              Elige recursión para problemas con estructura recursiva natural; iteración para optimización de rendimiento.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Ejemplos de Código -->
-      <section>
-        <h2 class="text-2xl font-bold text-gray-800 mb-6">Comparación Práctica</h2>
-        
-        <div class="space-y-10">
-          <!-- Ejemplo 1 -->
-          <div>
-            <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 1: Factorial - Recursivo vs Iterativo</h3>
-            <div class="bg-gray-800 text-gray-200 p-4 rounded-t-lg font-mono text-sm">
-              # Implementación comparativa del cálculo factorial
-            </div>
-            <PythonRunner :code="ejemplo1Code" />
-          </div>
-          
-          <!-- Ejemplo 2 -->
-          <div>
-            <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 2: Fibonacci - Tres Enfoques</h3>
-            <div class="bg-gray-800 text-gray-200 p-4 rounded-t-lg font-mono text-sm">
-              # Recursivo simple, recursivo con memoización e iterativo
-            </div>
-            <PythonRunner :code="ejemplo2Code" />
-          </div>
-          
-          <!-- Ejemplo 3 -->
-          <div>
-            <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 3: Recorrido de Directorios</h3>
-            <div class="bg-gray-800 text-gray-200 p-4 rounded-t-lg font-mono text-sm">
-              # Solución recursiva natural vs iterativa con pila explícita
-            </div>
-            <PythonRunner :code="ejemplo3Code" />
-          </div>
-        </div>
-      </section>
-
-      <!-- Ejercicio Práctico -->
-      <section>
-        <h2 class="text-2xl font-bold text-gray-800 mb-6">Ejercicio: Búsqueda Binaria</h2>
+    <!-- Tarjetas de Conceptos Clave -->
+    <section>
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">Conceptos Clave</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
-          <div class="mb-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-3">Implementación Recursiva e Iterativa</h3>
-            <p class="text-gray-600 mb-4">
-              La búsqueda binaria es un algoritmo eficiente para encontrar un elemento en una lista ordenada. Implementa dos versiones:
-            </p>
-            <ul class="list-disc pl-5 text-gray-600 space-y-2 mb-6">
-              <li><strong>Versión recursiva:</strong> Divide el problema en subproblemas más pequeños buscando en mitades.</li>
-              <li><strong>Versión iterativa:</strong> Usa un bucle while para reducir el espacio de búsqueda.</li>
-              <li>Ambas versiones deben tener complejidad O(log n).</li>
-              <li>Deben retornar el índice del elemento o -1 si no se encuentra.</li>
-            </ul>
-            <div class="bg-gray-100 p-4 rounded-lg">
-              <PythonRunner :code="ejercicioCode" />
-            </div>
-          </div>
-          
-          <button
-            @click="mostrarSolucion = !mostrarSolucion"
-            class="flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-800 transition-colors"
-          >
-            <span>{{ mostrarSolucion ? 'Ocultar' : 'Mostrar' }} solución</span>
-            <svg class="w-4 h-4" :class="{ 'rotate-180': mostrarSolucion }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-          
-          <div v-if="mostrarSolucion" class="mt-6 pt-6 border-t border-gray-200">
-            <h4 class="font-bold text-gray-800 mb-3">Solución Propuesta:</h4>
-            <PythonRunner :code="solucionCode" />
-          </div>
+          <div class="text-2xl font-mono text-blue-600 mb-3">+</div>
+          <h3 class="font-bold text-gray-800 mb-2">Eficiencia Memoria</h3>
+          <p class="text-gray-600 text-sm">
+            La iteración generalmente usa menos memoria (O(1)) que la recursión (O(n)) debido a la pila de llamadas.
+          </p>
         </div>
-      </section>
 
-      <!-- Quiz -->
-      <section>
-        <h2 class="text-2xl font-bold text-gray-800 mb-6">Evaluación de Conceptos</h2>
         <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
-          <div v-for="(pregunta, index) in preguntas" :key="index" class="mb-8 last:mb-0">
-            <h3 class="font-semibold text-gray-800 mb-4">
-              {{ index + 1 }}. {{ pregunta.texto }}
-            </h3>
-            <div class="space-y-3">
-              <label
-                v-for="opcion in pregunta.opciones"
-                :key="opcion.valor"
-                class="flex items-center gap-3 p-3 rounded-lg border border-gray-300 hover:bg-gray-50 cursor-pointer"
-                :class="{
-                  'border-green-500 bg-green-50': respuestasSeleccionadas[index] === opcion.valor && opcion.correcta,
-                  'border-red-500 bg-red-50': respuestasSeleccionadas[index] === opcion.valor && !opcion.correcta && mostrarResultados
-                }"
-              >
-                <input
-                  type="radio"
-                  :name="'pregunta-' + index"
-                  :value="opcion.valor"
-                  v-model="respuestasSeleccionadas[index]"
-                  class="text-blue-600"
-                >
-                <span class="flex-1">{{ opcion.texto }}</span>
-              </label>
-            </div>
+          <div class="text-2xl font-mono text-blue-600 mb-3">X</div>
+          <h3 class="font-bold text-gray-800 mb-2">Claridad del Código</h3>
+          <p class="text-gray-600 text-sm">
+            La recursión suele ser más elegante para problemas naturalmente recursivos (árboles, backtracking).
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
+          <div class="text-2xl font-mono text-blue-600 mb-3">E</div>
+          <h3 class="font-bold text-gray-800 mb-2">Transformación</h3>
+          <p class="text-gray-600 text-sm">
+            Cualquier función recursiva puede convertirse a iterativa usando una pila explícita para simular la pila
+            de llamadas.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
+          <div class="text-2xl font-mono text-blue-600 mb-3">?</div>
+          <h3 class="font-bold text-gray-800 mb-2">Selección</h3>
+          <p class="text-gray-600 text-sm">
+            Elige recursión para problemas con estructura recursiva natural; iteración para optimización de
+            rendimiento.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ejemplos de Código -->
+    <section>
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">Comparación Práctica</h2>
+
+      <div class="space-y-10">
+        <!-- Ejemplo 1 -->
+        <div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 1: Factorial - Recursivo vs Iterativo</h3>
+          <div class="bg-gray-800 text-gray-200 p-4 rounded-t-lg font-mono text-sm">
+            # Implementación comparativa del cálculo factorial
           </div>
-          
-          <div class="flex flex-col sm:flex-row gap-4 justify-between items-center pt-6 border-t border-gray-200">
-            <div v-if="mostrarResultados" class="text-lg font-semibold">
-              <span :class="puntuacion >= 2 ? 'text-green-600' : 'text-red-600'">
-                {{ puntuacion }}/{{ preguntas.length }} correctas
-              </span>
-            </div>
-            <div v-else class="text-gray-500">
-              Selecciona todas las respuestas
-            </div>
-            
-            <button
-              @click="validarQuiz"
-              class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Verificar Respuestas
-            </button>
+          <PythonRunner :code="ejemplo1Code" />
+        </div>
+
+        <!-- Ejemplo 2 -->
+        <div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 2: Fibonacci - Tres Enfoques</h3>
+          <div class="bg-gray-800 text-gray-200 p-4 rounded-t-lg font-mono text-sm">
+            # Recursivo simple, recursivo con memoización e iterativo
+          </div>
+          <PythonRunner :code="ejemplo2Code" />
+        </div>
+
+        <!-- Ejemplo 3 -->
+        <div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 3: Recorrido de Directorios</h3>
+          <div class="bg-gray-800 text-gray-200 p-4 rounded-t-lg font-mono text-sm">
+            # Solución recursiva natural vs iterativa con pila explícita
+          </div>
+          <PythonRunner :code="ejemplo3Code" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Ejercicio Práctico -->
+    <section>
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">Ejercicio: Búsqueda Binaria</h2>
+      <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
+        <div class="mb-6">
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Implementación Recursiva e Iterativa</h3>
+          <p class="text-gray-600 mb-4">
+            La búsqueda binaria es un algoritmo eficiente para encontrar un elemento en una lista ordenada. Implementa
+            dos versiones:
+          </p>
+          <ul class="list-disc pl-5 text-gray-600 space-y-2 mb-6">
+            <li><strong>Versión recursiva:</strong> Divide el problema en subproblemas más pequeños buscando en
+              mitades.</li>
+            <li><strong>Versión iterativa:</strong> Usa un bucle while para reducir el espacio de búsqueda.</li>
+            <li>Ambas versiones deben tener complejidad O(log n).</li>
+            <li>Deben retornar el índice del elemento o -1 si no se encuentra.</li>
+          </ul>
+          <div class="bg-gray-100 p-4 rounded-lg">
+            <PythonRunner :code="ejercicioCode" />
           </div>
         </div>
-      </section>
-    </main>
+
+        <button @click="mostrarSolucion = !mostrarSolucion"
+          class="flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+          <span>{{ mostrarSolucion ? 'Ocultar' : 'Mostrar' }} solución</span>
+          <svg class="w-4 h-4" :class="{ 'rotate-180': mostrarSolucion }" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div v-if="mostrarSolucion" class="mt-6 pt-6 border-t border-gray-200">
+          <h4 class="font-bold text-gray-800 mb-3">Solución Propuesta:</h4>
+          <PythonRunner :code="solucionCode" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz -->
+    <QuizQuestions :preguntas="preguntas" titulo="Quiz descripción"></QuizQuestions>
+
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
+import HeaderTitle from "@/components/HeaderTitle.vue"
+import QuizQuestions from '@/components/QuizQuestions.vue'
 
 // Ejemplo 1: Factorial comparativo
 const ejemplo1Code = `# Comparación: Factorial recursivo vs iterativo
@@ -847,48 +794,32 @@ print("Elemento ausente: log2(n) comparaciones")`
 // Quiz
 const preguntas = [
   {
-    texto: "¿Cuál es la principal ventaja de la versión iterativa de búsqueda binaria sobre la recursiva en Python?",
+    texto: "¿Cuál es la principal diferencia entre recursión e iteración?",
     opciones: [
-      { texto: "Es más rápida en todos los casos", valor: "a", correcta: false },
-      { texto: "Usa memoria constante (O(1)) en lugar de O(log n) para la pila", valor: "b", correcta: true },
-      { texto: "Puede manejar listas no ordenadas", valor: "c", correcta: false },
-      { texto: "Es más fácil de implementar y entender", valor: "d", correcta: false }
+      { texto: "La recursión usa funciones y la iteración ciclos", correcta: true },
+      { texto: "La iteración es más lenta siempre", correcta: false },
+      { texto: "La recursión no necesita caso base", correcta: false },
+      { texto: "La iteración solo usa funciones", correcta: false }
     ]
   },
   {
-    texto: "¿Por qué el factorial recursivo puede causar RecursionError para valores grandes, mientras que el iterativo no?",
+    texto: "¿Qué estructura utiliza normalmente la recursión para funcionar?",
     opciones: [
-      { texto: "El recursivo usa más CPU", valor: "a", correcta: false },
-      { texto: "Python tiene un límite en la profundidad de la pila de llamadas", valor: "b", correcta: true },
-      { texto: "El recursivo no puede manejar números mayores a 1000", valor: "c", correcta: false },
-      { texto: "El iterativo tiene optimizaciones especiales del compilador", valor: "d", correcta: false }
+      { texto: "Colas", correcta: false },
+      { texto: "Pilas", correcta: true },
+      { texto: "Listas", correcta: false },
+      { texto: "Diccionarios", correcta: false }
     ]
   },
   {
-    texto: "¿En qué situación sería preferible usar una implementación recursiva en lugar de una iterativa?",
+    texto: "¿Cuál suele ser una ventaja de la iteración frente a la recursión?",
     opciones: [
-      { texto: "Cuando se procesan listas con millones de elementos", valor: "a", correcta: false },
-      { texto: "Cuando el problema tiene una estructura naturalmente recursiva (como árboles)", valor: "b", correcta: true },
-      { texto: "Cuando la optimización de memoria es crítica", valor: "c", correcta: false },
-      { texto: "Cuando se necesita la máxima velocidad de ejecución", valor: "d", correcta: false }
+      { texto: "Código más eficiente en memoria", correcta: true },
+      { texto: "Código más corto siempre", correcta: false },
+      { texto: "Más fácil de entender en todos los casos", correcta: false },
+      { texto: "No necesita ciclos", correcta: false }
     ]
   }
 ]
 
-const respuestasSeleccionadas = ref([null, null, null])
-const mostrarResultados = ref(false)
-
-const puntuacion = computed(() => {
-  return preguntas.reduce((total, pregunta, index) => {
-    const respuesta = respuestasSeleccionadas.value[index]
-    const opcionCorrecta = pregunta.opciones.find(op => op.correcta)
-    return total + (respuesta === opcionCorrecta?.valor ? 1 : 0)
-  }, 0)
-})
-
-const validarQuiz = () => {
-  mostrarResultados.value = true
-}
-
-const mostrarSolucion = ref(false)
 </script>

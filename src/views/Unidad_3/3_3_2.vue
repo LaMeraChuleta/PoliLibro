@@ -1,10 +1,10 @@
 <template>
-  <div class="max-w-6xl mx-auto p-6 space-y-8">
+  <div class="container mx-auto px-4 py-6">
     <!-- Header -->
-    <header class="border-b border-gray-200 pb-4">
-      <h1 class="text-3xl font-bold text-gray-800">Capítulo 3.3.2: Búsqueda en Profundidad (DFS)</h1>
+    <HeaderTitle numero="3" titulo="3.3.2 Búsqueda en profundidad">
       <p class="text-gray-600 mt-2">Algoritmo recursivo para explorar grafos profundamente antes de retroceder.</p>
-    </header>
+    </HeaderTitle>
+    
 
     <!-- Explicación teórica -->
     <section class="bg-blue-50 p-6 rounded-lg">
@@ -111,68 +111,15 @@
     </section>
 
     <!-- Quiz -->
-    <section class="border border-gray-300 rounded-xl p-6">
-      <h2 class="text-2xl font-bold text-gray-800 mb-6">Evaluación de Conceptos</h2>
-      <div class="space-y-8">
-        <div v-for="(pregunta, index) in preguntas" :key="index" class="p-5 border border-gray-200 rounded-lg">
-          <h3 class="font-semibold text-gray-800 mb-4">Pregunta {{ index + 1 }}: {{ pregunta.texto }}</h3>
-          <div class="space-y-3">
-            <label
-              v-for="opcion in pregunta.opciones"
-              :key="opcion.letra"
-              class="flex items-center gap-3 p-3 border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer"
-              :class="{
-                'bg-green-100 border-green-400': respuestasSeleccionadas[index] === opcion.letra && opcion.correcta,
-                'bg-red-100 border-red-400': respuestasSeleccionadas[index] === opcion.letra && !opcion.correcta
-              }"
-            >
-              <input
-                type="radio"
-                :name="'pregunta' + index"
-                :value="opcion.letra"
-                v-model="respuestasSeleccionadas[index]"
-                class="h-4 w-4"
-              />
-              <span class="font-mono text-gray-700">{{ opcion.letra }}.</span>
-              <span>{{ opcion.texto }}</span>
-            </label>
-          </div>
-          <div v-if="respuestasSeleccionadas[index]" class="mt-4 text-sm font-medium">
-            <span v-if="respuestasSeleccionadas[index] === pregunta.respuestaCorrecta" class="text-green-700">
-              Correcto: {{ pregunta.explicacion }}
-            </span>
-            <span v-else class="text-red-700">
-              Incorrecto. La respuesta correcta es {{ pregunta.respuestaCorrecta }}.
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Resultado del quiz -->
-      <div class="mt-8 p-5 bg-gray-100 rounded-lg">
-        <div class="flex justify-between items-center">
-          <span class="text-gray-800 font-medium">Puntuación: {{ calcularPuntaje }}/3</span>
-          <button
-            @click="reiniciarQuiz"
-            class="px-4 py-2 border border-gray-400 text-gray-700 rounded-lg hover:bg-gray-200 transition"
-          >
-            Reiniciar quiz
-          </button>
-        </div>
-        <div class="w-full bg-gray-300 h-2 mt-3 rounded-full overflow-hidden">
-          <div
-            class="bg-green-600 h-full transition-all duration-500"
-            :style="{ width: `${(calcularPuntaje / 3) * 100}%` }"
-          ></div>
-        </div>
-      </div>
-    </section>
+    <QuizQuestions :preguntas="preguntas" titulo="Quiz búsqueda en profundidad (DFS)"></QuizQuestions>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
+import HeaderTitle from "@/components/HeaderTitle.vue"
+import QuizQuestions from '@/components/QuizQuestions.vue'
 
 // Ejemplo 1: DFS recursivo básico
 const ejemplo1Code = `def dfs_recursivo(grafo, vertice, visitados=None):
@@ -613,49 +560,32 @@ const mostrarSolucion = ref(false)
 // Quiz
 const preguntas = [
   {
-    texto: "¿Qué estructura de datos se utiliza típicamente para implementar DFS de forma iterativa?",
+    texto: "¿Qué caracteriza a la búsqueda en profundidad (DFS)?",
     opciones: [
-      { letra: "A", texto: "Cola (FIFO)", correcta: false },
-      { letra: "B", texto: "Pila (LIFO)", correcta: true },
-      { letra: "C", texto: "Árbol binario", correcta: false },
-      { letra: "D", texto: "Lista circular", correcta: false }
-    ],
-    respuestaCorrecta: "B",
-    explicacion: "DFS utiliza una pila (LIFO) para procesar vértices, explorando los más recientes primero."
+      { texto: "Explora el grafo por niveles", correcta: false },
+      { texto: "Explora primero los nodos más profundos", correcta: true },
+      { texto: "Usa siempre colas", correcta: false },
+      { texto: "Ordena los nodos", correcta: false }
+    ]
   },
   {
-    texto: "¿Cuál es la complejidad temporal de DFS en un grafo representado con lista de adyacencia?",
+    texto: "¿Qué estructura de datos utiliza DFS?",
     opciones: [
-      { letra: "A", texto: "O(V²)", correcta: false },
-      { letra: "B", texto: "O(V × E)", correcta: false },
-      { letra: "C", texto: "O(V + E)", correcta: true },
-      { letra: "D", texto: "O(E log V)", correcta: false }
-    ],
-    respuestaCorrecta: "C",
-    explicacion: "DFS visita cada vértice y cada arista una vez, por lo que su complejidad es O(V + E)."
+      { texto: "Cola", correcta: false },
+      { texto: "Pila", correcta: true },
+      { texto: "Matriz", correcta: false },
+      { texto: "Diccionario", correcta: false }
+    ]
   },
   {
-    texto: "¿Para qué tipo de problemas es especialmente útil DFS?",
+    texto: "¿En qué caso es preferible DFS frente a BFS?",
     opciones: [
-      { letra: "A", texto: "Encontrar el camino más corto en grafos no ponderados", correcta: false },
-      { letra: "B", texto: "Problemas que requieren explorar todas las posibilidades", correcta: true },
-      { letra: "C", texto: "Encontrar la componente conexa más grande", correcta: false },
-      { letra: "D", texto: "Cálculo de distancias mínimas en grafos ponderados", correcta: false }
-    ],
-    respuestaCorrecta: "B",
-    explicacion: "DFS es ideal para problemas de backtracking y exploración exhaustiva como laberintos o puzzles."
+      { texto: "Encontrar el camino más corto", correcta: false },
+      { texto: "Recorrer completamente un grafo o árbol", correcta: true },
+      { texto: "Procesar tareas por orden de llegada", correcta: false },
+      { texto: "Gestionar turnos", correcta: false }
+    ]
   }
 ]
 
-const respuestasSeleccionadas = ref([null, null, null])
-
-const calcularPuntaje = computed(() => {
-  return respuestasSeleccionadas.value.reduce((puntaje, respuesta, index) => {
-    return puntaje + (respuesta === preguntas[index].respuestaCorrecta ? 1 : 0)
-  }, 0)
-})
-
-const reiniciarQuiz = () => {
-  respuestasSeleccionadas.value = [null, null, null]
-}
 </script>

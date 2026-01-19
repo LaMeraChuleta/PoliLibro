@@ -1,18 +1,20 @@
 <template>
-  <div class="max-w-6xl mx-auto p-6 space-y-8">
+  <div class="container mx-auto px-4 py-6">
     <!-- Header -->
-    <header class="border-b border-gray-200 pb-4">
-      <h1 class="text-3xl font-bold text-gray-800">Capítulo 3.2.1: Descripción de Grafos</h1>
+    <HeaderTitle numero="3" titulo="3.2.1 Descripción">
       <p class="text-gray-600 mt-2">Estructuras de datos no lineales para modelar relaciones complejas.</p>
-    </header>
+    </HeaderTitle>
 
     <!-- Explicación teórica -->
     <section class="bg-blue-50 p-6 rounded-lg">
       <h2 class="text-xl font-semibold text-blue-800 mb-3">¿Qué es un grafo?</h2>
       <p class="text-gray-700 leading-relaxed">
-        Un grafo es una estructura de datos compuesta por un conjunto de vértices (nodos) y aristas (conexiones) que relacionan estos vértices. 
-        Se utilizan para modelar problemas del mundo real como redes sociales (personas y amistades), sistemas de transporte (ciudades y carreteras) 
-        o conexiones de internet (dispositivos y enlaces). La teoría de grafos es fundamental en ciencias de la computación.
+        Un grafo es una estructura de datos compuesta por un conjunto de vértices (nodos) y aristas (conexiones) que
+        relacionan estos vértices.
+        Se utilizan para modelar problemas del mundo real como redes sociales (personas y amistades), sistemas de
+        transporte (ciudades y carreteras)
+        o conexiones de internet (dispositivos y enlaces). La teoría de grafos es fundamental en ciencias de la
+        computación.
       </p>
     </section>
 
@@ -25,7 +27,8 @@
             <div class="bg-blue-100 text-blue-800 p-2 rounded">+</div>
             <h3 class="font-bold text-gray-800">Definición formal</h3>
           </div>
-          <p class="text-gray-600 text-sm">Grafo G = (V, E) donde V es conjunto de vértices y E es conjunto de pares de vértices (aristas).</p>
+          <p class="text-gray-600 text-sm">Grafo G = (V, E) donde V es conjunto de vértices y E es conjunto de pares de
+            vértices (aristas).</p>
         </div>
 
         <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
@@ -33,7 +36,8 @@
             <div class="bg-green-100 text-green-800 p-2 rounded">E</div>
             <h3 class="font-bold text-gray-800">Ejemplo real</h3>
           </div>
-          <p class="text-gray-600 text-sm">Red social: usuarios como vértices, relaciones de amistad como aristas no dirigidas.</p>
+          <p class="text-gray-600 text-sm">Red social: usuarios como vértices, relaciones de amistad como aristas no
+            dirigidas.</p>
         </div>
 
         <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
@@ -49,7 +53,8 @@
             <div class="bg-yellow-100 text-yellow-800 p-2 rounded">?</div>
             <h3 class="font-bold text-gray-800">Curiosidad</h3>
           </div>
-          <p class="text-gray-600 text-sm">El problema de los siete puentes de Königsberg (1736) inició la teoría de grafos.</p>
+          <p class="text-gray-600 text-sm">El problema de los siete puentes de Königsberg (1736) inició la teoría de
+            grafos.</p>
         </div>
       </div>
     </section>
@@ -85,14 +90,13 @@
       <h2 class="text-2xl font-bold text-gray-800 mb-4">Ejercicio Práctico</h2>
       <div class="space-y-4">
         <p class="text-gray-700">
-          <strong>Enunciado:</strong> Implementa la función <code>hay_camino</code> que determine si existe un camino entre dos nodos en un grafo no dirigido.
+          <strong>Enunciado:</strong> Implementa la función <code>hay_camino</code> que determine si existe un camino
+          entre dos nodos en un grafo no dirigido.
           Usa el grafo del ejemplo 1 y prueba con los nodos 'A' y 'D'.
         </p>
         <div class="flex gap-4">
-          <button
-            @click="mostrarSolucion = !mostrarSolucion"
-            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-          >
+          <button @click="mostrarSolucion = !mostrarSolucion"
+            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
             {{ mostrarSolucion ? 'Ocultar solución' : 'Mostrar solución' }}
           </button>
           <a href="#" class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
@@ -109,68 +113,16 @@
     </section>
 
     <!-- Quiz -->
-    <section class="border border-gray-300 rounded-xl p-6">
-      <h2 class="text-2xl font-bold text-gray-800 mb-6">Evaluación de Conceptos</h2>
-      <div class="space-y-8">
-        <div v-for="(pregunta, index) in preguntas" :key="index" class="p-5 border border-gray-200 rounded-lg">
-          <h3 class="font-semibold text-gray-800 mb-4">Pregunta {{ index + 1 }}: {{ pregunta.texto }}</h3>
-          <div class="space-y-3">
-            <label
-              v-for="opcion in pregunta.opciones"
-              :key="opcion.letra"
-              class="flex items-center gap-3 p-3 border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer"
-              :class="{
-                'bg-green-100 border-green-400': respuestasSeleccionadas[index] === opcion.letra && opcion.correcta,
-                'bg-red-100 border-red-400': respuestasSeleccionadas[index] === opcion.letra && !opcion.correcta
-              }"
-            >
-              <input
-                type="radio"
-                :name="'pregunta' + index"
-                :value="opcion.letra"
-                v-model="respuestasSeleccionadas[index]"
-                class="h-4 w-4"
-              />
-              <span class="font-mono text-gray-700">{{ opcion.letra }}.</span>
-              <span>{{ opcion.texto }}</span>
-            </label>
-          </div>
-          <div v-if="respuestasSeleccionadas[index]" class="mt-4 text-sm font-medium">
-            <span v-if="respuestasSeleccionadas[index] === pregunta.respuestaCorrecta" class="text-green-700">
-              Correcto: {{ pregunta.explicacion }}
-            </span>
-            <span v-else class="text-red-700">
-              Incorrecto. La respuesta correcta es {{ pregunta.respuestaCorrecta }}.
-            </span>
-          </div>
-        </div>
-      </div>
+    <QuizQuestions :preguntas="preguntas" titulo="Quiz descripción"></QuizQuestions>
 
-      <!-- Resultado del quiz -->
-      <div class="mt-8 p-5 bg-gray-100 rounded-lg">
-        <div class="flex justify-between items-center">
-          <span class="text-gray-800 font-medium">Puntuación: {{ calcularPuntaje }}/3</span>
-          <button
-            @click="reiniciarQuiz"
-            class="px-4 py-2 border border-gray-400 text-gray-700 rounded-lg hover:bg-gray-200 transition"
-          >
-            Reiniciar quiz
-          </button>
-        </div>
-        <div class="w-full bg-gray-300 h-2 mt-3 rounded-full overflow-hidden">
-          <div
-            class="bg-green-600 h-full transition-all duration-500"
-            :style="{ width: `${(calcularPuntaje / 3) * 100}%` }"
-          ></div>
-        </div>
-      </div>
-    </section>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
+import HeaderTitle from "@/components/HeaderTitle.vue"
+import QuizQuestions from '@/components/QuizQuestions.vue'
 
 // Ejemplo 1: Representación básica
 const ejemplo1Code = `# Representación de grafo no dirigido con lista de adyacencia
@@ -363,15 +315,4 @@ const preguntas = [
   }
 ]
 
-const respuestasSeleccionadas = ref([null, null, null])
-
-const calcularPuntaje = computed(() => {
-  return respuestasSeleccionadas.value.reduce((puntaje, respuesta, index) => {
-    return puntaje + (respuesta === preguntas[index].respuestaCorrecta ? 1 : 0)
-  }, 0)
-})
-
-const reiniciarQuiz = () => {
-  respuestasSeleccionadas.value = [null, null, null]
-}
 </script>

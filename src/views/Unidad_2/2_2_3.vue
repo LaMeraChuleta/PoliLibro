@@ -1,189 +1,134 @@
 <template>
-  <div class="min-h-screen bg-gray-50 p-4 md:p-8">
+  <div class="container mx-auto px-4 py-6">
     <!-- Header -->
-    <header class="max-w-4xl mx-auto mb-8 md:mb-12">
-      <div class="flex items-center gap-2 text-gray-600 mb-2">
-        <span class="font-mono text-sm">Unidad 2.2.3</span>
-        <span class="text-gray-400">•</span>
-        <span class="text-sm">Colas</span>
-      </div>
-      <h1 class="text-3xl md:text-4xl font-bold text-gray-800">
-        Aplicación Práctica: Sistema de Impresión
-      </h1>
+    <HeaderTitle numero="2" titulo="2.2.3 Ejemplo de aplicación">
       <p class="mt-4 text-gray-600 max-w-3xl">
-        Implementaremos un sistema de gestión de trabajos de impresión que simula el funcionamiento de una cola en un entorno real. Este ejemplo integra todos los conceptos aprendidos sobre colas.
+        Implementaremos un sistema de gestión de trabajos de impresión que simula el funcionamiento de una cola en un
+        entorno real. Este ejemplo integra todos los conceptos aprendidos sobre colas.
       </p>
-    </header>
+    </HeaderTitle>
 
-    <!-- Contenido principal -->
-    <main class="max-w-4xl mx-auto space-y-8">
-      
-      <!-- Tarjetas de Conceptos Clave -->
-      <section>
-        <h2 class="text-2xl font-bold text-gray-800 mb-6">Conceptos Clave</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
-            <div class="text-2xl font-mono text-blue-600 mb-3">+</div>
-            <h3 class="font-bold text-gray-800 mb-2">Prioridades</h3>
-            <p class="text-gray-600 text-sm">
-              Manejo de diferentes niveles de prioridad en trabajos de impresión usando múltiples colas.
-            </p>
-          </div>
-          
-          <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
-            <div class="text-2xl font-mono text-blue-600 mb-3">X</div>
-            <h3 class="font-bold text-gray-800 mb-2">Gestión de Estado</h3>
-            <p class="text-gray-600 text-sm">
-              Seguimiento del estado de cada trabajo: pendiente, procesando, completado o cancelado.
-            </p>
-          </div>
-          
-          <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
-            <div class="text-2xl font-mono text-blue-600 mb-3">E</div>
-            <h3 class="font-bold text-gray-800 mb-2">Múltiples Colas</h3>
-            <p class="text-gray-600 text-sm">
-              Implementación de colas separadas para diferentes tipos de trabajos y prioridades.
-            </p>
-          </div>
-          
-          <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
-            <div class="text-2xl font-mono text-blue-600 mb-3">?</div>
-            <h3 class="font-bold text-gray-800 mb-2">Análisis de Rendimiento</h3>
-            <p class="text-gray-600 text-sm">
-              Medición de métricas como tiempo promedio de espera y cantidad de trabajos procesados.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Ejemplos de Código -->
-      <section>
-        <h2 class="text-2xl font-bold text-gray-800 mb-6">Implementación Paso a Paso</h2>
-        
-        <div class="space-y-10">
-          <!-- Ejemplo 1 -->
-          <div>
-            <h3 class="text-xl font-semibold text-gray-800 mb-4">Paso 1: Estructura Base del Sistema</h3>
-            <div class="bg-gray-800 text-gray-200 p-4 rounded-t-lg font-mono text-sm">
-              # Definición de clases y estructura inicial
-            </div>
-            <PythonRunner :code="ejemplo1Code" />
-          </div>
-          
-          <!-- Ejemplo 2 -->
-          <div>
-            <h3 class="text-xl font-semibold text-gray-800 mb-4">Paso 2: Gestión de Prioridades</h3>
-            <div class="bg-gray-800 text-gray-200 p-4 rounded-t-lg font-mono text-sm">
-              # Implementación de colas por prioridad
-            </div>
-            <PythonRunner :code="ejemplo2Code" />
-          </div>
-          
-          <!-- Ejemplo 3 -->
-          <div>
-            <h3 class="text-xl font-semibold text-gray-800 mb-4">Paso 3: Simulación Completa</h3>
-            <div class="bg-gray-800 text-gray-200 p-4 rounded-t-lg font-mono text-sm">
-              # Sistema de impresión en funcionamiento
-            </div>
-            <PythonRunner :code="ejemplo3Code" />
-          </div>
-        </div>
-      </section>
-
-      <!-- Ejercicio Práctico -->
-      <section>
-        <h2 class="text-2xl font-bold text-gray-800 mb-6">Ejercicio: Centro de Atención Médica</h2>
+    <!-- Tarjetas de Conceptos Clave -->
+    <section>
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">Conceptos Clave</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
-          <div class="mb-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-3">Simulación de Triage en Urgencias</h3>
-            <p class="text-gray-600 mb-4">
-              Un hospital necesita un sistema para gestionar la cola de pacientes en urgencias con el siguiente comportamiento:
-            </p>
-            <ul class="list-disc pl-5 text-gray-600 space-y-2 mb-6">
-              <li>Los pacientes llegan con diferentes niveles de gravedad (Alta, Media, Baja)</li>
-              <li>Los pacientes de mayor gravedad deben ser atendidos primero</li>
-              <li>Dentro de cada nivel de gravedad, se atiende por orden de llegada</li>
-              <li>Debe mostrar estadísticas de tiempo de espera por nivel</li>
-              <li>Permitir agregar nuevos pacientes y atender según prioridad</li>
-            </ul>
-            <div class="bg-gray-100 p-4 rounded-lg">
-              <PythonRunner :code="ejercicioCode" />
-            </div>
-          </div>
-          
-          <button
-            @click="mostrarSolucion = !mostrarSolucion"
-            class="flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-800 transition-colors"
-          >
-            <span>{{ mostrarSolucion ? 'Ocultar' : 'Mostrar' }} solución</span>
-            <svg class="w-4 h-4" :class="{ 'rotate-180': mostrarSolucion }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-          
-          <div v-if="mostrarSolucion" class="mt-6 pt-6 border-t border-gray-200">
-            <h4 class="font-bold text-gray-800 mb-3">Solución Propuesta:</h4>
-            <PythonRunner :code="solucionCode" />
-          </div>
+          <div class="text-2xl font-mono text-blue-600 mb-3">+</div>
+          <h3 class="font-bold text-gray-800 mb-2">Prioridades</h3>
+          <p class="text-gray-600 text-sm">
+            Manejo de diferentes niveles de prioridad en trabajos de impresión usando múltiples colas.
+          </p>
         </div>
-      </section>
 
-      <!-- Quiz -->
-      <section>
-        <h2 class="text-2xl font-bold text-gray-800 mb-6">Evaluación de Conceptos</h2>
         <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
-          <div v-for="(pregunta, index) in preguntas" :key="index" class="mb-8 last:mb-0">
-            <h3 class="font-semibold text-gray-800 mb-4">
-              {{ index + 1 }}. {{ pregunta.texto }}
-            </h3>
-            <div class="space-y-3">
-              <label
-                v-for="opcion in pregunta.opciones"
-                :key="opcion.valor"
-                class="flex items-center gap-3 p-3 rounded-lg border border-gray-300 hover:bg-gray-50 cursor-pointer"
-                :class="{
-                  'border-green-500 bg-green-50': respuestasSeleccionadas[index] === opcion.valor && opcion.correcta,
-                  'border-red-500 bg-red-50': respuestasSeleccionadas[index] === opcion.valor && !opcion.correcta && mostrarResultados
-                }"
-              >
-                <input
-                  type="radio"
-                  :name="'pregunta-' + index"
-                  :value="opcion.valor"
-                  v-model="respuestasSeleccionadas[index]"
-                  class="text-blue-600"
-                >
-                <span class="flex-1">{{ opcion.texto }}</span>
-              </label>
-            </div>
+          <div class="text-2xl font-mono text-blue-600 mb-3">X</div>
+          <h3 class="font-bold text-gray-800 mb-2">Gestión de Estado</h3>
+          <p class="text-gray-600 text-sm">
+            Seguimiento del estado de cada trabajo: pendiente, procesando, completado o cancelado.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
+          <div class="text-2xl font-mono text-blue-600 mb-3">E</div>
+          <h3 class="font-bold text-gray-800 mb-2">Múltiples Colas</h3>
+          <p class="text-gray-600 text-sm">
+            Implementación de colas separadas para diferentes tipos de trabajos y prioridades.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
+          <div class="text-2xl font-mono text-blue-600 mb-3">?</div>
+          <h3 class="font-bold text-gray-800 mb-2">Análisis de Rendimiento</h3>
+          <p class="text-gray-600 text-sm">
+            Medición de métricas como tiempo promedio de espera y cantidad de trabajos procesados.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ejemplos de Código -->
+    <section>
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">Implementación Paso a Paso</h2>
+
+      <div class="space-y-10">
+        <!-- Ejemplo 1 -->
+        <div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Paso 1: Estructura Base del Sistema</h3>
+          <div class="bg-gray-800 text-gray-200 p-4 rounded-t-lg font-mono text-sm">
+            # Definición de clases y estructura inicial
           </div>
-          
-          <div class="flex flex-col sm:flex-row gap-4 justify-between items-center pt-6 border-t border-gray-200">
-            <div v-if="mostrarResultados" class="text-lg font-semibold">
-              <span :class="puntuacion >= 2 ? 'text-green-600' : 'text-red-600'">
-                {{ puntuacion }}/{{ preguntas.length }} correctas
-              </span>
-            </div>
-            <div v-else class="text-gray-500">
-              Selecciona todas las respuestas
-            </div>
-            
-            <button
-              @click="validarQuiz"
-              class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Verificar Respuestas
-            </button>
+          <PythonRunner :code="ejemplo1Code" />
+        </div>
+
+        <!-- Ejemplo 2 -->
+        <div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Paso 2: Gestión de Prioridades</h3>
+          <div class="bg-gray-800 text-gray-200 p-4 rounded-t-lg font-mono text-sm">
+            # Implementación de colas por prioridad
+          </div>
+          <PythonRunner :code="ejemplo2Code" />
+        </div>
+
+        <!-- Ejemplo 3 -->
+        <div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Paso 3: Simulación Completa</h3>
+          <div class="bg-gray-800 text-gray-200 p-4 rounded-t-lg font-mono text-sm">
+            # Sistema de impresión en funcionamiento
+          </div>
+          <PythonRunner :code="ejemplo3Code" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Ejercicio Práctico -->
+    <section>
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">Ejercicio: Centro de Atención Médica</h2>
+      <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
+        <div class="mb-6">
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Simulación de Triage en Urgencias</h3>
+          <p class="text-gray-600 mb-4">
+            Un hospital necesita un sistema para gestionar la cola de pacientes en urgencias con el siguiente
+            comportamiento:
+          </p>
+          <ul class="list-disc pl-5 text-gray-600 space-y-2 mb-6">
+            <li>Los pacientes llegan con diferentes niveles de gravedad (Alta, Media, Baja)</li>
+            <li>Los pacientes de mayor gravedad deben ser atendidos primero</li>
+            <li>Dentro de cada nivel de gravedad, se atiende por orden de llegada</li>
+            <li>Debe mostrar estadísticas de tiempo de espera por nivel</li>
+            <li>Permitir agregar nuevos pacientes y atender según prioridad</li>
+          </ul>
+          <div class="bg-gray-100 p-4 rounded-lg">
+            <PythonRunner :code="ejercicioCode" />
           </div>
         </div>
-      </section>
-    </main>
+
+        <button @click="mostrarSolucion = !mostrarSolucion"
+          class="flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+          <span>{{ mostrarSolucion ? 'Ocultar' : 'Mostrar' }} solución</span>
+          <svg class="w-4 h-4" :class="{ 'rotate-180': mostrarSolucion }" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div v-if="mostrarSolucion" class="mt-6 pt-6 border-t border-gray-200">
+          <h4 class="font-bold text-gray-800 mb-3">Solución Propuesta:</h4>
+          <PythonRunner :code="solucionCode" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz -->
+    <QuizQuestions :preguntas="preguntas" titulo="Quiz de ejemplo de aplicación"></QuizQuestions>
+
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+
 import PythonRunner from '@/components/PythonRun.vue'
+import HeaderTitle from "@/components/HeaderTitle.vue"
+import QuizQuestions from '@/components/QuizQuestions.vue'
 
 // Ejemplo 1: Estructura base
 const ejemplo1Code = `# Sistema de gestión de trabajos de impresión
@@ -618,48 +563,32 @@ sistema.mostrar_estadisticas()`
 // Quiz
 const preguntas = [
   {
-    texto: "En un sistema de colas con prioridades, ¿qué estrategia es más eficiente para garantizar que los elementos de alta prioridad se atiendan primero?",
+    texto: "¿Cuál es un uso común de las colas en aplicaciones?",
     opciones: [
-      { texto: "Usar una sola cola y buscar el elemento de mayor prioridad cada vez", valor: "a", correcta: false },
-      { texto: "Implementar múltiples colas separadas por nivel de prioridad", valor: "b", correcta: true },
-      { texto: "Ordenar toda la cola por prioridad después de cada inserción", valor: "c", correcta: false },
-      { texto: "Atender elementos aleatoriamente y luego filtrar por prioridad", valor: "d", correcta: false }
+      { texto: "Deshacer acciones", correcta: false },
+      { texto: "Atención por turnos", correcta: true },
+      { texto: "Evaluar expresiones", correcta: false },
+      { texto: "Ordenar listas", correcta: false }
     ]
   },
   {
-    texto: "¿Cuál es la principal ventaja de usar deque de collections en lugar de listas para implementar colas en Python?",
+    texto: "¿Qué sistema utiliza colas para gestionar tareas en espera?",
     opciones: [
-      { texto: "Permite almacenar más tipos de datos", valor: "a", correcta: false },
-      { texto: "Las operaciones popleft() y append() tienen complejidad O(1)", valor: "b", correcta: true },
-      { texto: "Ocupa menos memoria en todos los casos", valor: "c", correcta: false },
-      { texto: "Tiene métodos integrados para ordenación automática", valor: "d", correcta: false }
+      { texto: "Pila de llamadas", correcta: false },
+      { texto: "Sistema de impresión", correcta: true },
+      { texto: "Memoria caché", correcta: false },
+      { texto: "Árboles", correcta: false }
     ]
   },
   {
-    texto: "En el sistema de triage médico implementado, ¿qué ocurre si llega un paciente con gravedad 'alta' cuando hay pacientes de gravedad 'baja' esperando?",
+    texto: "¿Qué principio siguen las colas al procesar elementos?",
     opciones: [
-      { texto: "Se atiende al paciente de gravedad 'baja' primero porque llegó antes", valor: "a", correcta: false },
-      { texto: "El paciente de gravedad 'alta' pasa al frente de todas las colas", valor: "b", correcta: true },
-      { texto: "Ambos pacientes son atendidos simultáneamente", valor: "c", correcta: false },
-      { texto: "Se crea una nueva cola especial para el paciente de gravedad 'alta'", valor: "d", correcta: false }
+      { texto: "LIFO", correcta: false },
+      { texto: "FIFO", correcta: true },
+      { texto: "Aleatorio", correcta: false },
+      { texto: "Ordenado", correcta: false }
     ]
   }
 ]
 
-const respuestasSeleccionadas = ref([null, null, null])
-const mostrarResultados = ref(false)
-
-const puntuacion = computed(() => {
-  return preguntas.reduce((total, pregunta, index) => {
-    const respuesta = respuestasSeleccionadas.value[index]
-    const opcionCorrecta = pregunta.opciones.find(op => op.correcta)
-    return total + (respuesta === opcionCorrecta?.valor ? 1 : 0)
-  }, 0)
-})
-
-const validarQuiz = () => {
-  mostrarResultados.value = true
-}
-
-const mostrarSolucion = ref(false)
 </script>

@@ -1,371 +1,200 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 p-4 md:p-8">
-    
+  <div class="container mx-auto px-4 py-6">
     <!-- Cabecera -->
-    <header class="max-w-4xl mx-auto mb-8 md:mb-12">
-      <div class="py-4 border-b border-gray-300">
-        <div class="flex items-center space-x-3 mb-2">
-          <span class="text-sm font-semibold text-blue-600 bg-blue-100 px-3 py-1 rounded-full">
-            Unidad 2
-          </span>
-          <span class="text-sm text-gray-500">Estructuras de Datos</span>
+    <HeaderTitle numero="2" titulo="2.1.2 Operaciones"></HeaderTitle>
+    
+    <!-- Explicación Teórica -->
+    <section class="bg-white rounded-xl shadow-lg p-6 border border-gray-200 my-3">
+      <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+        <span class="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center mr-2">i</span>
+        Operaciones Fundamentales de una Pila
+      </h2>
+      <div class="text-gray-700 leading-relaxed space-y-3">
+        <p>
+          Las pilas ofrecen un conjunto limitado pero poderoso de operaciones que definen su comportamiento LIFO.
+          Cada operación actúa exclusivamente sobre el <strong>tope</strong> de la pila, manteniendo la integridad
+          de la estructura.
+        </p>
+        <p>
+          Estas operaciones son la base para implementar algoritmos complejos como evaluación de expresiones,
+          recorrido de árboles y gestión de llamadas a funciones.
+        </p>
+        <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+          <strong>Importante:</strong> Todas las operaciones tienen complejidad O(1) - tiempo constante,
+          lo que las hace extremadamente eficientes para manipulación de datos.
         </div>
-        <div>
-          <h1 class="text-2xl md:text-3xl font-bold text-gray-800">
-            2.1 Pilas
-          </h1>
-          <p class="text-gray-600 mt-1">
-            2.1.2 Operaciones - Métodos y funciones principales
+      </div>
+    </section>
+
+    <!-- Conceptos Clave -->
+    <section class="bg-white rounded-xl shadow-lg p-6 my-3">
+      <h2 class="text-xl font-bold text-gray-800 mb-6 border-b pb-3">
+        Operaciones Clave
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
+          <div class="flex items-center mb-3">
+            <span
+              class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold mr-3">+</span>
+            <h3 class="font-bold text-gray-800">push(elemento)</h3>
+          </div>
+          <p class="text-gray-600 text-sm">
+            Inserta un elemento en el tope de la pila. Incrementa el tamaño en 1.
+          </p>
+        </div>
+
+        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
+          <div class="flex items-center mb-3">
+            <span
+              class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold mr-3">X</span>
+            <h3 class="font-bold text-gray-800">pop()</h3>
+          </div>
+          <p class="text-gray-600 text-sm">
+            Elimina y retorna el elemento del tope. Lanza error si la pila está vacía.
+          </p>
+        </div>
+
+        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
+          <div class="flex items-center mb-3">
+            <span
+              class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold mr-3">E</span>
+            <h3 class="font-bold text-gray-800">peek() / top()</h3>
+          </div>
+          <p class="text-gray-600 text-sm">
+            Retorna el elemento del tope sin eliminarlo. Operación de solo lectura.
+          </p>
+        </div>
+
+        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
+          <div class="flex items-center mb-3">
+            <span
+              class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold mr-3">?</span>
+            <h3 class="font-bold text-gray-800">is_empty()</h3>
+          </div>
+          <p class="text-gray-600 text-sm">
+            Verifica si la pila no contiene elementos. Retorna True o False.
           </p>
         </div>
       </div>
-    </header>
+    </section>
 
-    <!-- Contenido Principal - Una sola columna -->
-    <main class="max-w-4xl mx-auto space-y-8">
-      
-      <!-- Explicación Teórica -->
-      <section class="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
-        <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
-          <span class="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center mr-2">i</span>
-          Operaciones Fundamentales de una Pila
+    <!-- Ejemplo 1: Operaciones Básicas -->
+    <section class="bg-white rounded-xl shadow-lg p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">
+        Ejemplo 1: Implementación Completa con Todas las Operaciones
+      </h2>
+      <p class="text-gray-700 mb-4">
+        Clase Pila con todas las operaciones fundamentales implementadas, incluyendo manejo de errores
+        y métodos auxiliares para mayor funcionalidad.
+      </p>
+      <div class="rounded-lg overflow-hidden border border-gray-300">
+        <PythonRunner :code="ejemplo1Code" />
+      </div>
+    </section>
+
+    <!-- Ejemplo 2: Evaluación de Expresiones Postfijas -->
+    <section class="bg-white rounded-xl shadow-lg p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">
+        Ejemplo 2: Evaluación de Expresiones Postfijas (Notación Polaca Inversa)
+      </h2>
+      <p class="text-gray-700 mb-4">
+        Aplicación práctica de pilas para evaluar expresiones matemáticas en notación postfija,
+        donde los operadores siguen a sus operandos.
+      </p>
+      <div class="rounded-lg overflow-hidden border border-gray-300">
+        <PythonRunner :code="ejemplo2Code" />
+      </div>
+    </section>
+
+    <!-- Ejemplo 3: Conversión Infijo a Postfijo -->
+    <section class="bg-white rounded-xl shadow-lg p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">
+        Ejemplo 3: Conversión de Expresiones Infijas a Postfijas
+      </h2>
+      <p class="text-gray-700 mb-4">
+        Algoritmo que utiliza pilas para convertir expresiones matemáticas de notación infija
+        (operador entre operandos) a notación postfija.
+      </p>
+      <div class="rounded-lg overflow-hidden border border-gray-300">
+        <PythonRunner :code="ejemplo3Code" />
+      </div>
+    </section>
+
+    <!-- Ejercicio Práctico -->
+    <section class="bg-white rounded-xl shadow-lg p-6">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-xl font-bold text-gray-800">
+          Ejercicio Práctico: Simulador de Llamadas a Función
         </h2>
-        <div class="text-gray-700 leading-relaxed space-y-3">
-          <p>
-            Las pilas ofrecen un conjunto limitado pero poderoso de operaciones que definen su comportamiento LIFO.
-            Cada operación actúa exclusivamente sobre el <strong>tope</strong> de la pila, manteniendo la integridad
-            de la estructura.
-          </p>
-          <p>
-            Estas operaciones son la base para implementar algoritmos complejos como evaluación de expresiones,
-            recorrido de árboles y gestión de llamadas a funciones.
-          </p>
-          <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
-            <strong>Importante:</strong> Todas las operaciones tienen complejidad O(1) - tiempo constante,
-            lo que las hace extremadamente eficientes para manipulación de datos.
-          </div>
-        </div>
-      </section>
+        <button @click="mostrarSolucion = !mostrarSolucion"
+          class="text-sm font-medium text-blue-600 hover:text-blue-800 bg-blue-50 px-3 py-1 rounded">
+          {{ mostrarSolucion ? 'Ocultar' : 'Mostrar' }} Solución
+        </button>
+      </div>
 
-      <!-- Conceptos Clave -->
-      <section class="bg-white rounded-xl shadow-lg p-6">
-        <h2 class="text-xl font-bold text-gray-800 mb-6 border-b pb-3">
-          Operaciones Clave
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
-            <div class="flex items-center mb-3">
-              <span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold mr-3">+</span>
-              <h3 class="font-bold text-gray-800">push(elemento)</h3>
-            </div>
-            <p class="text-gray-600 text-sm">
-              Inserta un elemento en el tope de la pila. Incrementa el tamaño en 1.
-            </p>
-          </div>
-
-          <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
-            <div class="flex items-center mb-3">
-              <span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold mr-3">X</span>
-              <h3 class="font-bold text-gray-800">pop()</h3>
-            </div>
-            <p class="text-gray-600 text-sm">
-              Elimina y retorna el elemento del tope. Lanza error si la pila está vacía.
-            </p>
-          </div>
-
-          <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
-            <div class="flex items-center mb-3">
-              <span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold mr-3">E</span>
-              <h3 class="font-bold text-gray-800">peek() / top()</h3>
-            </div>
-            <p class="text-gray-600 text-sm">
-              Retorna el elemento del tope sin eliminarlo. Operación de solo lectura.
-            </p>
-          </div>
-
-          <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
-            <div class="flex items-center mb-3">
-              <span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold mr-3">?</span>
-              <h3 class="font-bold text-gray-800">is_empty()</h3>
-            </div>
-            <p class="text-gray-600 text-sm">
-              Verifica si la pila no contiene elementos. Retorna True o False.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Ejemplo 1: Operaciones Básicas -->
-      <section class="bg-white rounded-xl shadow-lg p-6">
-        <h2 class="text-xl font-bold text-gray-800 mb-4">
-          Ejemplo 1: Implementación Completa con Todas las Operaciones
-        </h2>
-        <p class="text-gray-700 mb-4">
-          Clase Pila con todas las operaciones fundamentales implementadas, incluyendo manejo de errores
-          y métodos auxiliares para mayor funcionalidad.
+      <div class="bg-gray-50 p-4 rounded-lg mb-4">
+        <p class="text-gray-700 mb-3">
+          <strong>Problema:</strong> Las pilas se usan para gestionar llamadas a funciones en los lenguajes de
+          programación.
+          Implementa un simulador que trace la ejecución de funciones anidadas.
         </p>
-        <div class="rounded-lg overflow-hidden border border-gray-300">
-          <PythonRunner :code="ejemplo1Code" />
-        </div>
-      </section>
 
-      <!-- Ejemplo 2: Evaluación de Expresiones Postfijas -->
-      <section class="bg-white rounded-xl shadow-lg p-6">
-        <h2 class="text-xl font-bold text-gray-800 mb-4">
-          Ejemplo 2: Evaluación de Expresiones Postfijas (Notación Polaca Inversa)
-        </h2>
-        <p class="text-gray-700 mb-4">
-          Aplicación práctica de pilas para evaluar expresiones matemáticas en notación postfija,
-          donde los operadores siguen a sus operandos.
-        </p>
-        <div class="rounded-lg overflow-hidden border border-gray-300">
-          <PythonRunner :code="ejemplo2Code" />
+        <div class="text-sm text-gray-600 space-y-2">
+          <p><strong>Requisitos:</strong></p>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>Cuando se llama a una función, se apila en la pila de ejecución</li>
+            <li>Cuando una función termina, se desapila (pop)</li>
+            <li>Mostrar el estado de la pila en cada paso</li>
+            <li>Simular funciones que llaman a otras funciones (anidamiento)</li>
+            <li>Manejar funciones recursivas</li>
+          </ul>
         </div>
-      </section>
+      </div>
 
-      <!-- Ejemplo 3: Conversión Infijo a Postfijo -->
-      <section class="bg-white rounded-xl shadow-lg p-6">
-        <h2 class="text-xl font-bold text-gray-800 mb-4">
-          Ejemplo 3: Conversión de Expresiones Infijas a Postfijas
-        </h2>
-        <p class="text-gray-700 mb-4">
-          Algoritmo que utiliza pilas para convertir expresiones matemáticas de notación infija
-          (operador entre operandos) a notación postfija.
-        </p>
-        <div class="rounded-lg overflow-hidden border border-gray-300">
-          <PythonRunner :code="ejemplo3Code" />
+      <!-- Solución -->
+      <div v-if="mostrarSolucion" class="space-y-4">
+        <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+          <h3 class="font-bold text-green-800 mb-2">Solución Propuesta</h3>
+          <pre class="text-sm text-gray-800 font-mono overflow-x-auto whitespace-pre-wrap">{{ ejercicioSolucion }}</pre>
         </div>
-      </section>
-
-      <!-- Ejercicio Práctico -->
-      <section class="bg-white rounded-xl shadow-lg p-6">
-        <div class="flex justify-between items-center mb-4">
-          <h2 class="text-xl font-bold text-gray-800">
-            Ejercicio Práctico: Simulador de Llamadas a Función
-          </h2>
-          <button 
-            @click="mostrarSolucion = !mostrarSolucion"
-            class="text-sm font-medium text-blue-600 hover:text-blue-800 bg-blue-50 px-3 py-1 rounded"
-          >
-            {{ mostrarSolucion ? 'Ocultar' : 'Mostrar' }} Solución
-          </button>
-        </div>
-        
-        <div class="bg-gray-50 p-4 rounded-lg mb-4">
-          <p class="text-gray-700 mb-3">
-            <strong>Problema:</strong> Las pilas se usan para gestionar llamadas a funciones en los lenguajes de programación.
-            Implementa un simulador que trace la ejecución de funciones anidadas.
-          </p>
-          
-          <div class="text-sm text-gray-600 space-y-2">
-            <p><strong>Requisitos:</strong></p>
-            <ul class="list-disc pl-5 space-y-1">
-              <li>Cuando se llama a una función, se apila en la pila de ejecución</li>
-              <li>Cuando una función termina, se desapila (pop)</li>
-              <li>Mostrar el estado de la pila en cada paso</li>
-              <li>Simular funciones que llaman a otras funciones (anidamiento)</li>
-              <li>Manejar funciones recursivas</li>
-            </ul>
+        <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+          <h3 class="font-bold text-green-800 mb-2">Probar Solución</h3>
+          <div class="rounded-lg overflow-hidden border border-gray-300">
+            <PythonRunner :code="ejercicioSolucion" />
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- Solución -->
-        <div v-if="mostrarSolucion" class="space-y-4">
-          <div class="bg-green-50 border border-green-200 rounded-lg p-4">
-            <h3 class="font-bold text-green-800 mb-2">Solución Propuesta</h3>
-            <pre class="text-sm text-gray-800 font-mono overflow-x-auto whitespace-pre-wrap">{{ ejercicioSolucion }}</pre>
-          </div>
-          <div class="bg-green-50 border border-green-200 rounded-lg p-4">
-            <h3 class="font-bold text-green-800 mb-2">Probar Solución</h3>
-            <div class="rounded-lg overflow-hidden border border-gray-300">
-              <PythonRunner :code="ejercicioSolucion" />
-            </div>
-          </div>
+
+    <!-- Quiz -->
+    <QuizQuestions :preguntas="preguntas" titulo="Quiz descripción y características"></QuizQuestions>
+
+    <!-- Navegación -->
+    <footer class="pt-8 border-t border-gray-300">
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+        <button @click="navegarAnterior"
+          class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium w-full sm:w-auto">
+          Anterior: 2.1.1 Descripción
+        </button>
+        <div class="text-center text-sm text-gray-500">
+          Capítulo 2.1 • Pilas - Operaciones
         </div>
-      </section>
+        <button @click="navegarSiguiente"
+          class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium w-full sm:w-auto">
+          Siguiente: 2.1.3 Aplicaciones
+        </button>
+      </div>
+    </footer>
 
-      <!-- Quiz -->
-      <section class="bg-white rounded-xl shadow-lg p-6">
-        <h2 class="text-xl font-bold text-gray-800 mb-6 border-b pb-3">
-          Evaluación de Operaciones
-        </h2>
-        
-        <div class="space-y-6">
-          <!-- Pregunta 1 -->
-          <div class="p-4 border border-gray-200 rounded-lg">
-            <p class="font-medium text-gray-800 mb-3">
-              1. ¿Qué operación de pila retorna el elemento del tope sin eliminarlo?
-            </p>
-            <div class="space-y-2">
-              <label 
-                v-for="(opcion, index) in preguntas[0].opciones"
-                :key="index"
-                :class="[
-                  'flex items-center space-x-3 p-3 rounded-lg cursor-pointer transition-all',
-                  respuestasSeleccionadas[0] === index 
-                    ? (preguntas[0].respuestaCorrecta === index ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200')
-                    : 'bg-gray-50 hover:bg-gray-100'
-                ]"
-              >
-                <input 
-                  type="radio" 
-                  name="pregunta1"
-                  :value="index"
-                  v-model="respuestasSeleccionadas[0]"
-                  class="hidden"
-                >
-                <span class="flex-shrink-0 w-5 h-5 border-2 border-gray-300 rounded-full flex items-center justify-center">
-                  <span 
-                    v-if="respuestasSeleccionadas[0] === index" 
-                    :class="[
-                      'w-3 h-3 rounded-full',
-                      preguntas[0].respuestaCorrecta === index ? 'bg-green-500' : 'bg-red-500'
-                    ]"
-                  ></span>
-                </span>
-                <span class="text-gray-700">{{ opcion }}</span>
-              </label>
-            </div>
-          </div>
-
-          <!-- Pregunta 2 -->
-          <div class="p-4 border border-gray-200 rounded-lg">
-            <p class="font-medium text-gray-800 mb-3">
-              2. ¿Qué ocurre si se hace pop() en una pila vacía en una implementación correcta?
-            </p>
-            <div class="space-y-2">
-              <label 
-                v-for="(opcion, index) in preguntas[1].opciones"
-                :key="index"
-                :class="[
-                  'flex items-center space-x-3 p-3 rounded-lg cursor-pointer transition-all',
-                  respuestasSeleccionadas[1] === index 
-                    ? (preguntas[1].respuestaCorrecta === index ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200')
-                    : 'bg-gray-50 hover:bg-gray-100'
-                ]"
-              >
-                <input 
-                  type="radio" 
-                  name="pregunta2"
-                  :value="index"
-                  v-model="respuestasSeleccionadas[1]"
-                  class="hidden"
-                >
-                <span class="flex-shrink-0 w-5 h-5 border-2 border-gray-300 rounded-full flex items-center justify-center">
-                  <span 
-                    v-if="respuestasSeleccionadas[1] === index" 
-                    :class="[
-                      'w-3 h-3 rounded-full',
-                      preguntas[1].respuestaCorrecta === index ? 'bg-green-500' : 'bg-red-500'
-                    ]"
-                  ></span>
-                </span>
-                <span class="text-gray-700">{{ opcion }}</span>
-              </label>
-            </div>
-          </div>
-
-          <!-- Pregunta 3 -->
-          <div class="p-4 border border-gray-200 rounded-lg">
-            <p class="font-medium text-gray-800 mb-3">
-              3. En notación postfija "3 4 + 2 *", ¿cuál sería el resultado tras evaluarla con una pila?
-            </p>
-            <div class="space-y-2">
-              <label 
-                v-for="(opcion, index) in preguntas[2].opciones"
-                :key="index"
-                :class="[
-                  'flex items-center space-x-3 p-3 rounded-lg cursor-pointer transition-all',
-                  respuestasSeleccionadas[2] === index 
-                    ? (preguntas[2].respuestaCorrecta === index ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200')
-                    : 'bg-gray-50 hover:bg-gray-100'
-                ]"
-              >
-                <input 
-                  type="radio" 
-                  name="pregunta3"
-                  :value="index"
-                  v-model="respuestasSeleccionadas[2]"
-                  class="hidden"
-                >
-                <span class="flex-shrink-0 w-5 h-5 border-2 border-gray-300 rounded-full flex items-center justify-center">
-                  <span 
-                    v-if="respuestasSeleccionadas[2] === index" 
-                    :class="[
-                      'w-3 h-3 rounded-full',
-                      preguntas[2].respuestaCorrecta === index ? 'bg-green-500' : 'bg-red-500'
-                    ]"
-                  ></span>
-                </span>
-                <span class="text-gray-700">{{ opcion }}</span>
-              </label>
-            </div>
-          </div>
-
-          <!-- Botón de Validación -->
-          <button
-            @click="validarQuiz"
-            :disabled="!todasRespondidas"
-            :class="[
-              'w-full py-3 font-semibold rounded-lg transition-colors',
-              todasRespondidas 
-                ? 'bg-blue-600 hover:bg-blue-700 text-white' 
-                : 'bg-gray-200 text-gray-500 cursor-not-allowed'
-            ]"
-          >
-            Validar Respuestas
-          </button>
-
-          <!-- Resultado -->
-          <div 
-            v-if="resultadoQuiz.mostrar"
-            :class="[
-              'p-4 rounded-lg border',
-              resultadoQuiz.aprobado ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'
-            ]"
-          >
-            <div class="flex items-center justify-between mb-2">
-              <span class="font-bold" :class="resultadoQuiz.aprobado ? 'text-green-800' : 'text-red-800'">
-                {{ resultadoQuiz.aprobado ? '¡Correcto!' : 'Incorrecto' }}
-              </span>
-              <span class="font-mono font-bold" :class="resultadoQuiz.aprobado ? 'text-green-800' : 'text-red-800'">
-                {{ resultadoQuiz.puntaje }}/3
-              </span>
-            </div>
-            <p class="text-sm" :class="resultadoQuiz.aprobado ? 'text-green-700' : 'text-red-700'">
-              {{ resultadoQuiz.mensaje }}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Navegación -->
-      <footer class="pt-8 border-t border-gray-300">
-        <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
-          <button 
-            @click="navegarAnterior"
-            class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium w-full sm:w-auto"
-          >
-            Anterior: 2.1.1 Descripción
-          </button>
-          <div class="text-center text-sm text-gray-500">
-            Capítulo 2.1 • Pilas - Operaciones
-          </div>
-          <button 
-            @click="navegarSiguiente"
-            class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium w-full sm:w-auto"
-          >
-            Siguiente: 2.1.3 Aplicaciones
-          </button>
-        </div>
-      </footer>
-    </main>
   </div>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
+import HeaderTitle from "@/components/HeaderTitle.vue"
+import QuizQuestions from '@/components/QuizQuestions.vue'
 
 // Estado para mostrar solución
 const mostrarSolucion = ref(false)
@@ -891,90 +720,33 @@ if __name__ == "__main__":
 // Quiz
 const preguntas = [
   {
-    pregunta: "¿Qué operación de pila retorna el elemento del tope sin eliminarlo?",
+    texto: "¿Qué operación agrega un elemento a una pila?",
     opciones: [
-      "peek() o top()",
-      "pop()",
-      "push()",
-      "is_empty()"
-    ],
-    respuestaCorrecta: 0
+      { texto: "pop", correcta: false },
+      { texto: "push", correcta: true },
+      { texto: "peek", correcta: false },
+      { texto: "dequeue", correcta: false }
+    ]
   },
   {
-    pregunta: "¿Qué ocurre si se hace pop() en una pila vacía en una implementación correcta?",
+    texto: "¿Qué operación elimina el elemento superior de una pila?",
     opciones: [
-      "Se lanza una excepción IndexError o similar",
-      "Retorna None",
-      "Retorna 0",
-      "Crea un elemento vacío"
-    ],
-    respuestaCorrecta: 0
+      { texto: "push", correcta: false },
+      { texto: "remove", correcta: false },
+      { texto: "pop", correcta: true },
+      { texto: "insert", correcta: false }
+    ]
   },
   {
-    pregunta: "En notación postfija '3 4 + 2 *', ¿cuál sería el resultado tras evaluarla con una pila?",
+    texto: "¿Para qué sirve la operación peek (o top)?",
     opciones: [
-      "14",
-      "11",
-      "10",
-      "24"
-    ],
-    respuestaCorrecta: 0
+      { texto: "Eliminar el elemento superior", correcta: false },
+      { texto: "Ver el elemento superior sin eliminarlo", correcta: true },
+      { texto: "Vaciar la pila", correcta: false },
+      { texto: "Agregar un elemento", correcta: false }
+    ]
   }
 ]
 
-// Estado del quiz
-const respuestasSeleccionadas = ref([null, null, null])
-const resultadoQuiz = ref({
-  mostrar: false,
-  aprobado: false,
-  puntaje: 0,
-  mensaje: ""
-})
 
-// Computed para verificar si todas están respondidas
-const todasRespondidas = computed(() => {
-  return respuestasSeleccionadas.value.every(respuesta => respuesta !== null)
-})
-
-// Función para validar el quiz
-const validarQuiz = () => {
-  if (!todasRespondidas.value) {
-    resultadoQuiz.value = {
-      mostrar: true,
-      aprobado: false,
-      puntaje: 0,
-      mensaje: "Por favor responde todas las preguntas antes de validar."
-    }
-    return
-  }
-
-  let puntaje = 0
-  preguntas.forEach((pregunta, index) => {
-    if (respuestasSeleccionadas.value[index] === pregunta.respuestaCorrecta) {
-      puntaje++
-    }
-  })
-
-  const aprobado = puntaje >= 2 // 2 de 3 correctas
-
-  resultadoQuiz.value = {
-    mostrar: true,
-    aprobado,
-    puntaje,
-    mensaje: aprobado 
-      ? "¡Excelente! Has comprendido las operaciones fundamentales de las pilas."
-      : "Revisa los ejemplos de operaciones e inténtalo de nuevo."
-  }
-}
-
-// Funciones de navegación (simuladas)
-const navegarAnterior = () => {
-  alert("Navegando a capítulo anterior: 2.1.1 Descripción")
-  // En una aplicación real, esto iría al router
-}
-
-const navegarSiguiente = () => {
-  alert("Navegando a siguiente capítulo: 2.1.3 Aplicaciones")
-  // En una aplicación real, esto iría al router
-}
 </script>

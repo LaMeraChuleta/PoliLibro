@@ -1,188 +1,131 @@
 <template>
-  <div class="min-h-screen bg-gray-50 p-4 md:p-8">
+  <div class="container mx-auto px-4 py-6">
     <!-- Header -->
-    <header class="max-w-4xl mx-auto mb-8 md:mb-12 border-b border-gray-300 pb-6">
-      <div class="flex items-center gap-2 text-gray-600 mb-2">
-        <span class="font-mono text-sm">Unidad 3.1.1</span>
-        <span class="text-gray-400">•</span>
-        <span class="text-sm">Recursividad</span>
-      </div>
-      <h1 class="text-3xl md:text-4xl font-bold text-gray-800">
-        Introducción a la Recursividad
-      </h1>
+    <HeaderTitle numero="3" titulo="3.1.1 Descripción">
       <p class="mt-4 text-gray-600 max-w-3xl">
-        La recursividad es una técnica donde una función se llama a sí misma para resolver problemas dividiéndolos en subproblemas más pequeños. Es fundamental para algoritmos complejos y estructuras de datos jerárquicas.
+        La recursividad es una técnica donde una función se llama a sí misma para resolver problemas dividiéndolos en
+        subproblemas más pequeños. Es fundamental para algoritmos complejos y estructuras de datos jerárquicas.
       </p>
-    </header>
+    </HeaderTitle>
 
-    <!-- Contenido principal -->
-    <main class="max-w-4xl mx-auto space-y-8">
-      
-      <!-- Tarjetas de Conceptos Clave -->
-      <section>
-        <h2 class="text-2xl font-bold text-gray-800 mb-6">Conceptos Clave</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
-            <div class="text-2xl font-mono text-blue-600 mb-3">+</div>
-            <h3 class="font-bold text-gray-800 mb-2">Caso Base</h3>
-            <p class="text-gray-600 text-sm">
-              Condición que detiene la recursión. Sin caso base, la función se llamaría infinitamente.
-            </p>
-          </div>
-          
-          <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
-            <div class="text-2xl font-mono text-blue-600 mb-3">X</div>
-            <h3 class="font-bold text-gray-800 mb-2">Caso Recursivo</h3>
-            <p class="text-gray-600 text-sm">
-              Llamada a la misma función con parámetros más pequeños que acercan al caso base.
-            </p>
-          </div>
-          
-          <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
-            <div class="text-2xl font-mono text-blue-600 mb-3">E</div>
-            <h3 class="font-bold text-gray-800 mb-2">Pila de Llamadas</h3>
-            <p class="text-gray-600 text-sm">
-              Estructura que almacena llamadas pendientes. Cada llamada recursiva ocupa espacio en memoria.
-            </p>
-          </div>
-          
-          <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
-            <div class="text-2xl font-mono text-blue-600 mb-3">?</div>
-            <h3 class="font-bold text-gray-800 mb-2">Recursión vs Iteración</h3>
-            <p class="text-gray-600 text-sm">
-              Cualquier problema recursivo tiene solución iterativa, pero la recursión simplifica algunos problemas.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Ejemplos de Código -->
-      <section>
-        <h2 class="text-2xl font-bold text-gray-800 mb-6">Ejemplos Prácticos</h2>
-        
-        <div class="space-y-10">
-          <!-- Ejemplo 1 -->
-          <div>
-            <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 1: Factorial Recursivo</h3>
-            <div class="bg-gray-800 text-gray-200 p-4 rounded-t-lg font-mono text-sm">
-              # Cálculo factorial usando recursividad
-            </div>
-            <PythonRunner :code="ejemplo1Code" />
-          </div>
-          
-          <!-- Ejemplo 2 -->
-          <div>
-            <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 2: Conteo Regresivo</h3>
-            <div class="bg-gray-800 text-gray-200 p-4 rounded-t-lg font-mono text-sm">
-              # Visualización de la pila de llamadas recursivas
-            </div>
-            <PythonRunner :code="ejemplo2Code" />
-          </div>
-          
-          <!-- Ejemplo 3 -->
-          <div>
-            <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 3: Fibonacci Recursivo</h3>
-            <div class="bg-gray-800 text-gray-200 p-4 rounded-t-lg font-mono text-sm">
-              # Serie Fibonacci con y sin memoización
-            </div>
-            <PythonRunner :code="ejemplo3Code" />
-          </div>
-        </div>
-      </section>
-
-      <!-- Ejercicio Práctico -->
-      <section>
-        <h2 class="text-2xl font-bold text-gray-800 mb-6">Ejercicio: Suma de Dígitos</h2>
+    <!-- Tarjetas de Conceptos Clave -->
+    <section>
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">Conceptos Clave</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
-          <div class="mb-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-3">Suma recursiva de dígitos</h3>
-            <p class="text-gray-600 mb-4">
-              Implementa una función recursiva que sume los dígitos de un número entero positivo. Por ejemplo:
-            </p>
-            <ul class="list-disc pl-5 text-gray-600 space-y-2 mb-6">
-              <li><code>suma_digitos(123)</code> debe retornar 6 (1 + 2 + 3)</li>
-              <li><code>suma_digitos(9876)</code> debe retornar 30 (9 + 8 + 7 + 6)</li>
-              <li>El caso base debe ser cuando el número sea menor que 10</li>
-              <li>Debe funcionar para cualquier número positivo</li>
-            </ul>
-            <div class="bg-gray-100 p-4 rounded-lg">
-              <PythonRunner :code="ejercicioCode" />
-            </div>
-          </div>
-          
-          <button
-            @click="mostrarSolucion = !mostrarSolucion"
-            class="flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-800 transition-colors"
-          >
-            <span>{{ mostrarSolucion ? 'Ocultar' : 'Mostrar' }} solución</span>
-            <svg class="w-4 h-4" :class="{ 'rotate-180': mostrarSolucion }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-          
-          <div v-if="mostrarSolucion" class="mt-6 pt-6 border-t border-gray-200">
-            <h4 class="font-bold text-gray-800 mb-3">Solución Propuesta:</h4>
-            <PythonRunner :code="solucionCode" />
-          </div>
+          <div class="text-2xl font-mono text-blue-600 mb-3">+</div>
+          <h3 class="font-bold text-gray-800 mb-2">Caso Base</h3>
+          <p class="text-gray-600 text-sm">
+            Condición que detiene la recursión. Sin caso base, la función se llamaría infinitamente.
+          </p>
         </div>
-      </section>
 
-      <!-- Quiz -->
-      <section>
-        <h2 class="text-2xl font-bold text-gray-800 mb-6">Evaluación de Conceptos</h2>
         <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
-          <div v-for="(pregunta, index) in preguntas" :key="index" class="mb-8 last:mb-0">
-            <h3 class="font-semibold text-gray-800 mb-4">
-              {{ index + 1 }}. {{ pregunta.texto }}
-            </h3>
-            <div class="space-y-3">
-              <label
-                v-for="opcion in pregunta.opciones"
-                :key="opcion.valor"
-                class="flex items-center gap-3 p-3 rounded-lg border border-gray-300 hover:bg-gray-50 cursor-pointer"
-                :class="{
-                  'border-green-500 bg-green-50': respuestasSeleccionadas[index] === opcion.valor && opcion.correcta,
-                  'border-red-500 bg-red-50': respuestasSeleccionadas[index] === opcion.valor && !opcion.correcta && mostrarResultados
-                }"
-              >
-                <input
-                  type="radio"
-                  :name="'pregunta-' + index"
-                  :value="opcion.valor"
-                  v-model="respuestasSeleccionadas[index]"
-                  class="text-blue-600"
-                >
-                <span class="flex-1">{{ opcion.texto }}</span>
-              </label>
-            </div>
+          <div class="text-2xl font-mono text-blue-600 mb-3">X</div>
+          <h3 class="font-bold text-gray-800 mb-2">Caso Recursivo</h3>
+          <p class="text-gray-600 text-sm">
+            Llamada a la misma función con parámetros más pequeños que acercan al caso base.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
+          <div class="text-2xl font-mono text-blue-600 mb-3">E</div>
+          <h3 class="font-bold text-gray-800 mb-2">Pila de Llamadas</h3>
+          <p class="text-gray-600 text-sm">
+            Estructura que almacena llamadas pendientes. Cada llamada recursiva ocupa espacio en memoria.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
+          <div class="text-2xl font-mono text-blue-600 mb-3">?</div>
+          <h3 class="font-bold text-gray-800 mb-2">Recursión vs Iteración</h3>
+          <p class="text-gray-600 text-sm">
+            Cualquier problema recursivo tiene solución iterativa, pero la recursión simplifica algunos problemas.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ejemplos de Código -->
+    <section>
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">Ejemplos Prácticos</h2>
+
+      <div class="space-y-10">
+        <!-- Ejemplo 1 -->
+        <div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 1: Factorial Recursivo</h3>
+          <div class="bg-gray-800 text-gray-200 p-4 rounded-t-lg font-mono text-sm">
+            # Cálculo factorial usando recursividad
           </div>
-          
-          <div class="flex flex-col sm:flex-row gap-4 justify-between items-center pt-6 border-t border-gray-200">
-            <div v-if="mostrarResultados" class="text-lg font-semibold">
-              <span :class="puntuacion >= 2 ? 'text-green-600' : 'text-red-600'">
-                {{ puntuacion }}/{{ preguntas.length }} correctas
-              </span>
-            </div>
-            <div v-else class="text-gray-500">
-              Selecciona todas las respuestas
-            </div>
-            
-            <button
-              @click="validarQuiz"
-              class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Verificar Respuestas
-            </button>
+          <PythonRunner :code="ejemplo1Code" />
+        </div>
+
+        <!-- Ejemplo 2 -->
+        <div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 2: Conteo Regresivo</h3>
+          <div class="bg-gray-800 text-gray-200 p-4 rounded-t-lg font-mono text-sm">
+            # Visualización de la pila de llamadas recursivas
+          </div>
+          <PythonRunner :code="ejemplo2Code" />
+        </div>
+
+        <!-- Ejemplo 3 -->
+        <div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 3: Fibonacci Recursivo</h3>
+          <div class="bg-gray-800 text-gray-200 p-4 rounded-t-lg font-mono text-sm">
+            # Serie Fibonacci con y sin memoización
+          </div>
+          <PythonRunner :code="ejemplo3Code" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Ejercicio Práctico -->
+    <section>
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">Ejercicio: Suma de Dígitos</h2>
+      <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
+        <div class="mb-6">
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Suma recursiva de dígitos</h3>
+          <p class="text-gray-600 mb-4">
+            Implementa una función recursiva que sume los dígitos de un número entero positivo. Por ejemplo:
+          </p>
+          <ul class="list-disc pl-5 text-gray-600 space-y-2 mb-6">
+            <li><code>suma_digitos(123)</code> debe retornar 6 (1 + 2 + 3)</li>
+            <li><code>suma_digitos(9876)</code> debe retornar 30 (9 + 8 + 7 + 6)</li>
+            <li>El caso base debe ser cuando el número sea menor que 10</li>
+            <li>Debe funcionar para cualquier número positivo</li>
+          </ul>
+          <div class="bg-gray-100 p-4 rounded-lg">
+            <PythonRunner :code="ejercicioCode" />
           </div>
         </div>
-      </section>
-    </main>
+
+        <button @click="mostrarSolucion = !mostrarSolucion"
+          class="flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+          <span>{{ mostrarSolucion ? 'Ocultar' : 'Mostrar' }} solución</span>
+          <svg class="w-4 h-4" :class="{ 'rotate-180': mostrarSolucion }" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div v-if="mostrarSolucion" class="mt-6 pt-6 border-t border-gray-200">
+          <h4 class="font-bold text-gray-800 mb-3">Solución Propuesta:</h4>
+          <PythonRunner :code="solucionCode" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz -->
+    <QuizQuestions :preguntas="preguntas" titulo="Quiz descripción"></QuizQuestions>
+
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
+import HeaderTitle from "@/components/HeaderTitle.vue"
+import QuizQuestions from '@/components/QuizQuestions.vue'
 
 // Ejemplo 1: Factorial recursivo
 const ejemplo1Code = `# Cálculo factorial usando recursividad
@@ -500,48 +443,32 @@ print("Resultado final: 6")`
 // Quiz
 const preguntas = [
   {
-    texto: "¿Cuál es el propósito principal del caso base en una función recursiva?",
+    texto: "¿Qué es la recursividad en programación?",
     opciones: [
-      { texto: "Acelerar la ejecución de la función", valor: "a", correcta: false },
-      { texto: "Garantizar que la recursión eventualmente termine", valor: "b", correcta: true },
-      { texto: "Mejorar la legibilidad del código", valor: "c", correcta: false },
-      { texto: "Reducir el uso de memoria", valor: "d", correcta: false }
+      { texto: "Cuando una función se repite con un ciclo", correcta: false },
+      { texto: "Cuando una función se llama a sí misma", correcta: true },
+      { texto: "Cuando una función no devuelve valor", correcta: false },
+      { texto: "Cuando una función usa listas", correcta: false }
     ]
   },
   {
-    texto: "¿Qué ocurre en la pila de llamadas (call stack) durante una ejecución recursiva?",
+    texto: "¿Qué elemento es indispensable en una función recursiva?",
     opciones: [
-      { texto: "Cada llamada recursiva ocupa un nuevo espacio en la pila hasta llegar al caso base", valor: "a", correcta: true },
-      { texto: "Todas las llamadas comparten el mismo espacio de memoria", valor: "b", correcta: false },
-      { texto: "La pila se vacía después de cada llamada recursiva", valor: "c", correcta: false },
-      { texto: "Solo se almacenan las llamadas con parámetros pares", valor: "d", correcta: false }
+      { texto: "Una variable global", correcta: false },
+      { texto: "Un caso base", correcta: true },
+      { texto: "Un ciclo for", correcta: false },
+      { texto: "Una lista", correcta: false }
     ]
   },
   {
-    texto: "¿Por qué la implementación recursiva simple de Fibonacci (sin memoización) es ineficiente para valores grandes?",
+    texto: "¿Qué ocurre si una función recursiva no tiene caso base?",
     opciones: [
-      { texto: "Usa demasiada memoria para almacenar resultados intermedios", valor: "a", correcta: false },
-      { texto: "Calcula los mismos valores muchas veces debido a llamadas repetidas", valor: "b", correcta: true },
-      { texto: "No puede manejar números mayores que 1000", valor: "c", correcta: false },
-      { texto: "Requiere convertir todos los números a cadenas de texto", valor: "d", correcta: false }
+      { texto: "Se ejecuta una sola vez", correcta: false },
+      { texto: "Entra en recursión infinita", correcta: true },
+      { texto: "Devuelve siempre cero", correcta: false },
+      { texto: "Se convierte en iterativa", correcta: false }
     ]
   }
 ]
 
-const respuestasSeleccionadas = ref([null, null, null])
-const mostrarResultados = ref(false)
-
-const puntuacion = computed(() => {
-  return preguntas.reduce((total, pregunta, index) => {
-    const respuesta = respuestasSeleccionadas.value[index]
-    const opcionCorrecta = pregunta.opciones.find(op => op.correcta)
-    return total + (respuesta === opcionCorrecta?.valor ? 1 : 0)
-  }, 0)
-})
-
-const validarQuiz = () => {
-  mostrarResultados.value = true
-}
-
-const mostrarSolucion = ref(false)
 </script>

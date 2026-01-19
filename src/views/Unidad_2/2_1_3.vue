@@ -1,373 +1,201 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 p-4 md:p-8">
-    
+  <div class="container mx-auto px-4 py-6">
+
     <!-- Cabecera -->
-    <header class="max-w-4xl mx-auto mb-8 md:mb-12">
-      <div class="py-4 border-b border-gray-300">
-        <div class="flex items-center space-x-3 mb-2">
-          <span class="text-sm font-semibold text-blue-600 bg-blue-100 px-3 py-1 rounded-full">
-            Unidad 2
-          </span>
-          <span class="text-sm text-gray-500">Estructuras de Datos</span>
+    <HeaderTitle numero="2" titulo="2.1.3 Ejemplo de aplicación"></HeaderTitle>
+
+    <!-- Explicación Teórica -->
+    <section class="bg-white rounded-xl shadow-lg p-6 border border-gray-200 my-3">
+      <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+        <span class="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center mr-2">i</span>
+        Aplicaciones Prácticas de las Pilas
+      </h2>
+      <div class="text-gray-700 leading-relaxed space-y-3">
+        <p>
+          Las pilas no son solo una estructura teórica; tienen aplicaciones concretas en muchos
+          sistemas que usamos a diario. Desde el navegador web hasta los editores de texto,
+          las pilas trabajan detrás de escena para hacer posible funcionalidades esenciales.
+        </p>
+        <p>
+          En este capítulo exploraremos ejemplos reales donde las pilas resuelven problemas
+          específicos de manera eficiente y elegante, demostrando por qué son fundamentales
+          en ciencias de la computación.
+        </p>
+        <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+          <strong>Importante:</strong> Cada aplicación aprovecha el principio LIFO de forma
+          creativa para resolver problemas específicos del dominio.
         </div>
-        <div>
-          <h1 class="text-2xl md:text-3xl font-bold text-gray-800">
-            2.1 Pilas
-          </h1>
-          <p class="text-gray-600 mt-1">
-            2.1.3 Ejemplo de aplicación - Casos de uso reales
+      </div>
+    </section>
+
+    <!-- Conceptos Clave -->
+    <section class="bg-white rounded-xl shadow-lg p-6 my-3">
+      <h2 class="text-xl font-bold text-gray-800 mb-6 border-b pb-3">
+        Aplicaciones Clave
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
+          <div class="flex items-center mb-3">
+            <span
+              class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold mr-3">+</span>
+            <h3 class="font-bold text-gray-800">Navegación Web</h3>
+          </div>
+          <p class="text-gray-600 text-sm">
+            Historial de páginas visitadas. Botones "Atrás" y "Adelante" funcionan con pilas.
+          </p>
+        </div>
+
+        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
+          <div class="flex items-center mb-3">
+            <span
+              class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold mr-3">X</span>
+            <h3 class="font-bold text-gray-800">Editores de Texto</h3>
+          </div>
+          <p class="text-gray-600 text-sm">
+            Funciones Deshacer/Rehacer almacenan estados anteriores en pilas.
+          </p>
+        </div>
+
+        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
+          <div class="flex items-center mb-3">
+            <span
+              class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold mr-3">E</span>
+            <h3 class="font-bold text-gray-800">Llamadas a Función</h3>
+          </div>
+          <p class="text-gray-600 text-sm">
+            Pila de ejecución para gestionar llamadas y retornos en programas.
+          </p>
+        </div>
+
+        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
+          <div class="flex items-center mb-3">
+            <span
+              class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold mr-3">?</span>
+            <h3 class="font-bold text-gray-800">Algoritmos de Grafos</h3>
+          </div>
+          <p class="text-gray-600 text-sm">
+            DFS (Depth-First Search) utiliza pilas para explorar nodos.
           </p>
         </div>
       </div>
-    </header>
+    </section>
 
-    <!-- Contenido Principal - Una sola columna -->
-    <main class="max-w-4xl mx-auto space-y-8">
-      
-      <!-- Explicación Teórica -->
-      <section class="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
-        <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
-          <span class="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center mr-2">i</span>
-          Aplicaciones Prácticas de las Pilas
+    <!-- Ejemplo 1: Editor de Texto con Deshacer/Rehacer -->
+    <section class="bg-white rounded-xl shadow-lg p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">
+        Ejemplo 1: Editor de Texto Completo con Deshacer/Rehacer
+      </h2>
+      <p class="text-gray-700 mb-4">
+        Implementación de un editor de texto real con funciones avanzadas de deshacer/rehacer
+        que permiten navegar por el historial de cambios de manera ilimitada.
+      </p>
+      <div class="rounded-lg overflow-hidden border border-gray-300">
+        <PythonRunner :code="ejemplo1Code" />
+      </div>
+    </section>
+
+    <!-- Ejemplo 2: Navegador Web Avanzado -->
+    <section class="bg-white rounded-xl shadow-lg p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">
+        Ejemplo 2: Navegador Web con Historial y Marcadores
+      </h2>
+      <p class="text-gray-700 mb-4">
+        Simulación completa de un navegador web que incluye historial de navegación,
+        funcionalidad de marcadores y navegación por pestañas, todo implementado con pilas.
+      </p>
+      <div class="rounded-lg overflow-hidden border border-gray-300">
+        <PythonRunner :code="ejemplo2Code" />
+      </div>
+    </section>
+
+    <!-- Ejemplo 3: Sistema de Archivos con Navegación -->
+    <section class="bg-white rounded-xl shadow-lg p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">
+        Ejemplo 3: Explorador de Archivos con Historial de Navegación
+      </h2>
+      <p class="text-gray-700 mb-4">
+        Simulador de explorador de archivos que permite navegar entre directorios
+        manteniendo un historial de carpetas visitadas, similar al explorador de Windows o Finder.
+      </p>
+      <div class="rounded-lg overflow-hidden border border-gray-300">
+        <PythonRunner :code="ejemplo3Code" />
+      </div>
+    </section>
+
+    <!-- Ejercicio Práctico -->
+    <section class="bg-white rounded-xl shadow-lg p-6">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-xl font-bold text-gray-800">
+          Ejercicio Práctico: Calculadora Científica con Historial
         </h2>
-        <div class="text-gray-700 leading-relaxed space-y-3">
-          <p>
-            Las pilas no son solo una estructura teórica; tienen aplicaciones concretas en muchos 
-            sistemas que usamos a diario. Desde el navegador web hasta los editores de texto, 
-            las pilas trabajan detrás de escena para hacer posible funcionalidades esenciales.
-          </p>
-          <p>
-            En este capítulo exploraremos ejemplos reales donde las pilas resuelven problemas 
-            específicos de manera eficiente y elegante, demostrando por qué son fundamentales 
-            en ciencias de la computación.
-          </p>
-          <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
-            <strong>Importante:</strong> Cada aplicación aprovecha el principio LIFO de forma 
-            creativa para resolver problemas específicos del dominio.
-          </div>
-        </div>
-      </section>
+        <button @click="mostrarSolucion = !mostrarSolucion"
+          class="text-sm font-medium text-blue-600 hover:text-blue-800 bg-blue-50 px-3 py-1 rounded">
+          {{ mostrarSolucion ? 'Ocultar' : 'Mostrar' }} Solución
+        </button>
+      </div>
 
-      <!-- Conceptos Clave -->
-      <section class="bg-white rounded-xl shadow-lg p-6">
-        <h2 class="text-xl font-bold text-gray-800 mb-6 border-b pb-3">
-          Aplicaciones Clave
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
-            <div class="flex items-center mb-3">
-              <span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold mr-3">+</span>
-              <h3 class="font-bold text-gray-800">Navegación Web</h3>
-            </div>
-            <p class="text-gray-600 text-sm">
-              Historial de páginas visitadas. Botones "Atrás" y "Adelante" funcionan con pilas.
-            </p>
-          </div>
-
-          <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
-            <div class="flex items-center mb-3">
-              <span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold mr-3">X</span>
-              <h3 class="font-bold text-gray-800">Editores de Texto</h3>
-            </div>
-            <p class="text-gray-600 text-sm">
-              Funciones Deshacer/Rehacer almacenan estados anteriores en pilas.
-            </p>
-          </div>
-
-          <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
-            <div class="flex items-center mb-3">
-              <span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold mr-3">E</span>
-              <h3 class="font-bold text-gray-800">Llamadas a Función</h3>
-            </div>
-            <p class="text-gray-600 text-sm">
-              Pila de ejecución para gestionar llamadas y retornos en programas.
-            </p>
-          </div>
-
-          <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
-            <div class="flex items-center mb-3">
-              <span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold mr-3">?</span>
-              <h3 class="font-bold text-gray-800">Algoritmos de Grafos</h3>
-            </div>
-            <p class="text-gray-600 text-sm">
-              DFS (Depth-First Search) utiliza pilas para explorar nodos.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Ejemplo 1: Editor de Texto con Deshacer/Rehacer -->
-      <section class="bg-white rounded-xl shadow-lg p-6">
-        <h2 class="text-xl font-bold text-gray-800 mb-4">
-          Ejemplo 1: Editor de Texto Completo con Deshacer/Rehacer
-        </h2>
-        <p class="text-gray-700 mb-4">
-          Implementación de un editor de texto real con funciones avanzadas de deshacer/rehacer
-          que permiten navegar por el historial de cambios de manera ilimitada.
+      <div class="bg-gray-50 p-4 rounded-lg mb-4">
+        <p class="text-gray-700 mb-3">
+          <strong>Problema:</strong> Implementa una calculadora científica que mantenga un historial
+          de todas las operaciones realizadas, permitiendo navegar por ellas y reutilizar resultados anteriores.
         </p>
-        <div class="rounded-lg overflow-hidden border border-gray-300">
-          <PythonRunner :code="ejemplo1Code" />
-        </div>
-      </section>
 
-      <!-- Ejemplo 2: Navegador Web Avanzado -->
-      <section class="bg-white rounded-xl shadow-lg p-6">
-        <h2 class="text-xl font-bold text-gray-800 mb-4">
-          Ejemplo 2: Navegador Web con Historial y Marcadores
-        </h2>
-        <p class="text-gray-700 mb-4">
-          Simulación completa de un navegador web que incluye historial de navegación,
-          funcionalidad de marcadores y navegación por pestañas, todo implementado con pilas.
-        </p>
-        <div class="rounded-lg overflow-hidden border border-gray-300">
-          <PythonRunner :code="ejemplo2Code" />
+        <div class="text-sm text-gray-600 space-y-2">
+          <p><strong>Requisitos:</strong></p>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>Realizar operaciones básicas (+, -, *, /) y científicas (^, sqrt, sin, cos)</li>
+            <li>Almacenar cada operación en un historial (pila de operaciones)</li>
+            <li>Permitir navegar hacia atrás y adelante en el historial</li>
+            <li>Reutilizar resultados anteriores en nuevas operaciones</li>
+            <li>Mostrar el historial completo de operaciones</li>
+            <li>Implementar funciones deshacer/rehacer para operaciones</li>
+          </ul>
         </div>
-      </section>
+      </div>
 
-      <!-- Ejemplo 3: Sistema de Archivos con Navegación -->
-      <section class="bg-white rounded-xl shadow-lg p-6">
-        <h2 class="text-xl font-bold text-gray-800 mb-4">
-          Ejemplo 3: Explorador de Archivos con Historial de Navegación
-        </h2>
-        <p class="text-gray-700 mb-4">
-          Simulador de explorador de archivos que permite navegar entre directorios
-          manteniendo un historial de carpetas visitadas, similar al explorador de Windows o Finder.
-        </p>
-        <div class="rounded-lg overflow-hidden border border-gray-300">
-          <PythonRunner :code="ejemplo3Code" />
+      <!-- Solución -->
+      <div v-if="mostrarSolucion" class="space-y-4">
+        <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+          <h3 class="font-bold text-green-800 mb-2">Solución Propuesta</h3>
+          <pre class="text-sm text-gray-800 font-mono overflow-x-auto whitespace-pre-wrap">{{ ejercicioSolucion }}</pre>
         </div>
-      </section>
-
-      <!-- Ejercicio Práctico -->
-      <section class="bg-white rounded-xl shadow-lg p-6">
-        <div class="flex justify-between items-center mb-4">
-          <h2 class="text-xl font-bold text-gray-800">
-            Ejercicio Práctico: Calculadora Científica con Historial
-          </h2>
-          <button 
-            @click="mostrarSolucion = !mostrarSolucion"
-            class="text-sm font-medium text-blue-600 hover:text-blue-800 bg-blue-50 px-3 py-1 rounded"
-          >
-            {{ mostrarSolucion ? 'Ocultar' : 'Mostrar' }} Solución
-          </button>
-        </div>
-        
-        <div class="bg-gray-50 p-4 rounded-lg mb-4">
-          <p class="text-gray-700 mb-3">
-            <strong>Problema:</strong> Implementa una calculadora científica que mantenga un historial
-            de todas las operaciones realizadas, permitiendo navegar por ellas y reutilizar resultados anteriores.
-          </p>
-          
-          <div class="text-sm text-gray-600 space-y-2">
-            <p><strong>Requisitos:</strong></p>
-            <ul class="list-disc pl-5 space-y-1">
-              <li>Realizar operaciones básicas (+, -, *, /) y científicas (^, sqrt, sin, cos)</li>
-              <li>Almacenar cada operación en un historial (pila de operaciones)</li>
-              <li>Permitir navegar hacia atrás y adelante en el historial</li>
-              <li>Reutilizar resultados anteriores en nuevas operaciones</li>
-              <li>Mostrar el historial completo de operaciones</li>
-              <li>Implementar funciones deshacer/rehacer para operaciones</li>
-            </ul>
+        <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+          <h3 class="font-bold text-green-800 mb-2">Probar Solución</h3>
+          <div class="rounded-lg overflow-hidden border border-gray-300">
+            <PythonRunner :code="ejercicioSolucion" />
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- Solución -->
-        <div v-if="mostrarSolucion" class="space-y-4">
-          <div class="bg-green-50 border border-green-200 rounded-lg p-4">
-            <h3 class="font-bold text-green-800 mb-2">Solución Propuesta</h3>
-            <pre class="text-sm text-gray-800 font-mono overflow-x-auto whitespace-pre-wrap">{{ ejercicioSolucion }}</pre>
-          </div>
-          <div class="bg-green-50 border border-green-200 rounded-lg p-4">
-            <h3 class="font-bold text-green-800 mb-2">Probar Solución</h3>
-            <div class="rounded-lg overflow-hidden border border-gray-300">
-              <PythonRunner :code="ejercicioSolucion" />
-            </div>
-          </div>
+    <!-- Quiz -->
+    <QuizQuestions :preguntas="preguntas" titulo="Quiz ejemplo de aplicación"></QuizQuestions>
+
+    <!-- Navegación -->
+    <footer class="pt-8 border-t border-gray-300">
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+        <button @click="navegarAnterior"
+          class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium w-full sm:w-auto">
+          Anterior: 2.1.2 Operaciones
+        </button>
+        <div class="text-center text-sm text-gray-500">
+          Capítulo 2.1 • Pilas - Ejemplo de aplicación
         </div>
-      </section>
+        <button @click="navegarSiguiente"
+          class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium w-full sm:w-auto">
+          Siguiente: 2.2 Colas
+        </button>
+      </div>
+    </footer>
 
-      <!-- Quiz -->
-      <section class="bg-white rounded-xl shadow-lg p-6">
-        <h2 class="text-xl font-bold text-gray-800 mb-6 border-b pb-3">
-          Evaluación de Aplicaciones
-        </h2>
-        
-        <div class="space-y-6">
-          <!-- Pregunta 1 -->
-          <div class="p-4 border border-gray-200 rounded-lg">
-            <p class="font-medium text-gray-800 mb-3">
-              1. ¿Qué estructura de datos se utiliza típicamente para implementar la función "Deshacer" en editores de texto?
-            </p>
-            <div class="space-y-2">
-              <label 
-                v-for="(opcion, index) in preguntas[0].opciones"
-                :key="index"
-                :class="[
-                  'flex items-center space-x-3 p-3 rounded-lg cursor-pointer transition-all',
-                  respuestasSeleccionadas[0] === index 
-                    ? (preguntas[0].respuestaCorrecta === index ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200')
-                    : 'bg-gray-50 hover:bg-gray-100'
-                ]"
-              >
-                <input 
-                  type="radio" 
-                  name="pregunta1"
-                  :value="index"
-                  v-model="respuestasSeleccionadas[0]"
-                  class="hidden"
-                >
-                <span class="flex-shrink-0 w-5 h-5 border-2 border-gray-300 rounded-full flex items-center justify-center">
-                  <span 
-                    v-if="respuestasSeleccionadas[0] === index" 
-                    :class="[
-                      'w-3 h-3 rounded-full',
-                      preguntas[0].respuestaCorrecta === index ? 'bg-green-500' : 'bg-red-500'
-                    ]"
-                  ></span>
-                </span>
-                <span class="text-gray-700">{{ opcion }}</span>
-              </label>
-            </div>
-          </div>
-
-          <!-- Pregunta 2 -->
-          <div class="p-4 border border-gray-200 rounded-lg">
-            <p class="font-medium text-gray-800 mb-3">
-              2. En un navegador web, ¿cómo se implementan los botones "Atrás" y "Adelante"?
-            </p>
-            <div class="space-y-2">
-              <label 
-                v-for="(opcion, index) in preguntas[1].opciones"
-                :key="index"
-                :class="[
-                  'flex items-center space-x-3 p-3 rounded-lg cursor-pointer transition-all',
-                  respuestasSeleccionadas[1] === index 
-                    ? (preguntas[1].respuestaCorrecta === index ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200')
-                    : 'bg-gray-50 hover:bg-gray-100'
-                ]"
-              >
-                <input 
-                  type="radio" 
-                  name="pregunta2"
-                  :value="index"
-                  v-model="respuestasSeleccionadas[1]"
-                  class="hidden"
-                >
-                <span class="flex-shrink-0 w-5 h-5 border-2 border-gray-300 rounded-full flex items-center justify-center">
-                  <span 
-                    v-if="respuestasSeleccionadas[1] === index" 
-                    :class="[
-                      'w-3 h-3 rounded-full',
-                      preguntas[1].respuestaCorrecta === index ? 'bg-green-500' : 'bg-red-500'
-                    ]"
-                  ></span>
-                </span>
-                <span class="text-gray-700">{{ opcion }}</span>
-              </label>
-            </div>
-          </div>
-
-          <!-- Pregunta 3 -->
-          <div class="p-4 border border-gray-200 rounded-lg">
-            <p class="font-medium text-gray-800 mb-3">
-              3. ¿Qué algoritmo de recorrido de grafos utiliza explícitamente una pila para su implementación?
-            </p>
-            <div class="space-y-2">
-              <label 
-                v-for="(opcion, index) in preguntas[2].opciones"
-                :key="index"
-                :class="[
-                  'flex items-center space-x-3 p-3 rounded-lg cursor-pointer transition-all',
-                  respuestasSeleccionadas[2] === index 
-                    ? (preguntas[2].respuestaCorrecta === index ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200')
-                    : 'bg-gray-50 hover:bg-gray-100'
-                ]"
-              >
-                <input 
-                  type="radio" 
-                  name="pregunta3"
-                  :value="index"
-                  v-model="respuestasSeleccionadas[2]"
-                  class="hidden"
-                >
-                <span class="flex-shrink-0 w-5 h-5 border-2 border-gray-300 rounded-full flex items-center justify-center">
-                  <span 
-                    v-if="respuestasSeleccionadas[2] === index" 
-                    :class="[
-                      'w-3 h-3 rounded-full',
-                      preguntas[2].respuestaCorrecta === index ? 'bg-green-500' : 'bg-red-500'
-                    ]"
-                  ></span>
-                </span>
-                <span class="text-gray-700">{{ opcion }}</span>
-              </label>
-            </div>
-          </div>
-
-          <!-- Botón de Validación -->
-          <button
-            @click="validarQuiz"
-            :disabled="!todasRespondidas"
-            :class="[
-              'w-full py-3 font-semibold rounded-lg transition-colors',
-              todasRespondidas 
-                ? 'bg-blue-600 hover:bg-blue-700 text-white' 
-                : 'bg-gray-200 text-gray-500 cursor-not-allowed'
-            ]"
-          >
-            Validar Respuestas
-          </button>
-
-          <!-- Resultado -->
-          <div 
-            v-if="resultadoQuiz.mostrar"
-            :class="[
-              'p-4 rounded-lg border',
-              resultadoQuiz.aprobado ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'
-            ]"
-          >
-            <div class="flex items-center justify-between mb-2">
-              <span class="font-bold" :class="resultadoQuiz.aprobado ? 'text-green-800' : 'text-red-800'">
-                {{ resultadoQuiz.aprobado ? '¡Correcto!' : 'Incorrecto' }}
-              </span>
-              <span class="font-mono font-bold" :class="resultadoQuiz.aprobado ? 'text-green-800' : 'text-red-800'">
-                {{ resultadoQuiz.puntaje }}/3
-              </span>
-            </div>
-            <p class="text-sm" :class="resultadoQuiz.aprobado ? 'text-green-700' : 'text-red-700'">
-              {{ resultadoQuiz.mensaje }}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Navegación -->
-      <footer class="pt-8 border-t border-gray-300">
-        <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
-          <button 
-            @click="navegarAnterior"
-            class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium w-full sm:w-auto"
-          >
-            Anterior: 2.1.2 Operaciones
-          </button>
-          <div class="text-center text-sm text-gray-500">
-            Capítulo 2.1 • Pilas - Ejemplo de aplicación
-          </div>
-          <button 
-            @click="navegarSiguiente"
-            class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium w-full sm:w-auto"
-          >
-            Siguiente: 2.2 Colas
-          </button>
-        </div>
-      </footer>
-    </main>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
+import HeaderTitle from "@/components/HeaderTitle.vue"
+import QuizQuestions from '@/components/QuizQuestions.vue'
 
 // Estado para mostrar solución
 const mostrarSolucion = ref(false)
@@ -1185,90 +1013,33 @@ calc.mostrar_estado()`
 // Quiz
 const preguntas = [
   {
-    pregunta: "¿Qué estructura de datos se utiliza típicamente para implementar la función 'Deshacer' en editores de texto?",
+    texto: "¿Cuál es un uso común de las pilas en aplicaciones?",
     opciones: [
-      "Pila (Stack)",
-      "Cola (Queue)",
-      "Lista enlazada (Linked List)",
-      "Árbol binario (Binary Tree)"
-    ],
-    respuestaCorrecta: 0
+      { texto: "Gestión de impresoras", correcta: false },
+      { texto: "Deshacer acciones (Undo)", correcta: true },
+      { texto: "Almacenamiento de claves", correcta: false },
+      { texto: "Ordenar datos automáticamente", correcta: false }
+    ]
   },
   {
-    pregunta: "En un navegador web, ¿cómo se implementan los botones 'Atrás' y 'Adelante'?",
+    texto: "¿Qué aplicación utiliza pilas para manejar llamadas a funciones?",
     opciones: [
-      "Con dos pilas: una para páginas visitadas y otra para páginas adelante",
-      "Con una lista doblemente enlazada",
-      "Con un arreglo circular",
-      "Con una cola de prioridad"
-    ],
-    respuestaCorrecta: 0
+      { texto: "Colas", correcta: false },
+      { texto: "Memoria dinámica", correcta: false },
+      { texto: "Pila de llamadas", correcta: true },
+      { texto: "Listas enlazadas", correcta: false }
+    ]
   },
   {
-    pregunta: "¿Qué algoritmo de recorrido de grafos utiliza explícitamente una pila para su implementación?",
+    texto: "¿Qué ocurre al usar una pila para evaluar expresiones?",
     opciones: [
-      "DFS (Depth-First Search)",
-      "BFS (Breadth-First Search)",
-      "Dijkstra",
-      "A* (A-star)"
-    ],
-    respuestaCorrecta: 0
+      { texto: "Se procesan en orden aleatorio", correcta: false },
+      { texto: "Se respetan reglas LIFO", correcta: true },
+      { texto: "Se convierten en listas", correcta: false },
+      { texto: "Se ordenan automáticamente", correcta: false }
+    ]
   }
 ]
 
-// Estado del quiz
-const respuestasSeleccionadas = ref([null, null, null])
-const resultadoQuiz = ref({
-  mostrar: false,
-  aprobado: false,
-  puntaje: 0,
-  mensaje: ""
-})
 
-// Computed para verificar si todas están respondidas
-const todasRespondidas = computed(() => {
-  return respuestasSeleccionadas.value.every(respuesta => respuesta !== null)
-})
-
-// Función para validar el quiz
-const validarQuiz = () => {
-  if (!todasRespondidas.value) {
-    resultadoQuiz.value = {
-      mostrar: true,
-      aprobado: false,
-      puntaje: 0,
-      mensaje: "Por favor responde todas las preguntas antes de validar."
-    }
-    return
-  }
-
-  let puntaje = 0
-  preguntas.forEach((pregunta, index) => {
-    if (respuestasSeleccionadas.value[index] === pregunta.respuestaCorrecta) {
-      puntaje++
-    }
-  })
-
-  const aprobado = puntaje >= 2 // 2 de 3 correctas
-
-  resultadoQuiz.value = {
-    mostrar: true,
-    aprobado,
-    puntaje,
-    mensaje: aprobado 
-      ? "¡Excelente! Has comprendido las aplicaciones prácticas de las pilas."
-      : "Revisa los ejemplos de aplicación e inténtalo de nuevo."
-  }
-}
-
-// Funciones de navegación (simuladas)
-const navegarAnterior = () => {
-  alert("Navegando a capítulo anterior: 2.1.2 Operaciones")
-  // En una aplicación real, esto iría al router
-}
-
-const navegarSiguiente = () => {
-  alert("Navegando a siguiente capítulo: 2.2 Colas")
-  // En una aplicación real, esto iría al router
-}
 </script>

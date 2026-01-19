@@ -1,366 +1,193 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 p-4 md:p-8">
-    
+  <div class="container mx-auto px-4 py-6">
     <!-- Cabecera -->
-    <header class="max-w-4xl mx-auto mb-8 md:mb-12">
-      <div class="py-4 border-b border-gray-300">
-        <div class="flex items-center space-x-3 mb-2">
-          <span class="text-sm font-semibold text-blue-600 bg-blue-100 px-3 py-1 rounded-full">
-            Unidad 2
-          </span>
-          <span class="text-sm text-gray-500">Estructuras de Datos</span>
+    <HeaderTitle numero="2" titulo="2.1.1 Descripción"></HeaderTitle>
+
+    <!-- Explicación Teórica -->
+    <section class="bg-white rounded-xl shadow-lg p-6 border border-gray-200 my-5">
+      <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+        <span class="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center mr-2">i</span>
+        Qué es una Pila?
+      </h2>
+      <div class="text-gray-700 leading-relaxed space-y-3">
+        <p>
+          Una pila es una estructura de datos <strong>lineal</strong> que sigue el principio
+          <strong>LIFO (Last In, First Out)</strong>. Esto significa que el último elemento
+          en entrar es el primero en salir.
+        </p>
+        <p>
+          Imagina una pila de platos: solo puedes tomar el plato de arriba (el último que pusiste)
+          y solo puedes añadir nuevos platos encima de la pila.
+        </p>
+        <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+          <strong>Analogía:</strong> Como el historial de navegación de un navegador web.
+          La última página que visitaste es la primera a la que puedes volver con el botón "Atrás".
         </div>
-        <div>
-          <h1 class="text-2xl md:text-3xl font-bold text-gray-800">
-            2.1 Pilas
-          </h1>
-          <p class="text-gray-600 mt-1">
-            2.1.1 Descripción - Estructura LIFO
+      </div>
+    </section>
+
+    <!-- Conceptos Clave -->
+    <section class="bg-white rounded-xl shadow-lg p-6 my-5">
+      <h2 class="text-xl font-bold text-gray-800 mb-6 border-b pb-3">
+        Conceptos Clave
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
+          <div class="flex items-center mb-3">
+            <span
+              class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold mr-3">+</span>
+            <h3 class="font-bold text-gray-800">Push</h3>
+          </div>
+          <p class="text-gray-600 text-sm">
+            Añade un elemento a la parte superior de la pila. Operación de inserción.
+          </p>
+        </div>
+
+        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
+          <div class="flex items-center mb-3">
+            <span
+              class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold mr-3">X</span>
+            <h3 class="font-bold text-gray-800">Pop</h3>
+          </div>
+          <p class="text-gray-600 text-sm">
+            Elimina y retorna el elemento de la parte superior de la pila.
+          </p>
+        </div>
+
+        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
+          <div class="flex items-center mb-3">
+            <span
+              class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold mr-3">E</span>
+            <h3 class="font-bold text-gray-800">LIFO</h3>
+          </div>
+          <p class="text-gray-600 text-sm">
+            Last In, First Out. El último en entrar es el primero en salir.
+          </p>
+        </div>
+
+        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
+          <div class="flex items-center mb-3">
+            <span
+              class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold mr-3">?</span>
+            <h3 class="font-bold text-gray-800">Tope</h3>
+          </div>
+          <p class="text-gray-600 text-sm">
+            Parte superior de la pila. Único punto de acceso para operaciones.
           </p>
         </div>
       </div>
-    </header>
+    </section>
 
-    <!-- Contenido Principal - Una sola columna -->
-    <main class="max-w-4xl mx-auto space-y-8">
-      
-      <!-- Explicación Teórica -->
-      <section class="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
-        <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
-          <span class="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center mr-2">i</span>
-          Qué es una Pila?
+    <!-- Ejemplo 1 -->
+    <section class="bg-white rounded-xl shadow-lg p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">
+        Ejemplo 1: Implementación Básica de Pila
+      </h2>
+      <p class="text-gray-700 mb-4">
+        Implementación de una pila usando lista de Python con operaciones básicas: push, pop, peek.
+      </p>
+      <div class="rounded-lg overflow-hidden border border-gray-300">
+        <PythonRunner :code="ejemplo1Code" />
+      </div>
+    </section>
+
+    <!-- Ejemplo 2 -->
+    <section class="bg-white rounded-xl shadow-lg p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">
+        Ejemplo 2: Historial de Navegación Web
+      </h2>
+      <p class="text-gray-700 mb-4">
+        Simulación del historial de navegación usando pilas para las operaciones atrás/adelante.
+      </p>
+      <div class="rounded-lg overflow-hidden border border-gray-300">
+        <PythonRunner :code="ejemplo2Code" />
+      </div>
+    </section>
+
+    <!-- Ejemplo 3 -->
+    <section class="bg-white rounded-xl shadow-lg p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">
+        Ejemplo 3: Verificador de Paréntesis Balanceados
+      </h2>
+      <p class="text-gray-700 mb-4">
+        Uso de pilas para verificar si los paréntesis en una expresión están balanceados.
+      </p>
+      <div class="rounded-lg overflow-hidden border border-gray-300">
+        <PythonRunner :code="ejemplo3Code" />
+      </div>
+    </section>
+
+    <!-- Ejercicio Práctico -->
+    <section class="bg-white rounded-xl shadow-lg p-6">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-xl font-bold text-gray-800">
+          Ejercicio Práctico
         </h2>
-        <div class="text-gray-700 leading-relaxed space-y-3">
-          <p>
-            Una pila es una estructura de datos <strong>lineal</strong> que sigue el principio 
-            <strong>LIFO (Last In, First Out)</strong>. Esto significa que el último elemento 
-            en entrar es el primero en salir.
-          </p>
-          <p>
-            Imagina una pila de platos: solo puedes tomar el plato de arriba (el último que pusiste) 
-            y solo puedes añadir nuevos platos encima de la pila.
-          </p>
-          <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
-            <strong>Analogía:</strong> Como el historial de navegación de un navegador web. 
-            La última página que visitaste es la primera a la que puedes volver con el botón "Atrás".
-          </div>
-        </div>
-      </section>
+        <button @click="mostrarSolucion = !mostrarSolucion"
+          class="text-sm font-medium text-blue-600 hover:text-blue-800 bg-blue-50 px-3 py-1 rounded">
+          {{ mostrarSolucion ? 'Ocultar' : 'Mostrar' }} Solución
+        </button>
+      </div>
 
-      <!-- Conceptos Clave -->
-      <section class="bg-white rounded-xl shadow-lg p-6">
-        <h2 class="text-xl font-bold text-gray-800 mb-6 border-b pb-3">
-          Conceptos Clave
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
-            <div class="flex items-center mb-3">
-              <span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold mr-3">+</span>
-              <h3 class="font-bold text-gray-800">Push</h3>
-            </div>
-            <p class="text-gray-600 text-sm">
-              Añade un elemento a la parte superior de la pila. Operación de inserción.
-            </p>
-          </div>
-
-          <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
-            <div class="flex items-center mb-3">
-              <span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold mr-3">X</span>
-              <h3 class="font-bold text-gray-800">Pop</h3>
-            </div>
-            <p class="text-gray-600 text-sm">
-              Elimina y retorna el elemento de la parte superior de la pila.
-            </p>
-          </div>
-
-          <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
-            <div class="flex items-center mb-3">
-              <span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold mr-3">E</span>
-              <h3 class="font-bold text-gray-800">LIFO</h3>
-            </div>
-            <p class="text-gray-600 text-sm">
-              Last In, First Out. El último en entrar es el primero en salir.
-            </p>
-          </div>
-
-          <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
-            <div class="flex items-center mb-3">
-              <span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold mr-3">?</span>
-              <h3 class="font-bold text-gray-800">Tope</h3>
-            </div>
-            <p class="text-gray-600 text-sm">
-              Parte superior de la pila. Único punto de acceso para operaciones.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Ejemplo 1 -->
-      <section class="bg-white rounded-xl shadow-lg p-6">
-        <h2 class="text-xl font-bold text-gray-800 mb-4">
-          Ejemplo 1: Implementación Básica de Pila
-        </h2>
-        <p class="text-gray-700 mb-4">
-          Implementación de una pila usando lista de Python con operaciones básicas: push, pop, peek.
+      <div class="bg-gray-50 p-4 rounded-lg mb-4">
+        <p class="text-gray-700 mb-3">
+          <strong>Problema:</strong> Sistema de Deshacer/Rehacer para un Editor de Texto
         </p>
-        <div class="rounded-lg overflow-hidden border border-gray-300">
-          <PythonRunner :code="ejemplo1Code" />
-        </div>
-      </section>
 
-      <!-- Ejemplo 2 -->
-      <section class="bg-white rounded-xl shadow-lg p-6">
-        <h2 class="text-xl font-bold text-gray-800 mb-4">
-          Ejemplo 2: Historial de Navegación Web
-        </h2>
-        <p class="text-gray-700 mb-4">
-          Simulación del historial de navegación usando pilas para las operaciones atrás/adelante.
-        </p>
-        <div class="rounded-lg overflow-hidden border border-gray-300">
-          <PythonRunner :code="ejemplo2Code" />
+        <div class="text-sm text-gray-600 space-y-2">
+          <p><strong>Descripción:</strong> Implementa un editor de texto simple que permita:</p>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>Escribir texto (cada escritura se guarda como un estado)</li>
+            <li>Deshacer la última acción (volver al estado anterior)</li>
+            <li>Rehacer la acción deshecha (volver al estado posterior)</li>
+            <li>Mostrar el estado actual del texto</li>
+          </ul>
         </div>
-      </section>
+      </div>
 
-      <!-- Ejemplo 3 -->
-      <section class="bg-white rounded-xl shadow-lg p-6">
-        <h2 class="text-xl font-bold text-gray-800 mb-4">
-          Ejemplo 3: Verificador de Paréntesis Balanceados
-        </h2>
-        <p class="text-gray-700 mb-4">
-          Uso de pilas para verificar si los paréntesis en una expresión están balanceados.
-        </p>
-        <div class="rounded-lg overflow-hidden border border-gray-300">
-          <PythonRunner :code="ejemplo3Code" />
+      <!-- Solución -->
+      <div v-if="mostrarSolucion" class="space-y-4">
+        <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+          <h3 class="font-bold text-green-800 mb-2">Solución Propuesta</h3>
+          <pre class="text-sm text-gray-800 font-mono overflow-x-auto whitespace-pre-wrap">{{ ejercicioSolucion }}</pre>
         </div>
-      </section>
-
-      <!-- Ejercicio Práctico -->
-      <section class="bg-white rounded-xl shadow-lg p-6">
-        <div class="flex justify-between items-center mb-4">
-          <h2 class="text-xl font-bold text-gray-800">
-            Ejercicio Práctico
-          </h2>
-          <button 
-            @click="mostrarSolucion = !mostrarSolucion"
-            class="text-sm font-medium text-blue-600 hover:text-blue-800 bg-blue-50 px-3 py-1 rounded"
-          >
-            {{ mostrarSolucion ? 'Ocultar' : 'Mostrar' }} Solución
-          </button>
-        </div>
-        
-        <div class="bg-gray-50 p-4 rounded-lg mb-4">
-          <p class="text-gray-700 mb-3">
-            <strong>Problema:</strong> Sistema de Deshacer/Rehacer para un Editor de Texto
-          </p>
-          
-          <div class="text-sm text-gray-600 space-y-2">
-            <p><strong>Descripción:</strong> Implementa un editor de texto simple que permita:</p>
-            <ul class="list-disc pl-5 space-y-1">
-              <li>Escribir texto (cada escritura se guarda como un estado)</li>
-              <li>Deshacer la última acción (volver al estado anterior)</li>
-              <li>Rehacer la acción deshecha (volver al estado posterior)</li>
-              <li>Mostrar el estado actual del texto</li>
-            </ul>
+        <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+          <h3 class="font-bold text-green-800 mb-2">Probar Solución</h3>
+          <div class="rounded-lg overflow-hidden border border-gray-300">
+            <PythonRunner :code="ejercicioSolucion" />
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- Solución -->
-        <div v-if="mostrarSolucion" class="space-y-4">
-          <div class="bg-green-50 border border-green-200 rounded-lg p-4">
-            <h3 class="font-bold text-green-800 mb-2">Solución Propuesta</h3>
-            <pre class="text-sm text-gray-800 font-mono overflow-x-auto whitespace-pre-wrap">{{ ejercicioSolucion }}</pre>
-          </div>
-          <div class="bg-green-50 border border-green-200 rounded-lg p-4">
-            <h3 class="font-bold text-green-800 mb-2">Probar Solución</h3>
-            <div class="rounded-lg overflow-hidden border border-gray-300">
-              <PythonRunner :code="ejercicioSolucion" />
-            </div>
-          </div>
+    <!-- Quiz -->
+    <QuizQuestions :preguntas="preguntas" titulo="Quiz descripción y características"></QuizQuestions>
+
+
+    <!-- Navegación -->
+    <footer class="pt-8 border-t border-gray-300">
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+        <button @click="navegarAnterior"
+          class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium w-full sm:w-auto">
+          Anterior: 1.5 Conjuntos
+        </button>
+        <div class="text-center text-sm text-gray-500">
+          Capítulo 2.1 • Pilas - Descripción
         </div>
-      </section>
-
-      <!-- Quiz -->
-      <section class="bg-white rounded-xl shadow-lg p-6">
-        <h2 class="text-xl font-bold text-gray-800 mb-6 border-b pb-3">
-          Evaluación de Conocimientos
-        </h2>
-        
-        <div class="space-y-6">
-          <!-- Pregunta 1 -->
-          <div class="p-4 border border-gray-200 rounded-lg">
-            <p class="font-medium text-gray-800 mb-3">
-              1. En el contexto de pilas, ¿qué significa LIFO?
-            </p>
-            <div class="space-y-2">
-              <label 
-                v-for="(opcion, index) in preguntas[0].opciones"
-                :key="index"
-                :class="[
-                  'flex items-center space-x-3 p-3 rounded-lg cursor-pointer transition-all',
-                  respuestasSeleccionadas[0] === index 
-                    ? (preguntas[0].respuestaCorrecta === index ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200')
-                    : 'bg-gray-50 hover:bg-gray-100'
-                ]"
-              >
-                <input 
-                  type="radio" 
-                  name="pregunta1"
-                  :value="index"
-                  v-model="respuestasSeleccionadas[0]"
-                  class="hidden"
-                >
-                <span class="flex-shrink-0 w-5 h-5 border-2 border-gray-300 rounded-full flex items-center justify-center">
-                  <span 
-                    v-if="respuestasSeleccionadas[0] === index" 
-                    :class="[
-                      'w-3 h-3 rounded-full',
-                      preguntas[0].respuestaCorrecta === index ? 'bg-green-500' : 'bg-red-500'
-                    ]"
-                  ></span>
-                </span>
-                <span class="text-gray-700">{{ opcion }}</span>
-              </label>
-            </div>
-          </div>
-
-          <!-- Pregunta 2 -->
-          <div class="p-4 border border-gray-200 rounded-lg">
-            <p class="font-medium text-gray-800 mb-3">
-              2. ¿Cuál es la operación para añadir un elemento a una pila?
-            </p>
-            <div class="space-y-2">
-              <label 
-                v-for="(opcion, index) in preguntas[1].opciones"
-                :key="index"
-                :class="[
-                  'flex items-center space-x-3 p-3 rounded-lg cursor-pointer transition-all',
-                  respuestasSeleccionadas[1] === index 
-                    ? (preguntas[1].respuestaCorrecta === index ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200')
-                    : 'bg-gray-50 hover:bg-gray-100'
-                ]"
-              >
-                <input 
-                  type="radio" 
-                  name="pregunta2"
-                  :value="index"
-                  v-model="respuestasSeleccionadas[1]"
-                  class="hidden"
-                >
-                <span class="flex-shrink-0 w-5 h-5 border-2 border-gray-300 rounded-full flex items-center justify-center">
-                  <span 
-                    v-if="respuestasSeleccionadas[1] === index" 
-                    :class="[
-                      'w-3 h-3 rounded-full',
-                      preguntas[1].respuestaCorrecta === index ? 'bg-green-500' : 'bg-red-500'
-                    ]"
-                  ></span>
-                </span>
-                <span class="text-gray-700">{{ opcion }}</span>
-              </label>
-            </div>
-          </div>
-
-          <!-- Pregunta 3 -->
-          <div class="p-4 border border-gray-200 rounded-lg">
-            <p class="font-medium text-gray-800 mb-3">
-              3. ¿Qué método de lista de Python se usa para simular 'pop' en una pila?
-            </p>
-            <div class="space-y-2">
-              <label 
-                v-for="(opcion, index) in preguntas[2].opciones"
-                :key="index"
-                :class="[
-                  'flex items-center space-x-3 p-3 rounded-lg cursor-pointer transition-all',
-                  respuestasSeleccionadas[2] === index 
-                    ? (preguntas[2].respuestaCorrecta === index ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200')
-                    : 'bg-gray-50 hover:bg-gray-100'
-                ]"
-              >
-                <input 
-                  type="radio" 
-                  name="pregunta3"
-                  :value="index"
-                  v-model="respuestasSeleccionadas[2]"
-                  class="hidden"
-                >
-                <span class="flex-shrink-0 w-5 h-5 border-2 border-gray-300 rounded-full flex items-center justify-center">
-                  <span 
-                    v-if="respuestasSeleccionadas[2] === index" 
-                    :class="[
-                      'w-3 h-3 rounded-full',
-                      preguntas[2].respuestaCorrecta === index ? 'bg-green-500' : 'bg-red-500'
-                    ]"
-                  ></span>
-                </span>
-                <span class="text-gray-700">{{ opcion }}</span>
-              </label>
-            </div>
-          </div>
-
-          <!-- Botón de Validación -->
-          <button
-            @click="validarQuiz"
-            :disabled="!todasRespondidas"
-            :class="[
-              'w-full py-3 font-semibold rounded-lg transition-colors',
-              todasRespondidas 
-                ? 'bg-blue-600 hover:bg-blue-700 text-white' 
-                : 'bg-gray-200 text-gray-500 cursor-not-allowed'
-            ]"
-          >
-            Validar Respuestas
-          </button>
-
-          <!-- Resultado -->
-          <div 
-            v-if="resultadoQuiz.mostrar"
-            :class="[
-              'p-4 rounded-lg border',
-              resultadoQuiz.aprobado ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'
-            ]"
-          >
-            <div class="flex items-center justify-between mb-2">
-              <span class="font-bold" :class="resultadoQuiz.aprobado ? 'text-green-800' : 'text-red-800'">
-                {{ resultadoQuiz.aprobado ? '¡Correcto!' : 'Incorrecto' }}
-              </span>
-              <span class="font-mono font-bold" :class="resultadoQuiz.aprobado ? 'text-green-800' : 'text-red-800'">
-                {{ resultadoQuiz.puntaje }}/3
-              </span>
-            </div>
-            <p class="text-sm" :class="resultadoQuiz.aprobado ? 'text-green-700' : 'text-red-700'">
-              {{ resultadoQuiz.mensaje }}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Navegación -->
-      <footer class="pt-8 border-t border-gray-300">
-        <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
-          <button 
-            @click="navegarAnterior"
-            class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium w-full sm:w-auto"
-          >
-            Anterior: 1.5 Conjuntos
-          </button>
-          <div class="text-center text-sm text-gray-500">
-            Capítulo 2.1 • Pilas - Descripción
-          </div>
-          <button 
-            @click="navegarSiguiente"
-            class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium w-full sm:w-auto"
-          >
-            Siguiente: 2.1.2 Operaciones
-          </button>
-        </div>
-      </footer>
-    </main>
+        <button @click="navegarSiguiente"
+          class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium w-full sm:w-auto">
+          Siguiente: 2.1.2 Operaciones
+        </button>
+      </div>
+    </footer>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
+import HeaderTitle from "@/components/HeaderTitle.vue"
+import QuizQuestions from '@/components/QuizQuestions.vue'
 
 // Estado para mostrar solución
 const mostrarSolucion = ref(false)
@@ -648,90 +475,33 @@ editor.mostrar_estado()`
 // Quiz
 const preguntas = [
   {
-    pregunta: "En el contexto de pilas, ¿qué significa LIFO?",
+    texto: "¿Qué es una pila (stack) en programación?",
     opciones: [
-      "Last In, First Out - El último en entrar es el primero en salir",
-      "First In, First Out - El primero en entrar es el primero en salir",
-      "Last In, Last Out - El último en entrar es el último en salir",
-      "Linear Input, First Output - Entrada lineal, salida primero"
-    ],
-    respuestaCorrecta: 0
+      { texto: "Estructura FIFO", correcta: false },
+      { texto: "Estructura LIFO", correcta: true },
+      { texto: "Colección desordenada", correcta: false },
+      { texto: "Tipo de dato primitivo", correcta: false }
+    ]
   },
   {
-    pregunta: "¿Cuál es la operación para añadir un elemento a una pila?",
+    texto: "¿Qué operación se usa para insertar un elemento en una pila?",
     opciones: [
-      "Push",
-      "Pop",
-      "Peek",
-      "Insert"
-    ],
-    respuestaCorrecta: 0
+      { texto: "enqueue", correcta: false },
+      { texto: "push", correcta: true },
+      { texto: "insert", correcta: false },
+      { texto: "append", correcta: false }
+    ]
   },
   {
-    pregunta: "¿Qué método de lista de Python se usa para simular 'pop' en una pila?",
+    texto: "¿Dónde se agrega o elimina un elemento en una pila?",
     opciones: [
-      "pop()",
-      "remove()",
-      "delete()",
-      "extract()"
-    ],
-    respuestaCorrecta: 0
+      { texto: "Al inicio", correcta: false },
+      { texto: "En cualquier posición", correcta: false },
+      { texto: "En el tope", correcta: true },
+      { texto: "Al final y al inicio", correcta: false }
+    ]
   }
 ]
 
-// Estado del quiz
-const respuestasSeleccionadas = ref([null, null, null])
-const resultadoQuiz = ref({
-  mostrar: false,
-  aprobado: false,
-  puntaje: 0,
-  mensaje: ""
-})
 
-// Computed para verificar si todas están respondidas
-const todasRespondidas = computed(() => {
-  return respuestasSeleccionadas.value.every(respuesta => respuesta !== null)
-})
-
-// Función para validar el quiz
-const validarQuiz = () => {
-  if (!todasRespondidas.value) {
-    resultadoQuiz.value = {
-      mostrar: true,
-      aprobado: false,
-      puntaje: 0,
-      mensaje: "Por favor responde todas las preguntas antes de validar."
-    }
-    return
-  }
-
-  let puntaje = 0
-  preguntas.forEach((pregunta, index) => {
-    if (respuestasSeleccionadas.value[index] === pregunta.respuestaCorrecta) {
-      puntaje++
-    }
-  })
-
-  const aprobado = puntaje >= 2 // 2 de 3 correctas
-
-  resultadoQuiz.value = {
-    mostrar: true,
-    aprobado,
-    puntaje,
-    mensaje: aprobado 
-      ? "¡Excelente! Has comprendido los conceptos básicos de las pilas."
-      : "Revisa los conceptos clave e inténtalo de nuevo. Recuerda: LIFO, push y pop."
-  }
-}
-
-// Funciones de navegación (simuladas)
-const navegarAnterior = () => {
-  alert("Navegando a capítulo anterior: 1.5 Conjuntos")
-  // En una aplicación real, esto iría al router
-}
-
-const navegarSiguiente = () => {
-  alert("Navegando a siguiente capítulo: 2.1.2 Operaciones")
-  // En una aplicación real, esto iría al router
-}
 </script>

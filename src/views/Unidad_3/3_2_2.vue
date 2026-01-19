@@ -1,10 +1,10 @@
 <template>
-  <div class="max-w-6xl mx-auto p-6 space-y-8">
+  <div class="container mx-auto px-4 py-6">
     <!-- Header -->
-    <header class="border-b border-gray-200 pb-4">
-      <h1 class="text-3xl font-bold text-gray-800">Capítulo 3.2.2: Grafos Dirigidos y No Dirigidos</h1>
+    <HeaderTitle numero="3" titulo="3.2.2 Grafos dirigidos y no dirigidos">
       <p class="text-gray-600 mt-2">Diferencias fundamentales en la dirección de las relaciones entre vértices.</p>
-    </header>
+    </HeaderTitle>
+
 
     <!-- Explicación teórica -->
     <section class="bg-blue-50 p-6 rounded-lg">
@@ -111,68 +111,16 @@
     </section>
 
     <!-- Quiz -->
-    <section class="border border-gray-300 rounded-xl p-6">
-      <h2 class="text-2xl font-bold text-gray-800 mb-6">Evaluación de Conceptos</h2>
-      <div class="space-y-8">
-        <div v-for="(pregunta, index) in preguntas" :key="index" class="p-5 border border-gray-200 rounded-lg">
-          <h3 class="font-semibold text-gray-800 mb-4">Pregunta {{ index + 1 }}: {{ pregunta.texto }}</h3>
-          <div class="space-y-3">
-            <label
-              v-for="opcion in pregunta.opciones"
-              :key="opcion.letra"
-              class="flex items-center gap-3 p-3 border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer"
-              :class="{
-                'bg-green-100 border-green-400': respuestasSeleccionadas[index] === opcion.letra && opcion.correcta,
-                'bg-red-100 border-red-400': respuestasSeleccionadas[index] === opcion.letra && !opcion.correcta
-              }"
-            >
-              <input
-                type="radio"
-                :name="'pregunta' + index"
-                :value="opcion.letra"
-                v-model="respuestasSeleccionadas[index]"
-                class="h-4 w-4"
-              />
-              <span class="font-mono text-gray-700">{{ opcion.letra }}.</span>
-              <span>{{ opcion.texto }}</span>
-            </label>
-          </div>
-          <div v-if="respuestasSeleccionadas[index]" class="mt-4 text-sm font-medium">
-            <span v-if="respuestasSeleccionadas[index] === pregunta.respuestaCorrecta" class="text-green-700">
-              Correcto: {{ pregunta.explicacion }}
-            </span>
-            <span v-else class="text-red-700">
-              Incorrecto. La respuesta correcta es {{ pregunta.respuestaCorrecta }}.
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Resultado del quiz -->
-      <div class="mt-8 p-5 bg-gray-100 rounded-lg">
-        <div class="flex justify-between items-center">
-          <span class="text-gray-800 font-medium">Puntuación: {{ calcularPuntaje }}/3</span>
-          <button
-            @click="reiniciarQuiz"
-            class="px-4 py-2 border border-gray-400 text-gray-700 rounded-lg hover:bg-gray-200 transition"
-          >
-            Reiniciar quiz
-          </button>
-        </div>
-        <div class="w-full bg-gray-300 h-2 mt-3 rounded-full overflow-hidden">
-          <div
-            class="bg-green-600 h-full transition-all duration-500"
-            :style="{ width: `${(calcularPuntaje / 3) * 100}%` }"
-          ></div>
-        </div>
-      </div>
-    </section>
+    <QuizQuestions :preguntas="preguntas" titulo="Quiz grafos dirigidos y no dirigidos"></QuizQuestions>
   </div>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
+import HeaderTitle from "@/components/HeaderTitle.vue"
+import QuizQuestions from '@/components/QuizQuestions.vue'
+
 
 // Ejemplo 1: Comparación de representaciones
 const ejemplo1Code = `# Comparación entre grafo no dirigido y dirigido
@@ -365,49 +313,33 @@ const mostrarSolucion = ref(false)
 // Quiz
 const preguntas = [
   {
-    texto: "En un grafo dirigido que representa seguidores en Twitter, ¿qué significa la arista (A, B)?",
+    texto: "¿Cuál es la diferencia principal entre un grafo dirigido y uno no dirigido?",
     opciones: [
-      { letra: "A", texto: "A y B se siguen mutuamente", correcta: false },
-      { letra: "B", texto: "A sigue a B", correcta: true },
-      { letra: "C", texto: "B sigue a A", correcta: false },
-      { letra: "D", texto: "Ni A ni B se siguen", correcta: false }
-    ],
-    respuestaCorrecta: "B",
-    explicacion: "En un grafo dirigido, la arista (A, B) va de A a B, significando que A sigue a B."
+      { texto: "El dirigido tiene pesos", correcta: false },
+      { texto: "El dirigido tiene aristas con dirección", correcta: true },
+      { texto: "El no dirigido no tiene vértices", correcta: false },
+      { texto: "El no dirigido es siempre cíclico", correcta: false }
+    ]
   },
   {
-    texto: "¿Cuál es la diferencia fundamental entre la matriz de adyacencia de un grafo dirigido y no dirigido?",
+    texto: "¿Cómo se representa una arista en un grafo no dirigido?",
     opciones: [
-      { letra: "A", texto: "La matriz de un grafo dirigido es siempre cuadrada", correcta: false },
-      { letra: "B", texto: "La matriz de un grafo no dirigido es simétrica, la de dirigido no necesariamente", correcta: true },
-      { letra: "C", texto: "La matriz de un grafo dirigido solo contiene 0 y 1", correcta: false },
-      { letra: "D", texto: "No hay diferencia", correcta: false }
-    ],
-    respuestaCorrecta: "B",
-    explicacion: "En grafos no dirigidos, si hay arista entre i y j, hay arista entre j e i, por lo que la matriz es simétrica."
+      { texto: "Con una flecha", correcta: false },
+      { texto: "Como una conexión bidireccional", correcta: true },
+      { texto: "Solo de origen a destino", correcta: false },
+      { texto: "Con una lista ordenada", correcta: false }
+    ]
   },
   {
-    texto: "En un grafo dirigido, si el vértice V tiene grado de entrada 2 y grado de salida 3, ¿cuántas aristas están relacionadas con V?",
+    texto: "¿Cuál es un ejemplo típico de grafo dirigido?",
     opciones: [
-      { letra: "A", texto: "5 aristas", correcta: true },
-      { letra: "B", texto: "3 aristas", correcta: false },
-      { letra: "C", texto: "2 aristas", correcta: false },
-      { letra: "D", texto: "6 aristas", correcta: false }
-    ],
-    respuestaCorrecta: "A",
-    explicacion: "El grado total es la suma del grado de entrada y salida. Cada arista dirigida se cuenta solo una vez."
+      { texto: "Red social de amigos", correcta: false },
+      { texto: "Mapa de carreteras", correcta: false },
+      { texto: "Relaciones de seguimiento (follow)", correcta: true },
+      { texto: "Red eléctrica", correcta: false }
+    ]
   }
 ]
 
-const respuestasSeleccionadas = ref([null, null, null])
 
-const calcularPuntaje = computed(() => {
-  return respuestasSeleccionadas.value.reduce((puntaje, respuesta, index) => {
-    return puntaje + (respuesta === preguntas[index].respuestaCorrecta ? 1 : 0)
-  }, 0)
-})
-
-const reiniciarQuiz = () => {
-  respuestasSeleccionadas.value = [null, null, null]
-}
 </script>
