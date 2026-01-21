@@ -1,21 +1,10 @@
 <template>
-  <div class="min-h-screen bg-gray-50 p-4 md:p-8">
-    <!-- Header del capítulo -->
-    <header class="mb-8 border-b border-blue-200 pb-4">
-      <div class="flex items-center gap-2 text-sm text-blue-600 mb-2">
-        <span class="font-medium">Capítulo 5.2.2</span>
-        <span class="text-gray-400">|</span>
-        <span>Técnicas avanzadas</span>
-      </div>
-      <h1 class="text-3xl md:text-4xl font-bold text-gray-800">
-        Técnicas de solución para problemas de sincronización
-      </h1>
-      <p class="mt-3 text-gray-600 max-w-3xl">
-        Estrategias y patrones para resolver conflictos de acceso concurrente
-        en sistemas multi-hilo y distribuidos.
-      </p>
-    </header>
-
+    <div class="container mx-auto px-4 py-6 space-y-8">
+    <!-- Header -->
+    <HeaderTitle numero="5" titulo="5.2.2 Técnicas de solución">
+      <p class="mt-3 text-gray-600 max-w-3xl">Estrategias y patrones para resolver conflictos de acceso concurrente en sistemas multi-hilo y distribuidos.</p>
+    </HeaderTitle>   
+  
     <!-- Explicación teórica -->
     <section class="mb-10 bg-white rounded-xl shadow-sm p-6">
       <h2 class="text-2xl font-bold text-gray-800 mb-4">Fundamentos teóricos</h2>
@@ -165,128 +154,15 @@
     </section>
 
     <!-- Quiz -->
-    <section class="mb-10">
-      <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
-        <h2 class="text-2xl font-bold text-gray-800 mb-6">Evaluación de conocimientos</h2>
-        
-        <div class="space-y-6">
-          <!-- Pregunta 1 -->
-          <div>
-            <h3 class="font-semibold text-gray-800 mb-3">1. ¿Cuál es la función principal de un semáforo?</h3>
-            <div class="space-y-2">
-              <label
-                v-for="(opcion, index) in preguntas[0].opciones"
-                :key="index"
-                class="flex items-center p-3 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer"
-                :class="{
-                  'bg-green-50 border-green-200': respuestasSeleccionadas[0] === index && quizCompletado,
-                  'bg-red-50 border-red-200': respuestasSeleccionadas[0] !== preguntas[0].respuestaCorrecta && respuestasSeleccionadas[0] === index && quizCompletado
-                }"
-              >
-                <input
-                  type="radio"
-                  :name="'pregunta-1'"
-                  :value="index"
-                  v-model="respuestasSeleccionadas[0]"
-                  class="mr-3"
-                  :disabled="quizCompletado"
-                />
-                <span>{{ opcion }}</span>
-              </label>
-            </div>
-          </div>
-
-          <!-- Pregunta 2 -->
-          <div>
-            <h3 class="font-semibold text-gray-800 mb-3">2. ¿Qué garantiza la exclusión mutua?</h3>
-            <div class="space-y-2">
-              <label
-                v-for="(opcion, index) in preguntas[1].opciones"
-                :key="index"
-                class="flex items-center p-3 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer"
-                :class="{
-                  'bg-green-50 border-green-200': respuestasSeleccionadas[1] === index && quizCompletado,
-                  'bg-red-50 border-red-200': respuestasSeleccionadas[1] !== preguntas[1].respuestaCorrecta && respuestasSeleccionadas[1] === index && quizCompletado
-                }"
-              >
-                <input
-                  type="radio"
-                  :name="'pregunta-2'"
-                  :value="index"
-                  v-model="respuestasSeleccionadas[1]"
-                  class="mr-3"
-                  :disabled="quizCompletado"
-                />
-                <span>{{ opcion }}</span>
-              </label>
-            </div>
-          </div>
-
-          <!-- Pregunta 3 -->
-          <div>
-            <h3 class="font-semibold text-gray-800 mb-3">3. ¿Para qué se usan las variables de condición?</h3>
-            <div class="space-y-2">
-              <label
-                v-for="(opcion, index) in preguntas[2].opciones"
-                :key="index"
-                class="flex items-center p-3 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer"
-                :class="{
-                  'bg-green-50 border-green-200': respuestasSeleccionadas[2] === index && quizCompletado,
-                  'bg-red-50 border-red-200': respuestasSeleccionadas[2] !== preguntas[2].respuestaCorrecta && respuestasSeleccionadas[2] === index && quizCompletado
-                }"
-              >
-                <input
-                  type="radio"
-                  :name="'pregunta-3'"
-                  :value="index"
-                  v-model="respuestasSeleccionadas[2]"
-                  class="mr-3"
-                  :disabled="quizCompletado"
-                />
-                <span>{{ opcion }}</span>
-              </label>
-            </div>
-          </div>
-
-          <!-- Botón de validación -->
-          <div class="pt-4">
-            <button
-              @click="validarQuiz"
-              class="w-full px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
-              :class="{ 'opacity-50 cursor-not-allowed': quizCompletado }"
-              :disabled="quizCompletado"
-            >
-              {{ quizCompletado ? 'Quiz completado' : 'Validar respuestas' }}
-            </button>
-            
-            <!-- Resultado -->
-            <div v-if="quizCompletado" class="mt-4 p-4 rounded-lg" :class="{
-              'bg-green-50 text-green-800 border border-green-200': resultadoQuiz.correctas === preguntas.length,
-              'bg-yellow-50 text-yellow-800 border border-yellow-200': resultadoQuiz.correctas > 0 && resultadoQuiz.correctas < preguntas.length,
-              'bg-red-50 text-red-800 border border-red-200': resultadoQuiz.correctas === 0
-            }">
-              <p class="font-medium">
-                {{ resultadoQuiz.mensaje }}
-              </p>
-              <p class="mt-2 text-sm">
-                Respuestas correctas: {{ resultadoQuiz.correctas }}/{{ preguntas.length }}
-              </p>
-            </div>
-
-            <!-- Mensaje de error si no todas las preguntas están respondidas -->
-            <div v-if="errorQuiz" class="mt-4 p-4 bg-red-50 text-red-800 rounded-lg border border-red-200">
-              <p class="font-medium">Por favor responde todas las preguntas antes de validar.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <QuizQuestions :preguntas="preguntas" titulo="Quiz técnicas de solución"></QuizQuestions>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
+import HeaderTitle from "@/components/HeaderTitle.vue"
+import QuizQuestions from '@/components/QuizQuestions.vue'
 
 // Estado del ejercicio práctico
 const mostrarSolucion = ref(false)
@@ -571,68 +447,32 @@ for cajero_id in range(1, 4):
 // Configuración del quiz
 const preguntas = [
   {
-    pregunta: '¿Cuál es la función principal de un semáforo?',
+    texto: "¿Cuál es una técnica común para resolver problemas de sincronización?",
     opciones: [
-      'Controlar el acceso a recursos compartidos mediante conteo',
-      'Acelerar la ejecución de múltiples hilos',
-      'Gestionar la memoria de los procesos',
-      'Sincronizar relojes del sistema'
-    ],
-    respuestaCorrecta: 0
+      { texto: "Uso de semáforos y mutex", correcta: true },
+      { texto: "Eliminar los recursos compartidos", correcta: false },
+      { texto: "Aumentar la velocidad del reloj", correcta: false },
+      { texto: "Usar solo programación secuencial", correcta: false }
+    ]
   },
   {
-    pregunta: '¿Qué garantiza la exclusión mutua?',
+    texto: "¿Qué técnica evita que varios hilos entren a una sección crítica al mismo tiempo?",
     opciones: [
-      'Que todos los procesos terminen al mismo tiempo',
-      'Que solo un proceso ejecute su sección crítica a la vez',
-      'Que los recursos se distribuyan equitativamente',
-      'Que no haya deadlocks en el sistema'
-    ],
-    respuestaCorrecta: 1
+      { texto: "Exclusión mutua", correcta: true },
+      { texto: "Paralelismo", correcta: false },
+      { texto: "Recursividad", correcta: false },
+      { texto: "Iteración", correcta: false }
+    ]
   },
   {
-    pregunta: '¿Para qué se usan las variables de condición?',
+    texto: "¿Qué técnica ayuda a prevenir interbloqueos (deadlocks)?",
     opciones: [
-      'Para almacenar resultados temporales',
-      'Para que los hilos esperen por condiciones específicas',
-      'Para contar el número de hilos activos',
-      'Para determinar prioridades de ejecución'
-    ],
-    respuestaCorrecta: 1
+      { texto: "Evitar la espera circular", correcta: true },
+      { texto: "Aumentar la cantidad de hilos", correcta: false },
+      { texto: "Bloquear todos los recursos", correcta: false },
+      { texto: "Eliminar la sincronización", correcta: false }
+    ]
   }
 ]
 
-const respuestasSeleccionadas = ref([null, null, null])
-const quizCompletado = ref(false)
-const errorQuiz = ref(false)
-
-const resultadoQuiz = computed(() => {
-  if (!quizCompletado.value) return { correctas: 0, mensaje: '' }
-  
-  const correctas = preguntas.reduce((count, pregunta, index) => {
-    return count + (respuestasSeleccionadas.value[index] === pregunta.respuestaCorrecta ? 1 : 0)
-  }, 0)
-  
-  let mensaje = ''
-  if (correctas === preguntas.length) {
-    mensaje = '¡Excelente! Dominas los conceptos clave.'
-  } else if (correctas >= preguntas.length / 2) {
-    mensaje = 'Buen trabajo, pero revisa algunos conceptos.'
-  } else {
-    mensaje = 'Recomendamos repasar los conceptos del capítulo.'
-  }
-  
-  return { correctas, mensaje }
-})
-
-const validarQuiz = () => {
-  // Verificar que todas las preguntas estén respondidas
-  if (respuestasSeleccionadas.value.some(respuesta => respuesta === null)) {
-    errorQuiz.value = true
-    setTimeout(() => { errorQuiz.value = false }, 3000)
-    return
-  }
-  
-  quizCompletado.value = true
-}
 </script>

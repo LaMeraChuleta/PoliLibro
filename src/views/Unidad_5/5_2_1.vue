@@ -1,16 +1,9 @@
 <template>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <!-- Header del capítulo -->
-    <header class="mb-10">
-      <div class="flex items-center gap-3 mb-4">
-        <span class="text-3xl font-bold text-blue-600">5.2.1</span>
-        <div class="h-1 w-16 bg-blue-500"></div>
-      </div>
-      <h1 class="text-4xl font-bold text-gray-900 mb-4">Análisis de Problemas de Sincronización</h1>
-      <p class="text-xl text-gray-600">
-        Identificación, diagnóstico y resolución de problemas comunes en programación concurrente
-      </p>
-    </header>
+    <div class="container mx-auto px-4 py-6 space-y-8">
+    <!-- Header -->
+    <HeaderTitle numero="5" titulo="5.2.1 Análisis de problemas de sincronización">
+      <p class="text-xl text-gray-600">Identificación, diagnóstico y resolución de problemas comunes en programación concurrente</p>
+    </HeaderTitle>        
 
     <!-- Introducción teórica -->
     <section class="mb-12 bg-blue-50 rounded-2xl p-8">
@@ -167,66 +160,15 @@
     </section>
 
     <!-- Quiz de evaluación -->
-    <section class="bg-white rounded-2xl shadow-xl p-8 border border-gray-200">
-      <div class="flex items-center gap-3 mb-8">
-        <div class="w-10 h-10 bg-blue-600 text-white rounded-lg flex items-center justify-center font-bold">?</div>
-        <h2 class="text-2xl font-bold text-gray-900">Evaluación de Diagnóstico</h2>
-      </div>
-
-      <div class="space-y-8">
-        <div v-for="(pregunta, index) in preguntas" :key="index" class="border border-gray-200 rounded-xl p-6">
-          <h3 class="text-lg font-bold text-gray-900 mb-4">Pregunta {{ index + 1 }}: {{ pregunta.pregunta }}</h3>
-          
-          <div class="space-y-3">
-            <label
-              v-for="(opcion, oIndex) in pregunta.opciones"
-              :key="oIndex"
-              class="flex items-center gap-3 p-3 rounded-lg border border-gray-300 hover:bg-gray-50 cursor-pointer"
-              :class="{
-                'bg-green-50 border-green-500': respuestasSeleccionadas[index] === oIndex && respuestaCorrecta(index),
-                'bg-red-50 border-red-500': respuestasSeleccionadas[index] === oIndex && !respuestaCorrecta(index)
-              }"
-            >
-              <input
-                type="radio"
-                :name="'pregunta-' + index"
-                :value="oIndex"
-                v-model="respuestasSeleccionadas[index]"
-                class="w-5 h-5 text-blue-600"
-              />
-              <span class="text-gray-700">{{ opcion }}</span>
-            </label>
-          </div>
-
-          <div v-if="respuestasSeleccionadas[index] !== null" class="mt-4 p-4 rounded-lg" :class="{
-            'bg-green-50 text-green-800': respuestaCorrecta(index),
-            'bg-red-50 text-red-800': !respuestaCorrecta(index)
-          }">
-            <p class="font-medium">
-              {{ respuestaCorrecta(index) ? 'Correcto' : 'Incorrecto' }}: {{ pregunta.explicacion }}
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-8 pt-6 border-t border-gray-200">
-        <div class="flex items-center justify-between">
-          <span class="text-gray-700">Puntuación: {{ calcularPuntuacion() }}/3</span>
-          <button
-            @click="reiniciarQuiz"
-            class="px-6 py-2 bg-gray-200 text-gray-800 font-medium rounded-lg hover:bg-gray-300 transition-colors"
-          >
-            Reiniciar Quiz
-          </button>
-        </div>
-      </div>
-    </section>
+    <QuizQuestions :preguntas="preguntas" titulo="Quiz análisis de problemas de sincronización"></QuizQuestions>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
+import HeaderTitle from "@/components/HeaderTitle.vue"
+import QuizQuestions from '@/components/QuizQuestions.vue'
 
 const mostrarSolucion = ref(false)
 
@@ -991,53 +933,32 @@ if __name__ == "__main__":
 // Quiz
 const preguntas = [
   {
-    pregunta: "¿Cuál es el síntoma principal que indica una condición de carrera en un contador compartido?",
+    texto: "¿Qué es un problema de sincronización?",
     opciones: [
-      "El valor final es consistentemente menor que el valor esperado",
-      "El programa siempre se bloquea después de unos segundos",
-      "Todos los hilos terminan inmediatamente",
-      "El valor del contador disminuye en lugar de aumentar"
-    ],
-    respuestaCorrecta: 0,
-    explicacion: "En condiciones de carrera, los incrementos se pierden cuando múltiples hilos leen el mismo valor y escriben el mismo valor incrementado, resultando en un total menor al esperado."
+      { texto: "Un error por acceso concurrente no controlado a recursos compartidos", correcta: true },
+      { texto: "Un fallo de compilación", correcta: false },
+      { texto: "Un problema de hardware", correcta: false },
+      { texto: "Un error de sintaxis", correcta: false }
+    ]
   },
   {
-    pregunta: "¿Cuál de estas estrategias es más efectiva para prevenir deadlocks?",
+    texto: "¿Qué problema ocurre cuando dos hilos modifican un dato al mismo tiempo?",
     opciones: [
-      "Establecer un orden consistente para adquirir recursos compartidos",
-      "Aumentar el número de hilos en el sistema",
-      "Usar únicamente operaciones no bloqueantes",
-      "Reducir el tiempo de sleep entre operaciones"
-    ],
-    respuestaCorrecta: 0,
-    explicacion: "Mantener un orden consistente en la adquisición de recursos previene circular waits, que es una de las condiciones necesarias para que ocurra un deadlock."
+      { texto: "Condición de carrera", correcta: true },
+      { texto: "Interbloqueo", correcta: false },
+      { texto: "Inanición", correcta: false },
+      { texto: "Paralelismo", correcta: false }
+    ]
   },
   {
-    pregunta: "¿Cómo se diferencia un livelock de un deadlock en términos de actividad del sistema?",
+    texto: "¿Cuál es una forma común de prevenir problemas de sincronización?",
     opciones: [
-      "En livelock los hilos están activos pero no progresan, en deadlock están bloqueados",
-      "En deadlock los hilos producen output constantemente, en livelock no",
-      "Livelock siempre causa crash del programa, deadlock no",
-      "Deadlock es detectable inmediatamente, livelock nunca se detecta"
-    ],
-    respuestaCorrecta: 0,
-    explicacion: "En livelock, los hilos continúan ejecutándose y cambiando de estado, pero no logran progresar en su tarea. En deadlock, los hilos están completamente bloqueados esperando recursos."
+      { texto: "Usar semáforos o mutex", correcta: true },
+      { texto: "Evitar el uso de hilos", correcta: false },
+      { texto: "Incrementar la velocidad del CPU", correcta: false },
+      { texto: "Duplicar variables", correcta: false }
+    ]
   }
 ]
 
-const respuestasSeleccionadas = ref([null, null, null])
-
-const respuestaCorrecta = (index) => {
-  return respuestasSeleccionadas.value[index] === preguntas[index].respuestaCorrecta
-}
-
-const calcularPuntuacion = () => {
-  return preguntas.reduce((score, pregunta, index) => {
-    return score + (respuestaCorrecta(index) ? 1 : 0)
-  }, 0)
-}
-
-const reiniciarQuiz = () => {
-  respuestasSeleccionadas.value = [null, null, null]
-}
 </script>

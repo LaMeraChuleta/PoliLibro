@@ -1,10 +1,9 @@
 <template>
-  <div class="max-w-6xl mx-auto p-6 space-y-8">
+    <div class="container mx-auto px-4 py-6 space-y-8">
     <!-- Header -->
-    <header class="border-b border-gray-200 pb-4">
-      <h1 class="text-3xl font-bold text-gray-800">Capítulo 5.1.4: Sincronización: Semáforos</h1>
-      <p class="text-gray-600 mt-2">Control de acceso a recursos compartidos limitados en programación concurrente.</p>
-    </header>
+    <HeaderTitle numero="5" titulo="5.1.4 Sincronización: semáforos">
+      <p class="text-gray-600 mt-2">Diferencias fundamentales entre dos modelos de concurrencia y cuándo usar cada uno.</p>
+    </HeaderTitle>   
 
     <!-- Explicación teórica -->
     <section class="bg-blue-50 p-6 rounded-lg">
@@ -117,68 +116,15 @@
     </section>
 
     <!-- Quiz -->
-    <section class="border border-gray-300 rounded-xl p-6">
-      <h2 class="text-2xl font-bold text-gray-800 mb-6">Evaluación de Conceptos</h2>
-      <div class="space-y-8">
-        <div v-for="(pregunta, index) in preguntas" :key="index" class="p-5 border border-gray-200 rounded-lg">
-          <h3 class="font-semibold text-gray-800 mb-4">Pregunta {{ index + 1 }}: {{ pregunta.texto }}</h3>
-          <div class="space-y-3">
-            <label
-              v-for="opcion in pregunta.opciones"
-              :key="opcion.letra"
-              class="flex items-center gap-3 p-3 border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer"
-              :class="{
-                'bg-green-100 border-green-400': respuestasSeleccionadas[index] === opcion.letra && opcion.correcta,
-                'bg-red-100 border-red-400': respuestasSeleccionadas[index] === opcion.letra && !opcion.correcta
-              }"
-            >
-              <input
-                type="radio"
-                :name="'pregunta' + index"
-                :value="opcion.letra"
-                v-model="respuestasSeleccionadas[index]"
-                class="h-4 w-4"
-              />
-              <span class="font-mono text-gray-700">{{ opcion.letra }}.</span>
-              <span>{{ opcion.texto }}</span>
-            </label>
-          </div>
-          <div v-if="respuestasSeleccionadas[index]" class="mt-4 text-sm font-medium">
-            <span v-if="respuestasSeleccionadas[index] === pregunta.respuestaCorrecta" class="text-green-700">
-              Correcto: {{ pregunta.explicacion }}
-            </span>
-            <span v-else class="text-red-700">
-              Incorrecto. La respuesta correcta es {{ pregunta.respuestaCorrecta }}.
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Resultado del quiz -->
-      <div class="mt-8 p-5 bg-gray-100 rounded-lg">
-        <div class="flex justify-between items-center">
-          <span class="text-gray-800 font-medium">Puntuación: {{ calcularPuntaje }}/3</span>
-          <button
-            @click="reiniciarQuiz"
-            class="px-4 py-2 border border-gray-400 text-gray-700 rounded-lg hover:bg-gray-200 transition"
-          >
-            Reiniciar quiz
-          </button>
-        </div>
-        <div class="w-full bg-gray-300 h-2 mt-3 rounded-full overflow-hidden">
-          <div
-            class="bg-green-600 h-full transition-all duration-500"
-            :style="{ width: `${(calcularPuntaje / 3) * 100}%` }"
-          ></div>
-        </div>
-      </div>
-    </section>
+    <QuizQuestions :preguntas="preguntas" titulo="Quiz sincronización: semáforos"></QuizQuestions>
   </div>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
+import HeaderTitle from "@/components/HeaderTitle.vue"
+import QuizQuestions from '@/components/QuizQuestions.vue'
 
 // Ejemplo 1: Semáforo básico
 const ejemplo1Code = `import threading
@@ -422,7 +368,6 @@ def comparacion_semaforo_mutex():
 demostrar_semaforo_basico()
 ejemplo_recursos_especificos()
 comparacion_semaforo_mutex()`
-
 
 // Ejemplo 2: Sistema de conexiones a base de datos
 const ejemplo2Code = `import threading
@@ -671,7 +616,6 @@ print("2. Control de tasa límite (rate limiting)")
 print("3. Sincronización productor-consumidor")
 print("4. Control de acceso a secciones críticas con múltiples permisos")
 print("5. Implementación de barreras y otras primitivas de sincronización")`
-
 
 // Ejemplo 3: Productor-consumidor con semáforos
 const ejemplo3Code = `import threading
@@ -1010,7 +954,6 @@ print("""
    • Múltiples lectores, un escritor
    • Semáforos para controlar acceso
 """)`
-
 
 // Ejercicio práctico - Solución
 const solucionCode = `import threading
@@ -1464,49 +1407,32 @@ const mostrarSolucion = ref(false)
 // Quiz
 const preguntas = [
   {
-    texto: "¿Cuál es la principal diferencia entre un semáforo y un mutex (Lock)?",
+    texto: "¿Qué es un semáforo en programación concurrente?",
     opciones: [
-      { letra: "A", texto: "Un mutex puede tener valores mayores que 1, un semáforo solo 0 o 1", correcta: false },
-      { letra: "B", texto: "Un semáforo puede permitir múltiples accesos simultáneos, un mutex solo uno", correcta: true },
-      { letra: "C", texto: "Los semáforos son más rápidos que los mutex", correcta: false },
-      { letra: "D", texto: "Los mutex se usan para I/O, los semáforos para CPU", correcta: false }
-    ],
-    respuestaCorrecta: "B",
-    explicacion: "Un semáforo mantiene un contador que puede permitir N accesos simultáneos, mientras que un mutex permite solo un acceso a la vez (exclusión mutua)."
+      { texto: "Un mecanismo de sincronización", correcta: true },
+      { texto: "Un tipo de hilo", correcta: false },
+      { texto: "Un proceso del sistema operativo", correcta: false },
+      { texto: "Una estructura de datos lineal", correcta: false }
+    ]
   },
   {
-    texto: "¿Qué hace el método acquire() en un semáforo?",
+    texto: "¿Para qué se utilizan los semáforos?",
     opciones: [
-      { letra: "A", texto: "Incrementa el contador del semáforo", correcta: false },
-      { letra: "B", texto: "Decrementa el contador y espera si es necesario", correcta: true },
-      { letra: "C", texto: "Libera todos los recursos retenidos", correcta: false },
-      { letra: "D", texto: "Crea un nuevo hilo de ejecución", correcta: false }
-    ],
-    respuestaCorrecta: "B",
-    explicacion: "acquire() decrementa el contador del semáforo. Si el contador llega a 0, el hilo espera hasta que otro hilo llame a release()."
+      { texto: "Controlar el acceso a recursos compartidos", correcta: true },
+      { texto: "Crear procesos", correcta: false },
+      { texto: "Eliminar condiciones de bucle", correcta: false },
+      { texto: "Optimizar memoria", correcta: false }
+    ]
   },
   {
-    texto: "¿Cuál es un caso de uso típico para semáforos en Python?",
+    texto: "¿Qué ocurre cuando un semáforo está en cero?",
     opciones: [
-      { letra: "A", texto: "Implementar bucles for anidados", correcta: false },
-      { letra: "B", texto: "Gestionar un pool limitado de conexiones a base de datos", correcta: true },
-      { letra: "C", texto: "Ordenar listas de números", correcta: false },
-      { letra: "D", texto: "Crear interfaces gráficas de usuario", correcta: false }
-    ],
-    respuestaCorrecta: "B",
-    explicacion: "Los semáforos son ideales para gestionar pools de recursos limitados como conexiones a bases de datos, donde se quiere limitar el número de conexiones simultáneas."
+      { texto: "El hilo se bloquea hasta que el semáforo se libere", correcta: true },
+      { texto: "El hilo continúa normalmente", correcta: false },
+      { texto: "El recurso se elimina", correcta: false },
+      { texto: "Se reinicia el programa", correcta: false }
+    ]
   }
 ]
 
-const respuestasSeleccionadas = ref([null, null, null])
-
-const calcularPuntaje = computed(() => {
-  return respuestasSeleccionadas.value.reduce((puntaje, respuesta, index) => {
-    return puntaje + (respuesta === preguntas[index].respuestaCorrecta ? 1 : 0)
-  }, 0)
-})
-
-const reiniciarQuiz = () => {
-  respuestasSeleccionadas.value = [null, null, null]
-}
 </script>

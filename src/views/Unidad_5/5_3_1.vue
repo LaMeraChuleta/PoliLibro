@@ -1,20 +1,9 @@
 <template>
-  <div class="min-h-screen bg-gray-50 p-4 md:p-8">
-    <!-- Header del capítulo -->
-    <header class="mb-8 border-b border-blue-200 pb-4">
-      <div class="flex items-center gap-2 text-sm text-blue-600 mb-2">
-        <span class="font-medium">Capítulo 5.3.1</span>
-        <span class="text-gray-400">|</span>
-        <span>Bibliotecas especializadas</span>
-      </div>
-      <h1 class="text-3xl md:text-4xl font-bold text-gray-800">
-        Bibliotecas especializadas del lenguaje Python
-      </h1>
-      <p class="mt-3 text-gray-600 max-w-3xl">
-        Exploración de las bibliotecas más importantes de Python para diferentes
-        dominios de aplicación, desde ciencia de datos hasta desarrollo web.
-      </p>
-    </header>
+    <div class="container mx-auto px-4 py-6 space-y-8">
+    <!-- Header -->
+    <HeaderTitle numero="5" titulo="5.3.1 Bibliotecas especializadas del lenguaje Python">
+      <p class="mt-3 text-gray-600 max-w-3xl">Exploración de las bibliotecas más importantes de Python para diferentes dominios de aplicación, desde ciencia de datos hasta desarrollo web.</p>
+    </HeaderTitle>    
 
     <!-- Explicación teórica -->
     <section class="mb-10 bg-white rounded-xl shadow-sm p-6">
@@ -242,128 +231,15 @@
     </section>
 
     <!-- Quiz -->
-    <section class="mb-10">
-      <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
-        <h2 class="text-2xl font-bold text-gray-800 mb-6">Evaluación de conocimientos</h2>
-        
-        <div class="space-y-6">
-          <!-- Pregunta 1 -->
-          <div>
-            <h3 class="font-semibold text-gray-800 mb-3">1. ¿Para qué se utiliza principalmente la biblioteca pandas?</h3>
-            <div class="space-y-2">
-              <label
-                v-for="(opcion, index) in preguntas[0].opciones"
-                :key="index"
-                class="flex items-center p-3 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer"
-                :class="{
-                  'bg-green-50 border-green-200': respuestasSeleccionadas[0] === index && quizCompletado,
-                  'bg-red-50 border-red-200': respuestasSeleccionadas[0] !== preguntas[0].respuestaCorrecta && respuestasSeleccionadas[0] === index && quizCompletado
-                }"
-              >
-                <input
-                  type="radio"
-                  :name="'pregunta-1'"
-                  :value="index"
-                  v-model="respuestasSeleccionadas[0]"
-                  class="mr-3"
-                  :disabled="quizCompletado"
-                />
-                <span>{{ opcion }}</span>
-              </label>
-            </div>
-          </div>
-
-          <!-- Pregunta 2 -->
-          <div>
-            <h3 class="font-semibold text-gray-800 mb-3">2. ¿Cuál es la principal característica de Flask?</h3>
-            <div class="space-y-2">
-              <label
-                v-for="(opcion, index) in preguntas[1].opciones"
-                :key="index"
-                class="flex items-center p-3 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer"
-                :class="{
-                  'bg-green-50 border-green-200': respuestasSeleccionadas[1] === index && quizCompletado,
-                  'bg-red-50 border-red-200': respuestasSeleccionadas[1] !== preguntas[1].respuestaCorrecta && respuestasSeleccionadas[1] === index && quizCompletado
-                }"
-              >
-                <input
-                  type="radio"
-                  :name="'pregunta-2'"
-                  :value="index"
-                  v-model="respuestasSeleccionadas[1]"
-                  class="mr-3"
-                  :disabled="quizCompletado"
-                />
-                <span>{{ opcion }}</span>
-              </label>
-            </div>
-          </div>
-
-          <!-- Pregunta 3 -->
-          <div>
-            <h3 class="font-semibold text-gray-800 mb-3">3. ¿Qué ventaja ofrece NumPy sobre las listas nativas de Python?</h3>
-            <div class="space-y-2">
-              <label
-                v-for="(opcion, index) in preguntas[2].opciones"
-                :key="index"
-                class="flex items-center p-3 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer"
-                :class="{
-                  'bg-green-50 border-green-200': respuestasSeleccionadas[2] === index && quizCompletado,
-                  'bg-red-50 border-red-200': respuestasSeleccionadas[2] !== preguntas[2].respuestaCorrecta && respuestasSeleccionadas[2] === index && quizCompletado
-                }"
-              >
-                <input
-                  type="radio"
-                  :name="'pregunta-3'"
-                  :value="index"
-                  v-model="respuestasSeleccionadas[2]"
-                  class="mr-3"
-                  :disabled="quizCompletado"
-                />
-                <span>{{ opcion }}</span>
-              </label>
-            </div>
-          </div>
-
-          <!-- Botón de validación -->
-          <div class="pt-4">
-            <button
-              @click="validarQuiz"
-              class="w-full px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
-              :class="{ 'opacity-50 cursor-not-allowed': quizCompletado }"
-              :disabled="quizCompletado"
-            >
-              {{ quizCompletado ? 'Quiz completado' : 'Validar respuestas' }}
-            </button>
-            
-            <!-- Resultado -->
-            <div v-if="quizCompletado" class="mt-4 p-4 rounded-lg" :class="{
-              'bg-green-50 text-green-800 border border-green-200': resultadoQuiz.correctas === preguntas.length,
-              'bg-yellow-50 text-yellow-800 border border-yellow-200': resultadoQuiz.correctas > 0 && resultadoQuiz.correctas < preguntas.length,
-              'bg-red-50 text-red-800 border border-red-200': resultadoQuiz.correctas === 0
-            }">
-              <p class="font-medium">
-                {{ resultadoQuiz.mensaje }}
-              </p>
-              <p class="mt-2 text-sm">
-                Respuestas correctas: {{ resultadoQuiz.correctas }}/{{ preguntas.length }}
-              </p>
-            </div>
-
-            <!-- Mensaje de error si no todas las preguntas están respondidas -->
-            <div v-if="errorQuiz" class="mt-4 p-4 bg-red-50 text-red-800 rounded-lg border border-red-200">
-              <p class="font-medium">Por favor responde todas las preguntas antes de validar.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <QuizQuestions :preguntas="preguntas" titulo="Quiz bibliotecas especializadas del lenguaje Python"></QuizQuestions>
   </div>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
+import HeaderTitle from "@/components/HeaderTitle.vue"
+import QuizQuestions from '@/components/QuizQuestions.vue'
 
 // Estado del ejercicio práctico
 const mostrarSolucion = ref(false)
@@ -632,68 +508,32 @@ for clave, valor in resumen.items():
 // Configuración del quiz
 const preguntas = [
   {
-    pregunta: '¿Para qué se utiliza principalmente la biblioteca pandas?',
+    texto: "¿Qué biblioteca de Python se utiliza para manejar hilos?",
     opciones: [
-      'Para manipulación y análisis de datos estructurados',
-      'Para desarrollo de aplicaciones web',
-      'Para procesamiento de imágenes',
-      'Para conexión a bases de datos SQL'
-    ],
-    respuestaCorrecta: 0
+      { texto: "threading", correcta: true },
+      { texto: "numpy", correcta: false },
+      { texto: "matplotlib", correcta: false },
+      { texto: "pandas", correcta: false }
+    ]
   },
   {
-    pregunta: '¿Cuál es la principal característica de Flask?',
+    texto: "¿Qué biblioteca permite trabajar con procesos en Python?",
     opciones: [
-      'Es un framework web completo como Django',
-      'Es un microframework minimalista para aplicaciones web',
-      'Es una biblioteca para machine learning',
-      'Es una herramienta para testing automatizado'
-    ],
-    respuestaCorrecta: 1
+      { texto: "multiprocessing", correcta: true },
+      { texto: "tkinter", correcta: false },
+      { texto: "random", correcta: false },
+      { texto: "sys", correcta: false }
+    ]
   },
   {
-    pregunta: '¿Qué ventaja ofrece NumPy sobre las listas nativas de Python?',
+    texto: "¿Para qué se utiliza la biblioteca asyncio?",
     opciones: [
-      'Permite almacenar diferentes tipos de datos',
-      'Ofrece operaciones vectorizadas más rápidas y eficientes',
-      'Tiene métodos integrados para conexión a internet',
-      'Es más fácil de aprender y usar'
-    ],
-    respuestaCorrecta: 1
+      { texto: "Programación asíncrona basada en eventos", correcta: true },
+      { texto: "Cálculos matemáticos", correcta: false },
+      { texto: "Acceso a bases de datos", correcta: false },
+      { texto: "Creación de interfaces gráficas", correcta: false }
+    ]
   }
 ]
 
-const respuestasSeleccionadas = ref([null, null, null])
-const quizCompletado = ref(false)
-const errorQuiz = ref(false)
-
-const resultadoQuiz = computed(() => {
-  if (!quizCompletado.value) return { correctas: 0, mensaje: '' }
-  
-  const correctas = preguntas.reduce((count, pregunta, index) => {
-    return count + (respuestasSeleccionadas.value[index] === pregunta.respuestaCorrecta ? 1 : 0)
-  }, 0)
-  
-  let mensaje = ''
-  if (correctas === preguntas.length) {
-    mensaje = '¡Excelente! Conoces bien las bibliotecas de Python.'
-  } else if (correctas >= preguntas.length / 2) {
-    mensaje = 'Buen trabajo, pero revisa algunas bibliotecas clave.'
-  } else {
-    mensaje = 'Recomendamos repasar las bibliotecas especializadas.'
-  }
-  
-  return { correctas, mensaje }
-})
-
-const validarQuiz = () => {
-  // Verificar que todas las preguntas estén respondidas
-  if (respuestasSeleccionadas.value.some(respuesta => respuesta === null)) {
-    errorQuiz.value = true
-    setTimeout(() => { errorQuiz.value = false }, 3000)
-    return
-  }
-  
-  quizCompletado.value = true
-}
 </script>

@@ -1,10 +1,10 @@
 <template>
-  <div class="max-w-6xl mx-auto p-6 space-y-8">
+  <div class="container mx-auto px-4 py-6 space-y-8">
     <!-- Header -->
-    <header class="border-b border-gray-200 pb-4">
-      <h1 class="text-3xl font-bold text-gray-800">Capítulo 4.1.2: Recorridos: Pre, In y Post Orden</h1>
+    <HeaderTitle numero="4" titulo="4.1.2 Recorridos: pre, in y post orden">
       <p class="text-gray-600 mt-2">Estrategias sistemáticas para visitar todos los nodos de un árbol binario.</p>
-    </header>
+    </HeaderTitle>    
+        
 
     <!-- Explicación teórica -->
     <section class="bg-blue-50 p-6 rounded-lg">
@@ -112,68 +112,16 @@
     </section>
 
     <!-- Quiz -->
-    <section class="border border-gray-300 rounded-xl p-6">
-      <h2 class="text-2xl font-bold text-gray-800 mb-6">Evaluación de Conceptos</h2>
-      <div class="space-y-8">
-        <div v-for="(pregunta, index) in preguntas" :key="index" class="p-5 border border-gray-200 rounded-lg">
-          <h3 class="font-semibold text-gray-800 mb-4">Pregunta {{ index + 1 }}: {{ pregunta.texto }}</h3>
-          <div class="space-y-3">
-            <label
-              v-for="opcion in pregunta.opciones"
-              :key="opcion.letra"
-              class="flex items-center gap-3 p-3 border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer"
-              :class="{
-                'bg-green-100 border-green-400': respuestasSeleccionadas[index] === opcion.letra && opcion.correcta,
-                'bg-red-100 border-red-400': respuestasSeleccionadas[index] === opcion.letra && !opcion.correcta
-              }"
-            >
-              <input
-                type="radio"
-                :name="'pregunta' + index"
-                :value="opcion.letra"
-                v-model="respuestasSeleccionadas[index]"
-                class="h-4 w-4"
-              />
-              <span class="font-mono text-gray-700">{{ opcion.letra }}.</span>
-              <span>{{ opcion.texto }}</span>
-            </label>
-          </div>
-          <div v-if="respuestasSeleccionadas[index]" class="mt-4 text-sm font-medium">
-            <span v-if="respuestasSeleccionadas[index] === pregunta.respuestaCorrecta" class="text-green-700">
-              Correcto: {{ pregunta.explicacion }}
-            </span>
-            <span v-else class="text-red-700">
-              Incorrecto. La respuesta correcta es {{ pregunta.respuestaCorrecta }}.
-            </span>
-          </div>
-        </div>
-      </div>
+    <QuizQuestions :preguntas="preguntas" titulo="Quiz recorridos: pre, in y post orden"></QuizQuestions>
 
-      <!-- Resultado del quiz -->
-      <div class="mt-8 p-5 bg-gray-100 rounded-lg">
-        <div class="flex justify-between items-center">
-          <span class="text-gray-800 font-medium">Puntuación: {{ calcularPuntaje }}/3</span>
-          <button
-            @click="reiniciarQuiz"
-            class="px-4 py-2 border border-gray-400 text-gray-700 rounded-lg hover:bg-gray-200 transition"
-          >
-            Reiniciar quiz
-          </button>
-        </div>
-        <div class="w-full bg-gray-300 h-2 mt-3 rounded-full overflow-hidden">
-          <div
-            class="bg-green-600 h-full transition-all duration-500"
-            :style="{ width: `${(calcularPuntaje / 3) * 100}%` }"
-          ></div>
-        </div>
-      </div>
-    </section>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
+import HeaderTitle from "@/components/HeaderTitle.vue"
+import QuizQuestions from '@/components/QuizQuestions.vue'
 
 // Ejemplo 1: Implementación de recorridos
 const ejemplo1Code = `class Nodo:
@@ -860,49 +808,32 @@ const mostrarSolucion = ref(false)
 // Quiz
 const preguntas = [
   {
-    texto: "¿Qué recorrido de árbol produce los valores en el orden: raíz, izquierdo, derecho?",
+    texto: "¿En qué orden se recorren los nodos en el recorrido preorden?",
     opciones: [
-      { letra: "A", texto: "Preorden", correcta: true },
-      { letra: "B", texto: "Inorden", correcta: false },
-      { letra: "C", texto: "Postorden", correcta: false },
-      { letra: "D", texto: "Por niveles", correcta: false }
-    ],
-    respuestaCorrecta: "A",
-    explicacion: "Preorden visita primero la raíz, luego el subárbol izquierdo completo, y finalmente el subárbol derecho."
+      { texto: "Raíz, izquierda, derecha", correcta: true },
+      { texto: "Izquierda, raíz, derecha", correcta: false },
+      { texto: "Izquierda, derecha, raíz", correcta: false },
+      { texto: "Derecha, raíz, izquierda", correcta: false }
+    ]
   },
   {
-    texto: "¿Cuál es la aplicación principal del recorrido postorden en árboles de expresión?",
+    texto: "¿Qué recorrido muestra los valores de un árbol binario de búsqueda en orden ascendente?",
     opciones: [
-      { letra: "A", texto: "Obtener la expresión en notación infija", correcta: false },
-      { letra: "B", texto: "Evaluar la expresión aritmética", correcta: true },
-      { letra: "C", texto: "Copiar el árbol de expresión", correcta: false },
-      { letra: "D", texto: "Validar si es un ABB", correcta: false }
-    ],
-    respuestaCorrecta: "B",
-    explicacion: "Postorden procesa operandos antes de operadores, lo que permite evaluar expresiones aritméticas correctamente."
+      { texto: "Preorden", correcta: false },
+      { texto: "Inorden", correcta: true },
+      { texto: "Postorden", correcta: false },
+      { texto: "Por niveles", correcta: false }
+    ]
   },
   {
-    texto: "¿Cuáles dos recorridos son necesarios para reconstruir un árbol binario único?",
+    texto: "¿En qué recorrido la raíz se visita al final?",
     opciones: [
-      { letra: "A", texto: "Preorden + Postorden", correcta: false },
-      { letra: "B", texto: "Preorden + Inorden", correcta: true },
-      { letra: "C", texto: "Solo Preorden", correcta: false },
-      { letra: "D", texto: "Inorden + Postorden", correcta: true }
-    ],
-    respuestaCorrecta: "B",
-    explicacion: "Tanto Preorden+Inorden como Inorden+Postorden son suficientes para reconstruir un árbol binario único (asumiendo sin duplicados)."
+      { texto: "Preorden", correcta: false },
+      { texto: "Inorden", correcta: false },
+      { texto: "Postorden", correcta: true },
+      { texto: "Recorrido por niveles", correcta: false }
+    ]
   }
 ]
 
-const respuestasSeleccionadas = ref([null, null, null])
-
-const calcularPuntaje = computed(() => {
-  return respuestasSeleccionadas.value.reduce((puntaje, respuesta, index) => {
-    return puntaje + (respuesta === preguntas[index].respuestaCorrecta ? 1 : 0)
-  }, 0)
-})
-
-const reiniciarQuiz = () => {
-  respuestasSeleccionadas.value = [null, null, null]
-}
 </script>
