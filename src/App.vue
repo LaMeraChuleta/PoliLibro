@@ -1,11 +1,11 @@
 <template>
   <!-- NAVBAR -->
-  <header class="fixed top-0 left-0 right-0 h-14 z-40 bg-white border-b">
+  <header class="fixed top-0 left-0 right-0 h-14 z-40 bg-[#611232] border-b">
     <div class="flex items-center px-4 h-14 gap-4">
 
       <!-- Hamburguesa (izquierda) -->
       <button @click="toggleSidebar"
-        class="text-gray-600 hover:text-gray-900 focus:outline-none p-2 rounded-lg hover:bg-gray-100 transition-colors"
+        class="text-white hover:text-gray-900 focus:outline-none p-2 rounded-lg hover:bg-gray-100 transition-colors"
         :aria-label="sidebarOpen ? 'Cerrar menú' : 'Abrir menú'">
         <svg class="w-6 h-6 transition-transform duration-300" :class="{ 'rotate-90': sidebarOpen }" fill="none"
           stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -15,35 +15,14 @@
       </button>
 
       <!-- Título -->
-      <h1 class="text-lg font-semibold text-gray-700">
-        PoliLibro
-      </h1>
-
+      <router-link to="/" class="no-underline">
+        <h1 class="text-lg font-semibold text-white cursor-pointer hover:opacity-80">
+          PoliLibro
+        </h1>
+      </router-link>
       <!-- Spacer -->
       <div class="flex-1"></div>
 
-      <!-- Usuario -->
-      <div class="flex items-center gap-3">
-        <span class="hidden sm:block text-sm text-gray-600">
-          Luis Torres
-        </span>
-        <div class="relative">
-          <button @click="userMenuOpen = !userMenuOpen"
-            class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-medium hover:opacity-90 transition-opacity">
-            LT
-          </button>
-
-          <!-- Menú desplegable del usuario -->
-          <div v-if="userMenuOpen"
-            class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-200 py-1 z-40"
-            v-click-outside="closeUserMenu">
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Mi Perfil</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Configuración</a>
-            <div class="border-t border-gray-100 my-1"></div>
-            <a href="#" class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50">Cerrar Sesión</a>
-          </div>
-        </div>
-      </div>
     </div>
   </header>
 
@@ -52,36 +31,40 @@
     class="fixed inset-0 bg-black bg-opacity-50 z-20 transition-opacity duration-300"></div>
 
   <!-- CONTENEDOR PRINCIPAL -->
-<div class="flex pt-14 bg-gray-100">
+  <div class="flex pt-14 bg-gray-100">
 
 
     <!-- SIDEBAR -->
-    <aside ref="sidebarRef" class="bg-white w-64 border-r border-gray-200 shadow-lg
+    <aside ref="sidebarRef" class="bg-[#611232] w-64
+         border-r border-gray-200 shadow-lg
          fixed top-14 left-0 h-[calc(100vh-3.5rem)]
-         z-30 transition-all duration-300 overflow-y-auto"
-      :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'">
-      <div class="p-4 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-indigo-50">
-        <h2 class="text-xl font-bold text-gray-800">Temario</h2>
-        <p class="text-sm text-gray-600 mt-1">Selecciona una unidad</p>
+         z-30 transition-all duration-300
+         overflow-y-auto
+         flex flex-col" :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'">
+
+
+
+      <div class="p-4 border-b border-gray-200 bg-[#611232] ">
+        <h2 class="text-xl font-bold text-white">Temario</h2>
+        <p class="text-sm text-white mt-1">Selecciona una unidad</p>
       </div>
 
       <nav class="p-4">
         <!-- Sección de Unidades -->
         <div class="mb-6">
-          <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Unidades</h3>
+          <h3 class="text-lg font-semibold text-white uppercase tracking-wider mb-3">Unidades</h3>
           <ul class="space-y-2">
             <li v-for="(item, index) in temario" :key="index">
-              <button @click="selectTema(item, index)" class="w-full text-left px-4 py-3 rounded-lg
-                       hover:bg-blue-50 hover:text-blue-700 hover:border-blue-200
-                       border border-transparent transition-all duration-200
-                       flex items-center justify-between group" :class="{
-                        'bg-blue-50 text-blue-700 border-blue-200': activeTema === index,
-                        'text-gray-700': activeTema !== index
-                      }">
+              <button @click="selectTema(item, index)" class="w-full text-left px-2 py-3 rounded-lg
+         border border-transparent transition-all duration-200
+         flex items-start gap-3 group" :class="{
+          'bg-[#8b2c46] text-white border-[#a03a55]': activeTema === index,
+          'text-white hover:bg-[#74263c]': activeTema !== index
+        }">
                 <div class="flex items-center">
                   <div class="w-8 h-8 rounded-full flex items-center justify-center mr-2" :class="activeTema === index
-                    ? 'bg-blue-100 text-blue-600'
-                    : 'bg-gray-100 text-gray-500 group-hover:bg-blue-100 group-hover:text-blue-600'">
+                    ? 'bg-blue-100 text-gray-600'
+                    : 'bg-white text-gray-500 group-hover:bg-blue-100 group-hover:text-blue-600'">
                     {{ index + 1 }}
                   </div>
                   <span class="font-medium">{{ item }}</span>
@@ -97,23 +80,20 @@
       </nav>
 
       <!-- Footer de la Sidebar -->
-      <div class="p-4 border-t  border-gray-200 mt-auto">
+      <div class="p-4 border-t border-gray-200 mt-auto">
         <div class="text-center">
-          <p class="text-sm text-gray-500">© 2024 PoliLibro</p>
-          <p class="text-xs text-gray-400 mt-1">v2.1.0</p>
+          <p class="text-sm text-white">© 2024 PoliLibro</p>
+          <p class="text-xs text-white mt-1">v2.1.0</p>
         </div>
       </div>
     </aside>
   </div>
 
   <!-- CONTENIDO PRINCIPAL -->
-<main
-  class="flex-1 overflow-y-auto p-4 transition-all duration-300"
-  :class="{
+  <main class="flex-1 overflow-y-auto p-4 transition-all duration-300" :class="{
     'ml-64': sidebarOpen && !isMobile,
     'ml-0': isMobile
-  }"
->
+  }">
     <RouterView />
   </main>
 

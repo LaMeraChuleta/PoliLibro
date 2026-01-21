@@ -10,8 +10,8 @@
     </div>
     <div class="p-5 flex inline-flex w-full">
 
-        <div class="w-1/3">
-
+        <div class="w-1/3 my-auto">
+            <img src="/src/assets/contenedores.png" alt="">
         </div>
         <div class="w-2/3">
             <p class=" text-lg">{{ temario.competencias }}</p>
@@ -41,7 +41,8 @@
 <script setup>
 
 import temarioJSON from '@/assets/Unidad_1.json'
-import fondo from '@/assets/fondo.png'
+import fondo from '@/assets/images.png'
+import img from '@/assets/contenedores.png'
 import { ref } from 'vue'
 
 const temario = ref(temarioJSON)
