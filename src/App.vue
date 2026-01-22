@@ -82,8 +82,8 @@
       <!-- Footer de la Sidebar -->
       <div class="p-4 border-t border-gray-200 mt-auto">
         <div class="text-center">
-          <p class="text-sm text-white">© 2024 PoliLibro</p>
-          <p class="text-xs text-white mt-1">v2.1.0</p>
+          <p class="text-sm text-white">© 2025 PoliLibro</p>
+          <p class="text-xs text-white mt-1">v1.0.1</p>
         </div>
       </div>
     </aside>
