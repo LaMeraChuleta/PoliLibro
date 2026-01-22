@@ -1,120 +1,136 @@
 <template>
-  <div class="container mx-auto px-4 py-6 space-y-8">
-    <!-- Header -->
-    <HeaderTitle numero="4" titulo="4.1.2 Recorridos: pre, in y post orden">
-      <p class="text-gray-600 mt-2">Estrategias sistemáticas para visitar todos los nodos de un árbol binario.</p>
-    </HeaderTitle>    
-        
+    <div class="container mx-auto px-4 py-6 space-y-8">
+        <!-- Header -->
+        <HeaderTitle numero="4" titulo="4.1.2 Recorridos: pre, in y post orden">
+            <p class="text-gray-600 mt-2">Estrategias sistemáticas para visitar todos los nodos de un árbol binario.</p>
+        </HeaderTitle>
 
-    <!-- Explicación teórica -->
-    <section class="bg-blue-50 p-6 rounded-lg">
-      <h2 class="text-xl font-semibold text-blue-800 mb-3">Recorridos Sistemáticos en Árboles Binarios</h2>
-      <p class="text-gray-700 leading-relaxed">
-        Los recorridos de árboles binarios son algoritmos que visitan todos los nodos de un árbol de manera sistemática. 
-        Los tres recorridos principales (preorden, inorden y postorden) difieren en el orden en que visitan la raíz, 
-        el subárbol izquierdo y el subárbol derecho. Estos recorridos son fundamentales para operaciones como copiar árboles, 
-        evaluar expresiones, serializar estructuras y validar propiedades. Cada recorrido tiene aplicaciones específicas 
-        basadas en el orden de procesamiento de los nodos.
-      </p>
-    </section>
 
-    <!-- Tarjetas de conceptos clave -->
-    <section>
-      <h2 class="text-2xl font-bold text-gray-800 mb-6">Conceptos Clave</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="bg-blue-100 text-blue-800 p-2 rounded">+</div>
-            <h3 class="font-bold text-gray-800">Preorden</h3>
-          </div>
-          <p class="text-gray-600 text-sm">Raíz → Izquierdo → Derecho. Útil para copiar árboles y expresiones prefijas.</p>
-        </div>
+        <!-- Explicación teórica -->
+        <section class="bg-blue-50 p-6 rounded-lg">
+            <h2 class="text-xl font-semibold text-blue-800 mb-3">Recorridos Sistemáticos en Árboles Binarios</h2>
+            <p class="text-gray-700 leading-relaxed">
+                Los recorridos de árboles binarios son algoritmos que visitan todos los nodos de un árbol de manera
+                sistemática.
+                Los tres recorridos principales (preorden, inorden y postorden) difieren en el orden en que visitan la
+                raíz,
+                el subárbol izquierdo y el subárbol derecho. Estos recorridos son fundamentales para operaciones como
+                copiar árboles,
+                evaluar expresiones, serializar estructuras y validar propiedades. Cada recorrido tiene aplicaciones
+                específicas
+                basadas en el orden de procesamiento de los nodos.
+            </p>
+        </section>
 
-        <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="bg-green-100 text-green-800 p-2 rounded">E</div>
-            <h3 class="font-bold text-gray-800">Ejemplo real</h3>
-          </div>
-          <p class="text-gray-600 text-sm">Calculadora: árbol de expresión ((2+3)*4) se evalúa con postorden.</p>
-        </div>
+        <!-- Tarjetas de conceptos clave -->
+        <section>
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Conceptos Clave</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-blue-100 text-blue-800 p-2 rounded">+</div>
+                        <h3 class="font-bold text-gray-800">Preorden</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">Raíz → Izquierdo → Derecho. Útil para copiar árboles y expresiones
+                        prefijas.</p>
+                </div>
 
-        <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="bg-red-100 text-red-800 p-2 rounded">X</div>
-            <h3 class="font-bold text-gray-800">No confundir</h3>
-          </div>
-          <p class="text-gray-600 text-sm">Inorden solo produce orden ascendente en ABB. En árboles generales no.</p>
-        </div>
+                <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-green-100 text-green-800 p-2 rounded">E</div>
+                        <h3 class="font-bold text-gray-800">Ejemplo real</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">Calculadora: árbol de expresión ((2+3)*4) se evalúa con postorden.
+                    </p>
+                </div>
 
-        <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="bg-yellow-100 text-yellow-800 p-2 rounded">?</div>
-            <h3 class="font-bold text-gray-800">Curiosidad</h3>
-          </div>
-          <p class="text-gray-600 text-sm">Pre/In/Post se refieren a la posición de la raíz respecto a los subárboles.</p>
-        </div>
-      </div>
-    </section>
+                <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-red-100 text-red-800 p-2 rounded">X</div>
+                        <h3 class="font-bold text-gray-800">No confundir</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">Inorden solo produce orden ascendente en ABB. En árboles generales
+                        no.</p>
+                </div>
 
-    <!-- Ejemplos de código -->
-    <section class="space-y-10">
-      <h2 class="text-2xl font-bold text-gray-800">Ejemplos Prácticos</h2>
+                <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-yellow-100 text-yellow-800 p-2 rounded">?</div>
+                        <h3 class="font-bold text-gray-800">Curiosidad</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">Pre/In/Post se refieren a la posición de la raíz respecto a los
+                        subárboles.</p>
+                </div>
+            </div>
+        </section>
 
-      <!-- Ejemplo 1 -->
-      <div>
-        <h3 class="text-lg font-semibold text-gray-700 mb-3">1. Implementación de los tres recorridos clásicos</h3>
-        <p class="text-gray-600 mb-4">Versiones recursivas e iterativas de preorden, inorden y postorden.</p>
-        <PythonRunner :code="ejemplo1Code" />
-      </div>
+        <!-- Ejemplos de código -->
+        <section class="space-y-10">
+            <h2 class="text-2xl font-bold text-gray-800">Ejemplos Prácticos</h2>
 
-      <!-- Ejemplo 2 -->
-      <div>
-        <h3 class="text-lg font-semibold text-gray-700 mb-3">2. Aplicación: evaluación de expresiones aritméticas</h3>
-        <p class="text-gray-600 mb-4">Uso de postorden para evaluar expresiones representadas como árboles.</p>
-        <PythonRunner :code="ejemplo2Code" />
-      </div>
+            <!-- Ejemplo 1 -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-700 mb-3">1. Implementación de los tres recorridos clásicos
+                </h3>
+                <p class="text-gray-600 mb-4">Versiones recursivas e iterativas de preorden, inorden y postorden.</p>
+                <PythonRunner :code="ejemplo1Code" />
+            </div>
 
-      <!-- Ejemplo 3 -->
-      <div>
-        <h3 class="text-lg font-semibold text-gray-700 mb-3">3. Aplicación: serialización y deserialización</h3>
-        <p class="text-gray-600 mb-4">Uso de preorden para convertir árboles a strings y viceversa.</p>
-        <PythonRunner :code="ejemplo3Code" />
-      </div>
-    </section>
+            <!-- Ejemplo 2 -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-700 mb-3">2. Aplicación: evaluación de expresiones
+                    aritméticas</h3>
+                <p class="text-gray-600 mb-4">Uso de postorden para evaluar expresiones representadas como árboles.</p>
+                <PythonRunner :code="ejemplo2Code" />
+            </div>
 
-    <!-- Ejercicio práctico -->
-    <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
-      <h2 class="text-2xl font-bold text-gray-800 mb-4">Ejercicio Práctico</h2>
-      <div class="space-y-4">
-        <p class="text-gray-700">
-          <strong>Enunciado:</strong> Dado un árbol binario que representa una expresión aritmética, implementa 
-          una función <code>construir_desde_pre_in</code> que reconstruya el árbol a partir de sus recorridos 
-          preorden e inorden. Luego, usa postorden para evaluar la expresión. Prueba con la expresión del ejemplo 2.
-        </p>
-        <div class="flex gap-4">
-          <button
-            @click="mostrarSolucion = !mostrarSolucion"
-            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-          >
-            {{ mostrarSolucion ? 'Ocultar solución' : 'Mostrar solución' }}
-          </button>
-          <a href="#" class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
-            Ver pista
-          </a>
-        </div>
+            <!-- Ejemplo 3 -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-700 mb-3">3. Aplicación: serialización y deserialización</h3>
+                <p class="text-gray-600 mb-4">Uso de preorden para convertir árboles a strings y viceversa.</p>
+                <PythonRunner :code="ejemplo3Code" />
+            </div>
+        </section>
 
-        <!-- Solución oculta -->
-        <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
-          <h3 class="font-bold text-green-800 mb-3">Solución:</h3>
-          <PythonRunner :code="solucionCode" />
-        </div>
-      </div>
-    </section>
+        <!-- Ejercicio práctico -->
+        <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Ejercicio Práctico</h2>
+            <div class="space-y-4">
+                <p class="text-gray-700">
+                    <strong>Enunciado:</strong> Dado un árbol binario que representa una expresión aritmética,
+                    implementa
+                    una función <code>construir_desde_pre_in</code> que reconstruya el árbol a partir de sus recorridos
+                    preorden e inorden. Luego, usa postorden para evaluar la expresión. Prueba con la expresión del
+                    ejemplo 2.
+                </p>
+                <div class="flex gap-4">
+                    <button @click="mostrarSolucion = !mostrarSolucion"
+                        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                        {{ mostrarSolucion ? 'Ocultar solución' : 'Mostrar solución' }}
+                    </button>
+                    <a href="#"
+                        class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
+                        Ver pista
+                    </a>
+                </div>
 
-    <!-- Quiz -->
-    <QuizQuestions :preguntas="preguntas" titulo="Quiz recorridos: pre, in y post orden"></QuizQuestions>
+                <!-- Solución oculta -->
+                <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
+                    <h3 class="font-bold text-green-800 mb-3">Solución:</h3>
+                    <PythonRunner :code="solucionCode" />
+                </div>
+            </div>
+        </section>
 
-  </div>
+        <!-- Quiz -->
+        <QuizQuestions :preguntas="preguntas" titulo="Quiz recorridos: pre, in y post orden"></QuizQuestions>
+
+        <!-- Navegación -->
+        <NavigationUnidad anterior="/Unidad/4.1.1" siguiente="/Unidad/4.1.3" textoAnterior="Anterior"
+            textoSiguiente="Siguiente" tituloActual="Unidad II • Árboles" mostrarAnterior="true"
+            mostrarSiguiente="true" />
+
+    </div>
 </template>
 
 <script setup>
@@ -122,6 +138,7 @@ import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 // Ejemplo 1: Implementación de recorridos
 const ejemplo1Code = `class Nodo:
@@ -807,33 +824,33 @@ const mostrarSolucion = ref(false)
 
 // Quiz
 const preguntas = [
-  {
-    texto: "¿En qué orden se recorren los nodos en el recorrido preorden?",
-    opciones: [
-      { texto: "Raíz, izquierda, derecha", correcta: true },
-      { texto: "Izquierda, raíz, derecha", correcta: false },
-      { texto: "Izquierda, derecha, raíz", correcta: false },
-      { texto: "Derecha, raíz, izquierda", correcta: false }
-    ]
-  },
-  {
-    texto: "¿Qué recorrido muestra los valores de un árbol binario de búsqueda en orden ascendente?",
-    opciones: [
-      { texto: "Preorden", correcta: false },
-      { texto: "Inorden", correcta: true },
-      { texto: "Postorden", correcta: false },
-      { texto: "Por niveles", correcta: false }
-    ]
-  },
-  {
-    texto: "¿En qué recorrido la raíz se visita al final?",
-    opciones: [
-      { texto: "Preorden", correcta: false },
-      { texto: "Inorden", correcta: false },
-      { texto: "Postorden", correcta: true },
-      { texto: "Recorrido por niveles", correcta: false }
-    ]
-  }
+    {
+        texto: "¿En qué orden se recorren los nodos en el recorrido preorden?",
+        opciones: [
+            { texto: "Raíz, izquierda, derecha", correcta: true },
+            { texto: "Izquierda, raíz, derecha", correcta: false },
+            { texto: "Izquierda, derecha, raíz", correcta: false },
+            { texto: "Derecha, raíz, izquierda", correcta: false }
+        ]
+    },
+    {
+        texto: "¿Qué recorrido muestra los valores de un árbol binario de búsqueda en orden ascendente?",
+        opciones: [
+            { texto: "Preorden", correcta: false },
+            { texto: "Inorden", correcta: true },
+            { texto: "Postorden", correcta: false },
+            { texto: "Por niveles", correcta: false }
+        ]
+    },
+    {
+        texto: "¿En qué recorrido la raíz se visita al final?",
+        opciones: [
+            { texto: "Preorden", correcta: false },
+            { texto: "Inorden", correcta: false },
+            { texto: "Postorden", correcta: true },
+            { texto: "Recorrido por niveles", correcta: false }
+        ]
+    }
 ]
 
 </script>

@@ -115,6 +115,11 @@
 
     <!-- Quiz -->
     <QuizQuestions :preguntas="preguntas" titulo="Quiz matriz de adyacencia"></QuizQuestions>
+
+
+    <!-- Navegación -->
+    <NavigationUnidad anterior="/Unidad/3.2.2" siguiente="/Unidad/3.3.1" textoAnterior="Anterior"
+      textoSiguiente="Siguiente" tituloActual="Unidad II • Grafos" mostrarAnterior="true" mostrarSiguiente="true" />
   </div>
 </template>
 
@@ -123,6 +128,7 @@ import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 // Ejemplo 1: Matriz básica para grafo no dirigido
 const ejemplo1Code = `# Creación de matriz de adyacencia para grafo no dirigido

@@ -1,38 +1,46 @@
 <template>
-  <div class="container mx-auto px-4 py-6">
+    <div class="container mx-auto px-4 py-6">
 
-    <HeaderTitle numero="1.4" titulo="1.4.1 Conceptos y características de diccionarios">
-      <!-- Explicación teórica -->
-      <div class="mb-8">
-        <p class="text-gray-600">Estructuras clave-valor en Python</p>
-      </div>
-    </HeaderTitle>
+        <HeaderTitle numero="1.4" titulo="1.4.1 Conceptos y características de diccionarios">
+            <!-- Explicación teórica -->
+            <div class="mb-8">
+                <p class="text-gray-600">Estructuras clave-valor en Python</p>
+            </div>
+        </HeaderTitle>
 
 
 
-    <div class="mb-8">
-      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 1: Creación y acceso básico</h3>
-      <PythonRunner :code="ejemplo1Code" title="diccionario_basico.py" :showLineNumbers="true" initialHeight="280px" />
+        <div class="mb-8">
+            <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 1: Creación y acceso básico</h3>
+            <PythonRunner :code="ejemplo1Code" title="diccionario_basico.py" :showLineNumbers="true"
+                initialHeight="280px" />
+        </div>
+
+        <div class="mb-8">
+            <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 2: Métodos comunes</h3>
+            <PythonRunner :code="ejemplo2Code" title="metodos_diccionario.py" :showLineNumbers="true"
+                initialHeight="300px" />
+        </div>
+
+        <div class="mb-8">
+            <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 3: Sistema de inventario simplificado</h3>
+            <PythonRunner :code="ejemplo3Code" title="inventario.py" :showLineNumbers="true" initialHeight="280px" />
+        </div>
+
+        <div class="mb-8 p-6 bg-gradient-to-r from-yellow-50 to-green-50 rounded-lg">
+            <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio: Gestión de estudiantes</h3>
+            <PythonRunner :code="ejercicioCode" title="gestion_estudiantes.py" :showLineNumbers="true"
+                initialHeight="250px" :showReset="true" :showSolution="true" :solutionCode="solucionCode" />
+        </div>
+
+        <QuizQuestions :preguntas="preguntas" titulo="Quiz de diccionarios"></QuizQuestions>
+
+        <!-- Navegación -->
+        <NavigationUnidad anterior="/Unidad/1.3.3" siguiente="/Unidad/1.4.2" textoAnterior="Anterior"
+            textoSiguiente="Siguiente" tituloActual="Unidad I • Contenedores" mostrarAnterior="true"
+            mostrarSiguiente="true" />
+
     </div>
-
-    <div class="mb-8">
-      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 2: Métodos comunes</h3>
-      <PythonRunner :code="ejemplo2Code" title="metodos_diccionario.py" :showLineNumbers="true" initialHeight="300px" />
-    </div>
-
-    <div class="mb-8">
-      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 3: Sistema de inventario simplificado</h3>
-      <PythonRunner :code="ejemplo3Code" title="inventario.py" :showLineNumbers="true" initialHeight="280px" />
-    </div>
-
-    <div class="mb-8 p-6 bg-gradient-to-r from-yellow-50 to-green-50 rounded-lg">
-      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio: Gestión de estudiantes</h3>
-      <PythonRunner :code="ejercicioCode" title="gestion_estudiantes.py" :showLineNumbers="true" initialHeight="250px"
-        :showReset="true" :showSolution="true" :solutionCode="solucionCode" />
-    </div>
-
-    <QuizQuestions :preguntas="preguntas" titulo="Quiz de diccionarios"></QuizQuestions>
-  </div>
 </template>
 
 <script setup>
@@ -40,6 +48,7 @@
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 // Códigos CORREGIDOS (sin caracteres problemáticos)
 const ejemplo1Code = `# Creación y acceso básico a diccionarios
@@ -291,33 +300,33 @@ print(f"Carreras: {', '.join(carreras)}")`
 
 // Quiz simplificado
 const preguntas = [
- {
-    texto: "¿Qué es un diccionario en Python?",
-    opciones: [
-      { texto: "Estructura ordenada", correcta: false },
-      { texto: "Colección sin claves", correcta: false },
-      { texto: "Estructura clave-valor", correcta: true },
-      { texto: "Solo números", correcta: false }
-    ]
-  },
-  {
-    texto: "¿Qué característica define a los diccionarios?",
-    opciones: [
-      { texto: "Claves únicas, valores repetidos", correcta: true },
-      { texto: "Claves repetidas", correcta: false },
-      { texto: "Siempre ordenados", correcta: false },
-      { texto: "Un solo tipo de dato", correcta: false }
-    ]
-  },
-  {
-    texto: "¿Qué puede usarse como clave en un diccionario?",
-    opciones: [
-      { texto: "Cualquier tipo de dato", correcta: false },
-      { texto: "Solo enteros", correcta: false },
-      { texto: "Tipos inmutables", correcta: true },
-      { texto: "Solo cadenas", correcta: false }
-    ]
-  }
+    {
+        texto: "¿Qué es un diccionario en Python?",
+        opciones: [
+            { texto: "Estructura ordenada", correcta: false },
+            { texto: "Colección sin claves", correcta: false },
+            { texto: "Estructura clave-valor", correcta: true },
+            { texto: "Solo números", correcta: false }
+        ]
+    },
+    {
+        texto: "¿Qué característica define a los diccionarios?",
+        opciones: [
+            { texto: "Claves únicas, valores repetidos", correcta: true },
+            { texto: "Claves repetidas", correcta: false },
+            { texto: "Siempre ordenados", correcta: false },
+            { texto: "Un solo tipo de dato", correcta: false }
+        ]
+    },
+    {
+        texto: "¿Qué puede usarse como clave en un diccionario?",
+        opciones: [
+            { texto: "Cualquier tipo de dato", correcta: false },
+            { texto: "Solo enteros", correcta: false },
+            { texto: "Tipos inmutables", correcta: true },
+            { texto: "Solo cadenas", correcta: false }
+        ]
+    }
 ]
 
 </script>

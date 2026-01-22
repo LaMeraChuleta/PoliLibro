@@ -84,6 +84,15 @@
     <!-- Quiz funcional -->
     <QuizQuestions :preguntas="preguntas" titulo="Quiz de Aplicaciones de Diccionarios"></QuizQuestions>
 
+                        <!-- Navegación -->
+      <NavigationUnidad 
+         anterior="/Unidad/1.4.3"         
+         textoAnterior="Anterior"         
+         tituloActual="Unidad I • Contenedores"
+         mostrarAnterior="true"
+         mostrarSiguiente="false"
+       />
+
   </div>
 </template>
 
@@ -92,6 +101,7 @@
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 // Ejemplo 1: Contador de palabras
 const ejemplo1Code = `# Aplicacion: Contador de Palabras en un Texto
 

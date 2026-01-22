@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto px-4 py-6">    
+  <div class="container mx-auto px-4 py-6">
     <HeaderTitle numero="1.2" titulo="1.1.2 Descripción y características de los contenedores">
       <!-- Contenido teórico -->
       <div class="mb-8">
@@ -120,8 +120,15 @@
     </div>
 
     <!-- Quiz funcional -->
-    <QuizQuestions :preguntas="preguntas" titulo="Quiz descripción y características de los contenedores"></QuizQuestions>
-    
+    <QuizQuestions :preguntas="preguntas" titulo="Quiz descripción y características de los contenedores">
+    </QuizQuestions>
+
+
+    <!-- Navegación -->
+    <NavigationUnidad anterior="/Unidad/1.1.1" siguiente="/Unidad/1.2.1" textoAnterior="Anterior"
+      textoSiguiente="Siguiente" tituloActual="Unidad I • Contenedores" mostrarAnterior="true"
+      mostrarSiguiente="true" />
+
   </div>
 </template>
 
@@ -130,6 +137,7 @@
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 // Códigos de ejemplo
 const ejemplo1Code = `# Diferentes formas de crear contenedores

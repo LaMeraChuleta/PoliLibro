@@ -123,6 +123,10 @@
     <!-- Quiz -->
     <QuizQuestions :preguntas="preguntas" titulo="Quiz descripción"></QuizQuestions>
 
+    <!-- Navegación -->
+    <NavigationUnidad anterior="/Unidad/3.1.1" siguiente="/Unidad/3.2.1" textoAnterior="Anterior"
+      textoSiguiente="Siguiente" tituloActual="Unidad II • Grafos" mostrarAnterior="true" mostrarSiguiente="true" />
+
   </div>
 </template>
 
@@ -130,6 +134,7 @@
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 // Ejemplo 1: Factorial comparativo
 const ejemplo1Code = `# Comparación: Factorial recursivo vs iterativo

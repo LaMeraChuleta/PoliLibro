@@ -1,166 +1,153 @@
 <template>
   <div class="container mx-auto px-4 py-6">
-   <HeaderTitle numero="1.2" titulo="1.2.2 Operaciones sobre listas">
+    <HeaderTitle numero="1.2" titulo="1.2.2 Operaciones sobre listas">
       <!-- Contenido teórico -->
-        <div class="mb-8">
+      <div class="mb-8">
         <p class="text-gray-700 mb-4">
-          Las listas en Python soportan una variedad de operaciones que permiten manipular sus elementos. 
+          Las listas en Python soportan una variedad de operaciones que permiten manipular sus elementos.
           Dominar estas operaciones es esencial para trabajar eficientemente con datos en Python.
         </p>
         <p class="text-gray-700">
-          Las principales operaciones CRUD (Create, Read, Update, Delete) están disponibles a través 
+          Las principales operaciones CRUD (Create, Read, Update, Delete) están disponibles a través
           de métodos intuitivos que mantienen la flexibilidad y eficiencia de las listas.
         </p>
       </div>
     </HeaderTitle>
 
 
-      <!-- Operaciones principales en tarjetas -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-        <div class="bg-green-50 border border-green-200 rounded-xl p-4">
-          <div class="w-10 h-10 bg-green-500 text-white rounded-lg flex items-center justify-center mb-3">
-            <i class="fas fa-plus"></i>
-          </div>
-          <h3 class="font-bold text-green-800 mb-2">Inserción</h3>
-          <p class="text-green-700 text-sm">append(), insert(), extend()</p>
+    <!-- Operaciones principales en tarjetas -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+      <div class="bg-green-50 border border-green-200 rounded-xl p-4">
+        <div class="w-10 h-10 bg-green-500 text-white rounded-lg flex items-center justify-center mb-3">
+          <i class="fas fa-plus"></i>
         </div>
-        <div class="bg-red-50 border border-red-200 rounded-xl p-4">
-          <div class="w-10 h-10 bg-red-500 text-white rounded-lg flex items-center justify-center mb-3">
-            <i class="fas fa-minus"></i>
-          </div>
-          <h3 class="font-bold text-red-800 mb-2">Eliminación</h3>
-          <p class="text-red-700 text-sm">remove(), pop(), del, clear()</p>
+        <h3 class="font-bold text-green-800 mb-2">Inserción</h3>
+        <p class="text-green-700 text-sm">append(), insert(), extend()</p>
+      </div>
+      <div class="bg-red-50 border border-red-200 rounded-xl p-4">
+        <div class="w-10 h-10 bg-red-500 text-white rounded-lg flex items-center justify-center mb-3">
+          <i class="fas fa-minus"></i>
         </div>
-        <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
-          <div class="w-10 h-10 bg-blue-500 text-white rounded-lg flex items-center justify-center mb-3">
-            <i class="fas fa-search"></i>
-          </div>
-          <h3 class="font-bold text-blue-800 mb-2">Búsqueda</h3>
-          <p class="text-blue-700 text-sm">index(), count(), in operador</p>
+        <h3 class="font-bold text-red-800 mb-2">Eliminación</h3>
+        <p class="text-red-700 text-sm">remove(), pop(), del, clear()</p>
+      </div>
+      <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+        <div class="w-10 h-10 bg-blue-500 text-white rounded-lg flex items-center justify-center mb-3">
+          <i class="fas fa-search"></i>
         </div>
-        <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
-          <div class="w-10 h-10 bg-yellow-500 text-white rounded-lg flex items-center justify-center mb-3">
-            <i class="fas fa-edit"></i>
-          </div>
-          <h3 class="font-bold text-yellow-800 mb-2">Actualización</h3>
-          <p class="text-yellow-700 text-sm">Asignación directa por índice</p>
+        <h3 class="font-bold text-blue-800 mb-2">Búsqueda</h3>
+        <p class="text-blue-700 text-sm">index(), count(), in operador</p>
+      </div>
+      <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
+        <div class="w-10 h-10 bg-yellow-500 text-white rounded-lg flex items-center justify-center mb-3">
+          <i class="fas fa-edit"></i>
         </div>
-        <div class="bg-purple-50 border border-purple-200 rounded-xl p-4">
-          <div class="w-10 h-10 bg-purple-500 text-white rounded-lg flex items-center justify-center mb-3">
-            <i class="fas fa-link"></i>
-          </div>
-          <h3 class="font-bold text-purple-800 mb-2">Concatenación</h3>
-          <p class="text-purple-700 text-sm">+ operador, extend()</p>
+        <h3 class="font-bold text-yellow-800 mb-2">Actualización</h3>
+        <p class="text-yellow-700 text-sm">Asignación directa por índice</p>
+      </div>
+      <div class="bg-purple-50 border border-purple-200 rounded-xl p-4">
+        <div class="w-10 h-10 bg-purple-500 text-white rounded-lg flex items-center justify-center mb-3">
+          <i class="fas fa-link"></i>
         </div>
+        <h3 class="font-bold text-purple-800 mb-2">Concatenación</h3>
+        <p class="text-purple-700 text-sm">+ operador, extend()</p>
       </div>
+    </div>
 
-      <!-- Ejemplo 1: Inserción y eliminación -->
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 1: Inserción y eliminación</h3>
-        <PythonRunner 
-          :code="ejemplo1Code"
-          title="insercion_eliminacion.py"
-          :showLineNumbers="true"
-          initialHeight="280px"
-        />
+    <!-- Ejemplo 1: Inserción y eliminación -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 1: Inserción y eliminación</h3>
+      <PythonRunner :code="ejemplo1Code" title="insercion_eliminacion.py" :showLineNumbers="true"
+        initialHeight="280px" />
+    </div>
+
+    <!-- Ejemplo 2: Búsqueda y actualización -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 2: Búsqueda y actualización</h3>
+      <PythonRunner :code="ejemplo2Code" title="busqueda_actualizacion.py" :showLineNumbers="true"
+        initialHeight="260px" />
+    </div>
+
+    <!-- Ejemplo 3: Sistema de gestión de tareas -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 3: Sistema de gestión de tareas</h3>
+      <p class="text-gray-700 mb-4">
+        Aplicación práctica: sistema completo de gestión de tareas con todas las operaciones:
+      </p>
+      <PythonRunner :code="ejemplo3Code" title="gestion_tareas.py" :showLineNumbers="true" initialHeight="320px" />
+    </div>
+
+    <!-- Ejercicio práctico -->
+    <div class="mb-8 p-6 bg-blue-50 rounded-lg">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio práctico: Gestión de inventario</h3>
+      <p class="text-gray-700 mb-4">
+        <strong>Situación:</strong> Implementa un sistema de inventario para una tienda usando todas las operaciones de
+        listas.
+      </p>
+
+      <PythonRunner :code="ejercicioCode" title="inventario_tienda.py" :showLineNumbers="true" initialHeight="280px"
+        :showReset="true" :showSolution="true" :solutionCode="solucionCode" />
+    </div>
+
+    <!-- Comparación de métodos -->
+    <div class="mb-8 p-6 bg-gray-50 rounded-lg">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Comparación de métodos comunes</h3>
+      <div class="overflow-x-auto">
+        <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Operación</th>
+              <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Método</th>
+              <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Descripción</th>
+              <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Complejidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="hover:bg-green-50">
+              <td class="py-3 px-4 border-b font-medium">Inserción al final</td>
+              <td class="py-3 px-4 border-b font-mono">append(x)</td>
+              <td class="py-3 px-4 border-b">Agrega elemento al final</td>
+              <td class="py-3 px-4 border-b text-green-600">O(1)</td>
+            </tr>
+            <tr class="hover:bg-green-50">
+              <td class="py-3 px-4 border-b font-medium">Inserción en posición</td>
+              <td class="py-3 px-4 border-b font-mono">insert(i, x)</td>
+              <td class="py-3 px-4 border-b">Inserta en índice específico</td>
+              <td class="py-3 px-4 border-b text-yellow-600">O(n)</td>
+            </tr>
+            <tr class="hover:bg-red-50">
+              <td class="py-3 px-4 border-b font-medium">Eliminación por valor</td>
+              <td class="py-3 px-4 border-b font-mono">remove(x)</td>
+              <td class="py-3 px-4 border-b">Elimina primera aparición de x</td>
+              <td class="py-3 px-4 border-b text-yellow-600">O(n)</td>
+            </tr>
+            <tr class="hover:bg-red-50">
+              <td class="py-3 px-4 border-b font-medium">Eliminación por índice</td>
+              <td class="py-3 px-4 border-b font-mono">pop(i)</td>
+              <td class="py-3 px-4 border-b">Elimina y retorna elemento en i</td>
+              <td class="py-3 px-4 border-b text-yellow-600">O(n)</td>
+            </tr>
+            <tr class="hover:bg-blue-50">
+              <td class="py-3 px-4 font-medium">Búsqueda</td>
+              <td class="py-3 px-4 font-mono">index(x)</td>
+              <td class="py-3 px-4">Retorna índice de primera aparición</td>
+              <td class="py-3 px-4 text-yellow-600">O(n)</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+    </div>
 
-      <!-- Ejemplo 2: Búsqueda y actualización -->
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 2: Búsqueda y actualización</h3>
-        <PythonRunner 
-          :code="ejemplo2Code"
-          title="busqueda_actualizacion.py"
-          :showLineNumbers="true"
-          initialHeight="260px"
-        />
-      </div>
 
-      <!-- Ejemplo 3: Sistema de gestión de tareas -->
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 3: Sistema de gestión de tareas</h3>
-        <p class="text-gray-700 mb-4">
-          Aplicación práctica: sistema completo de gestión de tareas con todas las operaciones:
-        </p>
-        <PythonRunner 
-          :code="ejemplo3Code"
-          title="gestion_tareas.py"
-          :showLineNumbers="true"
-          initialHeight="320px"
-        />
-      </div>
+    <!-- Quiz funcional -->
+    <QuizQuestions :preguntas="preguntas" titulo="Quiz de operaciones sobre listas"></QuizQuestions>
 
-      <!-- Ejercicio práctico -->
-      <div class="mb-8 p-6 bg-blue-50 rounded-lg">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio práctico: Gestión de inventario</h3>
-        <p class="text-gray-700 mb-4">
-          <strong>Situación:</strong> Implementa un sistema de inventario para una tienda usando todas las operaciones de listas.
-        </p>
-        
-        <PythonRunner 
-          :code="ejercicioCode"
-          title="inventario_tienda.py"
-          :showLineNumbers="true"
-          initialHeight="280px"
-          :showReset="true"
-          :showSolution="true"
-          :solutionCode="solucionCode"
-        />
-      </div>
+    <!-- Navegación -->
+    <NavigationUnidad anterior="/Unidad/1.2.1" siguiente="/Unidad/1.2.3" textoAnterior="Anterior"
+      textoSiguiente="Siguiente" tituloActual="Unidad I • Contenedores" mostrarAnterior="true"
+      mostrarSiguiente="true" />
 
-      <!-- Comparación de métodos -->
-      <div class="mb-8 p-6 bg-gray-50 rounded-lg">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Comparación de métodos comunes</h3>
-        <div class="overflow-x-auto">
-          <table class="min-w-full bg-white border border-gray-200 rounded-lg">
-            <thead class="bg-gray-100">
-              <tr>
-                <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Operación</th>
-                <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Método</th>
-                <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Descripción</th>
-                <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Complejidad</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="hover:bg-green-50">
-                <td class="py-3 px-4 border-b font-medium">Inserción al final</td>
-                <td class="py-3 px-4 border-b font-mono">append(x)</td>
-                <td class="py-3 px-4 border-b">Agrega elemento al final</td>
-                <td class="py-3 px-4 border-b text-green-600">O(1)</td>
-              </tr>
-              <tr class="hover:bg-green-50">
-                <td class="py-3 px-4 border-b font-medium">Inserción en posición</td>
-                <td class="py-3 px-4 border-b font-mono">insert(i, x)</td>
-                <td class="py-3 px-4 border-b">Inserta en índice específico</td>
-                <td class="py-3 px-4 border-b text-yellow-600">O(n)</td>
-              </tr>
-              <tr class="hover:bg-red-50">
-                <td class="py-3 px-4 border-b font-medium">Eliminación por valor</td>
-                <td class="py-3 px-4 border-b font-mono">remove(x)</td>
-                <td class="py-3 px-4 border-b">Elimina primera aparición de x</td>
-                <td class="py-3 px-4 border-b text-yellow-600">O(n)</td>
-              </tr>
-              <tr class="hover:bg-red-50">
-                <td class="py-3 px-4 border-b font-medium">Eliminación por índice</td>
-                <td class="py-3 px-4 border-b font-mono">pop(i)</td>
-                <td class="py-3 px-4 border-b">Elimina y retorna elemento en i</td>
-                <td class="py-3 px-4 border-b text-yellow-600">O(n)</td>
-              </tr>
-              <tr class="hover:bg-blue-50">
-                <td class="py-3 px-4 font-medium">Búsqueda</td>
-                <td class="py-3 px-4 font-mono">index(x)</td>
-                <td class="py-3 px-4">Retorna índice de primera aparición</td>
-                <td class="py-3 px-4 text-yellow-600">O(n)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
 
-      
-      <!-- Quiz funcional -->
-      <QuizQuestions :preguntas="preguntas" titulo="Quiz de operaciones sobre listas"></QuizQuestions>
-   
   </div>
 </template>
 
@@ -169,6 +156,7 @@
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 // Códigos de ejemplo
 const ejemplo1Code = `# Inserción y eliminación en listas

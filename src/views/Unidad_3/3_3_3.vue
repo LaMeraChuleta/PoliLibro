@@ -1,119 +1,137 @@
 <template>
-  <div class="container mx-auto px-4 py-6">
-    <!-- Header -->
-    <HeaderTitle numero="3" titulo="3.3.3 Algoritmos de camino corto">
-      <p class="text-gray-600 mt-2">Encontrar las rutas óptimas en grafos ponderados y no ponderados.</p>
-    </HeaderTitle>        
+    <div class="container mx-auto px-4 py-6">
+        <!-- Header -->
+        <HeaderTitle numero="3" titulo="3.3.3 Algoritmos de camino corto">
+            <p class="text-gray-600 mt-2">Encontrar las rutas óptimas en grafos ponderados y no ponderados.</p>
+        </HeaderTitle>
 
-    <!-- Explicación teórica -->
-    <section class="bg-blue-50 p-6 rounded-lg">
-      <h2 class="text-xl font-semibold text-blue-800 mb-3">Optimización de Rutas en Grafos</h2>
-      <p class="text-gray-700 leading-relaxed">
-        Los algoritmos de camino corto resuelven el problema de encontrar la ruta más eficiente entre dos vértices 
-        en un grafo. Esta eficiencia puede medirse en distancia (grafos ponderados) o número de aristas (grafos no ponderados). 
-        Estos algoritmos son fundamentales en aplicaciones como sistemas de navegación GPS, enrutamiento de redes, 
-        planificación logística y optimización de recursos. La elección del algoritmo depende de las características 
-        del grafo (ponderado/no ponderado, con/sin ciclos negativos).
-      </p>
-    </section>
+        <!-- Explicación teórica -->
+        <section class="bg-blue-50 p-6 rounded-lg">
+            <h2 class="text-xl font-semibold text-blue-800 mb-3">Optimización de Rutas en Grafos</h2>
+            <p class="text-gray-700 leading-relaxed">
+                Los algoritmos de camino corto resuelven el problema de encontrar la ruta más eficiente entre dos
+                vértices
+                en un grafo. Esta eficiencia puede medirse en distancia (grafos ponderados) o número de aristas (grafos
+                no ponderados).
+                Estos algoritmos son fundamentales en aplicaciones como sistemas de navegación GPS, enrutamiento de
+                redes,
+                planificación logística y optimización de recursos. La elección del algoritmo depende de las
+                características
+                del grafo (ponderado/no ponderado, con/sin ciclos negativos).
+            </p>
+        </section>
 
-    <!-- Tarjetas de conceptos clave -->
-    <section>
-      <h2 class="text-2xl font-bold text-gray-800 mb-6">Conceptos Clave</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="bg-blue-100 text-blue-800 p-2 rounded">+</div>
-            <h3 class="font-bold text-gray-800">Relajación de aristas</h3>
-          </div>
-          <p class="text-gray-600 text-sm">Operación fundamental que actualiza la distancia mínima conocida a un vértice.</p>
-        </div>
+        <!-- Tarjetas de conceptos clave -->
+        <section>
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Conceptos Clave</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-blue-100 text-blue-800 p-2 rounded">+</div>
+                        <h3 class="font-bold text-gray-800">Relajación de aristas</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">Operación fundamental que actualiza la distancia mínima conocida a
+                        un vértice.</p>
+                </div>
 
-        <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="bg-green-100 text-green-800 p-2 rounded">E</div>
-            <h3 class="font-bold text-gray-800">Ejemplo real</h3>
-          </div>
-          <p class="text-gray-600 text-sm">GPS: encontrar la ruta más rápida entre dos ciudades considerando distancias y tráfico.</p>
-        </div>
+                <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-green-100 text-green-800 p-2 rounded">E</div>
+                        <h3 class="font-bold text-gray-800">Ejemplo real</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">GPS: encontrar la ruta más rápida entre dos ciudades considerando
+                        distancias y tráfico.</p>
+                </div>
 
-        <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="bg-red-100 text-red-800 p-2 rounded">X</div>
-            <h3 class="font-bold text-gray-800">No confundir</h3>
-          </div>
-          <p class="text-gray-600 text-sm">Dijkstra no funciona con pesos negativos. Para esos casos usar Bellman-Ford.</p>
-        </div>
+                <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-red-100 text-red-800 p-2 rounded">X</div>
+                        <h3 class="font-bold text-gray-800">No confundir</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">Dijkstra no funciona con pesos negativos. Para esos casos usar
+                        Bellman-Ford.</p>
+                </div>
 
-        <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="bg-yellow-100 text-yellow-800 p-2 rounded">?</div>
-            <h3 class="font-bold text-gray-800">Curiosidad</h3>
-          </div>
-          <p class="text-gray-600 text-sm">El algoritmo de Dijkstra fue concebido en 20 minutos por Edsger Dijkstra en 1956.</p>
-        </div>
-      </div>
-    </section>
+                <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-yellow-100 text-yellow-800 p-2 rounded">?</div>
+                        <h3 class="font-bold text-gray-800">Curiosidad</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">El algoritmo de Dijkstra fue concebido en 20 minutos por Edsger
+                        Dijkstra en 1956.</p>
+                </div>
+            </div>
+        </section>
 
-    <!-- Ejemplos de código -->
-    <section class="space-y-10">
-      <h2 class="text-2xl font-bold text-gray-800">Ejemplos Prácticos</h2>
+        <!-- Ejemplos de código -->
+        <section class="space-y-10">
+            <h2 class="text-2xl font-bold text-gray-800">Ejemplos Prácticos</h2>
 
-      <!-- Ejemplo 1 -->
-      <div>
-        <h3 class="text-lg font-semibold text-gray-700 mb-3">1. BFS para camino más corto (grafos no ponderados)</h3>
-        <p class="text-gray-600 mb-4">Búsqueda en anchura para encontrar el camino con menor número de aristas.</p>
-        <PythonRunner :code="ejemplo1Code" />
-      </div>
+            <!-- Ejemplo 1 -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-700 mb-3">1. BFS para camino más corto (grafos no ponderados)
+                </h3>
+                <p class="text-gray-600 mb-4">Búsqueda en anchura para encontrar el camino con menor número de aristas.
+                </p>
+                <PythonRunner :code="ejemplo1Code" />
+            </div>
 
-      <!-- Ejemplo 2 -->
-      <div>
-        <h3 class="text-lg font-semibold text-gray-700 mb-3">2. Algoritmo de Dijkstra</h3>
-        <p class="text-gray-600 mb-4">Algoritmo greedy para encontrar caminos más cortos en grafos con pesos no negativos.</p>
-        <PythonRunner :code="ejemplo2Code" />
-      </div>
+            <!-- Ejemplo 2 -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-700 mb-3">2. Algoritmo de Dijkstra</h3>
+                <p class="text-gray-600 mb-4">Algoritmo greedy para encontrar caminos más cortos en grafos con pesos no
+                    negativos.</p>
+                <PythonRunner :code="ejemplo2Code" />
+            </div>
 
-      <!-- Ejemplo 3 -->
-      <div>
-        <h3 class="text-lg font-semibold text-gray-700 mb-3">3. Algoritmo de Bellman-Ford</h3>
-        <p class="text-gray-600 mb-4">Algoritmo más general que funciona con pesos negativos (sin ciclos negativos).</p>
-        <PythonRunner :code="ejemplo3Code" />
-      </div>
-    </section>
+            <!-- Ejemplo 3 -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-700 mb-3">3. Algoritmo de Bellman-Ford</h3>
+                <p class="text-gray-600 mb-4">Algoritmo más general que funciona con pesos negativos (sin ciclos
+                    negativos).</p>
+                <PythonRunner :code="ejemplo3Code" />
+            </div>
+        </section>
 
-    <!-- Ejercicio práctico -->
-    <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
-      <h2 class="text-2xl font-bold text-gray-800 mb-4">Ejercicio Práctico</h2>
-      <div class="space-y-4">
-        <p class="text-gray-700">
-          <strong>Enunciado:</strong> Implementa una función <code>ruta_mas_corta_todas</code> que encuentre 
-          las distancias más cortas desde un vértice origen a todos los demás vértices usando el algoritmo 
-          de Dijkstra. Luego, implementa una función para reconstruir el camino más corto a un destino específico. 
-          Usa el grafo de ciudades del ejemplo 2 con Madrid como origen.
-        </p>
-        <div class="flex gap-4">
-          <button
-            @click="mostrarSolucion = !mostrarSolucion"
-            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-          >
-            {{ mostrarSolucion ? 'Ocultar solución' : 'Mostrar solución' }}
-          </button>
-          <a href="#" class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
-            Ver pista
-          </a>
-        </div>
+        <!-- Ejercicio práctico -->
+        <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Ejercicio Práctico</h2>
+            <div class="space-y-4">
+                <p class="text-gray-700">
+                    <strong>Enunciado:</strong> Implementa una función <code>ruta_mas_corta_todas</code> que encuentre
+                    las distancias más cortas desde un vértice origen a todos los demás vértices usando el algoritmo
+                    de Dijkstra. Luego, implementa una función para reconstruir el camino más corto a un destino
+                    específico.
+                    Usa el grafo de ciudades del ejemplo 2 con Madrid como origen.
+                </p>
+                <div class="flex gap-4">
+                    <button @click="mostrarSolucion = !mostrarSolucion"
+                        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                        {{ mostrarSolucion ? 'Ocultar solución' : 'Mostrar solución' }}
+                    </button>
+                    <a href="#"
+                        class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
+                        Ver pista
+                    </a>
+                </div>
 
-        <!-- Solución oculta -->
-        <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
-          <h3 class="font-bold text-green-800 mb-3">Solución:</h3>
-          <PythonRunner :code="solucionCode" />
-        </div>
-      </div>
-    </section>
+                <!-- Solución oculta -->
+                <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
+                    <h3 class="font-bold text-green-800 mb-3">Solución:</h3>
+                    <PythonRunner :code="solucionCode" />
+                </div>
+            </div>
+        </section>
 
-    <!-- Quiz -->
-    <QuizQuestions :preguntas="preguntas" titulo="Quiz algoritmos de camino corto"></QuizQuestions>
-  </div>
+        <!-- Quiz -->
+        <QuizQuestions :preguntas="preguntas" titulo="Quiz algoritmos de camino corto"></QuizQuestions>
+
+
+        <!-- Navegación -->
+        <NavigationUnidad anterior="/Unidad/3.3.2" textoAnterior="Anterior" tituloActual="Unidad II • Pilas y Colas"
+            mostrarAnterior="true" mostrarSiguiente="false" />
+
+    </div>
 </template>
 
 <script setup>
@@ -121,6 +139,7 @@ import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 // Ejemplo 1: BFS para grafos no ponderados
 const ejemplo1Code = `from collections import deque
@@ -593,33 +612,33 @@ const mostrarSolucion = ref(false)
 
 // Quiz
 const preguntas = [
-  {
-    texto: "¿Cuál es el objetivo de los algoritmos de camino corto?",
-    opciones: [
-      { texto: "Recorrer todo el grafo", correcta: false },
-      { texto: "Encontrar la ruta mínima entre dos nodos", correcta: true },
-      { texto: "Ordenar vértices", correcta: false },
-      { texto: "Eliminar ciclos", correcta: false }
-    ]
-  },
-  {
-    texto: "¿Qué algoritmo se usa para encontrar el camino más corto en grafos ponderados sin pesos negativos?",
-    opciones: [
-      { texto: "BFS", correcta: false },
-      { texto: "DFS", correcta: false },
-      { texto: "Dijkstra", correcta: true },
-      { texto: "Prim", correcta: false }
-    ]
-  },
-  {
-    texto: "¿Qué algoritmo permite manejar pesos negativos?",
-    opciones: [
-      { texto: "Dijkstra", correcta: false },
-      { texto: "BFS", correcta: false },
-      { texto: "Bellman-Ford", correcta: true },
-      { texto: "Kruskal", correcta: false }
-    ]
-  }
+    {
+        texto: "¿Cuál es el objetivo de los algoritmos de camino corto?",
+        opciones: [
+            { texto: "Recorrer todo el grafo", correcta: false },
+            { texto: "Encontrar la ruta mínima entre dos nodos", correcta: true },
+            { texto: "Ordenar vértices", correcta: false },
+            { texto: "Eliminar ciclos", correcta: false }
+        ]
+    },
+    {
+        texto: "¿Qué algoritmo se usa para encontrar el camino más corto en grafos ponderados sin pesos negativos?",
+        opciones: [
+            { texto: "BFS", correcta: false },
+            { texto: "DFS", correcta: false },
+            { texto: "Dijkstra", correcta: true },
+            { texto: "Prim", correcta: false }
+        ]
+    },
+    {
+        texto: "¿Qué algoritmo permite manejar pesos negativos?",
+        opciones: [
+            { texto: "Dijkstra", correcta: false },
+            { texto: "BFS", correcta: false },
+            { texto: "Bellman-Ford", correcta: true },
+            { texto: "Kruskal", correcta: false }
+        ]
+    }
 ]
 
 </script>

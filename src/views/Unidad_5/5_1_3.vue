@@ -1,121 +1,140 @@
 <template>
-  <div class="container mx-auto px-4 py-6 space-y-8">
-    <!-- Header -->
-    <HeaderTitle numero="5" titulo="5.1.3 Procesos e hilos">
-      <p class="text-gray-600 mt-2">Diferencias fundamentales entre dos modelos de concurrencia y cuándo usar cada uno.</p>
-    </HeaderTitle>  
+    <div class="container mx-auto px-4 py-6 space-y-8">
+        <!-- Header -->
+        <HeaderTitle numero="5" titulo="5.1.3 Procesos e hilos">
+            <p class="text-gray-600 mt-2">Diferencias fundamentales entre dos modelos de concurrencia y cuándo usar cada
+                uno.</p>
+        </HeaderTitle>
 
-    <!-- Explicación teórica -->
-    <section class="bg-blue-50 p-6 rounded-lg">
-      <h2 class="text-xl font-semibold text-blue-800 mb-3">Procesos vs Hilos: Dos Modelos de Concurrencia</h2>
-      <p class="text-gray-700 leading-relaxed">
-        Los <strong>procesos</strong> y los <strong>hilos</strong> son dos formas fundamentales de lograr concurrencia en Python. 
-        Un proceso es una instancia independiente de un programa con su propio espacio de memoria, mientras que un hilo 
-        es una unidad de ejecución dentro de un proceso que comparte memoria con otros hilos del mismo proceso. 
-        En Python, la elección entre procesos e hilos está determinada principalmente por el GIL (Global Interpreter Lock) 
-        y el tipo de tareas a realizar: hilos para I/O y procesos para CPU intensivas.
-      </p>
-    </section>
+        <!-- Explicación teórica -->
+        <section class="bg-blue-50 p-6 rounded-lg">
+            <h2 class="text-xl font-semibold text-blue-800 mb-3">Procesos vs Hilos: Dos Modelos de Concurrencia</h2>
+            <p class="text-gray-700 leading-relaxed">
+                Los <strong>procesos</strong> y los <strong>hilos</strong> son dos formas fundamentales de lograr
+                concurrencia en Python.
+                Un proceso es una instancia independiente de un programa con su propio espacio de memoria, mientras que
+                un hilo
+                es una unidad de ejecución dentro de un proceso que comparte memoria con otros hilos del mismo proceso.
+                En Python, la elección entre procesos e hilos está determinada principalmente por el GIL (Global
+                Interpreter Lock)
+                y el tipo de tareas a realizar: hilos para I/O y procesos para CPU intensivas.
+            </p>
+        </section>
 
-    <!-- Tarjetas de conceptos clave -->
-    <section>
-      <h2 class="text-2xl font-bold text-gray-800 mb-6">Conceptos Clave</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="bg-blue-100 text-blue-800 p-2 rounded">+</div>
-            <h3 class="font-bold text-gray-800">GIL (Global Interpreter Lock)</h3>
-          </div>
-          <p class="text-gray-600 text-sm">Mecanismo de CPython que permite solo un hilo ejecutando bytecode Python a la vez. Afecta a hilos pero no a procesos.</p>
-        </div>
+        <!-- Tarjetas de conceptos clave -->
+        <section>
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Conceptos Clave</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-blue-100 text-blue-800 p-2 rounded">+</div>
+                        <h3 class="font-bold text-gray-800">GIL (Global Interpreter Lock)</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">Mecanismo de CPython que permite solo un hilo ejecutando bytecode
+                        Python a la vez. Afecta a hilos pero no a procesos.</p>
+                </div>
 
-        <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="bg-green-100 text-green-800 p-2 rounded">E</div>
-            <h3 class="font-bold text-gray-800">Ejemplo real</h3>
-          </div>
-          <p class="text-gray-600 text-sm">Servidor web: hilos para manejar conexiones (I/O), procesos para procesar imágenes (CPU).</p>
-        </div>
+                <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-green-100 text-green-800 p-2 rounded">E</div>
+                        <h3 class="font-bold text-gray-800">Ejemplo real</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">Servidor web: hilos para manejar conexiones (I/O), procesos para
+                        procesar imágenes (CPU).</p>
+                </div>
 
-        <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="bg-red-100 text-red-800 p-2 rounded">X</div>
-            <h3 class="font-bold text-gray-800">No confundir</h3>
-          </div>
-          <p class="text-gray-600 text-sm">Hilos comparten memoria (riesgo de condiciones de carrera). Procesos tienen memoria separada (comunicación más costosa).</p>
-        </div>
+                <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-red-100 text-red-800 p-2 rounded">X</div>
+                        <h3 class="font-bold text-gray-800">No confundir</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">Hilos comparten memoria (riesgo de condiciones de carrera).
+                        Procesos tienen memoria separada (comunicación más costosa).</p>
+                </div>
 
-        <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="bg-yellow-100 text-yellow-800 p-2 rounded">?</div>
-            <h3 class="font-bold text-gray-800">Curiosidad</h3>
-          </div>
-          <p class="text-gray-600 text-sm">El GIL existe principalmente para simplificar la gestión de memoria en CPython, no por una limitación técnica.</p>
-        </div>
-      </div>
-    </section>
+                <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-yellow-100 text-yellow-800 p-2 rounded">?</div>
+                        <h3 class="font-bold text-gray-800">Curiosidad</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">El GIL existe principalmente para simplificar la gestión de memoria
+                        en CPython, no por una limitación técnica.</p>
+                </div>
+            </div>
+        </section>
 
-    <!-- Ejemplos de código -->
-    <section class="space-y-10">
-      <h2 class="text-2xl font-bold text-gray-800">Ejemplos Prácticos</h2>
+        <!-- Ejemplos de código -->
+        <section class="space-y-10">
+            <h2 class="text-2xl font-bold text-gray-800">Ejemplos Prácticos</h2>
 
-      <!-- Ejemplo 1 -->
-      <div>
-        <h3 class="text-lg font-semibold text-gray-700 mb-3">1. Hilos: concurrencia para operaciones I/O</h3>
-        <p class="text-gray-600 mb-4">Implementación de un sistema de descargas concurrentes usando threading.</p>
-        <PythonRunner :code="ejemplo1Code" />
-      </div>
+            <!-- Ejemplo 1 -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-700 mb-3">1. Hilos: concurrencia para operaciones I/O</h3>
+                <p class="text-gray-600 mb-4">Implementación de un sistema de descargas concurrentes usando threading.
+                </p>
+                <PythonRunner :code="ejemplo1Code" />
+            </div>
 
-      <!-- Ejemplo 2 -->
-      <div>
-        <h3 class="text-lg font-semibold text-gray-700 mb-3">2. Procesos: paralelismo real para CPU intensivas</h3>
-        <p class="text-gray-600 mb-4">Uso de multiprocessing para cálculos matemáticos que aprovechan múltiples núcleos.</p>
-        <PythonRunner :code="ejemplo2Code" />
-      </div>
+            <!-- Ejemplo 2 -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-700 mb-3">2. Procesos: paralelismo real para CPU intensivas
+                </h3>
+                <p class="text-gray-600 mb-4">Uso de multiprocessing para cálculos matemáticos que aprovechan múltiples
+                    núcleos.</p>
+                <PythonRunner :code="ejemplo2Code" />
+            </div>
 
-      <!-- Ejemplo 3 -->
-      <div>
-        <h3 class="text-lg font-semibold text-gray-700 mb-3">3. Comparación directa: mismos datos, diferentes enfoques</h3>
-        <p class="text-gray-600 mb-4">Benchmark que muestra las diferencias de rendimiento entre hilos y procesos.</p>
-        <PythonRunner :code="ejemplo3Code" />
-      </div>
-    </section>
+            <!-- Ejemplo 3 -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-700 mb-3">3. Comparación directa: mismos datos, diferentes
+                    enfoques</h3>
+                <p class="text-gray-600 mb-4">Benchmark que muestra las diferencias de rendimiento entre hilos y
+                    procesos.</p>
+                <PythonRunner :code="ejemplo3Code" />
+            </div>
+        </section>
 
-    <!-- Ejercicio práctico -->
-    <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
-      <h2 class="text-2xl font-bold text-gray-800 mb-4">Ejercicio Práctico</h2>
-      <div class="space-y-4">
-        <p class="text-gray-700">
-          <strong>Enunciado:</strong> Implementa un sistema de procesamiento de imágenes que use hilos para cargar 
-          imágenes desde disco (I/O) y procesos para aplicar filtros (CPU intensivo). El sistema debe:
-          1. Cargar múltiples imágenes concurrentemente usando hilos
-          2. Aplicar filtros (como escala de grises) usando procesos
-          3. Medir y comparar el rendimiento vs. implementación secuencial
-          Usa imágenes simuladas para el ejemplo.
-        </p>
-        <div class="flex gap-4">
-          <button
-            @click="mostrarSolucion = !mostrarSolucion"
-            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-          >
-            {{ mostrarSolucion ? 'Ocultar solución' : 'Mostrar solución' }}
-          </button>
-          <a href="#" class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
-            Ver pista
-          </a>
-        </div>
+        <!-- Ejercicio práctico -->
+        <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Ejercicio Práctico</h2>
+            <div class="space-y-4">
+                <p class="text-gray-700">
+                    <strong>Enunciado:</strong> Implementa un sistema de procesamiento de imágenes que use hilos para
+                    cargar
+                    imágenes desde disco (I/O) y procesos para aplicar filtros (CPU intensivo). El sistema debe:
+                    1. Cargar múltiples imágenes concurrentemente usando hilos
+                    2. Aplicar filtros (como escala de grises) usando procesos
+                    3. Medir y comparar el rendimiento vs. implementación secuencial
+                    Usa imágenes simuladas para el ejemplo.
+                </p>
+                <div class="flex gap-4">
+                    <button @click="mostrarSolucion = !mostrarSolucion"
+                        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                        {{ mostrarSolucion ? 'Ocultar solución' : 'Mostrar solución' }}
+                    </button>
+                    <a href="#"
+                        class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
+                        Ver pista
+                    </a>
+                </div>
 
-        <!-- Solución oculta -->
-        <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
-          <h3 class="font-bold text-green-800 mb-3">Solución:</h3>
-          <PythonRunner :code="solucionCode" />
-        </div>
-      </div>
-    </section>
+                <!-- Solución oculta -->
+                <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
+                    <h3 class="font-bold text-green-800 mb-3">Solución:</h3>
+                    <PythonRunner :code="solucionCode" />
+                </div>
+            </div>
+        </section>
 
-    <!-- Quiz -->
-    <QuizQuestions :preguntas="preguntas" titulo="Quiz procesos e hilos"></QuizQuestions>
-  </div>
+        <!-- Quiz -->
+        <QuizQuestions :preguntas="preguntas" titulo="Quiz procesos e hilos"></QuizQuestions>
+
+        <!-- Navegación -->
+        <NavigationUnidad anterior="/Unidad/5.1.2" siguiente="/Unidad/5.1.4" textoAnterior="Anterior"
+            textoSiguiente="Siguiente" tituloActual="Unidad II • Programación concurrente" mostrarAnterior="true"
+            mostrarSiguiente="true" />
+
+    </div>
 </template>
 
 <script setup>
@@ -123,6 +142,7 @@ import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 // Ejemplo 1: Hilos para operaciones I/O
 const ejemplo1Code = `import threading
@@ -1252,33 +1272,33 @@ const mostrarSolucion = ref(false)
 
 // Quiz
 const preguntas = [
-  {
-    texto: "¿Qué es un proceso en un sistema operativo?",
-    opciones: [
-      { texto: "Un programa en ejecución con su propio espacio de memoria", correcta: true },
-      { texto: "Una función dentro de un programa", correcta: false },
-      { texto: "Un hilo de ejecución", correcta: false },
-      { texto: "Un recurso compartido", correcta: false }
-    ]
-  },
-  {
-    texto: "¿Qué es un hilo?",
-    opciones: [
-      { texto: "Una unidad ligera de ejecución dentro de un proceso", correcta: true },
-      { texto: "Un proceso independiente", correcta: false },
-      { texto: "Un programa completo", correcta: false },
-      { texto: "Un dispositivo del sistema", correcta: false }
-    ]
-  },
-  {
-    texto: "¿Cuál es una ventaja de usar hilos en lugar de procesos?",
-    opciones: [
-      { texto: "Comparten memoria y son más eficientes", correcta: true },
-      { texto: "Son totalmente independientes", correcta: false },
-      { texto: "No requieren sincronización", correcta: false },
-      { texto: "Usan más memoria", correcta: false }
-    ]
-  }
+    {
+        texto: "¿Qué es un proceso en un sistema operativo?",
+        opciones: [
+            { texto: "Un programa en ejecución con su propio espacio de memoria", correcta: true },
+            { texto: "Una función dentro de un programa", correcta: false },
+            { texto: "Un hilo de ejecución", correcta: false },
+            { texto: "Un recurso compartido", correcta: false }
+        ]
+    },
+    {
+        texto: "¿Qué es un hilo?",
+        opciones: [
+            { texto: "Una unidad ligera de ejecución dentro de un proceso", correcta: true },
+            { texto: "Un proceso independiente", correcta: false },
+            { texto: "Un programa completo", correcta: false },
+            { texto: "Un dispositivo del sistema", correcta: false }
+        ]
+    },
+    {
+        texto: "¿Cuál es una ventaja de usar hilos en lugar de procesos?",
+        opciones: [
+            { texto: "Comparten memoria y son más eficientes", correcta: true },
+            { texto: "Son totalmente independientes", correcta: false },
+            { texto: "No requieren sincronización", correcta: false },
+            { texto: "Usan más memoria", correcta: false }
+        ]
+    }
 ]
 
 </script>

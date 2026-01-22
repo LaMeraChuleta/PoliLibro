@@ -1,212 +1,196 @@
 <template>
-  <div class="container mx-auto px-4 py-6">           
+  <div class="container mx-auto px-4 py-6">
     <HeaderTitle numero="1.3" titulo="1.3.2 Operaciones sobre conjuntos">
-    <!-- Explicación teórica -->
+      <!-- Explicación teórica -->
       <div class="mb-8">
         <p class="text-gray-700 mb-4">
-          Los conjuntos en Python soportan operaciones matemáticas que los hacen especialmente útiles 
+          Los conjuntos en Python soportan operaciones matemáticas que los hacen especialmente útiles
           para comparar y combinar colecciones de elementos únicos.
         </p>
         <p class="text-gray-700">
-          Estas operaciones permiten realizar análisis de datos, filtrado y combinaciones 
+          Estas operaciones permiten realizar análisis de datos, filtrado y combinaciones
           de manera eficiente y elegante.
         </p>
       </div>
     </HeaderTitle>
 
-      <!-- Operaciones principales -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-        <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
-          <div class="w-10 h-10 bg-blue-500 text-white rounded-lg flex items-center justify-center mb-3">
-            <i class="fas fa-plus"></i>
-          </div>
-          <h3 class="font-bold text-blue-800 mb-2">Unión (|)</h3>
-          <p class="text-blue-700 text-sm">Elementos en A o B</p>
+    <!-- Operaciones principales -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+      <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+        <div class="w-10 h-10 bg-blue-500 text-white rounded-lg flex items-center justify-center mb-3">
+          <i class="fas fa-plus"></i>
         </div>
-        <div class="bg-green-50 border border-green-200 rounded-xl p-4">
-          <div class="w-10 h-10 bg-green-500 text-white rounded-lg flex items-center justify-center mb-3">
-            <i class="fas fa-times"></i>
-          </div>
-          <h3 class="font-bold text-green-800 mb-2">Intersección (&)</h3>
-          <p class="text-green-700 text-sm">Elementos en A y B</p>
-        </div>
-        <div class="bg-red-50 border border-red-200 rounded-xl p-4">
-          <div class="w-10 h-10 bg-red-500 text-white rounded-lg flex items-center justify-center mb-3">
-            <i class="fas fa-minus"></i>
-          </div>
-          <h3 class="font-bold text-red-800 mb-2">Diferencia (-)</h3>
-          <p class="text-red-700 text-sm">Elementos en A pero no en B</p>
-        </div>
-        <div class="bg-purple-50 border border-purple-200 rounded-xl p-4">
-          <div class="w-10 h-10 bg-purple-500 text-white rounded-lg flex items-center justify-center mb-3">
-            <i class="fas fa-code-branch"></i>
-          </div>
-          <h3 class="font-bold text-purple-800 mb-2">Diferencia Simétrica (^)</h3>
-          <p class="text-purple-700 text-sm">Elementos en A o B pero no en ambos</p>
-        </div>
-        <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
-          <div class="w-10 h-10 bg-yellow-500 text-white rounded-lg flex items-center justify-center mb-3">
-            <i class="fas fa-equals"></i>
-          </div>
-          <h3 class="font-bold text-yellow-800 mb-2">Subconjunto (<=)</h3>
-          <p class="text-yellow-700 text-sm">Todos los elementos de A están en B</p>
-        </div>
+        <h3 class="font-bold text-blue-800 mb-2">Unión (|)</h3>
+        <p class="text-blue-700 text-sm">Elementos en A o B</p>
       </div>
+      <div class="bg-green-50 border border-green-200 rounded-xl p-4">
+        <div class="w-10 h-10 bg-green-500 text-white rounded-lg flex items-center justify-center mb-3">
+          <i class="fas fa-times"></i>
+        </div>
+        <h3 class="font-bold text-green-800 mb-2">Intersección (&)</h3>
+        <p class="text-green-700 text-sm">Elementos en A y B</p>
+      </div>
+      <div class="bg-red-50 border border-red-200 rounded-xl p-4">
+        <div class="w-10 h-10 bg-red-500 text-white rounded-lg flex items-center justify-center mb-3">
+          <i class="fas fa-minus"></i>
+        </div>
+        <h3 class="font-bold text-red-800 mb-2">Diferencia (-)</h3>
+        <p class="text-red-700 text-sm">Elementos en A pero no en B</p>
+      </div>
+      <div class="bg-purple-50 border border-purple-200 rounded-xl p-4">
+        <div class="w-10 h-10 bg-purple-500 text-white rounded-lg flex items-center justify-center mb-3">
+          <i class="fas fa-code-branch"></i>
+        </div>
+        <h3 class="font-bold text-purple-800 mb-2">Diferencia Simétrica (^)</h3>
+        <p class="text-purple-700 text-sm">Elementos en A o B pero no en ambos</p>
+      </div>
+      <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
+        <div class="w-10 h-10 bg-yellow-500 text-white rounded-lg flex items-center justify-center mb-3">
+          <i class="fas fa-equals"></i>
+        </div>
+        <h3 class="font-bold text-yellow-800 mb-2">Subconjunto (<=)</h3>
+            <p class="text-yellow-700 text-sm">Todos los elementos de A están en B</p>
+      </div>
+    </div>
 
-      <!-- Diagrama visual de operaciones -->
-      <div class="mb-8 p-6 bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800 text-center">Visualización de operaciones</h3>
-        <div class="flex flex-col items-center">
-          <div class="flex justify-center space-x-8 mb-6">
-            <div class="text-center">
-              <div class="mb-2 font-medium text-blue-600">Conjunto A</div>
-              <div class="w-32 h-32 bg-blue-100 border-2 border-blue-300 rounded-full flex items-center justify-center">
-                <div class="text-center">
-                  <div class="font-bold">1, 2, 3</div>
-                  <div class="text-sm text-blue-600">A = {1, 2, 3}</div>
-                </div>
-              </div>
-            </div>
-            <div class="text-center">
-              <div class="mb-2 font-medium text-green-600">Conjunto B</div>
-              <div class="w-32 h-32 bg-green-100 border-2 border-green-300 rounded-full flex items-center justify-center">
-                <div class="text-center">
-                  <div class="font-bold">3, 4, 5</div>
-                  <div class="text-sm text-green-600">B = {3, 4, 5}</div>
-                </div>
+    <!-- Diagrama visual de operaciones -->
+    <div class="mb-8 p-6 bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800 text-center">Visualización de operaciones</h3>
+      <div class="flex flex-col items-center">
+        <div class="flex justify-center space-x-8 mb-6">
+          <div class="text-center">
+            <div class="mb-2 font-medium text-blue-600">Conjunto A</div>
+            <div class="w-32 h-32 bg-blue-100 border-2 border-blue-300 rounded-full flex items-center justify-center">
+              <div class="text-center">
+                <div class="font-bold">1, 2, 3</div>
+                <div class="text-sm text-blue-600">A = {1, 2, 3}</div>
               </div>
             </div>
           </div>
-          
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="text-center">
-              <div class="text-sm font-medium text-blue-700 mb-1">A | B</div>
-              <div class="px-3 py-2 bg-white border border-blue-200 rounded-lg">
-                {1, 2, 3, 4, 5}
-              </div>
-            </div>
-            <div class="text-center">
-              <div class="text-sm font-medium text-green-700 mb-1">A & B</div>
-              <div class="px-3 py-2 bg-white border border-green-200 rounded-lg">
-                {3}
-              </div>
-            </div>
-            <div class="text-center">
-              <div class="text-sm font-medium text-red-700 mb-1">A - B</div>
-              <div class="px-3 py-2 bg-white border border-red-200 rounded-lg">
-                {1, 2}
-              </div>
-            </div>
-            <div class="text-center">
-              <div class="text-sm font-medium text-purple-700 mb-1">A ^ B</div>
-              <div class="px-3 py-2 bg-white border border-purple-200 rounded-lg">
-                {1, 2, 4, 5}
+          <div class="text-center">
+            <div class="mb-2 font-medium text-green-600">Conjunto B</div>
+            <div class="w-32 h-32 bg-green-100 border-2 border-green-300 rounded-full flex items-center justify-center">
+              <div class="text-center">
+                <div class="font-bold">3, 4, 5</div>
+                <div class="text-sm text-green-600">B = {3, 4, 5}</div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Ejemplo 1: Operaciones básicas -->
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 1: Operaciones básicas</h3>
-        <PythonRunner 
-          :code="ejemplo1Code"
-          title="operaciones_basicas.py"
-          :showLineNumbers="true"
-          initialHeight="300px"
-        />
-      </div>
-
-      <!-- Ejemplo 2: Creación y métodos -->
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 2: Creación y métodos de conjuntos</h3>
-        <PythonRunner 
-          :code="ejemplo2Code"
-          title="creacion_metodos.py"
-          :showLineNumbers="true"
-          initialHeight="280px"
-        />
-      </div>
-
-      <!-- Ejemplo 3: Sistema de recomendación -->
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 3: Sistema de recomendación de películas</h3>
-        <p class="text-gray-700 mb-4">
-          Usando operaciones de conjuntos para recomendar películas basadas en gustos comunes:
-        </p>
-        <PythonRunner 
-          :code="ejemplo3Code"
-          title="recomendacion_peliculas.py"
-          :showLineNumbers="true"
-          initialHeight="320px"
-        />
-      </div>
-
-      <!-- Ejercicio práctico -->
-      <div class="mb-8 p-6 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio práctico: Análisis de habilidades</h3>
-        <p class="text-gray-700 mb-4">
-          <strong>Situación:</strong> Analiza las habilidades de dos equipos de desarrollo para planificar capacitaciones.
-        </p>
-        
-        <PythonRunner 
-          :code="ejercicioCode"
-          title="analisis_habilidades.py"
-          :showLineNumbers="true"
-          initialHeight="280px"
-          :showReset="true"
-          :showSolution="true"
-          :solutionCode="solucionCode"
-        />
-      </div>
-
-      <!-- Tabla de métodos -->
-      <div class="mb-8 p-6 bg-gray-50 rounded-xl">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Métodos de conjuntos</h3>
-        <div class="overflow-x-auto">
-          <table class="min-w-full bg-white border border-gray-200 rounded-lg">
-            <thead class="bg-gray-100">
-              <tr>
-                <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Método</th>
-                <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Descripción</th>
-                <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Ejemplo</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="hover:bg-blue-50">
-                <td class="py-3 px-4 border-b font-mono">add(x)</td>
-                <td class="py-3 px-4 border-b">Agrega elemento x</td>
-                <td class="py-3 px-4 border-b font-mono">s.add(5)</td>
-              </tr>
-              <tr class="hover:bg-red-50">
-                <td class="py-3 px-4 border-b font-mono">remove(x)</td>
-                <td class="py-3 px-4 border-b">Elimina x (error si no existe)</td>
-                <td class="py-3 px-4 border-b font-mono">s.remove(5)</td>
-              </tr>
-              <tr class="hover:bg-green-50">
-                <td class="py-3 px-4 border-b font-mono">discard(x)</td>
-                <td class="py-3 px-4 border-b">Elimina x (sin error si no existe)</td>
-                <td class="py-3 px-4 border-b font-mono">s.discard(5)</td>
-              </tr>
-              <tr class="hover:bg-purple-50">
-                <td class="py-3 px-4 border-b font-mono">update(t)</td>
-                <td class="py-3 px-4 border-b">Agrega elementos del iterable t</td>
-                <td class="py-3 px-4 border-b font-mono">s.update([4,5,6])</td>
-              </tr>
-              <tr class="hover:bg-yellow-50">
-                <td class="py-3 px-4 font-mono">clear()</td>
-                <td class="py-3 px-4">Elimina todos los elementos</td>
-                <td class="py-3 px-4 font-mono">s.clear()</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="text-center">
+            <div class="text-sm font-medium text-blue-700 mb-1">A | B</div>
+            <div class="px-3 py-2 bg-white border border-blue-200 rounded-lg">
+              {1, 2, 3, 4, 5}
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="text-sm font-medium text-green-700 mb-1">A & B</div>
+            <div class="px-3 py-2 bg-white border border-green-200 rounded-lg">
+              {3}
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="text-sm font-medium text-red-700 mb-1">A - B</div>
+            <div class="px-3 py-2 bg-white border border-red-200 rounded-lg">
+              {1, 2}
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="text-sm font-medium text-purple-700 mb-1">A ^ B</div>
+            <div class="px-3 py-2 bg-white border border-purple-200 rounded-lg">
+              {1, 2, 4, 5}
+            </div>
+          </div>
         </div>
       </div>
+    </div>
 
-      <!-- Quiz funcional -->
-      <QuizQuestions :preguntas="preguntas" titulo="Quiz de operaciones con conjuntos"></QuizQuestions>
-      
+    <!-- Ejemplo 1: Operaciones básicas -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 1: Operaciones básicas</h3>
+      <PythonRunner :code="ejemplo1Code" title="operaciones_basicas.py" :showLineNumbers="true" initialHeight="300px" />
+    </div>
+
+    <!-- Ejemplo 2: Creación y métodos -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 2: Creación y métodos de conjuntos</h3>
+      <PythonRunner :code="ejemplo2Code" title="creacion_metodos.py" :showLineNumbers="true" initialHeight="280px" />
+    </div>
+
+    <!-- Ejemplo 3: Sistema de recomendación -->
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 3: Sistema de recomendación de películas</h3>
+      <p class="text-gray-700 mb-4">
+        Usando operaciones de conjuntos para recomendar películas basadas en gustos comunes:
+      </p>
+      <PythonRunner :code="ejemplo3Code" title="recomendacion_peliculas.py" :showLineNumbers="true"
+        initialHeight="320px" />
+    </div>
+
+    <!-- Ejercicio práctico -->
+    <div class="mb-8 p-6 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio práctico: Análisis de habilidades</h3>
+      <p class="text-gray-700 mb-4">
+        <strong>Situación:</strong> Analiza las habilidades de dos equipos de desarrollo para planificar capacitaciones.
+      </p>
+
+      <PythonRunner :code="ejercicioCode" title="analisis_habilidades.py" :showLineNumbers="true" initialHeight="280px"
+        :showReset="true" :showSolution="true" :solutionCode="solucionCode" />
+    </div>
+
+    <!-- Tabla de métodos -->
+    <div class="mb-8 p-6 bg-gray-50 rounded-xl">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">Métodos de conjuntos</h3>
+      <div class="overflow-x-auto">
+        <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Método</th>
+              <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Descripción</th>
+              <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Ejemplo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="hover:bg-blue-50">
+              <td class="py-3 px-4 border-b font-mono">add(x)</td>
+              <td class="py-3 px-4 border-b">Agrega elemento x</td>
+              <td class="py-3 px-4 border-b font-mono">s.add(5)</td>
+            </tr>
+            <tr class="hover:bg-red-50">
+              <td class="py-3 px-4 border-b font-mono">remove(x)</td>
+              <td class="py-3 px-4 border-b">Elimina x (error si no existe)</td>
+              <td class="py-3 px-4 border-b font-mono">s.remove(5)</td>
+            </tr>
+            <tr class="hover:bg-green-50">
+              <td class="py-3 px-4 border-b font-mono">discard(x)</td>
+              <td class="py-3 px-4 border-b">Elimina x (sin error si no existe)</td>
+              <td class="py-3 px-4 border-b font-mono">s.discard(5)</td>
+            </tr>
+            <tr class="hover:bg-purple-50">
+              <td class="py-3 px-4 border-b font-mono">update(t)</td>
+              <td class="py-3 px-4 border-b">Agrega elementos del iterable t</td>
+              <td class="py-3 px-4 border-b font-mono">s.update([4,5,6])</td>
+            </tr>
+            <tr class="hover:bg-yellow-50">
+              <td class="py-3 px-4 font-mono">clear()</td>
+              <td class="py-3 px-4">Elimina todos los elementos</td>
+              <td class="py-3 px-4 font-mono">s.clear()</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Quiz funcional -->
+    <QuizQuestions :preguntas="preguntas" titulo="Quiz de operaciones con conjuntos"></QuizQuestions>
+
+    <!-- Navegación -->
+    <NavigationUnidad anterior="/Unidad/1.3.1" siguiente="/Unidad/1.3.3" textoAnterior="Anterior"
+      textoSiguiente="Siguiente" tituloActual="Unidad I • Contenedores" mostrarAnterior="true"
+      mostrarSiguiente="true" />
+
   </div>
 </template>
 
@@ -215,6 +199,7 @@
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 // Códigos de ejemplo
 const ejemplo1Code = `# Operaciones básicas con conjuntos

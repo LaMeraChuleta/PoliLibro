@@ -32,6 +32,12 @@
 
     <!-- Quiz funcional -->
     <QuizQuestions :preguntas="preguntas" titulo="Quiz de aplicaciones de lista"></QuizQuestions>
+
+    <!-- Navegación -->
+    <NavigationUnidad anterior="/Unidad/1.2.2" siguiente="/Unidad/1.3.1" textoAnterior="Anterior"
+      textoSiguiente="Siguiente" tituloActual="Unidad I • Contenedores" mostrarAnterior="true"
+      mostrarSiguiente="true" />
+
   </div>
 </template>
 
@@ -40,6 +46,7 @@
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 // Códigos SIMPLIFICADOS para evitar errores de sintaxis
 const ejemplo1Code = `# Sistema de inventario simple
@@ -180,7 +187,7 @@ for i in range(len(estudiantes)):
     if calificaciones[i] > 80:
         print(f"  • {estudiantes[i]}: {calificaciones[i]}")`
 
-const preguntas= [
+const preguntas = [
   {
     texto: "¿Para qué se usan comúnmente las listas en Python?",
     opciones: [

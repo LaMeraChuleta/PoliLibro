@@ -1,93 +1,99 @@
 <template>
-  <div class="container mx-auto px-4 py-6">
+    <div class="container mx-auto px-4 py-6">
 
-    <HeaderTitle numero="1.4" titulo="1.4.3 Operaciones sobre Diccionarios">
-      <!-- Explicación teórica -->
-      <div class="mb-8">
-        <p class="text-gray-700 mb-4">
-          Los diccionarios son estructuras de datos dinámicas que nos permiten realizar
-          diversas operaciones para manipular la información almacenada.
-          <strong class="text-blue-600">Agregar, modificar, eliminar y verificar</strong>
-          elementos son operaciones fundamentales para trabajar eficientemente con diccionarios.
-        </p>
-        <p class="text-gray-700">
-          En este capítulo aprenderás estas operaciones mediante un ejemplo práctico de
-          <strong>gestión de inventario de una librería</strong>.
-        </p>
-      </div>
-    </HeaderTitle>
+        <HeaderTitle numero="1.4" titulo="1.4.3 Operaciones sobre Diccionarios">
+            <!-- Explicación teórica -->
+            <div class="mb-8">
+                <p class="text-gray-700 mb-4">
+                    Los diccionarios son estructuras de datos dinámicas que nos permiten realizar
+                    diversas operaciones para manipular la información almacenada.
+                    <strong class="text-blue-600">Agregar, modificar, eliminar y verificar</strong>
+                    elementos son operaciones fundamentales para trabajar eficientemente con diccionarios.
+                </p>
+                <p class="text-gray-700">
+                    En este capítulo aprenderás estas operaciones mediante un ejemplo práctico de
+                    <strong>gestión de inventario de una librería</strong>.
+                </p>
+            </div>
+        </HeaderTitle>
 
-    <!-- Operaciones principales -->
-    <div class="grid md:grid-cols-4 gap-4 mb-8">
-      <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
-        <div class="w-10 h-10 bg-blue-500 text-white rounded-lg flex items-center justify-center mb-3">
-          <span class="text-lg font-bold">+</span>
+        <!-- Operaciones principales -->
+        <div class="grid md:grid-cols-4 gap-4 mb-8">
+            <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+                <div class="w-10 h-10 bg-blue-500 text-white rounded-lg flex items-center justify-center mb-3">
+                    <span class="text-lg font-bold">+</span>
+                </div>
+                <h3 class="font-bold text-blue-800 mb-1">Agregar</h3>
+                <p class="text-blue-700 text-sm">Añadir nuevos pares clave-valor</p>
+            </div>
+            <div class="bg-green-50 border border-green-200 rounded-xl p-4">
+                <div class="w-10 h-10 bg-green-500 text-white rounded-lg flex items-center justify-center mb-3">
+                    <span class="text-lg font-bold">E</span>
+                </div>
+                <h3 class="font-bold text-green-800 mb-1">Modificar</h3>
+                <p class="text-green-700 text-sm">Actualizar valores existentes</p>
+            </div>
+            <div class="bg-red-50 border border-red-200 rounded-xl p-4">
+                <div class="w-10 h-10 bg-red-500 text-white rounded-lg flex items-center justify-center mb-3">
+                    <span class="text-lg font-bold">X</span>
+                </div>
+                <h3 class="font-bold text-red-800 mb-1">Eliminar</h3>
+                <p class="text-red-700 text-sm">Remover elementos específicos</p>
+            </div>
+            <div class="bg-purple-50 border border-purple-200 rounded-xl p-4">
+                <div class="w-10 h-10 bg-purple-500 text-white rounded-lg flex items-center justify-center mb-3">
+                    <span class="text-lg font-bold">?</span>
+                </div>
+                <h3 class="font-bold text-purple-800 mb-1">Verificar</h3>
+                <p class="text-purple-700 text-sm">Comprobar existencia de claves</p>
+            </div>
         </div>
-        <h3 class="font-bold text-blue-800 mb-1">Agregar</h3>
-        <p class="text-blue-700 text-sm">Añadir nuevos pares clave-valor</p>
-      </div>
-      <div class="bg-green-50 border border-green-200 rounded-xl p-4">
-        <div class="w-10 h-10 bg-green-500 text-white rounded-lg flex items-center justify-center mb-3">
-          <span class="text-lg font-bold">E</span>
+
+        <!-- Ejemplo 1: Operaciones básicas -->
+        <div class="mb-8">
+            <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 1: Operaciones Básicas</h3>
+            <PythonRunner :code="ejemplo1Code" title="operaciones_basicas.py" :show-line-numbers="true"
+                :initial-height="280" />
         </div>
-        <h3 class="font-bold text-green-800 mb-1">Modificar</h3>
-        <p class="text-green-700 text-sm">Actualizar valores existentes</p>
-      </div>
-      <div class="bg-red-50 border border-red-200 rounded-xl p-4">
-        <div class="w-10 h-10 bg-red-500 text-white rounded-lg flex items-center justify-center mb-3">
-          <span class="text-lg font-bold">X</span>
+
+        <!-- Ejemplo 2: Sistema de inventario -->
+        <div class="mb-8">
+            <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 2: Sistema de Inventario</h3>
+            <PythonRunner :code="ejemplo2Code" title="inventario_libreria.py" :show-line-numbers="true"
+                :initial-height="320" />
         </div>
-        <h3 class="font-bold text-red-800 mb-1">Eliminar</h3>
-        <p class="text-red-700 text-sm">Remover elementos específicos</p>
-      </div>
-      <div class="bg-purple-50 border border-purple-200 rounded-xl p-4">
-        <div class="w-10 h-10 bg-purple-500 text-white rounded-lg flex items-center justify-center mb-3">
-          <span class="text-lg font-bold">?</span>
+
+        <!-- Ejemplo 3: Métodos útiles de diccionarios -->
+        <div class="mb-8">
+            <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 3: Métodos Útiles</h3>
+            <p class="text-gray-700 mb-4">
+                Python proporciona métodos incorporados para trabajar con diccionarios:
+            </p>
+            <PythonRunner :code="ejemplo3Code" title="metodos_diccionarios.py" :show-line-numbers="true"
+                :initial-height="300" />
         </div>
-        <h3 class="font-bold text-purple-800 mb-1">Verificar</h3>
-        <p class="text-purple-700 text-sm">Comprobar existencia de claves</p>
-      </div>
+
+        <!-- Ejercicio práctico -->
+        <div class="mb-8 p-6 bg-gradient-to-r from-blue-50 to-green-50 rounded-lg">
+            <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio práctico: Gestión de Estudiantes</h3>
+            <p class="text-gray-700 mb-4">
+                <strong>Situación:</strong> Crea un sistema para gestionar las calificaciones de estudiantes en
+                diferentes
+                materias.
+            </p>
+
+            <PythonRunner :code="ejercicioCode" title="gestion_estudiantes.py" :show-line-numbers="true"
+                :initial-height="260" :show-reset="true" :show-solution="true" :solution-code="solucionCode" />
+        </div>
+
+        <QuizQuestions :preguntas="preguntas" titulo="Quiz de Operaciones con Diccionarios"></QuizQuestions>
+
+        <!-- Navegación -->
+        <NavigationUnidad anterior="/Unidad/1.4.2" siguiente="/Unidad/1.4.4" textoAnterior="Anterior"
+            textoSiguiente="Siguiente" tituloActual="Unidad I • Contenedores" mostrarAnterior="true"
+            mostrarSiguiente="true" />
+
     </div>
-
-    <!-- Ejemplo 1: Operaciones básicas -->
-    <div class="mb-8">
-      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 1: Operaciones Básicas</h3>
-      <PythonRunner :code="ejemplo1Code" title="operaciones_basicas.py" :show-line-numbers="true"
-        :initial-height="280" />
-    </div>
-
-    <!-- Ejemplo 2: Sistema de inventario -->
-    <div class="mb-8">
-      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 2: Sistema de Inventario</h3>
-      <PythonRunner :code="ejemplo2Code" title="inventario_libreria.py" :show-line-numbers="true"
-        :initial-height="320" />
-    </div>
-
-    <!-- Ejemplo 3: Métodos útiles de diccionarios -->
-    <div class="mb-8">
-      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 3: Métodos Útiles</h3>
-      <p class="text-gray-700 mb-4">
-        Python proporciona métodos incorporados para trabajar con diccionarios:
-      </p>
-      <PythonRunner :code="ejemplo3Code" title="metodos_diccionarios.py" :show-line-numbers="true"
-        :initial-height="300" />
-    </div>
-
-    <!-- Ejercicio práctico -->
-    <div class="mb-8 p-6 bg-gradient-to-r from-blue-50 to-green-50 rounded-lg">
-      <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio práctico: Gestión de Estudiantes</h3>
-      <p class="text-gray-700 mb-4">
-        <strong>Situación:</strong> Crea un sistema para gestionar las calificaciones de estudiantes en diferentes
-        materias.
-      </p>
-
-      <PythonRunner :code="ejercicioCode" title="gestion_estudiantes.py" :show-line-numbers="true" :initial-height="260"
-        :show-reset="true" :show-solution="true" :solution-code="solucionCode" />
-    </div>
-
-    <QuizQuestions :preguntas="preguntas" titulo="Quiz de Operaciones con Diccionarios"></QuizQuestions>
- 
- </div>
 </template>
 
 <script setup>
@@ -95,7 +101,7 @@
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
-
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 // Códigos de ejemplo
 const ejemplo1Code = `# Operaciones Basicas en Diccionarios
 
@@ -489,33 +495,33 @@ print(f"Promedio general: {round(promedio_general, 2)}")`
 
 // QUIZ FUNCIONAL
 const preguntas = [
-  {
-    texto: "¿Qué operación usarías para agregar un nuevo libro al inventario?",
-    opciones: [
-      { texto: "inventario.append('L004', datos_libro)", correcta: false },
-      { texto: "inventario['L004'] = datos_libro", correcta: true },
-      { texto: "inventario.add('L004', datos_libro)", correcta: false },
-      { texto: "inventario.insert('L004', datos_libro)", correcta: false }
-    ]
-  },
-  {
-    texto: "¿Cómo verificarías si un libro existe antes de venderlo?",
-    opciones: [
-      { texto: "if 'L001' in inventario:", correcta: true },
-      { texto: "if inventario.exists('L001'):", correcta: false },
-      { texto: "if 'L001' == inventario:", correcta: false },
-      { texto: "if inventario.has_key('L001'):", correcta: false }
-    ]
-  },
-  {
-    texto: "¿Qué ocurre si intentas eliminar una clave que no existe con del?",
-    opciones: [
-      { texto: "Python crea la clave automáticamente", correcta: false },
-      { texto: "Se genera un KeyError", correcta: true },
-      { texto: "El diccionario queda vacío", correcta: false },
-      { texto: "Nada, simplemente se ignora", correcta: false }
-    ]
-  }
+    {
+        texto: "¿Qué operación usarías para agregar un nuevo libro al inventario?",
+        opciones: [
+            { texto: "inventario.append('L004', datos_libro)", correcta: false },
+            { texto: "inventario['L004'] = datos_libro", correcta: true },
+            { texto: "inventario.add('L004', datos_libro)", correcta: false },
+            { texto: "inventario.insert('L004', datos_libro)", correcta: false }
+        ]
+    },
+    {
+        texto: "¿Cómo verificarías si un libro existe antes de venderlo?",
+        opciones: [
+            { texto: "if 'L001' in inventario:", correcta: true },
+            { texto: "if inventario.exists('L001'):", correcta: false },
+            { texto: "if 'L001' == inventario:", correcta: false },
+            { texto: "if inventario.has_key('L001'):", correcta: false }
+        ]
+    },
+    {
+        texto: "¿Qué ocurre si intentas eliminar una clave que no existe con del?",
+        opciones: [
+            { texto: "Python crea la clave automáticamente", correcta: false },
+            { texto: "Se genera un KeyError", correcta: true },
+            { texto: "El diccionario queda vacío", correcta: false },
+            { texto: "Nada, simplemente se ignora", correcta: false }
+        ]
+    }
 ]
 
 </script>

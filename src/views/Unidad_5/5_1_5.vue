@@ -1,9 +1,10 @@
 <template>
-    <div class="container mx-auto px-4 py-6 space-y-8">
+  <div class="container mx-auto px-4 py-6 space-y-8">
     <!-- Header -->
     <HeaderTitle numero="5" titulo="5.1.5 Comunicación entre hilos">
-      <p class="text-xl text-gray-600">Estrategias para intercambiar datos de forma segura entre múltiples hilos concurrentes</p>
-    </HeaderTitle>    
+      <p class="text-xl text-gray-600">Estrategias para intercambiar datos de forma segura entre múltiples hilos
+        concurrentes</p>
+    </HeaderTitle>
 
     <!-- Introducción teórica -->
     <section class="mb-12 bg-blue-50 rounded-2xl p-8">
@@ -127,7 +128,7 @@
         <div class="w-10 h-10 bg-green-600 text-white rounded-lg flex items-center justify-center font-bold">+</div>
         <h2 class="text-2xl font-bold text-gray-900">Ejercicio Práctico</h2>
       </div>
-      
+
       <div class="mb-8">
         <h3 class="text-xl font-bold text-gray-900 mb-4">Sistema de Procesamiento de Pedidos</h3>
         <p class="text-gray-700 mb-4">
@@ -143,10 +144,8 @@
       </div>
 
       <div class="space-y-4">
-        <button
-          @click="mostrarSolucion = !mostrarSolucion"
-          class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
-        >
+        <button @click="mostrarSolucion = !mostrarSolucion"
+          class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
           {{ mostrarSolucion ? 'Ocultar Solucion' : 'Mostrar Solucion' }}
         </button>
 
@@ -161,6 +160,12 @@
 
     <!-- Quiz de evaluación -->
     <QuizQuestions :preguntas="preguntas" titulo="Quiz comunicación entre hilos"></QuizQuestions>
+
+    <!-- Navegación -->
+    <NavigationUnidad anterior="/Unidad/5.1.4" siguiente="/Unidad/5.2.1" textoAnterior="Anterior"
+      textoSiguiente="Siguiente" tituloActual="Unidad II • Programación concurrente" mostrarAnterior="true"
+      mostrarSiguiente="true" />
+
   </div>
 </template>
 
@@ -169,6 +174,7 @@ import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 const mostrarSolucion = ref(false)
 

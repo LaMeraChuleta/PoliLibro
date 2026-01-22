@@ -171,10 +171,10 @@
     <!-- Quiz -->
     <QuizQuestions :preguntas="preguntas" titulo="Quiz Colas"></QuizQuestions>
 
-    <!-- Información del capítulo -->
-    <div class="text-center text-sm text-gray-500 pt-8 border-t border-gray-300">
-      Capítulo 2.2 • Colas - Descripción
-    </div>
+    <!-- Navegación -->
+    <NavigationUnidad anterior="/Unidad/2.1.3" siguiente="/Unidad/2.2.2" textoAnterior="Anterior"
+      textoSiguiente="Siguiente" tituloActual="Unidad II • Pilas y Colas" mostrarAnterior="true"
+      mostrarSiguiente="true" />
   </div>
 </template>
 
@@ -183,6 +183,7 @@ import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 // Estado para mostrar solución
 const mostrarSolucion = ref(false)

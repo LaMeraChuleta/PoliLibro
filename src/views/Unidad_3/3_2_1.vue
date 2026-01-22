@@ -115,6 +115,10 @@
     <!-- Quiz -->
     <QuizQuestions :preguntas="preguntas" titulo="Quiz descripción"></QuizQuestions>
 
+    <!-- Navegación -->
+    <NavigationUnidad anterior="/Unidad/3.1.2" siguiente="/Unidad/3.2.2" textoAnterior="Anterior"
+      textoSiguiente="Siguiente" tituloActual="Unidad II • Grafos" mostrarAnterior="true" mostrarSiguiente="true" />
+
   </div>
 </template>
 
@@ -123,6 +127,7 @@ import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 // Ejemplo 1: Representación básica
 const ejemplo1Code = `# Representación de grafo no dirigido con lista de adyacencia

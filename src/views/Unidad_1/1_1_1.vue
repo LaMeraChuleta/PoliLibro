@@ -17,9 +17,13 @@
       </h4>
       <PythonRunner :code="codigoEjemplo" title="ejemplo.py" />
     </div>
-    
+
     <!-- Quiz funcional -->
     <QuizQuestions :preguntas="preguntas" titulo="Quiz descripción y características"></QuizQuestions>
+
+    <!-- Navegación -->
+    <NavigationUnidad siguiente="/Unidad/1.1.2" textoSiguiente="Siguiente" tituloActual="Unidad I • Contenedores"
+      mostrarAnterior="false" mostrarSiguiente="true" />
 
   </div>
 </template>
@@ -28,7 +32,7 @@
 import PythonRunner from "@/components/PythonRun.vue"
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
-import { ref } from 'vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 const codigoEjemplo = `# SIN estructura de datos
 nombre1 = "Ana"

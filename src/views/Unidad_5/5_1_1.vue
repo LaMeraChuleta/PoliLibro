@@ -1,120 +1,133 @@
 <template>
-  <div class="container mx-auto px-4 py-6 space-y-8">
-    <!-- Header -->
-    <HeaderTitle numero="5" titulo="5.1.1 Descripción">
-      <p class="text-gray-600 mt-2">Ejecutar múltiples tareas aparentemente simultáneas para mejorar la eficiencia.</p>
-    </HeaderTitle>      
+    <div class="container mx-auto px-4 py-6 space-y-8">
+        <!-- Header -->
+        <HeaderTitle numero="5" titulo="5.1.1 Descripción">
+            <p class="text-gray-600 mt-2">Ejecutar múltiples tareas aparentemente simultáneas para mejorar la
+                eficiencia.</p>
+        </HeaderTitle>
 
-    <!-- Explicación teórica -->
-    <section class="bg-blue-50 p-6 rounded-lg">
-      <h2 class="text-xl font-semibold text-blue-800 mb-3">Múltiples Tareas, Mejor Rendimiento</h2>
-      <p class="text-gray-700 leading-relaxed">
-        La programación concurrente permite ejecutar múltiples tareas de forma aparentemente simultánea, 
-        mejorando la eficiencia al aprovechar los tiempos de espera de unas tareas para ejecutar otras. 
-        A diferencia del paralelismo (ejecución real simultánea en múltiples núcleos), la concurrencia 
-        puede lograrse incluso en un solo núcleo mediante cambios de contexto. En Python, se implementa 
-        principalmente mediante hilos (threads) para operaciones I/O limitadas y procesos para operaciones 
-        CPU intensivas, cada uno con sus propias ventajas y limitaciones.
-      </p>
-    </section>
+        <!-- Explicación teórica -->
+        <section class="bg-blue-50 p-6 rounded-lg">
+            <h2 class="text-xl font-semibold text-blue-800 mb-3">Múltiples Tareas, Mejor Rendimiento</h2>
+            <p class="text-gray-700 leading-relaxed">
+                La programación concurrente permite ejecutar múltiples tareas de forma aparentemente simultánea,
+                mejorando la eficiencia al aprovechar los tiempos de espera de unas tareas para ejecutar otras.
+                A diferencia del paralelismo (ejecución real simultánea en múltiples núcleos), la concurrencia
+                puede lograrse incluso en un solo núcleo mediante cambios de contexto. En Python, se implementa
+                principalmente mediante hilos (threads) para operaciones I/O limitadas y procesos para operaciones
+                CPU intensivas, cada uno con sus propias ventajas y limitaciones.
+            </p>
+        </section>
 
-    <!-- Tarjetas de conceptos clave -->
-    <section>
-      <h2 class="text-2xl font-bold text-gray-800 mb-6">Conceptos Clave</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="bg-blue-100 text-blue-800 p-2 rounded">+</div>
-            <h3 class="font-bold text-gray-800">Concurrencia vs Paralelismo</h3>
-          </div>
-          <p class="text-gray-600 text-sm">Concurrencia: múltiples tareas progresando. Paralelismo: múltiples tareas ejecutando simultáneamente.</p>
-        </div>
+        <!-- Tarjetas de conceptos clave -->
+        <section>
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Conceptos Clave</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-blue-100 text-blue-800 p-2 rounded">+</div>
+                        <h3 class="font-bold text-gray-800">Concurrencia vs Paralelismo</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">Concurrencia: múltiples tareas progresando. Paralelismo: múltiples
+                        tareas ejecutando simultáneamente.</p>
+                </div>
 
-        <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="bg-green-100 text-green-800 p-2 rounded">E</div>
-            <h3 class="font-bold text-gray-800">Ejemplo real</h3>
-          </div>
-          <p class="text-gray-600 text-sm">Servidor web: atiende múltiples clientes simultáneamente mientras algunos esperan I/O.</p>
-        </div>
+                <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-green-100 text-green-800 p-2 rounded">E</div>
+                        <h3 class="font-bold text-gray-800">Ejemplo real</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">Servidor web: atiende múltiples clientes simultáneamente mientras
+                        algunos esperan I/O.</p>
+                </div>
 
-        <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="bg-red-100 text-red-800 p-2 rounded">X</div>
-            <h3 class="font-bold text-gray-800">No confundir</h3>
-          </div>
-          <p class="text-gray-600 text-sm">Python tiene GIL (Global Interpreter Lock) que limita hilos para CPU, pero no para I/O.</p>
-        </div>
+                <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-red-100 text-red-800 p-2 rounded">X</div>
+                        <h3 class="font-bold text-gray-800">No confundir</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">Python tiene GIL (Global Interpreter Lock) que limita hilos para
+                        CPU, pero no para I/O.</p>
+                </div>
 
-        <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="bg-yellow-100 text-yellow-800 p-2 rounded">?</div>
-            <h3 class="font-bold text-gray-800">Curiosidad</h3>
-          </div>
-          <p class="text-gray-600 text-sm">La concurrencia existe desde los años 60, pero se popularizó con la web y aplicaciones multitarea.</p>
-        </div>
-      </div>
-    </section>
+                <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-yellow-100 text-yellow-800 p-2 rounded">?</div>
+                        <h3 class="font-bold text-gray-800">Curiosidad</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">La concurrencia existe desde los años 60, pero se popularizó con la
+                        web y aplicaciones multitarea.</p>
+                </div>
+            </div>
+        </section>
 
-    <!-- Ejemplos de código -->
-    <section class="space-y-10">
-      <h2 class="text-2xl font-bold text-gray-800">Ejemplos Prácticos</h2>
+        <!-- Ejemplos de código -->
+        <section class="space-y-10">
+            <h2 class="text-2xl font-bold text-gray-800">Ejemplos Prácticos</h2>
 
-      <!-- Ejemplo 1 -->
-      <div>
-        <h3 class="text-lg font-semibold text-gray-700 mb-3">1. Concurrencia secuencial vs concurrente</h3>
-        <p class="text-gray-600 mb-4">Comparación entre ejecución secuencial y concurrente para tareas con tiempos de espera.</p>
-        <PythonRunner :code="ejemplo1Code" />
-      </div>
+            <!-- Ejemplo 1 -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-700 mb-3">1. Concurrencia secuencial vs concurrente</h3>
+                <p class="text-gray-600 mb-4">Comparación entre ejecución secuencial y concurrente para tareas con
+                    tiempos de espera.</p>
+                <PythonRunner :code="ejemplo1Code" />
+            </div>
 
-      <!-- Ejemplo 2 -->
-      <div>
-        <h3 class="text-lg font-semibold text-gray-700 mb-3">2. Hilos (Threads) para operaciones I/O</h3>
-        <p class="text-gray-600 mb-4">Uso de threading para descargar múltiples archivos web simultáneamente.</p>
-        <PythonRunner :code="ejemplo2Code" />
-      </div>
+            <!-- Ejemplo 2 -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-700 mb-3">2. Hilos (Threads) para operaciones I/O</h3>
+                <p class="text-gray-600 mb-4">Uso de threading para descargar múltiples archivos web simultáneamente.
+                </p>
+                <PythonRunner :code="ejemplo2Code" />
+            </div>
 
-      <!-- Ejemplo 3 -->
-      <div>
-        <h3 class="text-lg font-semibold text-gray-700 mb-3">3. Procesos (Process) para operaciones CPU intensivas</h3>
-        <p class="text-gray-600 mb-4">Uso de multiprocessing para cálculos matemáticos pesados que aprovechan múltiples núcleos.</p>
-        <PythonRunner :code="ejemplo3Code" />
-      </div>
-    </section>
+            <!-- Ejemplo 3 -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-700 mb-3">3. Procesos (Process) para operaciones CPU
+                    intensivas</h3>
+                <p class="text-gray-600 mb-4">Uso de multiprocessing para cálculos matemáticos pesados que aprovechan
+                    múltiples núcleos.</p>
+                <PythonRunner :code="ejemplo3Code" />
+            </div>
+        </section>
 
-    <!-- Ejercicio práctico -->
-    <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
-      <h2 class="text-2xl font-bold text-gray-800 mb-4">Ejercicio Práctico</h2>
-      <div class="space-y-4">
-        <p class="text-gray-700">
-          <strong>Enunciado:</strong> Implementa un sistema de monitoreo de servidores que verifique el estado 
-          (online/offline) de múltiples servidores concurrentemente usando hilos. Cada verificación debe simular 
-          un tiempo de espera de red. Luego, implementa una versión que use procesos y compara el rendimiento. 
-          Usa los servidores del ejemplo 2 como referencia.
-        </p>
-        <div class="flex gap-4">
-          <button
-            @click="mostrarSolucion = !mostrarSolucion"
-            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-          >
-            {{ mostrarSolucion ? 'Ocultar solución' : 'Mostrar solución' }}
-          </button>
-          <a href="#" class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
-            Ver pista
-          </a>
-        </div>
+        <!-- Ejercicio práctico -->
+        <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Ejercicio Práctico</h2>
+            <div class="space-y-4">
+                <p class="text-gray-700">
+                    <strong>Enunciado:</strong> Implementa un sistema de monitoreo de servidores que verifique el estado
+                    (online/offline) de múltiples servidores concurrentemente usando hilos. Cada verificación debe
+                    simular
+                    un tiempo de espera de red. Luego, implementa una versión que use procesos y compara el rendimiento.
+                    Usa los servidores del ejemplo 2 como referencia.
+                </p>
+                <div class="flex gap-4">
+                    <button @click="mostrarSolucion = !mostrarSolucion"
+                        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                        {{ mostrarSolucion ? 'Ocultar solución' : 'Mostrar solución' }}
+                    </button>
+                    <a href="#"
+                        class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
+                        Ver pista
+                    </a>
+                </div>
 
-        <!-- Solución oculta -->
-        <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
-          <h3 class="font-bold text-green-800 mb-3">Solución:</h3>
-          <PythonRunner :code="solucionCode" />
-        </div>
-      </div>
-    </section>
+                <!-- Solución oculta -->
+                <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
+                    <h3 class="font-bold text-green-800 mb-3">Solución:</h3>
+                    <PythonRunner :code="solucionCode" />
+                </div>
+            </div>
+        </section>
 
-    <!-- Quiz -->    
-    <QuizQuestions :preguntas="preguntas" titulo="Quiz de operaciones arboles binarios"></QuizQuestions>
-  </div>
+        <!-- Quiz -->
+        <QuizQuestions :preguntas="preguntas" titulo="Quiz de operaciones arboles binarios"></QuizQuestions>
+
+        <!-- Navegación -->
+        <NavigationUnidad textoSiguiente="Siguiente" siguiente="/Unidad/5.1.2"
+            tituloActual="Unidad II • Programación concurrente" mostrarAnterior="true" mostrarSiguiente="false" />
+    </div>
 </template>
 
 <script setup>
@@ -122,6 +135,7 @@ import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 // Ejemplo 1: Concurrencia secuencial vs concurrente
 const ejemplo1Code = `import time
@@ -840,33 +854,33 @@ const mostrarSolucion = ref(false)
 
 // Quiz
 const preguntas = [
-  {
-    texto: "¿Qué es la programación concurrente?",
-    opciones: [
-      { texto: "Ejecución de varias tareas de forma simultánea o intercalada", correcta: true },
-      { texto: "Ejecución de una sola tarea a la vez", correcta: false },
-      { texto: "Programación exclusiva de sistemas distribuidos", correcta: false },
-      { texto: "Uso obligatorio de varios procesadores", correcta: false }
-    ]
-  },
-  {
-    texto: "¿Cuál es el objetivo principal de la programación concurrente?",
-    opciones: [
-      { texto: "Mejorar el rendimiento y la eficiencia", correcta: true },
-      { texto: "Reducir el tamaño del código", correcta: false },
-      { texto: "Eliminar errores de programación", correcta: false },
-      { texto: "Evitar el uso de memoria", correcta: false }
-    ]
-  },
-  {
-    texto: "¿Qué elemento suele utilizarse para ejecutar tareas concurrentes?",
-    opciones: [
-      { texto: "Hilos o procesos", correcta: true },
-      { texto: "Variables globales", correcta: false },
-      { texto: "Estructuras lineales", correcta: false },
-      { texto: "Clases abstractas", correcta: false }
-    ]
-  }
+    {
+        texto: "¿Qué es la programación concurrente?",
+        opciones: [
+            { texto: "Ejecución de varias tareas de forma simultánea o intercalada", correcta: true },
+            { texto: "Ejecución de una sola tarea a la vez", correcta: false },
+            { texto: "Programación exclusiva de sistemas distribuidos", correcta: false },
+            { texto: "Uso obligatorio de varios procesadores", correcta: false }
+        ]
+    },
+    {
+        texto: "¿Cuál es el objetivo principal de la programación concurrente?",
+        opciones: [
+            { texto: "Mejorar el rendimiento y la eficiencia", correcta: true },
+            { texto: "Reducir el tamaño del código", correcta: false },
+            { texto: "Eliminar errores de programación", correcta: false },
+            { texto: "Evitar el uso de memoria", correcta: false }
+        ]
+    },
+    {
+        texto: "¿Qué elemento suele utilizarse para ejecutar tareas concurrentes?",
+        opciones: [
+            { texto: "Hilos o procesos", correcta: true },
+            { texto: "Variables globales", correcta: false },
+            { texto: "Estructuras lineales", correcta: false },
+            { texto: "Clases abstractas", correcta: false }
+        ]
+    }
 ]
 
 </script>

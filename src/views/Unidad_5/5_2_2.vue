@@ -1,10 +1,11 @@
 <template>
-    <div class="container mx-auto px-4 py-6 space-y-8">
+  <div class="container mx-auto px-4 py-6 space-y-8">
     <!-- Header -->
     <HeaderTitle numero="5" titulo="5.2.2 Técnicas de solución">
-      <p class="mt-3 text-gray-600 max-w-3xl">Estrategias y patrones para resolver conflictos de acceso concurrente en sistemas multi-hilo y distribuidos.</p>
-    </HeaderTitle>   
-  
+      <p class="mt-3 text-gray-600 max-w-3xl">Estrategias y patrones para resolver conflictos de acceso concurrente en
+        sistemas multi-hilo y distribuidos.</p>
+    </HeaderTitle>
+
     <!-- Explicación teórica -->
     <section class="mb-10 bg-white rounded-xl shadow-sm p-6">
       <h2 class="text-2xl font-bold text-gray-800 mb-4">Fundamentos teóricos</h2>
@@ -40,7 +41,8 @@
         <!-- Tarjeta 2 -->
         <div class="bg-white rounded-xl shadow-sm p-5 border border-gray-100">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-8 h-8 bg-green-100 text-green-600 rounded-lg flex items-center justify-center font-bold">E</div>
+            <div class="w-8 h-8 bg-green-100 text-green-600 rounded-lg flex items-center justify-center font-bold">E
+            </div>
             <h3 class="font-bold text-gray-800">Monitores</h3>
           </div>
           <p class="text-gray-700">
@@ -52,7 +54,8 @@
         <!-- Tarjeta 3 -->
         <div class="bg-white rounded-xl shadow-sm p-5 border border-gray-100">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-8 h-8 bg-yellow-100 text-yellow-600 rounded-lg flex items-center justify-center font-bold">X</div>
+            <div class="w-8 h-8 bg-yellow-100 text-yellow-600 rounded-lg flex items-center justify-center font-bold">X
+            </div>
             <h3 class="font-bold text-gray-800">Variables de condición</h3>
           </div>
           <p class="text-gray-700">
@@ -78,7 +81,7 @@
     <!-- Ejemplos de código -->
     <section class="mb-10">
       <h2 class="text-2xl font-bold text-gray-800 mb-6">Ejemplos prácticos</h2>
-      
+
       <!-- Ejemplo 1 -->
       <div class="mb-8">
         <div class="flex items-center justify-between mb-4">
@@ -136,10 +139,8 @@
         </div>
 
         <div>
-          <button
-            @click="mostrarSolucion = !mostrarSolucion"
-            class="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2"
-          >
+          <button @click="mostrarSolucion = !mostrarSolucion"
+            class="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
             <span v-if="!mostrarSolucion">Mostrar solución</span>
             <span v-else>Ocultar solución</span>
           </button>
@@ -155,6 +156,12 @@
 
     <!-- Quiz -->
     <QuizQuestions :preguntas="preguntas" titulo="Quiz técnicas de solución"></QuizQuestions>
+
+    <!-- Navegación -->
+    <NavigationUnidad anterior="/Unidad/5.2.1" siguiente="/Unidad/5.3.1" textoAnterior="Anterior"
+      textoSiguiente="Siguiente" tituloActual="Unidad II • Programación concurrente" mostrarAnterior="true"
+      mostrarSiguiente="true" />
+
   </div>
 </template>
 
@@ -163,6 +170,7 @@ import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 // Estado del ejercicio práctico
 const mostrarSolucion = ref(false)

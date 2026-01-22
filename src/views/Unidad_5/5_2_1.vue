@@ -1,167 +1,187 @@
 <template>
     <div class="container mx-auto px-4 py-6 space-y-8">
-    <!-- Header -->
-    <HeaderTitle numero="5" titulo="5.2.1 Análisis de problemas de sincronización">
-      <p class="text-xl text-gray-600">Identificación, diagnóstico y resolución de problemas comunes en programación concurrente</p>
-    </HeaderTitle>        
+        <!-- Header -->
+        <HeaderTitle numero="5" titulo="5.2.1 Análisis de problemas de sincronización">
+            <p class="text-xl text-gray-600">Identificación, diagnóstico y resolución de problemas comunes en
+                programación concurrente</p>
+        </HeaderTitle>
 
-    <!-- Introducción teórica -->
-    <section class="mb-12 bg-blue-50 rounded-2xl p-8">
-      <h2 class="text-2xl font-bold text-gray-900 mb-4">Introducción al Análisis de Sincronización</h2>
-      <p class="text-gray-700 leading-relaxed mb-4">
-        Los problemas de sincronización en programación concurrente son errores sutiles que ocurren cuando múltiples hilos
-        acceden a recursos compartidos sin la coordinación adecuada. Estos problemas pueden causar comportamientos
-        inconsistentes, bloqueos y resultados incorrectos que son difíciles de reproducir y depurar.
-      </p>
-      <p class="text-gray-700 leading-relaxed">
-        El análisis sistemático de problemas de sincronización implica identificar patrones comunes, utilizar herramientas
-        de diagnóstico y aplicar las estrategias de resolución apropiadas. Un análisis efectivo requiere comprender
-        tanto los síntomas como las causas subyacentes de cada tipo de problema.
-      </p>
-    </section>
+        <!-- Introducción teórica -->
+        <section class="mb-12 bg-blue-50 rounded-2xl p-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Introducción al Análisis de Sincronización</h2>
+            <p class="text-gray-700 leading-relaxed mb-4">
+                Los problemas de sincronización en programación concurrente son errores sutiles que ocurren cuando
+                múltiples hilos
+                acceden a recursos compartidos sin la coordinación adecuada. Estos problemas pueden causar
+                comportamientos
+                inconsistentes, bloqueos y resultados incorrectos que son difíciles de reproducir y depurar.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+                El análisis sistemático de problemas de sincronización implica identificar patrones comunes, utilizar
+                herramientas
+                de diagnóstico y aplicar las estrategias de resolución apropiadas. Un análisis efectivo requiere
+                comprender
+                tanto los síntomas como las causas subyacentes de cada tipo de problema.
+            </p>
+        </section>
 
-    <!-- Conceptos clave -->
-    <section class="mb-12">
-      <h2 class="text-3xl font-bold text-gray-900 mb-8">Conceptos Clave del Análisis</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-              <span class="text-blue-600 font-bold">+</span>
+        <!-- Conceptos clave -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8">Conceptos Clave del Análisis</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <span class="text-blue-600 font-bold">+</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">Condición de Carrera</h3>
+                    </div>
+                    <p class="text-gray-600">
+                        Situación donde el resultado depende de la secuencia de ejecución no determinista de hilos
+                        concurrentes
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <span class="text-blue-600 font-bold">E</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">Deadlock</h3>
+                    </div>
+                    <p class="text-gray-600">
+                        Bloqueo mutuo donde dos o más hilos esperan indefinidamente por recursos que poseen otros hilos
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <span class="text-blue-600 font-bold">X</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">Starvation</h3>
+                    </div>
+                    <p class="text-gray-600">
+                        Situación donde un hilo no puede progresar porque otros hilos monopolizan los recursos
+                        compartidos
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <span class="text-blue-600 font-bold">?</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">Livelock</h3>
+                    </div>
+                    <p class="text-gray-600">
+                        Situación donde hilos cambian de estado continuamente pero no progresan en su ejecución real
+                    </p>
+                </div>
             </div>
-            <h3 class="text-lg font-bold text-gray-900">Condición de Carrera</h3>
-          </div>
-          <p class="text-gray-600">
-            Situación donde el resultado depende de la secuencia de ejecución no determinista de hilos concurrentes
-          </p>
-        </div>
+        </section>
 
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-              <span class="text-blue-600 font-bold">E</span>
+        <!-- Ejemplo 1: Diagnóstico de condición de carrera -->
+        <section class="mb-12">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center font-bold">1
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900">Diagnóstico de Condición de Carrera</h2>
             </div>
-            <h3 class="text-lg font-bold text-gray-900">Deadlock</h3>
-          </div>
-          <p class="text-gray-600">
-            Bloqueo mutuo donde dos o más hilos esperan indefinidamente por recursos que poseen otros hilos
-          </p>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-              <span class="text-blue-600 font-bold">X</span>
+            <p class="text-gray-700 mb-6">
+                Las condiciones de carrera son difíciles de reproducir porque dependen de tiempos de ejecución
+                específicos.
+                Este ejemplo muestra un contador compartido sin protección y luego implementa el diagnóstico y la
+                solución.
+            </p>
+            <div class="bg-gray-900 rounded-xl overflow-hidden shadow-2xl">
+                <PythonRunner :code="ejemplo1Code" />
             </div>
-            <h3 class="text-lg font-bold text-gray-900">Starvation</h3>
-          </div>
-          <p class="text-gray-600">
-            Situación donde un hilo no puede progresar porque otros hilos monopolizan los recursos compartidos
-          </p>
-        </div>
+        </section>
 
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-              <span class="text-blue-600 font-bold">?</span>
+        <!-- Ejemplo 2: Análisis de Deadlock -->
+        <section class="mb-12">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center font-bold">2
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900">Análisis y Resolución de Deadlock</h2>
             </div>
-            <h3 class="text-lg font-bold text-gray-900">Livelock</h3>
-          </div>
-          <p class="text-gray-600">
-            Situación donde hilos cambian de estado continuamente pero no progresan en su ejecución real
-          </p>
-        </div>
-      </div>
-    </section>
+            <p class="text-gray-700 mb-6">
+                El deadlock ocurre cuando hilos se bloquean mutuamente esperando recursos. Este ejemplo demuestra un
+                deadlock
+                clásico y luego aplica estrategias de prevención como orden consistente de adquisición de locks.
+            </p>
+            <div class="bg-gray-900 rounded-xl overflow-hidden shadow-2xl">
+                <PythonRunner :code="ejemplo2Code" />
+            </div>
+        </section>
 
-    <!-- Ejemplo 1: Diagnóstico de condición de carrera -->
-    <section class="mb-12">
-      <div class="flex items-center gap-3 mb-6">
-        <div class="w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center font-bold">1</div>
-        <h2 class="text-2xl font-bold text-gray-900">Diagnóstico de Condición de Carrera</h2>
-      </div>
-      <p class="text-gray-700 mb-6">
-        Las condiciones de carrera son difíciles de reproducir porque dependen de tiempos de ejecución específicos.
-        Este ejemplo muestra un contador compartido sin protección y luego implementa el diagnóstico y la solución.
-      </p>
-      <div class="bg-gray-900 rounded-xl overflow-hidden shadow-2xl">
-        <PythonRunner :code="ejemplo1Code" />
-      </div>
-    </section>
+        <!-- Ejemplo 3: Detección de Starvation y Livelock -->
+        <section class="mb-12">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center font-bold">3
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900">Starvation y Livelock</h2>
+            </div>
+            <p class="text-gray-700 mb-6">
+                Starvation ocurre cuando un hilo no obtiene acceso a recursos, mientras que livelock implica actividad
+                sin progreso.
+                Este ejemplo muestra ambos problemas y sus soluciones usando prioridades y timeouts.
+            </p>
+            <div class="bg-gray-900 rounded-xl overflow-hidden shadow-2xl">
+                <PythonRunner :code="ejemplo3Code" />
+            </div>
+        </section>
 
-    <!-- Ejemplo 2: Análisis de Deadlock -->
-    <section class="mb-12">
-      <div class="flex items-center gap-3 mb-6">
-        <div class="w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center font-bold">2</div>
-        <h2 class="text-2xl font-bold text-gray-900">Análisis y Resolución de Deadlock</h2>
-      </div>
-      <p class="text-gray-700 mb-6">
-        El deadlock ocurre cuando hilos se bloquean mutuamente esperando recursos. Este ejemplo demuestra un deadlock
-        clásico y luego aplica estrategias de prevención como orden consistente de adquisición de locks.
-      </p>
-      <div class="bg-gray-900 rounded-xl overflow-hidden shadow-2xl">
-        <PythonRunner :code="ejemplo2Code" />
-      </div>
-    </section>
+        <!-- Ejercicio práctico -->
+        <section class="mb-12 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 bg-green-600 text-white rounded-lg flex items-center justify-center font-bold">+
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900">Ejercicio Práctico: Sistema de Reservas de Hotel</h2>
+            </div>
 
-    <!-- Ejemplo 3: Detección de Starvation y Livelock -->
-    <section class="mb-12">
-      <div class="flex items-center gap-3 mb-6">
-        <div class="w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center font-bold">3</div>
-        <h2 class="text-2xl font-bold text-gray-900">Starvation y Livelock</h2>
-      </div>
-      <p class="text-gray-700 mb-6">
-        Starvation ocurre cuando un hilo no obtiene acceso a recursos, mientras que livelock implica actividad sin progreso.
-        Este ejemplo muestra ambos problemas y sus soluciones usando prioridades y timeouts.
-      </p>
-      <div class="bg-gray-900 rounded-xl overflow-hidden shadow-2xl">
-        <PythonRunner :code="ejemplo3Code" />
-      </div>
-    </section>
+            <div class="mb-8">
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Problema a Resolver</h3>
+                <p class="text-gray-700 mb-4">
+                    Un sistema de reservas de hotel tiene los siguientes problemas de sincronización:
+                </p>
+                <ul class="list-disc pl-6 text-gray-700 mb-4 space-y-2">
+                    <li>Condición de carrera: Múltiples clientes reservan la misma habitación simultáneamente</li>
+                    <li>Deadlock: El sistema se bloquea al procesar pagos y confirmaciones en orden inconsistente</li>
+                    <li>Starvation: Clientes con conexiones lentas nunca consiguen reservar</li>
+                    <li>Datos inconsistentes: El contador de habitaciones disponibles no se actualiza correctamente</li>
+                </ul>
+                <p class="text-gray-700">
+                    Tu tarea es analizar el código problemático, identificar cada tipo de problema y aplicar las
+                    soluciones apropiadas.
+                </p>
+            </div>
 
-    <!-- Ejercicio práctico -->
-    <section class="mb-12 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8">
-      <div class="flex items-center gap-3 mb-6">
-        <div class="w-10 h-10 bg-green-600 text-white rounded-lg flex items-center justify-center font-bold">+</div>
-        <h2 class="text-2xl font-bold text-gray-900">Ejercicio Práctico: Sistema de Reservas de Hotel</h2>
-      </div>
-      
-      <div class="mb-8">
-        <h3 class="text-xl font-bold text-gray-900 mb-4">Problema a Resolver</h3>
-        <p class="text-gray-700 mb-4">
-          Un sistema de reservas de hotel tiene los siguientes problemas de sincronización:
-        </p>
-        <ul class="list-disc pl-6 text-gray-700 mb-4 space-y-2">
-          <li>Condición de carrera: Múltiples clientes reservan la misma habitación simultáneamente</li>
-          <li>Deadlock: El sistema se bloquea al procesar pagos y confirmaciones en orden inconsistente</li>
-          <li>Starvation: Clientes con conexiones lentas nunca consiguen reservar</li>
-          <li>Datos inconsistentes: El contador de habitaciones disponibles no se actualiza correctamente</li>
-        </ul>
-        <p class="text-gray-700">
-          Tu tarea es analizar el código problemático, identificar cada tipo de problema y aplicar las soluciones apropiadas.
-        </p>
-      </div>
+            <div class="space-y-4">
+                <button @click="mostrarSolucion = !mostrarSolucion"
+                    class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
+                    {{ mostrarSolucion ? 'Ocultar Solucion' : 'Mostrar Solucion' }}
+                </button>
 
-      <div class="space-y-4">
-        <button
-          @click="mostrarSolucion = !mostrarSolucion"
-          class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
-        >
-          {{ mostrarSolucion ? 'Ocultar Solucion' : 'Mostrar Solucion' }}
-        </button>
+                <div v-if="mostrarSolucion" class="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
+                    <h4 class="text-lg font-bold text-gray-900 mb-4">Solución Analítica y Técnica</h4>
+                    <div class="bg-gray-900 rounded-lg overflow-hidden">
+                        <PythonRunner :code="ejercicioCode" />
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <div v-if="mostrarSolucion" class="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-          <h4 class="text-lg font-bold text-gray-900 mb-4">Solución Analítica y Técnica</h4>
-          <div class="bg-gray-900 rounded-lg overflow-hidden">
-            <PythonRunner :code="ejercicioCode" />
-          </div>
-        </div>
-      </div>
-    </section>
+        <!-- Quiz de evaluación -->
+        <QuizQuestions :preguntas="preguntas" titulo="Quiz análisis de problemas de sincronización"></QuizQuestions>
 
-    <!-- Quiz de evaluación -->
-    <QuizQuestions :preguntas="preguntas" titulo="Quiz análisis de problemas de sincronización"></QuizQuestions>
-  </div>
+        <!-- Navegación -->
+        <NavigationUnidad anterior="/Unidad/5.1.5" siguiente="/Unidad/5.2.2" textoAnterior="Anterior"
+            textoSiguiente="Siguiente" tituloActual="Unidad II • Programación concurrente" mostrarAnterior="true"
+            mostrarSiguiente="true" />
+
+    </div>
 </template>
 
 <script setup>
@@ -169,6 +189,7 @@ import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 const mostrarSolucion = ref(false)
 
@@ -932,33 +953,33 @@ if __name__ == "__main__":
 
 // Quiz
 const preguntas = [
-  {
-    texto: "¿Qué es un problema de sincronización?",
-    opciones: [
-      { texto: "Un error por acceso concurrente no controlado a recursos compartidos", correcta: true },
-      { texto: "Un fallo de compilación", correcta: false },
-      { texto: "Un problema de hardware", correcta: false },
-      { texto: "Un error de sintaxis", correcta: false }
-    ]
-  },
-  {
-    texto: "¿Qué problema ocurre cuando dos hilos modifican un dato al mismo tiempo?",
-    opciones: [
-      { texto: "Condición de carrera", correcta: true },
-      { texto: "Interbloqueo", correcta: false },
-      { texto: "Inanición", correcta: false },
-      { texto: "Paralelismo", correcta: false }
-    ]
-  },
-  {
-    texto: "¿Cuál es una forma común de prevenir problemas de sincronización?",
-    opciones: [
-      { texto: "Usar semáforos o mutex", correcta: true },
-      { texto: "Evitar el uso de hilos", correcta: false },
-      { texto: "Incrementar la velocidad del CPU", correcta: false },
-      { texto: "Duplicar variables", correcta: false }
-    ]
-  }
+    {
+        texto: "¿Qué es un problema de sincronización?",
+        opciones: [
+            { texto: "Un error por acceso concurrente no controlado a recursos compartidos", correcta: true },
+            { texto: "Un fallo de compilación", correcta: false },
+            { texto: "Un problema de hardware", correcta: false },
+            { texto: "Un error de sintaxis", correcta: false }
+        ]
+    },
+    {
+        texto: "¿Qué problema ocurre cuando dos hilos modifican un dato al mismo tiempo?",
+        opciones: [
+            { texto: "Condición de carrera", correcta: true },
+            { texto: "Interbloqueo", correcta: false },
+            { texto: "Inanición", correcta: false },
+            { texto: "Paralelismo", correcta: false }
+        ]
+    },
+    {
+        texto: "¿Cuál es una forma común de prevenir problemas de sincronización?",
+        opciones: [
+            { texto: "Usar semáforos o mutex", correcta: true },
+            { texto: "Evitar el uso de hilos", correcta: false },
+            { texto: "Incrementar la velocidad del CPU", correcta: false },
+            { texto: "Duplicar variables", correcta: false }
+        ]
+    }
 ]
 
 </script>

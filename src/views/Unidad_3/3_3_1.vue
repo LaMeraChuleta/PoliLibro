@@ -9,9 +9,9 @@
     <section class="bg-blue-50 p-6 rounded-lg">
       <h2 class="text-xl font-semibold text-blue-800 mb-3">Exploración por Niveles</h2>
       <p class="text-gray-700 leading-relaxed">
-        La Búsqueda en Anchura (Breadth-First Search o BFS) es un algoritmo que explora todos los vértices 
-        de un grafo en orden creciente de distancia desde un vértice origen. Utiliza una cola (estructura FIFO) 
-        para garantizar que los vértices se visiten por niveles. Es particularmente útil para encontrar el 
+        La Búsqueda en Anchura (Breadth-First Search o BFS) es un algoritmo que explora todos los vértices
+        de un grafo en orden creciente de distancia desde un vértice origen. Utiliza una cola (estructura FIFO)
+        para garantizar que los vértices se visiten por niveles. Es particularmente útil para encontrar el
         camino más corto en grafos no ponderados y resolver problemas como la distancia mínima entre dos puntos.
       </p>
     </section>
@@ -25,7 +25,8 @@
             <div class="bg-blue-100 text-blue-800 p-2 rounded">+</div>
             <h3 class="font-bold text-gray-800">Estructura FIFO</h3>
           </div>
-          <p class="text-gray-600 text-sm">BFS usa una cola (First-In, First-Out) para procesar vértices, asegurando exploración por niveles.</p>
+          <p class="text-gray-600 text-sm">BFS usa una cola (First-In, First-Out) para procesar vértices, asegurando
+            exploración por niveles.</p>
         </div>
 
         <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
@@ -33,7 +34,8 @@
             <div class="bg-green-100 text-green-800 p-2 rounded">E</div>
             <h3 class="font-bold text-gray-800">Ejemplo real</h3>
           </div>
-          <p class="text-gray-600 text-sm">Propagación de noticias en redes sociales: primero los amigos cercanos, luego amigos de amigos.</p>
+          <p class="text-gray-600 text-sm">Propagación de noticias en redes sociales: primero los amigos cercanos, luego
+            amigos de amigos.</p>
         </div>
 
         <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
@@ -41,7 +43,8 @@
             <div class="bg-red-100 text-red-800 p-2 rounded">X</div>
             <h3 class="font-bold text-gray-800">No confundir</h3>
           </div>
-          <p class="text-gray-600 text-sm">No es adecuado para grafos muy profundos o memoria limitada por su alta demanda de almacenamiento.</p>
+          <p class="text-gray-600 text-sm">No es adecuado para grafos muy profundos o memoria limitada por su alta
+            demanda de almacenamiento.</p>
         </div>
 
         <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
@@ -49,7 +52,8 @@
             <div class="bg-yellow-100 text-yellow-800 p-2 rounded">?</div>
             <h3 class="font-bold text-gray-800">Curiosidad</h3>
           </div>
-          <p class="text-gray-600 text-sm">BFS fue formalizado en 1959 por Edward F. Moore para encontrar la ruta más corta en un laberinto.</p>
+          <p class="text-gray-600 text-sm">BFS fue formalizado en 1959 por Edward F. Moore para encontrar la ruta más
+            corta en un laberinto.</p>
         </div>
       </div>
     </section>
@@ -61,7 +65,8 @@
       <!-- Ejemplo 1 -->
       <div>
         <h3 class="text-lg font-semibold text-gray-700 mb-3">1. BFS básico con lista de adyacencia</h3>
-        <p class="text-gray-600 mb-4">Implementación fundamental del algoritmo BFS para recorrer un grafo no dirigido.</p>
+        <p class="text-gray-600 mb-4">Implementación fundamental del algoritmo BFS para recorrer un grafo no dirigido.
+        </p>
         <PythonRunner :code="ejemplo1Code" />
       </div>
 
@@ -85,15 +90,15 @@
       <h2 class="text-2xl font-bold text-gray-800 mb-4">Ejercicio Práctico</h2>
       <div class="space-y-4">
         <p class="text-gray-700">
-          <strong>Enunciado:</strong> Implementa una función <code>camino_mas_corto_bfs</code> que reciba un grafo no dirigido, 
-          un vértice origen y un vértice destino, y retorne el camino más corto entre ellos usando BFS. 
-          Si no existe camino, debe retornar una lista vacía. Usa el grafo del ejemplo 1 y prueba con los vértices 'A' y 'F'.
+          <strong>Enunciado:</strong> Implementa una función <code>camino_mas_corto_bfs</code> que reciba un grafo no
+          dirigido,
+          un vértice origen y un vértice destino, y retorne el camino más corto entre ellos usando BFS.
+          Si no existe camino, debe retornar una lista vacía. Usa el grafo del ejemplo 1 y prueba con los vértices 'A' y
+          'F'.
         </p>
         <div class="flex gap-4">
-          <button
-            @click="mostrarSolucion = !mostrarSolucion"
-            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-          >
+          <button @click="mostrarSolucion = !mostrarSolucion"
+            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
             {{ mostrarSolucion ? 'Ocultar solución' : 'Mostrar solución' }}
           </button>
           <a href="#" class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
@@ -111,6 +116,11 @@
 
     <!-- Quiz -->
     <QuizQuestions :preguntas="preguntas" titulo="Quiz búsqueda en anchura (BFS)"></QuizQuestions>
+
+    <!-- Navegación -->
+    <NavigationUnidad anterior="/Unidad/3.2.3" siguiente="/Unidad/3.3.2" textoAnterior="Anterior"
+      textoSiguiente="Siguiente" tituloActual="Unidad II • Grafos" mostrarAnterior="true" mostrarSiguiente="true" />
+
   </div>
 </template>
 
@@ -119,6 +129,7 @@ import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 // Ejemplo 1: BFS básico
 const ejemplo1Code = `from collections import deque

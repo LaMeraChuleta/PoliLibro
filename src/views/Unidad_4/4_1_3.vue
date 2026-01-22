@@ -1,126 +1,145 @@
 <template>
-  <div class="container mx-auto px-4 py-6 space-y-8">
-    <!-- Header -->
-    <HeaderTitle numero="4" titulo="4.1.3 Operaciones">
-      <p class="text-gray-600 mt-2">Implementación de las operaciones fundamentales: inserción, búsqueda, eliminación y consultas.</p>
-    </HeaderTitle>      
+    <div class="container mx-auto px-4 py-6 space-y-8">
+        <!-- Header -->
+        <HeaderTitle numero="4" titulo="4.1.3 Operaciones">
+            <p class="text-gray-600 mt-2">Implementación de las operaciones fundamentales: inserción, búsqueda,
+                eliminación y consultas.</p>
+        </HeaderTitle>
 
-    <!-- Explicación teórica -->
-    <section class="bg-blue-50 p-6 rounded-lg">
-      <h2 class="text-xl font-semibold text-blue-800 mb-3">Operaciones Esenciales de ABB</h2>
-      <p class="text-gray-700 leading-relaxed">
-        Las operaciones básicas en un Árbol Binario de Búsqueda aprovechan su propiedad de orden para lograr eficiencia. 
-        La <strong>inserción</strong> y <strong>búsqueda</strong> son operaciones naturales que siguen la propiedad del árbol. 
-        La <strong>eliminación</strong> es más compleja, con tres casos distintos dependiendo de cuántos hijos tenga el nodo a eliminar. 
-        Además, existen operaciones de consulta como encontrar el mínimo, máximo, predecesor y sucesor que son fundamentales 
-        para muchas aplicaciones prácticas como bases de datos y sistemas de archivos.
-      </p>
-    </section>
+        <!-- Explicación teórica -->
+        <section class="bg-blue-50 p-6 rounded-lg">
+            <h2 class="text-xl font-semibold text-blue-800 mb-3">Operaciones Esenciales de ABB</h2>
+            <p class="text-gray-700 leading-relaxed">
+                Las operaciones básicas en un Árbol Binario de Búsqueda aprovechan su propiedad de orden para lograr
+                eficiencia.
+                La <strong>inserción</strong> y <strong>búsqueda</strong> son operaciones naturales que siguen la
+                propiedad del árbol.
+                La <strong>eliminación</strong> es más compleja, con tres casos distintos dependiendo de cuántos hijos
+                tenga el nodo a eliminar.
+                Además, existen operaciones de consulta como encontrar el mínimo, máximo, predecesor y sucesor que son
+                fundamentales
+                para muchas aplicaciones prácticas como bases de datos y sistemas de archivos.
+            </p>
+        </section>
 
-    <!-- Tarjetas de conceptos clave -->
-    <section>
-      <h2 class="text-2xl font-bold text-gray-800 mb-6">Conceptos Clave</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="bg-blue-100 text-blue-800 p-2 rounded">+</div>
-            <h3 class="font-bold text-gray-800">Los tres casos de eliminación</h3>
-          </div>
-          <p class="text-gray-600 text-sm">1. Sin hijos (eliminar directamente). 2. Un hijo (reemplazar con hijo). 3. Dos hijos (reemplazar con sucesor/inorder).</p>
-        </div>
+        <!-- Tarjetas de conceptos clave -->
+        <section>
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Conceptos Clave</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-blue-100 text-blue-800 p-2 rounded">+</div>
+                        <h3 class="font-bold text-gray-800">Los tres casos de eliminación</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">1. Sin hijos (eliminar directamente). 2. Un hijo (reemplazar con
+                        hijo). 3. Dos hijos (reemplazar con sucesor/inorder).</p>
+                </div>
 
-        <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="bg-green-100 text-green-800 p-2 rounded">E</div>
-            <h3 class="font-bold text-gray-800">Ejemplo real</h3>
-          </div>
-          <p class="text-gray-600 text-sm">Sistema de reservas: insertar nueva reserva, buscar cliente, cancelar reserva (eliminar), ver próxima reserva (sucesor).</p>
-        </div>
+                <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-green-100 text-green-800 p-2 rounded">E</div>
+                        <h3 class="font-bold text-gray-800">Ejemplo real</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">Sistema de reservas: insertar nueva reserva, buscar cliente,
+                        cancelar reserva (eliminar), ver próxima reserva (sucesor).</p>
+                </div>
 
-        <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="bg-red-100 text-red-800 p-2 rounded">X</div>
-            <h3 class="font-bold text-gray-800">No confundir</h3>
-          </div>
-          <p class="text-gray-600 text-sm">El sucesor en inorden no es necesariamente el hijo derecho. Es el mínimo del subárbol derecho.</p>
-        </div>
+                <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-red-100 text-red-800 p-2 rounded">X</div>
+                        <h3 class="font-bold text-gray-800">No confundir</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">El sucesor en inorden no es necesariamente el hijo derecho. Es el
+                        mínimo del subárbol derecho.</p>
+                </div>
 
-        <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="bg-yellow-100 text-yellow-800 p-2 rounded">?</div>
-            <h3 class="font-bold text-gray-800">Curiosidad</h3>
-          </div>
-          <p class="text-gray-600 text-sm">La operación de eliminación con dos hijos mantiene la propiedad de ABB usando el sucesor en inorden.</p>
-        </div>
-      </div>
-    </section>
+                <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-yellow-100 text-yellow-800 p-2 rounded">?</div>
+                        <h3 class="font-bold text-gray-800">Curiosidad</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">La operación de eliminación con dos hijos mantiene la propiedad de
+                        ABB usando el sucesor en inorden.</p>
+                </div>
+            </div>
+        </section>
 
-    <!-- Ejemplos de código -->
-    <section class="space-y-10">
-      <h2 class="text-2xl font-bold text-gray-800">Ejemplos Prácticos</h2>
+        <!-- Ejemplos de código -->
+        <section class="space-y-10">
+            <h2 class="text-2xl font-bold text-gray-800">Ejemplos Prácticos</h2>
 
-      <!-- Ejemplo 1 -->
-      <div>
-        <h3 class="text-lg font-semibold text-gray-700 mb-3">1. Operaciones básicas: inserción, búsqueda y consultas</h3>
-        <p class="text-gray-600 mb-4">Implementación completa de las operaciones fundamentales de un ABB.</p>
-        <PythonRunner :code="ejemplo1Code" />
-      </div>
+            <!-- Ejemplo 1 -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-700 mb-3">1. Operaciones básicas: inserción, búsqueda y
+                    consultas</h3>
+                <p class="text-gray-600 mb-4">Implementación completa de las operaciones fundamentales de un ABB.</p>
+                <PythonRunner :code="ejemplo1Code" />
+            </div>
 
-      <!-- Ejemplo 2 -->
-      <div>
-        <h3 class="text-lg font-semibold text-gray-700 mb-3">2. Eliminación con sus tres casos</h3>
-        <p class="text-gray-600 mb-4">Implementación detallada del algoritmo de eliminación en ABB.</p>
-        <PythonRunner :code="ejemplo2Code" />
-      </div>
+            <!-- Ejemplo 2 -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-700 mb-3">2. Eliminación con sus tres casos</h3>
+                <p class="text-gray-600 mb-4">Implementación detallada del algoritmo de eliminación en ABB.</p>
+                <PythonRunner :code="ejemplo2Code" />
+            </div>
 
-      <!-- Ejemplo 3 -->
-      <div>
-        <h3 class="text-lg font-semibold text-gray-700 mb-3">3. ABB completo con operaciones estadísticas</h3>
-        <p class="text-gray-600 mb-4">ABB extendido con operaciones como altura, tamaño, y verificación de balanceo.</p>
-        <PythonRunner :code="ejemplo3Code" />
-      </div>
-    </section>
+            <!-- Ejemplo 3 -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-700 mb-3">3. ABB completo con operaciones estadísticas</h3>
+                <p class="text-gray-600 mb-4">ABB extendido con operaciones como altura, tamaño, y verificación de
+                    balanceo.</p>
+                <PythonRunner :code="ejemplo3Code" />
+            </div>
+        </section>
 
-    <!-- Ejercicio práctico -->
-    <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
-      <h2 class="text-2xl font-bold text-gray-800 mb-4">Ejercicio Práctico</h2>
-      <div class="space-y-4">
-        <p class="text-gray-700">
-          <strong>Enunciado:</strong> Implementa una función <code>eliminar_rango</code> que elimine todos los valores 
-          dentro de un rango [min_val, max_val] de un ABB. La función debe mantener la propiedad de ABB después 
-          de cada eliminación. Luego, implementa una función para encontrar el k-ésimo elemento más pequeño 
-          en el ABB. Usa el ABB del ejemplo 1 para probar.
-        </p>
-        <div class="flex gap-4">
-          <button
-            @click="mostrarSolucion = !mostrarSolucion"
-            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-          >
-            {{ mostrarSolucion ? 'Ocultar solución' : 'Mostrar solución' }}
-          </button>
-          <a href="#" class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
-            Ver pista
-          </a>
-        </div>
+        <!-- Ejercicio práctico -->
+        <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Ejercicio Práctico</h2>
+            <div class="space-y-4">
+                <p class="text-gray-700">
+                    <strong>Enunciado:</strong> Implementa una función <code>eliminar_rango</code> que elimine todos los
+                    valores
+                    dentro de un rango [min_val, max_val] de un ABB. La función debe mantener la propiedad de ABB
+                    después
+                    de cada eliminación. Luego, implementa una función para encontrar el k-ésimo elemento más pequeño
+                    en el ABB. Usa el ABB del ejemplo 1 para probar.
+                </p>
+                <div class="flex gap-4">
+                    <button @click="mostrarSolucion = !mostrarSolucion"
+                        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                        {{ mostrarSolucion ? 'Ocultar solución' : 'Mostrar solución' }}
+                    </button>
+                    <a href="#"
+                        class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
+                        Ver pista
+                    </a>
+                </div>
 
-        <!-- Solución oculta -->
-        <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
-          <h3 class="font-bold text-green-800 mb-3">Solución:</h3>
-          <PythonRunner :code="solucionCode" />
-        </div>
-      </div>
-    </section>
+                <!-- Solución oculta -->
+                <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
+                    <h3 class="font-bold text-green-800 mb-3">Solución:</h3>
+                    <PythonRunner :code="solucionCode" />
+                </div>
+            </div>
+        </section>
 
-    <!-- Quiz -->
-    <QuizQuestions :preguntas="preguntas" titulo="Quiz de operaciones arboles binarios"></QuizQuestions>
-  </div>
+        <!-- Quiz -->
+        <QuizQuestions :preguntas="preguntas" titulo="Quiz de operaciones arboles binarios"></QuizQuestions>
+
+
+        <!-- Navegación -->
+        <NavigationUnidad anterior="/Unidad/4.1.2" textoAnterior="Anterior" tituloActual="Unidad II • Árboles"
+            mostrarAnterior="true" mostrarSiguiente="false" />
+
+    </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 // Ejemplo 1: Operaciones básicas
 const ejemplo1Code = `class NodoABB:
@@ -987,33 +1006,33 @@ const mostrarSolucion = ref(false)
 
 // Quiz
 const preguntas = [
-  {
-    texto: "¿Cuál es una operación básica en un árbol binario de búsqueda?",
-    opciones: [
-      { texto: "Insertar un nodo", correcta: true },
-      { texto: "Crear ciclos", correcta: false },
-      { texto: "Mezclar nodos", correcta: false },
-      { texto: "Invertir el árbol automáticamente", correcta: false }
-    ]
-  },
-  {
-    texto: "¿Qué operación permite localizar un valor específico en un ABB?",
-    opciones: [
-      { texto: "Recorrer", correcta: false },
-      { texto: "Buscar", correcta: true },
-      { texto: "Balancear", correcta: false },
-      { texto: "Rotar", correcta: false }
-    ]
-  },
-  {
-    texto: "¿Qué sucede al eliminar un nodo con dos hijos en un ABB?",
-    opciones: [
-      { texto: "Se elimina sin reemplazo", correcta: false },
-      { texto: "Se reemplaza por su sucesor o predecesor", correcta: true },
-      { texto: "Se convierte en hoja", correcta: false },
-      { texto: "Se borra todo el árbol", correcta: false }
-    ]
-  }
+    {
+        texto: "¿Cuál es una operación básica en un árbol binario de búsqueda?",
+        opciones: [
+            { texto: "Insertar un nodo", correcta: true },
+            { texto: "Crear ciclos", correcta: false },
+            { texto: "Mezclar nodos", correcta: false },
+            { texto: "Invertir el árbol automáticamente", correcta: false }
+        ]
+    },
+    {
+        texto: "¿Qué operación permite localizar un valor específico en un ABB?",
+        opciones: [
+            { texto: "Recorrer", correcta: false },
+            { texto: "Buscar", correcta: true },
+            { texto: "Balancear", correcta: false },
+            { texto: "Rotar", correcta: false }
+        ]
+    },
+    {
+        texto: "¿Qué sucede al eliminar un nodo con dos hijos en un ABB?",
+        opciones: [
+            { texto: "Se elimina sin reemplazo", correcta: false },
+            { texto: "Se reemplaza por su sucesor o predecesor", correcta: true },
+            { texto: "Se convierte en hoja", correcta: false },
+            { texto: "Se borra todo el árbol", correcta: false }
+        ]
+    }
 ]
 
 </script>

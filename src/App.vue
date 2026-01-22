@@ -99,9 +99,8 @@ const router = useRouter()
 const route = useRoute()
 
 // Estado reactivo
-const sidebarOpen = ref(false)
+const sidebarOpen = ref(true)
 const userMenuOpen = ref(false)
-const activeTema = ref(null)
 const isMobile = ref(false)
 const sidebarRef = ref(null)
 

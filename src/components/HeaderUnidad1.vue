@@ -9,9 +9,8 @@
 
     </div>
     <div class="p-5 flex inline-flex w-full">
-
         <div class="w-1/3 my-auto">
-            <img src="/src/assets/contenedores.png" alt="">
+            <img :src="img" alt="Contenedores" class="w-full h-auto" />
         </div>
         <div class="w-2/3">
             <p class=" text-lg">{{ temario.competencias }}</p>
@@ -48,8 +47,8 @@ import { ref } from 'vue'
 const temario = ref(temarioJSON)
 
 function test(numeroTema) {
-    
-    var tema = temario.value.temas.find(x => x.numero == numeroTema)    
+
+    var tema = temario.value.temas.find(x => x.numero == numeroTema)
     tema.showSubTemas = !tema.showSubTemas
 
 }

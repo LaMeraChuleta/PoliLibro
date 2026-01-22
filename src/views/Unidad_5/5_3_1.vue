@@ -1,9 +1,10 @@
 <template>
-    <div class="container mx-auto px-4 py-6 space-y-8">
+  <div class="container mx-auto px-4 py-6 space-y-8">
     <!-- Header -->
     <HeaderTitle numero="5" titulo="5.3.1 Bibliotecas especializadas del lenguaje Python">
-      <p class="mt-3 text-gray-600 max-w-3xl">Exploración de las bibliotecas más importantes de Python para diferentes dominios de aplicación, desde ciencia de datos hasta desarrollo web.</p>
-    </HeaderTitle>    
+      <p class="mt-3 text-gray-600 max-w-3xl">Exploración de las bibliotecas más importantes de Python para diferentes
+        dominios de aplicación, desde ciencia de datos hasta desarrollo web.</p>
+    </HeaderTitle>
 
     <!-- Explicación teórica -->
     <section class="mb-10 bg-white rounded-xl shadow-sm p-6">
@@ -40,7 +41,8 @@
         <!-- Tarjeta 2 -->
         <div class="bg-white rounded-xl shadow-sm p-5 border border-gray-100">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-8 h-8 bg-green-100 text-green-600 rounded-lg flex items-center justify-center font-bold">E</div>
+            <div class="w-8 h-8 bg-green-100 text-green-600 rounded-lg flex items-center justify-center font-bold">E
+            </div>
             <h3 class="font-bold text-gray-800">Desarrollo web</h3>
           </div>
           <p class="text-gray-700">
@@ -52,7 +54,8 @@
         <!-- Tarjeta 3 -->
         <div class="bg-white rounded-xl shadow-sm p-5 border border-gray-100">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-8 h-8 bg-yellow-100 text-yellow-600 rounded-lg flex items-center justify-center font-bold">X</div>
+            <div class="w-8 h-8 bg-yellow-100 text-yellow-600 rounded-lg flex items-center justify-center font-bold">X
+            </div>
             <h3 class="font-bold text-gray-800">Computación científica</h3>
           </div>
           <p class="text-gray-700">
@@ -78,7 +81,7 @@
     <!-- Ejemplos de código -->
     <section class="mb-10">
       <h2 class="text-2xl font-bold text-gray-800 mb-6">Ejemplos de uso de bibliotecas</h2>
-      
+
       <!-- Ejemplo 1 -->
       <div class="mb-8">
         <div class="flex items-center justify-between mb-4">
@@ -136,10 +139,8 @@
         </div>
 
         <div>
-          <button
-            @click="mostrarSolucion = !mostrarSolucion"
-            class="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2"
-          >
+          <button @click="mostrarSolucion = !mostrarSolucion"
+            class="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
             <span v-if="!mostrarSolucion">Mostrar solución</span>
             <span v-else>Ocultar solución</span>
           </button>
@@ -161,10 +162,14 @@
           <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
               <tr>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Biblioteca</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Categoría</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Descripción</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Instalación</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Biblioteca
+                </th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Categoría
+                </th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Descripción
+                </th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Instalación
+                </th>
               </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
@@ -173,7 +178,8 @@
                   <div class="font-medium text-gray-900">pandas</div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                  <span class="px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full">Ciencia de datos</span>
+                  <span class="px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full">Ciencia de
+                    datos</span>
                 </td>
                 <td class="px-6 py-4">
                   <p class="text-sm text-gray-700">Manipulación y análisis de datos estructurados</p>
@@ -187,7 +193,8 @@
                   <div class="font-medium text-gray-900">NumPy</div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                  <span class="px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full">Ciencia de datos</span>
+                  <span class="px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full">Ciencia de
+                    datos</span>
                 </td>
                 <td class="px-6 py-4">
                   <p class="text-sm text-gray-700">Computación numérica con arrays multidimensionales</p>
@@ -201,7 +208,8 @@
                   <div class="font-medium text-gray-900">Flask</div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                  <span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Desarrollo web</span>
+                  <span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Desarrollo
+                    web</span>
                 </td>
                 <td class="px-6 py-4">
                   <p class="text-sm text-gray-700">Microframework para aplicaciones web</p>
@@ -215,7 +223,8 @@
                   <div class="font-medium text-gray-900">SciPy</div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                  <span class="px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Computación científica</span>
+                  <span class="px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Computación
+                    científica</span>
                 </td>
                 <td class="px-6 py-4">
                   <p class="text-sm text-gray-700">Algoritmos matemáticos y herramientas científicas</p>
@@ -232,14 +241,21 @@
 
     <!-- Quiz -->
     <QuizQuestions :preguntas="preguntas" titulo="Quiz bibliotecas especializadas del lenguaje Python"></QuizQuestions>
+
+
+    <!-- Navegación -->
+    <NavigationUnidad anterior="/Unidad/5.2.2" textoAnterior="Anterior"
+      tituloActual="Unidad II • Programación concurrente" mostrarAnterior="true" mostrarSiguiente="false" />
+
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 // Estado del ejercicio práctico
 const mostrarSolucion = ref(false)

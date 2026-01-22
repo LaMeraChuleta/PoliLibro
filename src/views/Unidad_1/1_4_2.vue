@@ -213,8 +213,13 @@
       </div>
     </div>
 
-    <!-- Quiz funcional -->    
+    <!-- Quiz funcional -->
     <QuizQuestions :preguntas="preguntas" titulo="Quiz de valores hash"></QuizQuestions>
+
+    <!-- Navegación -->
+    <NavigationUnidad anterior="/Unidad/1.4.1" siguiente="/Unidad/1.4.3" textoAnterior="Anterior"
+      textoSiguiente="Siguiente" tituloActual="Unidad I • Contenedores" mostrarAnterior="true"
+      mostrarSiguiente="true" />
   </div>
 </template>
 
@@ -223,6 +228,7 @@
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 // Códigos de ejemplo (seguros, sin caracteres problemáticos)
 const ejemplo1Code = `# Uso básico de la función hash()

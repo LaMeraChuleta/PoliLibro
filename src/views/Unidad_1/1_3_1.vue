@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto px-4 py-6">    
+  <div class="container mx-auto px-4 py-6">
     <HeaderTitle numero="1.3" titulo="1.3.1 Descripción y características de conjuntos">
       <!-- Contenido teórico -->
       <!-- Explicación teórica -->
@@ -160,6 +160,11 @@
     <!-- Quiz funcional -->
     <QuizQuestions :preguntas="preguntas" titulo="Quiz de conjuntos"></QuizQuestions>
 
+    <!-- Navegación -->
+    <NavigationUnidad anterior="/Unidad/1.2.3" siguiente="/Unidad/1.3.2" textoAnterior="Anterior"
+      textoSiguiente="Siguiente" tituloActual="Unidad I • Contenedores" mostrarAnterior="true"
+      mostrarSiguiente="true" />
+
   </div>
 </template>
 
@@ -168,6 +173,7 @@
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 // Códigos de ejemplo
 const ejemplo1Code = `# Creación y características básicas de conjuntos
 

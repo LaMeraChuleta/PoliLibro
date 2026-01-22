@@ -1,126 +1,145 @@
 <template>
-  <div class="container mx-auto px-4 py-6 space-y-8">
-    <!-- Header -->
-    <HeaderTitle numero="5" titulo="5.1.2 Comparación entre programación concurrente y secuencial">
-      <p class="text-gray-600 mt-2">Análisis de ventajas, desventajas y casos de uso para cada enfoque.</p>
-    </HeaderTitle>      
+    <div class="container mx-auto px-4 py-6 space-y-8">
+        <!-- Header -->
+        <HeaderTitle numero="5" titulo="5.1.2 Comparación entre programación concurrente y secuencial">
+            <p class="text-gray-600 mt-2">Análisis de ventajas, desventajas y casos de uso para cada enfoque.</p>
+        </HeaderTitle>
 
-    <!-- Explicación teórica -->
-    <section class="bg-blue-50 p-6 rounded-lg">
-      <h2 class="text-xl font-semibold text-blue-800 mb-3">Elegir el Enfoque Correcto</h2>
-      <p class="text-gray-700 leading-relaxed">
-        La programación secuencial ejecuta tareas en orden, una después de otra, mientras que la programación concurrente 
-        permite que múltiples tareas progresen simultáneamente. La elección entre estos enfoques depende del tipo de tareas, 
-        los recursos disponibles y los requisitos del sistema. La concurrencia puede mejorar drásticamente el rendimiento 
-        en operaciones I/O, pero añade complejidad y overhead. La programación secuencial es más simple y predecible, 
-        pero puede ser ineficiente cuando hay tiempos de espera que podrían aprovecharse.
-      </p>
-    </section>
+        <!-- Explicación teórica -->
+        <section class="bg-blue-50 p-6 rounded-lg">
+            <h2 class="text-xl font-semibold text-blue-800 mb-3">Elegir el Enfoque Correcto</h2>
+            <p class="text-gray-700 leading-relaxed">
+                La programación secuencial ejecuta tareas en orden, una después de otra, mientras que la programación
+                concurrente
+                permite que múltiples tareas progresen simultáneamente. La elección entre estos enfoques depende del
+                tipo de tareas,
+                los recursos disponibles y los requisitos del sistema. La concurrencia puede mejorar drásticamente el
+                rendimiento
+                en operaciones I/O, pero añade complejidad y overhead. La programación secuencial es más simple y
+                predecible,
+                pero puede ser ineficiente cuando hay tiempos de espera que podrían aprovecharse.
+            </p>
+        </section>
 
-    <!-- Tarjetas de conceptos clave -->
-    <section>
-      <h2 class="text-2xl font-bold text-gray-800 mb-6">Conceptos Clave</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="bg-blue-100 text-blue-800 p-2 rounded">+</div>
-            <h3 class="font-bold text-gray-800">Ley de Amdahl</h3>
-          </div>
-          <p class="text-gray-600 text-sm">El speedup máximo está limitado por la parte secuencial del programa.</p>
-        </div>
+        <!-- Tarjetas de conceptos clave -->
+        <section>
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Conceptos Clave</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-blue-100 text-blue-800 p-2 rounded">+</div>
+                        <h3 class="font-bold text-gray-800">Ley de Amdahl</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">El speedup máximo está limitado por la parte secuencial del
+                        programa.</p>
+                </div>
 
-        <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="bg-green-100 text-green-800 p-2 rounded">E</div>
-            <h3 class="font-bold text-gray-800">Ejemplo real</h3>
-          </div>
-          <p class="text-gray-600 text-sm">Servidor web: secuencial atiende 1 cliente a la vez, concurrente atiende muchos simultáneamente.</p>
-        </div>
+                <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-green-100 text-green-800 p-2 rounded">E</div>
+                        <h3 class="font-bold text-gray-800">Ejemplo real</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">Servidor web: secuencial atiende 1 cliente a la vez, concurrente
+                        atiende muchos simultáneamente.</p>
+                </div>
 
-        <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="bg-red-100 text-red-800 p-2 rounded">X</div>
-            <h3 class="font-bold text-gray-800">No confundir</h3>
-          </div>
-          <p class="text-gray-600 text-sm">Concurrencia no siempre significa más rápido. Puede ser más lenta para tareas pequeñas por overhead.</p>
-        </div>
+                <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-red-100 text-red-800 p-2 rounded">X</div>
+                        <h3 class="font-bold text-gray-800">No confundir</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">Concurrencia no siempre significa más rápido. Puede ser más lenta
+                        para tareas pequeñas por overhead.</p>
+                </div>
 
-        <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="bg-yellow-100 text-yellow-800 p-2 rounded">?</div>
-            <h3 class="font-bold text-gray-800">Curiosidad</h3>
-          </div>
-          <p class="text-gray-600 text-sm">El 95% de un programa típico es paralelizable, pero el 5% secuencial limita el speedup a 20x.</p>
-        </div>
-      </div>
-    </section>
+                <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-yellow-100 text-yellow-800 p-2 rounded">?</div>
+                        <h3 class="font-bold text-gray-800">Curiosidad</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">El 95% de un programa típico es paralelizable, pero el 5%
+                        secuencial limita el speedup a 20x.</p>
+                </div>
+            </div>
+        </section>
 
-    <!-- Ejemplos de código -->
-    <section class="space-y-10">
-      <h2 class="text-2xl font-bold text-gray-800">Ejemplos Prácticos</h2>
+        <!-- Ejemplos de código -->
+        <section class="space-y-10">
+            <h2 class="text-2xl font-bold text-gray-800">Ejemplos Prácticos</h2>
 
-      <!-- Ejemplo 1 -->
-      <div>
-        <h3 class="text-lg font-semibold text-gray-700 mb-3">1. Análisis cuantitativo: tiempos de ejecución comparativos</h3>
-        <p class="text-gray-600 mb-4">Medición precisa del rendimiento en diferentes escenarios y overhead de concurrencia.</p>
-        <PythonRunner :code="ejemplo1Code" />
-      </div>
+            <!-- Ejemplo 1 -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-700 mb-3">1. Análisis cuantitativo: tiempos de ejecución
+                    comparativos</h3>
+                <p class="text-gray-600 mb-4">Medición precisa del rendimiento en diferentes escenarios y overhead de
+                    concurrencia.</p>
+                <PythonRunner :code="ejemplo1Code" />
+            </div>
 
-      <!-- Ejemplo 2 -->
-      <div>
-        <h3 class="text-lg font-semibold text-gray-700 mb-3">2. Casos límite: cuando la concurrencia es contraproducente</h3>
-        <p class="text-gray-600 mb-4">Identificación de situaciones donde el overhead supera los beneficios.</p>
-        <PythonRunner :code="ejemplo2Code" />
-      </div>
+            <!-- Ejemplo 2 -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-700 mb-3">2. Casos límite: cuando la concurrencia es
+                    contraproducente</h3>
+                <p class="text-gray-600 mb-4">Identificación de situaciones donde el overhead supera los beneficios.</p>
+                <PythonRunner :code="ejemplo2Code" />
+            </div>
 
-      <!-- Ejemplo 3 -->
-      <div>
-        <h3 class="text-lg font-semibold text-gray-700 mb-3">3. Sistema mixto: combinando enfoques secuenciales y concurrentes</h3>
-        <p class="text-gray-600 mb-4">Implementación híbrida que usa lo mejor de ambos mundos.</p>
-        <PythonRunner :code="ejemplo3Code" />
-      </div>
-    </section>
+            <!-- Ejemplo 3 -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-700 mb-3">3. Sistema mixto: combinando enfoques secuenciales
+                    y concurrentes</h3>
+                <p class="text-gray-600 mb-4">Implementación híbrida que usa lo mejor de ambos mundos.</p>
+                <PythonRunner :code="ejemplo3Code" />
+            </div>
+        </section>
 
-    <!-- Ejercicio práctico -->
-    <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
-      <h2 class="text-2xl font-bold text-gray-800 mb-4">Ejercicio Práctico</h2>
-      <div class="space-y-4">
-        <p class="text-gray-700">
-          <strong>Enunciado:</strong> Implementa un analizador de rendimiento que compare automáticamente 
-          ejecución secuencial vs concurrente para diferentes tipos de tareas. El sistema debe determinar 
-          automáticamente cuándo la concurrencia es beneficiosa basándose en el tiempo de ejecución y el overhead. 
-          Incluye visualización de resultados y cálculo del punto de equilibrio.
-        </p>
-        <div class="flex gap-4">
-          <button
-            @click="mostrarSolucion = !mostrarSolucion"
-            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-          >
-            {{ mostrarSolucion ? 'Ocultar solución' : 'Mostrar solución' }}
-          </button>
-          <a href="#" class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
-            Ver pista
-          </a>
-        </div>
+        <!-- Ejercicio práctico -->
+        <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Ejercicio Práctico</h2>
+            <div class="space-y-4">
+                <p class="text-gray-700">
+                    <strong>Enunciado:</strong> Implementa un analizador de rendimiento que compare automáticamente
+                    ejecución secuencial vs concurrente para diferentes tipos de tareas. El sistema debe determinar
+                    automáticamente cuándo la concurrencia es beneficiosa basándose en el tiempo de ejecución y el
+                    overhead.
+                    Incluye visualización de resultados y cálculo del punto de equilibrio.
+                </p>
+                <div class="flex gap-4">
+                    <button @click="mostrarSolucion = !mostrarSolucion"
+                        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                        {{ mostrarSolucion ? 'Ocultar solución' : 'Mostrar solución' }}
+                    </button>
+                    <a href="#"
+                        class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
+                        Ver pista
+                    </a>
+                </div>
 
-        <!-- Solución oculta -->
-        <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
-          <h3 class="font-bold text-green-800 mb-3">Solución:</h3>
-          <PythonRunner :code="solucionCode" />
-        </div>
-      </div>
-    </section>
+                <!-- Solución oculta -->
+                <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
+                    <h3 class="font-bold text-green-800 mb-3">Solución:</h3>
+                    <PythonRunner :code="solucionCode" />
+                </div>
+            </div>
+        </section>
 
-    <!-- Quiz -->
-    <QuizQuestions :preguntas="preguntas" titulo="Quiz comparación entre programación concurrente y secuencial"></QuizQuestions>
-  </div>
+        <!-- Quiz -->
+        <QuizQuestions :preguntas="preguntas" titulo="Quiz comparación entre programación concurrente y secuencial">
+        </QuizQuestions>
+
+        <!-- Navegación -->
+        <NavigationUnidad anterior="/Unidad/5.1.1" siguiente="/Unidad/5.1.3" textoAnterior="Anterior"
+            textoSiguiente="Siguiente" tituloActual="Unidad II • Programación concurrente" mostrarAnterior="true"
+            mostrarSiguiente="true" />
+    </div>
 </template>
 
 <script setup>
-import { ref  } from 'vue'
+import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 // Ejemplo 1: Análisis cuantitativo
 const ejemplo1Code = `import time
@@ -1283,33 +1302,33 @@ const mostrarSolucion = ref(false)
 
 // Quiz
 const preguntas = [
-  {
-    texto: "¿Cuál es la principal diferencia entre programación secuencial y concurrente?",
-    opciones: [
-      { texto: "La secuencial ejecuta una tarea a la vez y la concurrente varias", correcta: true },
-      { texto: "La concurrente no usa CPU", correcta: false },
-      { texto: "La secuencial es más rápida siempre", correcta: false },
-      { texto: "Ambas funcionan exactamente igual", correcta: false }
-    ]
-  },
-  {
-    texto: "¿En qué situación es más conveniente usar programación concurrente?",
-    opciones: [
-      { texto: "Cuando hay varias tareas independientes", correcta: true },
-      { texto: "Cuando el programa es muy pequeño", correcta: false },
-      { texto: "Cuando solo hay una operación", correcta: false },
-      { texto: "Cuando no se comparte información", correcta: false }
-    ]
-  },
-  {
-    texto: "¿Cuál es una ventaja de la programación secuencial?",
-    opciones: [
-      { texto: "Es más simple y fácil de depurar", correcta: true },
-      { texto: "Aprovecha mejor múltiples núcleos", correcta: false },
-      { texto: "Permite ejecutar tareas al mismo tiempo", correcta: false },
-      { texto: "Evita el uso de bucles", correcta: false }
-    ]
-  }
+    {
+        texto: "¿Cuál es la principal diferencia entre programación secuencial y concurrente?",
+        opciones: [
+            { texto: "La secuencial ejecuta una tarea a la vez y la concurrente varias", correcta: true },
+            { texto: "La concurrente no usa CPU", correcta: false },
+            { texto: "La secuencial es más rápida siempre", correcta: false },
+            { texto: "Ambas funcionan exactamente igual", correcta: false }
+        ]
+    },
+    {
+        texto: "¿En qué situación es más conveniente usar programación concurrente?",
+        opciones: [
+            { texto: "Cuando hay varias tareas independientes", correcta: true },
+            { texto: "Cuando el programa es muy pequeño", correcta: false },
+            { texto: "Cuando solo hay una operación", correcta: false },
+            { texto: "Cuando no se comparte información", correcta: false }
+        ]
+    },
+    {
+        texto: "¿Cuál es una ventaja de la programación secuencial?",
+        opciones: [
+            { texto: "Es más simple y fácil de depurar", correcta: true },
+            { texto: "Aprovecha mejor múltiples núcleos", correcta: false },
+            { texto: "Permite ejecutar tareas al mismo tiempo", correcta: false },
+            { texto: "Evita el uso de bucles", correcta: false }
+        ]
+    }
 ]
 
 </script>

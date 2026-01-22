@@ -122,6 +122,11 @@
 
     <!-- Quiz -->
     <QuizQuestions :preguntas="preguntas" titulo="Quiz de Operaciones"></QuizQuestions>
+
+    <!-- Navegación -->
+    <NavigationUnidad anterior="/Unidad/2.2.1" siguiente="/Unidad/2.2.3" textoAnterior="Anterior"
+      textoSiguiente="Siguiente" tituloActual="Unidad II • Pilas y Colas" mostrarAnterior="true"
+      mostrarSiguiente="true" />
   </div>
 </template>
 
@@ -129,6 +134,7 @@
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 // Ejemplo 1: Operaciones básicas
 const ejemplo1Code = `# Operaciones básicas en colas usando listas

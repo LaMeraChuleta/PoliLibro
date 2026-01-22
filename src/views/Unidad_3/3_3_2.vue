@@ -1,118 +1,135 @@
 <template>
-  <div class="container mx-auto px-4 py-6">
-    <!-- Header -->
-    <HeaderTitle numero="3" titulo="3.3.2 Búsqueda en profundidad">
-      <p class="text-gray-600 mt-2">Algoritmo recursivo para explorar grafos profundamente antes de retroceder.</p>
-    </HeaderTitle>
-    
+    <div class="container mx-auto px-4 py-6">
+        <!-- Header -->
+        <HeaderTitle numero="3" titulo="3.3.2 Búsqueda en profundidad">
+            <p class="text-gray-600 mt-2">Algoritmo recursivo para explorar grafos profundamente antes de retroceder.
+            </p>
+        </HeaderTitle>
 
-    <!-- Explicación teórica -->
-    <section class="bg-blue-50 p-6 rounded-lg">
-      <h2 class="text-xl font-semibold text-blue-800 mb-3">Exploración Recursiva en Grafos</h2>
-      <p class="text-gray-700 leading-relaxed">
-        La Búsqueda en Profundidad (Depth-First Search o DFS) es un algoritmo que explora un grafo siguiendo un camino 
-        lo más profundo posible antes de retroceder (backtracking). Utiliza recursión o una pila (estructura LIFO) para 
-        implementar esta estrategia. Es especialmente útil para problemas que requieren explorar todas las posibilidades, 
-        como laberintos, recorridos de árboles, detección de ciclos y ordenamiento topológico.
-      </p>
-    </section>
 
-    <!-- Tarjetas de conceptos clave -->
-    <section>
-      <h2 class="text-2xl font-bold text-gray-800 mb-6">Conceptos Clave</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="bg-blue-100 text-blue-800 p-2 rounded">+</div>
-            <h3 class="font-bold text-gray-800">Estrategia LIFO</h3>
-          </div>
-          <p class="text-gray-600 text-sm">DFS usa una pila (Last-In, First-Out) para procesar vértices, explorando primero los más recientes.</p>
-        </div>
+        <!-- Explicación teórica -->
+        <section class="bg-blue-50 p-6 rounded-lg">
+            <h2 class="text-xl font-semibold text-blue-800 mb-3">Exploración Recursiva en Grafos</h2>
+            <p class="text-gray-700 leading-relaxed">
+                La Búsqueda en Profundidad (Depth-First Search o DFS) es un algoritmo que explora un grafo siguiendo un
+                camino
+                lo más profundo posible antes de retroceder (backtracking). Utiliza recursión o una pila (estructura
+                LIFO) para
+                implementar esta estrategia. Es especialmente útil para problemas que requieren explorar todas las
+                posibilidades,
+                como laberintos, recorridos de árboles, detección de ciclos y ordenamiento topológico.
+            </p>
+        </section>
 
-        <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="bg-green-100 text-green-800 p-2 rounded">E</div>
-            <h3 class="font-bold text-gray-800">Ejemplo real</h3>
-          </div>
-          <p class="text-gray-600 text-sm">Resolución de laberintos: seguir un camino hasta encontrar un callejón sin salida, luego retroceder.</p>
-        </div>
+        <!-- Tarjetas de conceptos clave -->
+        <section>
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Conceptos Clave</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-blue-100 text-blue-800 p-2 rounded">+</div>
+                        <h3 class="font-bold text-gray-800">Estrategia LIFO</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">DFS usa una pila (Last-In, First-Out) para procesar vértices,
+                        explorando primero los más recientes.</p>
+                </div>
 
-        <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="bg-red-100 text-red-800 p-2 rounded">X</div>
-            <h3 class="font-bold text-gray-800">No confundir</h3>
-          </div>
-          <p class="text-gray-600 text-sm">DFS no garantiza el camino más corto. Para eso se usa BFS en grafos no ponderados.</p>
-        </div>
+                <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-green-100 text-green-800 p-2 rounded">E</div>
+                        <h3 class="font-bold text-gray-800">Ejemplo real</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">Resolución de laberintos: seguir un camino hasta encontrar un
+                        callejón sin salida, luego retroceder.</p>
+                </div>
 
-        <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="bg-yellow-100 text-yellow-800 p-2 rounded">?</div>
-            <h3 class="font-bold text-gray-800">Curiosidad</h3>
-          </div>
-          <p class="text-gray-600 text-sm">DFS fue utilizado por Charles Pierre Trémaux en el siglo XIX para resolver laberintos.</p>
-        </div>
-      </div>
-    </section>
+                <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-red-100 text-red-800 p-2 rounded">X</div>
+                        <h3 class="font-bold text-gray-800">No confundir</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">DFS no garantiza el camino más corto. Para eso se usa BFS en grafos
+                        no ponderados.</p>
+                </div>
 
-    <!-- Ejemplos de código -->
-    <section class="space-y-10">
-      <h2 class="text-2xl font-bold text-gray-800">Ejemplos Prácticos</h2>
+                <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-yellow-100 text-yellow-800 p-2 rounded">?</div>
+                        <h3 class="font-bold text-gray-800">Curiosidad</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">DFS fue utilizado por Charles Pierre Trémaux en el siglo XIX para
+                        resolver laberintos.</p>
+                </div>
+            </div>
+        </section>
 
-      <!-- Ejemplo 1 -->
-      <div>
-        <h3 class="text-lg font-semibold text-gray-700 mb-3">1. DFS recursivo básico</h3>
-        <p class="text-gray-600 mb-4">Implementación recursiva clásica de DFS para recorrer un grafo no dirigido.</p>
-        <PythonRunner :code="ejemplo1Code" />
-      </div>
+        <!-- Ejemplos de código -->
+        <section class="space-y-10">
+            <h2 class="text-2xl font-bold text-gray-800">Ejemplos Prácticos</h2>
 
-      <!-- Ejemplo 2 -->
-      <div>
-        <h3 class="text-lg font-semibold text-gray-700 mb-3">2. DFS iterativo con pila</h3>
-        <p class="text-gray-600 mb-4">Implementación iterativa de DFS usando una pila explícita.</p>
-        <PythonRunner :code="ejemplo2Code" />
-      </div>
+            <!-- Ejemplo 1 -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-700 mb-3">1. DFS recursivo básico</h3>
+                <p class="text-gray-600 mb-4">Implementación recursiva clásica de DFS para recorrer un grafo no
+                    dirigido.</p>
+                <PythonRunner :code="ejemplo1Code" />
+            </div>
 
-      <!-- Ejemplo 3 -->
-      <div>
-        <h3 class="text-lg font-semibold text-gray-700 mb-3">3. DFS para ordenamiento topológico</h3>
-        <p class="text-gray-600 mb-4">Uso de DFS para ordenar tareas con dependencias (grafo acíclico dirigido).</p>
-        <PythonRunner :code="ejemplo3Code" />
-      </div>
-    </section>
+            <!-- Ejemplo 2 -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-700 mb-3">2. DFS iterativo con pila</h3>
+                <p class="text-gray-600 mb-4">Implementación iterativa de DFS usando una pila explícita.</p>
+                <PythonRunner :code="ejemplo2Code" />
+            </div>
 
-    <!-- Ejercicio práctico -->
-    <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
-      <h2 class="text-2xl font-bold text-gray-800 mb-4">Ejercicio Práctico</h2>
-      <div class="space-y-4">
-        <p class="text-gray-700">
-          <strong>Enunciado:</strong> Implementa una función <code>encontrar_ciclos_dfs</code> que detecte si un grafo 
-          dirigido contiene al menos un ciclo utilizando DFS. La función debe retornar True si encuentra un ciclo y False 
-          en caso contrario. Usa el grafo del ejemplo 3 como prueba.
-        </p>
-        <div class="flex gap-4">
-          <button
-            @click="mostrarSolucion = !mostrarSolucion"
-            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-          >
-            {{ mostrarSolucion ? 'Ocultar solución' : 'Mostrar solución' }}
-          </button>
-          <a href="#" class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
-            Ver pista
-          </a>
-        </div>
+            <!-- Ejemplo 3 -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-700 mb-3">3. DFS para ordenamiento topológico</h3>
+                <p class="text-gray-600 mb-4">Uso de DFS para ordenar tareas con dependencias (grafo acíclico dirigido).
+                </p>
+                <PythonRunner :code="ejemplo3Code" />
+            </div>
+        </section>
 
-        <!-- Solución oculta -->
-        <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
-          <h3 class="font-bold text-green-800 mb-3">Solución:</h3>
-          <PythonRunner :code="solucionCode" />
-        </div>
-      </div>
-    </section>
+        <!-- Ejercicio práctico -->
+        <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Ejercicio Práctico</h2>
+            <div class="space-y-4">
+                <p class="text-gray-700">
+                    <strong>Enunciado:</strong> Implementa una función <code>encontrar_ciclos_dfs</code> que detecte si
+                    un grafo
+                    dirigido contiene al menos un ciclo utilizando DFS. La función debe retornar True si encuentra un
+                    ciclo y False
+                    en caso contrario. Usa el grafo del ejemplo 3 como prueba.
+                </p>
+                <div class="flex gap-4">
+                    <button @click="mostrarSolucion = !mostrarSolucion"
+                        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                        {{ mostrarSolucion ? 'Ocultar solución' : 'Mostrar solución' }}
+                    </button>
+                    <a href="#"
+                        class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
+                        Ver pista
+                    </a>
+                </div>
 
-    <!-- Quiz -->
-    <QuizQuestions :preguntas="preguntas" titulo="Quiz búsqueda en profundidad (DFS)"></QuizQuestions>
-  </div>
+                <!-- Solución oculta -->
+                <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
+                    <h3 class="font-bold text-green-800 mb-3">Solución:</h3>
+                    <PythonRunner :code="solucionCode" />
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz -->
+        <QuizQuestions :preguntas="preguntas" titulo="Quiz búsqueda en profundidad (DFS)"></QuizQuestions>
+
+        <!-- Navegación -->
+        <NavigationUnidad anterior="/Unidad/3.3.1" siguiente="/Unidad/3.3.3" textoAnterior="Anterior"
+            textoSiguiente="Siguiente" tituloActual="Unidad II • Grafos" mostrarAnterior="true"
+            mostrarSiguiente="true" />
+
+    </div>
 </template>
 
 <script setup>
@@ -120,6 +137,7 @@ import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 // Ejemplo 1: DFS recursivo básico
 const ejemplo1Code = `def dfs_recursivo(grafo, vertice, visitados=None):
@@ -559,33 +577,33 @@ const mostrarSolucion = ref(false)
 
 // Quiz
 const preguntas = [
-  {
-    texto: "¿Qué caracteriza a la búsqueda en profundidad (DFS)?",
-    opciones: [
-      { texto: "Explora el grafo por niveles", correcta: false },
-      { texto: "Explora primero los nodos más profundos", correcta: true },
-      { texto: "Usa siempre colas", correcta: false },
-      { texto: "Ordena los nodos", correcta: false }
-    ]
-  },
-  {
-    texto: "¿Qué estructura de datos utiliza DFS?",
-    opciones: [
-      { texto: "Cola", correcta: false },
-      { texto: "Pila", correcta: true },
-      { texto: "Matriz", correcta: false },
-      { texto: "Diccionario", correcta: false }
-    ]
-  },
-  {
-    texto: "¿En qué caso es preferible DFS frente a BFS?",
-    opciones: [
-      { texto: "Encontrar el camino más corto", correcta: false },
-      { texto: "Recorrer completamente un grafo o árbol", correcta: true },
-      { texto: "Procesar tareas por orden de llegada", correcta: false },
-      { texto: "Gestionar turnos", correcta: false }
-    ]
-  }
+    {
+        texto: "¿Qué caracteriza a la búsqueda en profundidad (DFS)?",
+        opciones: [
+            { texto: "Explora el grafo por niveles", correcta: false },
+            { texto: "Explora primero los nodos más profundos", correcta: true },
+            { texto: "Usa siempre colas", correcta: false },
+            { texto: "Ordena los nodos", correcta: false }
+        ]
+    },
+    {
+        texto: "¿Qué estructura de datos utiliza DFS?",
+        opciones: [
+            { texto: "Cola", correcta: false },
+            { texto: "Pila", correcta: true },
+            { texto: "Matriz", correcta: false },
+            { texto: "Diccionario", correcta: false }
+        ]
+    },
+    {
+        texto: "¿En qué caso es preferible DFS frente a BFS?",
+        opciones: [
+            { texto: "Encontrar el camino más corto", correcta: false },
+            { texto: "Recorrer completamente un grafo o árbol", correcta: true },
+            { texto: "Procesar tareas por orden de llegada", correcta: false },
+            { texto: "Gestionar turnos", correcta: false }
+        ]
+    }
 ]
 
 </script>

@@ -10,9 +10,12 @@
     <section class="bg-blue-50 p-6 rounded-lg">
       <h2 class="text-xl font-semibold text-blue-800 mb-3">Direccionalidad en Grafos</h2>
       <p class="text-gray-700 leading-relaxed">
-        La principal clasificación de grafos se basa en la dirección de sus aristas. En un <strong>grafo no dirigido</strong>, 
-        las aristas representan relaciones simétricas (ej: amistad en Facebook). En un <strong>grafo dirigido</strong> (digrafo), 
-        las aristas tienen dirección y representan relaciones asimétricas (ej: seguidores en Twitter). Esta diferencia afecta 
+        La principal clasificación de grafos se basa en la dirección de sus aristas. En un <strong>grafo no
+          dirigido</strong>,
+        las aristas representan relaciones simétricas (ej: amistad en Facebook). En un <strong>grafo dirigido</strong>
+        (digrafo),
+        las aristas tienen dirección y representan relaciones asimétricas (ej: seguidores en Twitter). Esta diferencia
+        afecta
         profundamente los algoritmos y análisis que podemos realizar sobre el grafo.
       </p>
     </section>
@@ -26,7 +29,8 @@
             <div class="bg-blue-100 text-blue-800 p-2 rounded">+</div>
             <h3 class="font-bold text-gray-800">Aristas dirigidas</h3>
           </div>
-          <p class="text-gray-600 text-sm">Pares ordenados (u, v) donde la dirección va de u a v. Representan relaciones unidireccionales.</p>
+          <p class="text-gray-600 text-sm">Pares ordenados (u, v) donde la dirección va de u a v. Representan relaciones
+            unidireccionales.</p>
         </div>
 
         <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
@@ -34,7 +38,8 @@
             <div class="bg-green-100 text-green-800 p-2 rounded">E</div>
             <h3 class="font-bold text-gray-800">Ejemplo real</h3>
           </div>
-          <p class="text-gray-600 text-sm">Sistema de calles: calles de doble sentido (no dirigido) vs calles de un solo sentido (dirigido).</p>
+          <p class="text-gray-600 text-sm">Sistema de calles: calles de doble sentido (no dirigido) vs calles de un solo
+            sentido (dirigido).</p>
         </div>
 
         <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
@@ -42,7 +47,8 @@
             <div class="bg-red-100 text-red-800 p-2 rounded">X</div>
             <h3 class="font-bold text-gray-800">No confundir</h3>
           </div>
-          <p class="text-gray-600 text-sm">El grado en grafos dirigidos se divide en grado de entrada (in-degree) y salida (out-degree).</p>
+          <p class="text-gray-600 text-sm">El grado en grafos dirigidos se divide en grado de entrada (in-degree) y
+            salida (out-degree).</p>
         </div>
 
         <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
@@ -50,7 +56,8 @@
             <div class="bg-yellow-100 text-yellow-800 p-2 rounded">?</div>
             <h3 class="font-bold text-gray-800">Curiosidad</h3>
           </div>
-          <p class="text-gray-600 text-sm">Los grafos dirigidos pueden representar dependencias entre tareas (orden de ejecución).</p>
+          <p class="text-gray-600 text-sm">Los grafos dirigidos pueden representar dependencias entre tareas (orden de
+            ejecución).</p>
         </div>
       </div>
     </section>
@@ -86,15 +93,13 @@
       <h2 class="text-2xl font-bold text-gray-800 mb-4">Ejercicio Práctico</h2>
       <div class="space-y-4">
         <p class="text-gray-700">
-          <strong>Enunciado:</strong> Dado un grafo dirigido que representa un sistema de seguimiento en redes sociales, 
-          implementa la función <code>obtener_influencers</code> que retorne los usuarios con al menos 3 seguidores 
+          <strong>Enunciado:</strong> Dado un grafo dirigido que representa un sistema de seguimiento en redes sociales,
+          implementa la función <code>obtener_influencers</code> que retorne los usuarios con al menos 3 seguidores
           (grado de entrada ≥ 3). Usa el grafo del ejemplo 2.
         </p>
         <div class="flex gap-4">
-          <button
-            @click="mostrarSolucion = !mostrarSolucion"
-            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-          >
+          <button @click="mostrarSolucion = !mostrarSolucion"
+            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
             {{ mostrarSolucion ? 'Ocultar solución' : 'Mostrar solución' }}
           </button>
           <a href="#" class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
@@ -112,14 +117,20 @@
 
     <!-- Quiz -->
     <QuizQuestions :preguntas="preguntas" titulo="Quiz grafos dirigidos y no dirigidos"></QuizQuestions>
+
+    <!-- Navegación -->
+    <NavigationUnidad anterior="/Unidad/3.2.1" siguiente="/Unidad/3.2.3" textoAnterior="Anterior"
+      textoSiguiente="Siguiente" tituloActual="Unidad II • Grafos" mostrarAnterior="true" mostrarSiguiente="true" />
+
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 
 // Ejemplo 1: Comparación de representaciones

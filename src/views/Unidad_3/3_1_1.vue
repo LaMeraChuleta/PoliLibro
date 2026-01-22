@@ -119,6 +119,10 @@
     <!-- Quiz -->
     <QuizQuestions :preguntas="preguntas" titulo="Quiz descripción"></QuizQuestions>
 
+    <!-- Navegación -->
+    <NavigationUnidad textoSiguiente="Siguiente" siguiente="/Unidad/3.1.2" tituloActual="Unidad II • Grafos"
+      mostrarAnterior="true" mostrarSiguiente="false" />
+
   </div>
 </template>
 
@@ -126,6 +130,7 @@
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 // Ejemplo 1: Factorial recursivo
 const ejemplo1Code = `# Cálculo factorial usando recursividad

@@ -165,21 +165,8 @@
 
 
     <!-- Navegación -->
-    <footer class="pt-8 border-t border-gray-300">
-      <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
-        <button @click="navegarAnterior"
-          class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium w-full sm:w-auto">
-          Anterior: 1.5 Conjuntos
-        </button>
-        <div class="text-center text-sm text-gray-500">
-          Capítulo 2.1 • Pilas - Descripción
-        </div>
-        <button @click="navegarSiguiente"
-          class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium w-full sm:w-auto">
-          Siguiente: 2.1.2 Operaciones
-        </button>
-      </div>
-    </footer>
+    <NavigationUnidad textoSiguiente="Siguiente" siguiente="/Unidad/2.1.2" tituloActual="Unidad II • Pilas y Colas"
+      mostrarAnterior="false" mostrarSiguiente="true" />
   </div>
 </template>
 
@@ -188,6 +175,7 @@ import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 // Estado para mostrar solución
 const mostrarSolucion = ref(false)

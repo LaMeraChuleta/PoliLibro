@@ -2,7 +2,7 @@
   <div class="container mx-auto px-4 py-6">
     <!-- Cabecera -->
     <HeaderTitle numero="2" titulo="2.1.2 Operaciones"></HeaderTitle>
-    
+
     <!-- Explicación Teórica -->
     <section class="bg-white rounded-xl shadow-lg p-6 border border-gray-200 my-3">
       <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
@@ -171,30 +171,19 @@
     <QuizQuestions :preguntas="preguntas" titulo="Quiz descripción y características"></QuizQuestions>
 
     <!-- Navegación -->
-    <footer class="pt-8 border-t border-gray-300">
-      <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
-        <button @click="navegarAnterior"
-          class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium w-full sm:w-auto">
-          Anterior: 2.1.1 Descripción
-        </button>
-        <div class="text-center text-sm text-gray-500">
-          Capítulo 2.1 • Pilas - Operaciones
-        </div>
-        <button @click="navegarSiguiente"
-          class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium w-full sm:w-auto">
-          Siguiente: 2.1.3 Aplicaciones
-        </button>
-      </div>
-    </footer>
+    <NavigationUnidad anterior="/Unidad/2.1.1" siguiente="/Unidad/2.1.3" textoAnterior="Anterior"
+      textoSiguiente="Siguiente" tituloActual="Unidad II • Pilas y Colas" mostrarAnterior="true"
+      mostrarSiguiente="true" />
 
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 // Estado para mostrar solución
 const mostrarSolucion = ref(false)

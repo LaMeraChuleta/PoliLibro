@@ -169,14 +169,21 @@
 
     <!-- Quiz funcional -->
     <QuizQuestions :preguntas="preguntas" titulo="Quiz de aplicaciones de conjuntos"></QuizQuestions>
+
+    <!-- Navegación -->
+    <NavigationUnidad anterior="/Unidad/1.3.2" siguiente="/Unidad/1.4.1" textoAnterior="Anterior"
+      textoSiguiente="Siguiente" tituloActual="Unidad I • Contenedores" mostrarAnterior="true"
+      mostrarSiguiente="true" />
+
   </div>
 </template>
 
 <script setup>
-  
+
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
+import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 // Códigos de ejemplo
 const ejemplo1Code = `# Sistema de amigos en redes sociales
