@@ -47,6 +47,15 @@ import Tema_5_2_2 from '../views/Unidad_5/5_2_2.vue'
 import Tema_5_3_1 from '../views/Unidad_5/5_3_1.vue'
 
 
+//UnidadesComponents
+import Unidad1 from '@/views/Headers/Unidad1.vue'
+import Unidad2 from '@/views/Headers/Unidad2.vue'
+import Unidad3 from '@/views/Headers/Unidad3.vue'
+import Unidad4 from '@/views/Headers/Unidad4.vue'
+import Unidad5 from '@/views/Headers/Unidad5.vue'
+
+
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -54,6 +63,36 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
+    },
+    {
+      path: '/Unidad1/',
+      name: 'unidad_1',
+      component: Unidad1
+
+    },
+    {
+      path: '/Unidad2/',
+      name: 'unidad_2',
+      component: Unidad2
+
+    },
+    {
+      path: '/Unidad3/',
+      name: 'unidad_3',
+      component: Unidad3
+
+    },
+    {
+      path: '/Unidad4/',
+      name: 'unidad_4',
+      component: Unidad4
+
+    },
+    {
+      path: '/Unidad5/',
+      name: 'unidad_5',
+      component: Unidad5
+
     },
     {
       path: '/Unidad/1.1.1',

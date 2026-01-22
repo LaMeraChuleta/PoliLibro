@@ -2,7 +2,6 @@
   <!-- NAVBAR -->
   <header class="fixed top-0 left-0 right-0 h-14 z-40 bg-[#611232] border-b">
     <div class="flex items-center px-4 h-14 gap-4">
-
       <!-- Hamburguesa (izquierda) -->
       <button @click="toggleSidebar"
         class="text-white hover:text-gray-900 focus:outline-none p-2 rounded-lg hover:bg-gray-100 transition-colors"
@@ -22,18 +21,13 @@
       </router-link>
       <!-- Spacer -->
       <div class="flex-1"></div>
-
     </div>
   </header>
 
   <!-- Overlay para móviles -->
-  <div v-if="sidebarOpen && isMobile" @click="closeSidebar"
-    class="fixed inset-0 bg-black bg-opacity-50 z-20 transition-opacity duration-300"></div>
-
+  <div v-if="sidebarOpen && isMobile" @click="closeSidebar" class="fixed inset-0 bg-black bg-opacity-50 z-20 transition-opacity duration-300"></div>
   <!-- CONTENEDOR PRINCIPAL -->
   <div class="flex pt-14 bg-gray-100">
-
-
     <!-- SIDEBAR -->
     <aside ref="sidebarRef" class="bg-[#611232] w-64
          border-r border-gray-200 shadow-lg
@@ -42,8 +36,6 @@
          overflow-y-auto
          flex flex-col" :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'">
 
-
-
       <div class="p-4 border-b border-gray-200 bg-[#611232] ">
         <h2 class="text-xl font-bold text-white">Temario</h2>
         <p class="text-sm text-white mt-1">Selecciona una unidad</p>
@@ -51,32 +43,30 @@
 
       <nav class="p-4">
         <!-- Sección de Unidades -->
-        <div class="mb-6">
-          <h3 class="text-lg font-semibold text-white uppercase tracking-wider mb-3">Unidades</h3>
-          <ul class="space-y-2">
-            <li v-for="(item, index) in temario" :key="index">
-              <button @click="selectTema(item, index)" class="w-full text-left px-2 py-3 rounded-lg
-         border border-transparent transition-all duration-200
-         flex items-start gap-3 group" :class="{
-          'bg-[#8b2c46] text-white border-[#a03a55]': activeTema === index,
-          'text-white hover:bg-[#74263c]': activeTema !== index
-        }">
-                <div class="flex items-center">
-                  <div class="w-8 h-8 rounded-full flex items-center justify-center mr-2" :class="activeTema === index
-                    ? 'bg-blue-100 text-gray-600'
-                    : 'bg-white text-gray-500 group-hover:bg-blue-100 group-hover:text-blue-600'">
-                    {{ index + 1 }}
-                  </div>
-                  <span class="font-medium">{{ item }}</span>
-                </div>
-                <svg v-if="activeTema === index" class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor"
-                  viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-            </li>
-          </ul>
+       <div class="mb-6">
+  <h3 class="text-lg font-semibold text-white uppercase tracking-wider mb-3">Unidades</h3>
+  <ul class="space-y-2">
+    <li v-for="(item, index) in unidades" :key="index">
+      <button @click="navegarAUnidad(item.route)" 
+              class="w-full text-left px-2 py-3 rounded-lg border border-transparent transition-all duration-200 flex items-start gap-3 group justify-between"
+              :class="{
+                'bg-[#8b2c46] text-white border-[#a03a55]': rutaActual === item.route,
+                'text-white hover:bg-[#74263c]': rutaActual !== item.route
+              }">
+        <div class="flex items-center">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center mr-2" 
+               :class="rutaActual === item.route ? 'bg-blue-100 text-gray-600' : 'bg-white text-gray-500 group-hover:bg-blue-100 group-hover:text-blue-600'">
+            {{ index + 1 }}
+          </div>
+          <span class="font-medium">{{ item.titulo }}</span>
         </div>
+        <svg v-if="rutaActual === item.route" class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </li>
+  </ul>
+</div>
       </nav>
 
       <!-- Footer de la Sidebar -->
@@ -101,9 +91,12 @@
 </template>
 
 <script setup>
-
-import { RouterView, } from 'vue-router'
+import { RouterView, useRouter, useRoute } from 'vue-router' // Añade useRouter
 import { ref, computed, onMounted, onUnmounted } from 'vue'
+
+// PRIMERO inicializa router y route
+const router = useRouter()
+const route = useRoute()
 
 // Estado reactivo
 const sidebarOpen = ref(false)
@@ -113,24 +106,31 @@ const isMobile = ref(false)
 const sidebarRef = ref(null)
 
 // Datos del temario
-const temario = ref([
-  "Unidad I-Contenedores",
-  "Unidad II-Pilas y Colas",
-  "Unidad III-Recursividad y Grafos",
-  "Unidad IV-Árboles",
-  "Unidad V-Programación concurrente",
+const unidades = ref([
+  { titulo: "Unidad I-Contenedores", route: "/Unidad1" },
+  { titulo: "Unidad II-Pilas y Colas", route: "/Unidad2" },
+  { titulo: "Unidad III-Recursividad y Grafos", route: "/Unidad3" },
+  { titulo: "Unidad IV-Árboles", route: "/Unidad4" },
+  { titulo: "Unidad V-Programación concurrente", route: "/Unidad5" },
 ])
 
-// Computed properties
-const progress = computed(() => {
-  const total = temario.value.length
-  const completed = temario.value.filter((_, index) => index <= (activeTema.value || 0)).length
-  return Math.round((completed / total) * 100)
+
+// Computed para saber qué unidad está activa - CORREGIDO
+const rutaActual = computed(() => {
+  return route?.path || '/' // Usa route que ya está inicializado
 })
 
-const completedItems = computed(() => {
-  return temario.value.filter((_, index) => index <= (activeTema.value || 0)).length
-})
+// Función de navegación
+const navegarAUnidad = (ruta) => {
+  // Navega a la ruta correspondiente
+  router.push(ruta)
+  
+  // Cierra sidebar en móvil
+  if (isMobile.value) {
+    sidebarOpen.value = false
+  }
+}
+
 
 // Métodos
 const toggleSidebar = () => {
@@ -143,24 +143,7 @@ const closeSidebar = () => {
   }
 }
 
-const selectTema = (item, index) => {
-  activeTema.value = index
-  // Cerrar sidebar en móvil al seleccionar un tema
-  if (isMobile.value) {
-    sidebarOpen.value = false
-  }
-}
 
-const navigateTema = (direction) => {
-  if (activeTema.value === null) {
-    activeTema.value = direction > 0 ? 0 : temario.value.length - 1
-  } else {
-    const newIndex = activeTema.value + direction
-    if (newIndex >= 0 && newIndex < temario.value.length) {
-      activeTema.value = newIndex
-    }
-  }
-}
 
 const closeUserMenu = () => {
   userMenuOpen.value = false
@@ -168,8 +151,6 @@ const closeUserMenu = () => {
 
 const checkScreenSize = () => {
   isMobile.value = window.innerWidth < 768
-  // En desktop, mantener sidebar cerrada por defecto (si quieres)
-  // sidebarOpen.value = !isMobile.value
 }
 
 // Lifecycle hooks
