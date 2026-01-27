@@ -26,12 +26,12 @@
             <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejemplo 3: Sistema de inventario simplificado</h3>
             <PythonRunner :code="ejemplo3Code" title="inventario.py" :showLineNumbers="true" initialHeight="280px" />
         </div>
-
+<!-- 
         <div class="mb-8 p-6 bg-gradient-to-r from-yellow-50 to-green-50 rounded-lg">
             <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio: Gestión de estudiantes</h3>
             <PythonRunner :code="ejercicioCode" title="gestion_estudiantes.py" :showLineNumbers="true"
                 initialHeight="250px" :showReset="true" :showSolution="true" :solutionCode="solucionCode" />
-        </div>
+        </div> -->
 
         <QuizQuestions :preguntas="preguntas" titulo="Quiz de diccionarios"></QuizQuestions>
 

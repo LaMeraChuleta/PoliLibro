@@ -123,7 +123,7 @@
         </section>
 
         <!-- Ejercicio Práctico -->
-        <section class="bg-white rounded-xl shadow-lg p-6">
+        <!-- <section class="bg-white rounded-xl shadow-lg p-6">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-xl font-bold text-gray-800">
                     Ejercicio Práctico: Calculadora Científica con Historial
@@ -152,10 +152,10 @@
                         <li>Implementar funciones deshacer/rehacer para operaciones</li>
                     </ul>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Solución -->
-            <div v-if="mostrarSolucion" class="space-y-4">
+            <!-- <div v-if="mostrarSolucion" class="space-y-4">
                 <div class="bg-green-50 border border-green-200 rounded-lg p-4">
                     <h3 class="font-bold text-green-800 mb-2">Solución Propuesta</h3>
                     <pre
@@ -168,7 +168,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- Quiz -->
         <QuizQuestions :preguntas="preguntas" titulo="Quiz ejemplo de aplicación"></QuizQuestions>

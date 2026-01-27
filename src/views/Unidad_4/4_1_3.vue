@@ -93,7 +93,7 @@
         </section>
 
         <!-- Ejercicio práctico -->
-        <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
+        <!-- <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
             <h2 class="text-2xl font-bold text-gray-800 mb-4">Ejercicio Práctico</h2>
             <div class="space-y-4">
                 <p class="text-gray-700">
@@ -113,15 +113,15 @@
                         class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
                         Ver pista
                     </a>
-                </div>
+                </div> -->
 
                 <!-- Solución oculta -->
-                <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
+                <!-- <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
                     <h3 class="font-bold text-green-800 mb-3">Solución:</h3>
                     <PythonRunner :code="solucionCode" />
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- Quiz -->
         <QuizQuestions :preguntas="preguntas" titulo="Quiz de operaciones arboles binarios"></QuizQuestions>
@@ -135,7 +135,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
@@ -342,10 +341,8 @@ const ejemplo2Code = `class NodoABB:
         self.izquierdo = None
         self.derecho = None
 
+
 class ABBEliminacion:
-    """
-    ABB con operación de eliminación implementada.
-    """
     def __init__(self):
         self.raiz = None
     
@@ -353,172 +350,86 @@ class ABBEliminacion:
         def _insertar(nodo, val):
             if nodo is None:
                 return NodoABB(val)
-            
             if val < nodo.valor:
                 nodo.izquierdo = _insertar(nodo.izquierdo, val)
             elif val > nodo.valor:
                 nodo.derecho = _insertar(nodo.derecho, val)
-            
             return nodo
-        
         self.raiz = _insertar(self.raiz, valor)
     
     def eliminar(self, valor):
-        """
-        Elimina un valor del ABB manteniendo la propiedad de orden.
-        Considera los tres casos de eliminación.
-        """
         def _eliminar(nodo, val):
             if nodo is None:
                 return None
-            
-            # Buscar el nodo a eliminar
             if val < nodo.valor:
                 nodo.izquierdo = _eliminar(nodo.izquierdo, val)
             elif val > nodo.valor:
                 nodo.derecho = _eliminar(nodo.derecho, val)
             else:
-                # Caso 1: Nodo sin hijos (hoja)
+                # Caso 1: hoja
                 if nodo.izquierdo is None and nodo.derecho is None:
                     return None
-                
-                # Caso 2: Nodo con un solo hijo
-                elif nodo.izquierdo is None:
+                # Caso 2: un hijo
+                if nodo.izquierdo is None:
                     return nodo.derecho
-                elif nodo.derecho is None:
+                if nodo.derecho is None:
                     return nodo.izquierdo
-                
-                # Caso 3: Nodo con dos hijos
-                else:
-                    # Encontrar el sucesor inorden (mínimo del subárbol derecho)
-                    sucesor = self._minimo_nodo(nodo.derecho)
-                    
-                    # Copiar valor del sucesor
-                    nodo.valor = sucesor.valor
-                    
-                    # Eliminar el sucesor (que está en el subárbol derecho)
-                    nodo.derecho = _eliminar(nodo.derecho, sucesor.valor)
-            
+                # Caso 3: dos hijos
+                sucesor = self._minimo_nodo(nodo.derecho)
+                nodo.valor = sucesor.valor
+                nodo.derecho = _eliminar(nodo.derecho, sucesor.valor)
             return nodo
-        
         self.raiz = _eliminar(self.raiz, valor)
     
     def _minimo_nodo(self, nodo):
-        """
-        Encuentra el nodo con valor mínimo en un subárbol.
-        """
-        actual = nodo
-        while actual.izquierdo is not None:
-            actual = actual.izquierdo
-        return actual
+        while nodo.izquierdo:
+            nodo = nodo.izquierdo
+        return nodo
     
-    def imprimir_arbol(self, nodo=None, nivel=0, prefijo="Raíz: "):
-        """
-        Imprime el árbol de forma jerárquica.
-        """
+    def imprimir_arbol(self, nodo, nivel=0, prefijo=""):
         if nodo is None:
-            nodo = self.raiz
-        
-        if nodo is not None:
-            print("   " * nivel + prefijo + str(nodo.valor))
-            if nodo.izquierdo is not None or nodo.derecho is not None:
-                self.imprimir_arbol(nodo.izquierdo, nivel + 1, "Izq: ")
-                self.imprimir_arbol(nodo.derecho, nivel + 1, "Der: ")
+            return
+        print("   " * nivel + prefijo + str(nodo.valor))
+        self.imprimir_arbol(nodo.izquierdo, nivel + 1, "Izq: ")
+        self.imprimir_arbol(nodo.derecho, nivel + 1, "Der: ")
     
     def imprimir_inorden(self):
         def _inorden(nodo):
-            if nodo is not None:
+            if nodo:
                 _inorden(nodo.izquierdo)
-                print(f"{nodo.valor} ", end='')
+                print(nodo.valor, end=' ')
                 _inorden(nodo.derecho)
-        
-        print("[", end='')
+        print("[", end=' ')
         _inorden(self.raiz)
         print("]")
 
+
 print("=== ELIMINACIÓN EN ABB ===")
-print("Se consideran tres casos:")
-print("1. Nodo hoja (sin hijos) - eliminar directamente")
-print("2. Nodo con un hijo - reemplazar con el hijo")
-print("3. Nodo con dos hijos - reemplazar con sucesor inorden")
 
-# Crear un ABB de ejemplo
 abb = ABBEliminacion()
-valores = [50, 30, 70, 20, 40, 60, 80, 35, 45, 55, 65, 75, 85]
+valores = [50, 30, 70, 20, 40, 60, 80, 35, 45, 55, 65]
 
-print("\\nInsertando valores:", valores)
-for valor in valores:
-    abb.insertar(valor)
+for v in valores:
+    abb.insertar(v)
 
 print("\\nÁrbol inicial:")
-abb.imprimir_arbol()
+abb.imprimir_arbol(abb.raiz)
 
-print("\\n=== CASO 1: ELIMINAR HOJA (35) ===")
-print("Árbol antes de eliminar 35:")
-abb.imprimir_inorden()
+print("\\nEliminar hoja (35)")
 abb.eliminar(35)
-print("Árbol después de eliminar 35:")
 abb.imprimir_inorden()
 
-print("\\n=== CASO 2: ELIMINAR NODO CON UN HIJO (20) ===")
-print("Nodo 20 tiene solo hijo izquierdo (ninguno) o derecho?")
-print("Árbol antes de eliminar 20:")
-abb.imprimir_inorden()
+print("\\nEliminar nodo con un hijo (20)")
 abb.eliminar(20)
-print("Árbol después de eliminar 20:")
 abb.imprimir_inorden()
 
-print("\\n=== CASO 3: ELIMINAR NODO CON DOS HIJOS (50 - la raíz) ===")
-print("Nodo 50 tiene dos hijos: 30 y 70")
-print("Sucesor inorden de 50: mínimo del subárbol derecho = 55")
-print("Árbol antes de eliminar 50:")
-abb.imprimir_inorden()
-abb.imprimir_arbol()
+print("\\nEliminar nodo con dos hijos (50)")
 abb.eliminar(50)
-print("\\nÁrbol después de eliminar 50:")
 abb.imprimir_inorden()
-print("\\nEstructura del árbol después de eliminar la raíz:")
-abb.imprimir_arbol()
 
-# Verificación de la propiedad de ABB
-print("\\n=== VERIFICACIÓN DE LA PROPIEDAD DE ABB ===")
-print("Después de todas las eliminaciones, el árbol mantiene la propiedad:")
-print("- Subárbol izquierdo de 55: valores menores que 55")
-print("- Subárbol derecho de 55: valores mayores que 55")
+print("\\nÁrbol final:")
+abb.imprimir_arbol(abb.raiz)`
 
-# Eliminación secuencial
-print("\\n=== ELIMINACIÓN SECUENCIAL ===")
-abb2 = ABBEliminacion()
-valores_simple = [50, 30, 70, 20, 40, 60, 80]
-for v in valores_simple:
-    abb2.insertar(v)
-
-print("Árbol inicial:", end=' ')
-abb2.imprimir_inorden()
-
-eliminaciones = [20, 30, 50, 70]
-for val in eliminaciones:
-    abb2.eliminar(val)
-    print(f"Después de eliminar {val}:", end=' ')
-    abb2.imprimir_inorden()
-
-print("\\n=== RESUMEN DE LOS TRES CASOS ===")
-print("""
-Caso 1: Nodo sin hijos (hoja)
-  Ejemplo: eliminar 35
-  Acción: simplemente eliminar el nodo
-
-Caso 2: Nodo con un hijo
-  Ejemplo: eliminar 20 (solo tiene hijo derecho 25 en algunos árboles)
-  Acción: reemplazar el nodo con su único hijo
-
-Caso 3: Nodo con dos hijos  
-  Ejemplo: eliminar 50 (raíz con hijos 30 y 70)
-  Acción:
-    1. Encontrar sucesor inorden (mínimo del subárbol derecho)
-    2. Copiar valor del sucesor al nodo actual
-    3. Eliminar el sucesor (que será caso 1 o 2)
-""")`
 
 // Ejemplo 3: ABB completo con estadísticas
 const ejemplo3Code = `import math
@@ -763,246 +674,6 @@ print("- Árbol balanceado: búsqueda O(log n)")
 print("- Árbol degenerado: búsqueda O(n) (como lista enlazada)")
 print("\\nLa altura ideal para un árbol con n nodos es ⌊log₂(n)⌋ + 1")
 print("Cuanto más cerca esté la altura real de este valor, más eficiente será el árbol")`
-
-// Ejercicio práctico - Solución
-const solucionCode = `class NodoABB:
-    def __init__(self, valor):
-        self.valor = valor
-        self.izquierdo = None
-        self.derecho = None
-
-class ABBAvanzado:
-    """
-    ABB con operaciones avanzadas: eliminar rango y encontrar k-ésimo elemento.
-    """
-    def __init__(self):
-        self.raiz = None
-    
-    def insertar(self, valor):
-        def _insertar(nodo, val):
-            if nodo is None:
-                return NodoABB(val)
-            
-            if val < nodo.valor:
-                nodo.izquierdo = _insertar(nodo.izquierdo, val)
-            elif val > nodo.valor:
-                nodo.derecho = _insertar(nodo.derecho, val)
-            
-            return nodo
-        
-        self.raiz = _insertar(self.raiz, valor)
-    
-    def eliminar_rango(self, min_val, max_val):
-        """
-        Elimina todos los valores en el rango [min_val, max_val] del ABB.
-        """
-        def _eliminar_rango(nodo, min_v, max_v):
-            if nodo is None:
-                return None
-            
-            # Primero procesar los hijos
-            nodo.izquierdo = _eliminar_rango(nodo.izquierdo, min_v, max_v)
-            nodo.derecho = _eliminar_rango(nodo.derecho, min_v, max_v)
-            
-            # Verificar si el nodo actual está en el rango
-            if min_v <= nodo.valor <= max_v:
-                # Nodo a eliminar
-                return self._eliminar_nodo(nodo)
-            
-            return nodo
-        
-        self.raiz = _eliminar_rango(self.raiz, min_val, max_val)
-    
-    def _eliminar_nodo(self, nodo):
-        """
-        Elimina un nodo específico (función auxiliar para eliminar_rango).
-        """
-        # Caso 1: Sin hijos o un hijo
-        if nodo.izquierdo is None:
-            return nodo.derecho
-        elif nodo.derecho is None:
-            return nodo.izquierdo
-        
-        # Caso 2: Dos hijos
-        # Encontrar sucesor inorden (mínimo del subárbol derecho)
-        sucesor = self._minimo_nodo(nodo.derecho)
-        nodo.valor = sucesor.valor
-        nodo.derecho = self._eliminar_valor(nodo.derecho, sucesor.valor)
-        
-        return nodo
-    
-    def _eliminar_valor(self, nodo, valor):
-        """
-        Elimina un valor específico de un subárbol.
-        """
-        if nodo is None:
-            return None
-        
-        if valor < nodo.valor:
-            nodo.izquierdo = self._eliminar_valor(nodo.izquierdo, valor)
-        elif valor > nodo.valor:
-            nodo.derecho = self._eliminar_valor(nodo.derecho, valor)
-        else:
-            if nodo.izquierdo is None:
-                return nodo.derecho
-            elif nodo.derecho is None:
-                return nodo.izquierdo
-            else:
-                sucesor = self._minimo_nodo(nodo.derecho)
-                nodo.valor = sucesor.valor
-                nodo.derecho = self._eliminar_valor(nodo.derecho, sucesor.valor)
-        
-        return nodo
-    
-    def _minimo_nodo(self, nodo):
-        actual = nodo
-        while actual and actual.izquierdo:
-            actual = actual.izquierdo
-        return actual
-    
-    def k_esimo_menor(self, k):
-        """
-        Encuentra el k-ésimo elemento más pequeño en el ABB (1-indexed).
-        """
-        contador = [0]  # Usar lista para modificar en recursión
-        
-        def _k_esimo(nodo, k_obj):
-            if nodo is None:
-                return None
-            
-            # Recorrer subárbol izquierdo
-            resultado = _k_esimo(nodo.izquierdo, k_obj)
-            if resultado is not None:
-                return resultado
-            
-            # Visitar nodo actual
-            contador[0] += 1
-            if contador[0] == k_obj:
-                return nodo.valor
-            
-            # Recorrer subárbol derecho
-            return _k_esimo(nodo.derecho, k_obj)
-        
-        return _k_esimo(self.raiz, k)
-    
-    def imprimir_inorden(self):
-        def _inorden(nodo):
-            if nodo is not None:
-                _inorden(nodo.izquierdo)
-                print(f"{nodo.valor} ", end='')
-                _inorden(nodo.derecho)
-        
-        print("[", end='')
-        _inorden(self.raiz)
-        print("]")
-
-# Prueba del ejercicio
-print("=== ELIMINACIÓN POR RANGO Y K-ÉSIMO ELEMENTO ===")
-
-# Crear ABB similar al ejemplo 1
-abb = ABBAvanzado()
-valores = [50, 30, 70, 20, 40, 60, 80, 15, 25, 35, 45, 55, 65, 75, 85]
-
-print("Insertando valores:", valores)
-for valor in valores:
-    abb.insertar(valor)
-
-print("\\nABB inicial (en orden):")
-abb.imprimir_inorden()
-
-# Prueba 1: Eliminar rango [35, 65]
-print("\\n=== PRUEBA 1: ELIMINAR RANGO [35, 65] ===")
-print("Valores a eliminar: 35, 40, 45, 50, 55, 60, 65")
-abb.eliminar_rango(35, 65)
-print("ABB después de eliminar rango:")
-abb.imprimir_inorden()
-
-# Prueba 2: Encontrar k-ésimos elementos
-print("\\n=== PRUEBA 2: K-ÉSIMOS ELEMENTOS ===")
-print("ABB actual (ordenado):", end=' ')
-abb.imprimir_inorden()
-
-for k in range(1, 9):  # Probamos k de 1 a 8
-    k_esimo = abb.k_esimo_menor(k)
-    print(f"El {k}-ésimo elemento más pequeño es: {k_esimo}")
-
-# Prueba 3: Eliminar otro rango y ver k-ésimos actualizados
-print("\\n=== PRUEBA 3: ELIMINAR [70, 80] Y VER K-ÉSIMOS ===")
-print("Eliminando valores 70, 75, 80")
-abb.eliminar_rango(70, 80)
-print("ABB después:")
-abb.imprimir_inorden()
-
-print("\\nNuevos k-ésimos elementos:")
-for k in range(1, 6):
-    k_esimo = abb.k_esimo_menor(k)
-    print(f"{k}-ésimo: {k_esimo}")
-
-# Prueba 4: Casos especiales
-print("\\n=== PRUEBA 4: CASOS ESPECIALES ===")
-
-# Árbol vacío
-abb_vacio = ABBAvanzado()
-print("ABB vacío:")
-print("k=1:", abb_vacio.k_esimo_menor(1))
-abb_vacio.eliminar_rango(10, 20)  # No debería hacer nada
-
-# Árbol con un solo elemento
-abb_uno = ABBAvanzado()
-abb_uno.insertar(42)
-print("\\nABB con un solo elemento [42]:")
-print("k=1:", abb_uno.k_esimo_menor(1))
-print("k=2:", abb_uno.k_esimo_menor(2))  # Debería ser None
-
-# Eliminar rango que cubre todo
-print("\\nEliminar rango [0, 100] del ABB con un elemento:")
-abb_uno.eliminar_rango(0, 100)
-print("ABB después:", end=' ')
-abb_uno.imprimir_inorden()
-
-# Prueba 5: Verificación de propiedad ABB
-print("\\n=== PRUEBA 5: VERIFICACIÓN DE PROPIEDAD ABB ===")
-print("ABB original reconstruido:")
-
-abb_verif = ABBAvanzado()
-for valor in valores:
-    abb_verif.insertar(valor)
-
-print("Antes de eliminaciones:", end=' ')
-abb_verif.imprimir_inorden()
-
-# Eliminar varios rangos
-abb_verif.eliminar_rango(20, 30)
-abb_verif.eliminar_rango(60, 70)
-abb_verif.eliminar_rango(80, 90)
-
-print("Después de eliminaciones:", end=' ')
-abb_verif.imprimir_inorden()
-
-# Verificar manualmente
-print("\\nVerificación manual:")
-print("Valores restantes deberían estar ordenados y sin duplicados")
-
-# Función para verificar propiedad ABB
-def verificar_abb(raiz):
-    def _verificar(nodo, min_val, max_val):
-        if nodo is None:
-            return True
-        
-        if (min_val is not None and nodo.valor <= min_val) or \
-           (max_val is not None and nodo.valor >= max_val):
-            return False
-        
-        return (_verificar(nodo.izquierdo, min_val, nodo.valor) and
-                _verificar(nodo.derecho, nodo.valor, max_val))
-    
-    return _verificar(raiz, None, None)
-
-# Usar atributo raiz directamente (no es la mejor práctica, pero para prueba)
-print("¿El árbol mantiene propiedad ABB?", "Sí" if True else "No")`
-
-// Estado del ejercicio
-const mostrarSolucion = ref(false)
 
 // Quiz
 const preguntas = [

@@ -94,7 +94,7 @@
         </section>
 
         <!-- Ejercicio práctico -->
-        <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
+        <!-- <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
             <h2 class="text-2xl font-bold text-gray-800 mb-4">Ejercicio Práctico</h2>
             <div class="space-y-4">
                 <p class="text-gray-700">
@@ -113,15 +113,15 @@
                         class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
                         Ver pista
                     </a>
-                </div>
+                </div> -->
 
                 <!-- Solución oculta -->
-                <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
+                <!-- <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
                     <h3 class="font-bold text-green-800 mb-3">Solución:</h3>
                     <PythonRunner :code="solucionCode" />
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- Quiz -->
         <QuizQuestions :preguntas="preguntas" titulo="Quiz algoritmos de camino corto"></QuizQuestions>
@@ -440,175 +440,6 @@ print("\\nDistancias desde A (con ciclo negativo):")
 for vertice in sorted(distancias_arb.keys()):
     if distancias_arb[vertice] != float('inf'):
         print(f"  A -> {vertice}: {distancias_arb[vertice]}")`
-
-// Ejercicio práctico - Solución
-const solucionCode = `import heapq
-
-def dijkstra_completo(grafo, origen):
-    """
-    Implementación completa de Dijkstra con reconstrucción de caminos.
-    Retorna (distancias, padres) para reconstruir cualquier camino.
-    """
-    distancias = {origen: 0}
-    padres = {origen: None}
-    heap = [(0, origen)]
-    
-    while heap:
-        dist_actual, actual = heapq.heappop(heap)
-        
-        if dist_actual > distancias[actual]:
-            continue
-        
-        for vecino, peso in grafo.get(actual, []):
-            nueva_dist = dist_actual + peso
-            
-            if nueva_dist < distancias.get(vecino, float('inf')):
-                distancias[vecino] = nueva_dist
-                padres[vecino] = actual
-                heapq.heappush(heap, (nueva_dist, vecino))
-    
-    return distancias, padres
-
-def ruta_mas_corta_todas(grafo, origen):
-    """
-    Encuentra las distancias más cortas desde un origen a todos los vértices.
-    """
-    return dijkstra_completo(grafo, origen)
-
-def reconstruir_ruta(padres, destino):
-    """
-    Reconstruye la ruta más corta desde el origen hasta el destino.
-    """
-    if destino not in padres:
-        return []
-    
-    ruta = []
-    actual = destino
-    
-    while actual is not None:
-        ruta.append(actual)
-        actual = padres[actual]
-    
-    return ruta[::-1]
-
-def ruta_mas_corta_especifica(grafo, origen, destino):
-    """
-    Encuentra la ruta más corta entre dos vértices específicos.
-    """
-    distancias, padres = dijkstra_completo(grafo, origen)
-    
-    if destino not in distancias or distancias[destino] == float('inf'):
-        return float('inf'), []  # No hay camino
-    
-    ruta = reconstruir_ruta(padres, destino)
-    return distancias[destino], ruta
-
-# Grafo de ciudades (del ejemplo 2)
-ciudades = {
-    'Madrid': [('Barcelona', 506), ('Valencia', 355), ('Sevilla', 389)],
-    'Barcelona': [('Madrid', 506), ('Valencia', 349), ('Zaragoza', 296)],
-    'Valencia': [('Madrid', 355), ('Barcelona', 349), ('Alicante', 166)],
-    'Sevilla': [('Madrid', 389), ('Cordoba', 138), ('Malaga', 209)],
-    'Zaragoza': [('Barcelona', 296), ('Madrid', 325)],
-    'Alicante': [('Valencia', 166), ('Murcia', 76)],
-    'Cordoba': [('Sevilla', 138), ('Granada', 168)],
-    'Malaga': [('Sevilla', 209), ('Granada', 129)],
-    'Murcia': [('Alicante', 76)],
-    'Granada': [('Cordoba', 168), ('Malaga', 129)]
-}
-
-print("=== RUTAS MÁS CORTAS DESDE MADRID ===")
-print("(Usando algoritmo de Dijkstra)\\n")
-
-# Calcular todas las distancias desde Madrid
-distancias, padres = ruta_mas_corta_todas(ciudades, 'Madrid')
-
-print("Distancias desde Madrid:")
-print("-" * 30)
-for ciudad in sorted(distancias.keys()):
-    if distancias[ciudad] != float('inf'):
-        print(f"{ciudad:12} {distancias[ciudad]:6} km")
-print()
-
-print("Rutas específicas:")
-print("=" * 50)
-
-# Rutas específicas de interés
-rutas_a_calcular = [
-    ('Madrid', 'Barcelona'),
-    ('Madrid', 'Granada'),
-    ('Madrid', 'Murcia'),
-    ('Madrid', 'Alicante')
-]
-
-for origen, destino in rutas_a_calcular:
-    distancia, ruta = ruta_mas_corta_especifica(ciudades, origen, destino)
-    
-    print(f"\\n{origen} -> {destino}:")
-    if ruta:
-        print(f"  Distancia: {distancia} km")
-        print(f"  Ruta: {' -> '.join(ruta)}")
-        
-        # Calcular distancia paso a paso
-        print(f"  Detalle:")
-        for i in range(len(ruta) - 1):
-            desde = ruta[i]
-            hasta = ruta[i + 1]
-            # Buscar la distancia entre estas dos ciudades
-            for vecino, peso in ciudades[desde]:
-                if vecino == hasta:
-                    print(f"    {desde} -> {hasta}: {peso} km")
-                    break
-    else:
-        print(f"  No hay ruta disponible")
-
-# Análisis adicional
-print("\\n=== ANÁLISIS ADICIONAL ===")
-print("\\nCiudades ordenadas por distancia desde Madrid:")
-
-ciudades_ordenadas = sorted(distancias.items(), key=lambda x: x[1] if x[1] != float('inf') else float('inf'))
-for i, (ciudad, dist) in enumerate(ciudades_ordenadas, 1):
-    if dist != float('inf'):
-        print(f"{i:2}. {ciudad:12} {dist:6} km")
-
-# Verificación de optimalidad
-print("\\n=== VERIFICACIÓN ===")
-print("\\nComprobando algunas rutas alternativas:")
-
-# Ruta Madrid -> Murcia
-print("\\nRuta Madrid -> Murcia:")
-print("Opción 1: Madrid -> Valencia -> Alicante -> Murcia")
-dist_opcion1 = 355 + 166 + 76
-print(f"  Distancia: {dist_opcion1} km")
-
-print("\\nOpción 2: Madrid -> Barcelona -> Valencia -> Alicante -> Murcia")
-dist_opcion2 = 506 + 349 + 166 + 76
-print(f"  Distancia: {dist_opcion2} km")
-
-print("\\nDistancia calculada por Dijkstra:", distancias['Murcia'])
-print("¿Es óptima?", "Sí" if distancias['Murcia'] == min(dist_opcion1, dist_opcion2) else "No")
-
-# Función para encontrar rutas alternativas cercanas
-def rutas_alternativas(grafo, origen, destino, max_extra=50):
-    """
-    Encuentra rutas alternativas que no sean mucho más largas que la óptima.
-    """
-    dist_opt, ruta_opt = ruta_mas_corta_especifica(grafo, origen, destino)
-    if not ruta_opt:
-        return []
-    
-    # Para un ejercicio más avanzado, se podría implementar Yen's algorithm
-    # Por ahora, mostramos un mensaje informativo
-    print(f"\\nLa ruta óptima tiene {dist_opt} km.")
-    print(f"Rutas hasta {dist_opt + max_extra} km podrían ser alternativas aceptables.")
-    
-    return []  # Implementación simplificada
-
-print("\\n=== RUTAS ALTERNATIVAS (concepto) ===")
-rutas_alternativas(ciudades, 'Madrid', 'Granada', 100)`
-
-// Estado del ejercicio
-const mostrarSolucion = ref(false)
 
 // Quiz
 const preguntas = [

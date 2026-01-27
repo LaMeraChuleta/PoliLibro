@@ -86,7 +86,7 @@
     </section>
 
     <!-- Ejercicio práctico -->
-    <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
+    <!-- <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
       <h2 class="text-2xl font-bold text-gray-800 mb-4">Ejercicio Práctico</h2>
       <div class="space-y-4">
         <p class="text-gray-700">
@@ -102,15 +102,15 @@
           <a href="#" class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
             Ver pista
           </a>
-        </div>
+        </div> -->
 
         <!-- Solución oculta -->
-        <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
+        <!-- <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
           <h3 class="font-bold text-green-800 mb-3">Solución:</h3>
           <PythonRunner :code="solucionCode" />
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- Quiz -->
     <QuizQuestions :preguntas="preguntas" titulo="Quiz descripción"></QuizQuestions>
@@ -123,7 +123,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
@@ -239,49 +238,6 @@ print("Tiene ciclo?", tiene_ciclo(grafo1))
 
 print("\\nGrafo 2 (con ciclo):", grafo2)
 print("Tiene ciclo?", tiene_ciclo(grafo2))`
-
-// Ejercicio práctico - Solución
-const solucionCode = `def hay_camino(grafo, inicio, fin, visitados=None):
-    """
-    Determina si existe un camino entre inicio y fin en un grafo no dirigido.
-    """
-    if inicio == fin:
-        return True
-    
-    if visitados is None:
-        visitados = set()
-    
-    visitados.add(inicio)
-    
-    for vecino in grafo[inicio]:
-        if vecino not in visitados:
-            if hay_camino(grafo, vecino, fin, visitados):
-                return True
-    
-    return False
-
-# Grafo del ejemplo 1
-grafo = {
-    'A': ['B', 'C'],
-    'B': ['A', 'D', 'E'],
-    'C': ['A', 'F'],
-    'D': ['B'],
-    'E': ['B', 'F'],
-    'F': ['C', 'E']
-}
-
-# Pruebas
-print("Existe camino entre A y D?")
-print(hay_camino(grafo, 'A', 'D'))  # True
-
-print("\\nExiste camino entre C y E?")
-print(hay_camino(grafo, 'C', 'E'))  # True
-
-print("\\nExiste camino entre A y Z (nodo inexistente)?")
-print(hay_camino(grafo, 'A', 'Z'))  # False`
-
-// Estado del ejercicio
-const mostrarSolucion = ref(false)
 
 // Quiz
 const preguntas = [

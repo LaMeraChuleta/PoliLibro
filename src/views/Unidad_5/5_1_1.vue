@@ -138,94 +138,71 @@ import QuizQuestions from '@/components/QuizQuestions.vue'
 import NavigationUnidad from "@/components/NavigationUnidad.vue"
 
 // Ejemplo 1: Concurrencia secuencial vs concurrente
-const ejemplo1Code = `import time
-import threading
+const ejemplo1Code = `import asyncio
+import time
 
-def tarea(nombre, duracion):
-    """
-    Simula una tarea que toma cierto tiempo en completarse.
-    """
-    print(f"[{nombre}] Iniciando tarea (duración: {duracion}s)")
-    time.sleep(duracion)
-    print(f"[{nombre}] Tarea completada")
-    return f"Resultado de {nombre}"
+async def tarea(nombre, duracion):
+    print(f"[{nombre}] Iniciando ({duracion}s)")
+    await asyncio.sleep(duracion)
+    print(f"[{nombre}] Finalizada")
+    return f"Resultado {nombre}"
 
-def ejecucion_secuencial(tareas):
-    """
-    Ejecuta tareas de forma secuencial (una después de otra).
-    """
+async def ejecucion_secuencial(tareas):
     print("=== EJECUCIÓN SECUENCIAL ===")
-    inicio = time.time()
+    inicio = time.perf_counter()
     resultados = []
-    
+
     for nombre, duracion in tareas:
-        resultado = tarea(nombre, duracion)
+        resultado = await tarea(nombre, duracion)
         resultados.append(resultado)
-    
-    tiempo_total = time.time() - inicio
-    print(f"Tiempo total secuencial: {tiempo_total:.2f} segundos")
+
+    tiempo_total = time.perf_counter() - inicio
+    print(f"Tiempo secuencial: {tiempo_total:.3f}s")
     return resultados, tiempo_total
 
-def ejecucion_concurrente_hilos(tareas):
-    """
-    Ejecuta tareas concurrentemente usando hilos.
-    """
-    print("\\n=== EJECUCIÓN CONCURRENTE (HILOS) ===")
-    inicio = time.time()
-    resultados = []
-    hilos = []
-    
-    def tarea_con_resultado(nombre, duracion):
-        resultado = tarea(nombre, duracion)
-        resultados.append(resultado)
-    
-    # Crear y comenzar hilos
-    for nombre, duracion in tareas:
-        hilo = threading.Thread(target=tarea_con_resultado, args=(nombre, duracion))
-        hilos.append(hilo)
-        hilo.start()
-    
-    # Esperar a que todos los hilos terminen
-    for hilo in hilos:
-        hilo.join()
-    
-    tiempo_total = time.time() - inicio
-    print(f"Tiempo total concurrente: {tiempo_total:.2f} segundos")
+async def ejecucion_concurrente(tareas):
+    print("\\n=== EJECUCIÓN CONCURRENTE (ASYNCIO) ===")
+    inicio = time.perf_counter()
+
+    corutinas = [
+        tarea(nombre, duracion)
+        for nombre, duracion in tareas
+    ]
+
+    resultados = await asyncio.gather(*corutinas)
+
+    tiempo_total = time.perf_counter() - inicio
+    print(f"Tiempo concurrente: {tiempo_total:.3f}s")
     return resultados, tiempo_total
 
-# Definir tareas de ejemplo (nombre, duración en segundos)
-tareas = [
-    ("Tarea A", 2),
-    ("Tarea B", 3),
-    ("Tarea C", 1),
-    ("Tarea D", 2),
-    ("Tarea E", 1)
-]
+async def main():
+    tareas = [
+        ("Tarea A", 1.5),
+        ("Tarea B", 2.0),
+        ("Tarea C", 1.0),
+        ("Tarea D", 1.5),
+        ("Tarea E", 1.0)
+    ]
 
-print("Tareas a ejecutar:")
-for nombre, duracion in tareas:
-    print(f"  {nombre}: {duracion}s")
+    print("Tareas:")
+    for n, d in tareas:
+        print(f"  {n}: {d}s")
 
-# Ejecutar de forma secuencial
-resultados_sec, tiempo_sec = ejecucion_secuencial(tareas)
+    _, t_sec = await ejecucion_secuencial(tareas)
+    _, t_conc = await ejecucion_concurrente(tareas)
 
-# Ejecutar de forma concurrente
-resultados_conc, tiempo_conc = ejecucion_concurrente_hilos(tareas)
+    print("\\n=== COMPARACIÓN ===")
+    print(f"Secuencial:  {t_sec:.3f}s")
+    print(f"Concurrente: {t_conc:.3f}s")
+    print(f"Aceleración: {t_sec / t_conc:.2f}x")
 
-# Análisis comparativo
-print("\\n=== ANÁLISIS COMPARATIVO ===")
-print(f"Tiempo secuencial: {tiempo_sec:.2f}s")
-print(f"Tiempo concurrente: {tiempo_conc:.2f}s")
-print(f"Mejora: {tiempo_sec/tiempo_conc:.2f}x más rápido")
+    print("\\n=== TEORÍA ===")
+    print("Secuencial ≈ suma de duraciones")
+    print("Concurrente ≈ duración máxima")
 
-suma_duraciones = sum(duracion for _, duracion in tareas)
-print(f"\\nSuma de duraciones individuales: {suma_duraciones}s")
-print(f"Tiempo ideal concurrente (sin overhead): {max(duracion for _, duracion in tareas)}s")
+asyncio.run(main())
+`;
 
-print("\\n=== EXPLICACIÓN ===")
-print("En ejecución secuencial, cada tarea espera a que la anterior termine.")
-print("En ejecución concurrente, mientras una tarea está en time.sleep(),")
-print("otra tarea puede ejecutarse, aprovechando los tiempos de espera.")`
 
 // Ejemplo 2: Hilos para operaciones I/O
 const ejemplo2Code = `import threading

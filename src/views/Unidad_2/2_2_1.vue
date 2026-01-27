@@ -123,7 +123,7 @@
     </section>
 
     <!-- Ejercicio Práctico -->
-    <section class="bg-white rounded-xl shadow-lg p-6">
+    <!-- <section class="bg-white rounded-xl shadow-lg p-6">
       <div class="flex justify-between items-center mb-4">
         <h2 class="text-xl font-bold text-gray-800">
           Ejercicio Práctico: Sistema de Gestión de Pedidos
@@ -151,10 +151,10 @@
             <li>Implementar funciones para añadir, procesar y mostrar pedidos</li>
           </ul>
         </div>
-      </div>
+      </div> -->
 
       <!-- Solución -->
-      <div v-if="mostrarSolucion" class="space-y-4">
+      <!-- <div v-if="mostrarSolucion" class="space-y-4">
         <div class="bg-green-50 border border-green-200 rounded-lg p-4">
           <h3 class="font-bold text-green-800 mb-2">Solución Propuesta</h3>
           <pre class="text-sm text-gray-800 font-mono overflow-x-auto whitespace-pre-wrap">{{ ejercicioSolucion }}</pre>
@@ -166,7 +166,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- Quiz -->
     <QuizQuestions :preguntas="preguntas" titulo="Quiz Colas"></QuizQuestions>
@@ -179,14 +179,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
 import NavigationUnidad from "@/components/NavigationUnidad.vue"
-
-// Estado para mostrar solución
-const mostrarSolucion = ref(false)
 
 // Ejemplos de código Python - Versiones simplificadas
 const ejemplo1Code = `# Implementación básica de una cola usando lista
@@ -350,84 +346,6 @@ impresora.imprimir_siguiente()
 
 impresora.mostrar_cola()`
 
-// Solución del ejercicio práctico - Versión simplificada
-const ejercicioSolucion = `# Sistema de Gestión de Pedidos
-class SistemaPedidos:
-    def __init__(self):
-        self.cola_normal = []
-        self.cola_prioritaria = []
-    
-    def nuevo_pedido(self, cliente, items, prioritario=False):
-        """Crea un nuevo pedido"""
-        pedido = {
-            'cliente': cliente,
-            'items': items,
-            'prioritario': prioritario
-        }
-        
-        if prioritario:
-            self.cola_prioritaria.append(pedido)
-            print(f"Pedido prioritario para {cliente}")
-        else:
-            self.cola_normal.append(pedido)
-            print(f"Pedido normal para {cliente}")
-        
-        print(f"  Items: {', '.join(items)}")
-    
-    def procesar_pedido(self):
-        """Procesa el siguiente pedido"""
-        # Primero los prioritarios, luego los normales
-        if self.cola_prioritaria:
-            pedido = self.cola_prioritaria.pop(0)
-            tipo = "PRIORITARIO"
-        elif self.cola_normal:
-            pedido = self.cola_normal.pop(0)
-            tipo = "NORMAL"
-        else:
-            print("No hay pedidos pendientes")
-            return None
-        
-        print(f"\\nProcesando pedido {tipo}:")
-        print(f"  Cliente: {pedido['cliente']}")
-        print(f"  Items: {', '.join(pedido['items'])}")
-        
-        return pedido
-    
-    def mostrar_estado(self):
-        """Muestra el estado actual"""
-        print("\\n--- ESTADO DEL SISTEMA ---")
-        print(f"Pedidos prioritarios: {len(self.cola_prioritaria)}")
-        print(f"Pedidos normales: {len(self.cola_normal)}")
-        
-        print("\\nPedidos pendientes:")
-        
-        # Mostrar prioritarios primero
-        for i, pedido in enumerate(self.cola_prioritaria, 1):
-            print(f"  {i}. {pedido['cliente']} - PRIORITARIO")
-        
-        # Luego normales
-        for i, pedido in enumerate(self.cola_normal, len(self.cola_prioritaria) + 1):
-            print(f"  {i}. {pedido['cliente']} - NORMAL")
-
-# Demostración
-print("=== SISTEMA DE PEDIDOS ===\\n")
-
-restaurante = SistemaPedidos()
-
-# Crear pedidos
-restaurante.nuevo_pedido("Ana", ["Hamburguesa", "Refresco"])
-restaurante.nuevo_pedido("Carlos", ["Pizza", "Ensalada"], prioritario=True)
-restaurante.nuevo_pedido("María", ["Sándwich"])
-restaurante.nuevo_pedido("Pedro", ["Pasta", "Vino"], prioritario=True)
-
-restaurante.mostrar_estado()
-
-# Procesar pedidos
-restaurante.procesar_pedido()  # Carlos (prioritario)
-restaurante.procesar_pedido()  # Pedro (prioritario)
-restaurante.procesar_pedido()  # Ana (normal)
-
-restaurante.mostrar_estado()`
 
 // Quiz
 const preguntas = [

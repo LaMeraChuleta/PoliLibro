@@ -121,7 +121,7 @@
     </section>
 
     <!-- Ejercicio Práctico -->
-    <section class="bg-white rounded-xl shadow-lg p-6">
+    <!-- <section class="bg-white rounded-xl shadow-lg p-6">
       <div class="flex justify-between items-center mb-4">
         <h2 class="text-xl font-bold text-gray-800">
           Ejercicio Práctico: Simulador de Llamadas a Función
@@ -149,10 +149,10 @@
             <li>Manejar funciones recursivas</li>
           </ul>
         </div>
-      </div>
+      </div> -->
 
       <!-- Solución -->
-      <div v-if="mostrarSolucion" class="space-y-4">
+      <!-- <div v-if="mostrarSolucion" class="space-y-4">
         <div class="bg-green-50 border border-green-200 rounded-lg p-4">
           <h3 class="font-bold text-green-800 mb-2">Solución Propuesta</h3>
           <pre class="text-sm text-gray-800 font-mono overflow-x-auto whitespace-pre-wrap">{{ ejercicioSolucion }}</pre>
@@ -164,7 +164,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
 
     <!-- Quiz -->

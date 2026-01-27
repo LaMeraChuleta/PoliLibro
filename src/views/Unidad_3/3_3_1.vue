@@ -86,7 +86,7 @@
     </section>
 
     <!-- Ejercicio práctico -->
-    <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
+    <!-- <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
       <h2 class="text-2xl font-bold text-gray-800 mb-4">Ejercicio Práctico</h2>
       <div class="space-y-4">
         <p class="text-gray-700">
@@ -104,15 +104,15 @@
           <a href="#" class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
             Ver pista
           </a>
-        </div>
+        </div> -->
 
         <!-- Solución oculta -->
-        <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
+        <!-- <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
           <h3 class="font-bold text-green-800 mb-3">Solución:</h3>
           <PythonRunner :code="solucionCode" />
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- Quiz -->
     <QuizQuestions :preguntas="preguntas" titulo="Quiz búsqueda en anchura (BFS)"></QuizQuestions>
@@ -125,7 +125,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
@@ -340,120 +339,6 @@ for vertice, vecinos in web.items():
 print("\\n=== COMPONENTES CONEXAS ===")
 num_componentes = contar_componentes_conexas(grafo_no_dirigido)
 print(f"Número de componentes conexas: {num_componentes}")`
-
-// Ejercicio práctico - Solución
-const solucionCode = `from collections import deque
-
-def camino_mas_corto_bfs(grafo, origen, destino):
-    """
-    Encuentra el camino más corto entre origen y destino usando BFS.
-    Retorna lista con el camino o lista vacía si no hay camino.
-    """
-    if origen == destino:
-        return [origen]
-    
-    # Estructuras para BFS
-    cola = deque([origen])
-    visitados = {origen}
-    padres = {origen: None}
-    
-    while cola:
-        vertice_actual = cola.popleft()
-        
-        # Si llegamos al destino, reconstruir camino
-        if vertice_actual == destino:
-            camino = []
-            actual = destino
-            while actual is not None:
-                camino.append(actual)
-                actual = padres[actual]
-            return camino[::-1]  # Invertir para obtener origen -> destino
-        
-        # Explorar vecinos
-        for vecino in grafo.get(vertice_actual, []):
-            if vecino not in visitados:
-                visitados.add(vecino)
-                padres[vecino] = vertice_actual
-                cola.append(vecino)
-    
-    return []  # No se encontró camino
-
-# Grafo de prueba (red social del ejemplo 1)
-red_social = {
-    'A': ['B', 'C'],
-    'B': ['A', 'D', 'E'],
-    'C': ['A', 'F', 'G'],
-    'D': ['B', 'H'],
-    'E': ['B', 'I'],
-    'F': ['C', 'J'],
-    'G': ['C'],
-    'H': ['D'],
-    'I': ['E'],
-    'J': ['F']
-}
-
-print("=== PRUEBAS DEL ALGORITMO ===")
-
-# Caso 1: Camino existente
-print("\\n1. Camino de A a F:")
-camino = camino_mas_corto_bfs(red_social, 'A', 'F')
-if camino:
-    print(f"   Camino encontrado: {' -> '.join(camino)}")
-    print(f"   Longitud: {len(camino) - 1} conexiones")
-else:
-    print("   No hay camino")
-
-# Caso 2: Camino más largo
-print("\\n2. Camino de A a I:")
-camino = camino_mas_corto_bfs(red_social, 'A', 'I')
-if camino:
-    print(f"   Camino encontrado: {' -> '.join(camino)}")
-    print(f"   Longitud: {len(camino) - 1} conexiones")
-
-# Caso 3: Origen igual a destino
-print("\\n3. Camino de C a C:")
-camino = camino_mas_corto_bfs(red_social, 'C', 'C')
-if camino:
-    print(f"   Camino encontrado: {' -> '.join(camino)}")
-
-# Caso 4: Vértices no conectados (agregamos un vértice aislado)
-red_social['Z'] = []
-print("\\n4. Camino de A a Z (vértice aislado):")
-camino = camino_mas_corto_bfs(red_social, 'A', 'Z')
-if camino:
-    print(f"   Camino encontrado: {' -> '.join(camino)}")
-else:
-    print("   No hay camino (vértice aislado)")
-
-# Función adicional para mostrar todos los caminos más cortos desde un origen
-def todos_caminos_cortos(grafo, origen):
-    """
-    Calcula todos los caminos más cortos desde un vértice origen.
-    """
-    distancias, padres = {}, {}
-    cola = deque([origen])
-    distancias[origen] = 0
-    padres[origen] = None
-    
-    while cola:
-        actual = cola.popleft()
-        for vecino in grafo.get(actual, []):
-            if vecino not in distancias:
-                distancias[vecino] = distancias[actual] + 1
-                padres[vecino] = actual
-                cola.append(vecino)
-    
-    return distancias, padres
-
-print("\\n=== TODOS LOS CAMINOS MÁS CORTOS DESDE 'A' ===")
-distancias, padres = todos_caminos_cortos(red_social, 'A')
-for vertice in sorted(distancias.keys()):
-    if vertice != 'A':
-        camino = camino_mas_corto_bfs(red_social, 'A', vertice)
-        print(f"A -> {vertice}: {camino} (distancia: {distancias[vertice]})")`
-
-// Estado del ejercicio
-const mostrarSolucion = ref(false)
 
 // Quiz
 const preguntas = [

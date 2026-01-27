@@ -74,7 +74,7 @@
     </div>
 
     <!-- Ejercicio práctico -->
-    <div class="mb-8 p-6 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg">
+    <!-- <div class="mb-8 p-6 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg">
       <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio práctico: Sistema de recomendación de cursos</h3>
       <p class="text-gray-700 mb-4">
         <strong>Situación:</strong> Crea un sistema que recomienda cursos basados en intereses comunes de estudiantes.
@@ -82,7 +82,7 @@
 
       <PythonRunner :code="ejercicioCode" title="recomendacion_cursos.py" :showLineNumbers="true" initialHeight="300px"
         :showReset="true" :showSolution="true" :solutionCode="solucionCode" />
-    </div>
+    </div> -->
 
     <!-- Casos de uso reales -->
     <div class="mb-8 p-6 bg-gray-50 rounded-xl">

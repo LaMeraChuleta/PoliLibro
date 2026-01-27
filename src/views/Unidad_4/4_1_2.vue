@@ -93,7 +93,7 @@
         </section>
 
         <!-- Ejercicio práctico -->
-        <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
+        <!-- <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
             <h2 class="text-2xl font-bold text-gray-800 mb-4">Ejercicio Práctico</h2>
             <div class="space-y-4">
                 <p class="text-gray-700">
@@ -112,15 +112,14 @@
                         class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
                         Ver pista
                     </a>
-                </div>
-
+                </div> -->
                 <!-- Solución oculta -->
-                <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
+                <!-- <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
                     <h3 class="font-bold text-green-800 mb-3">Solución:</h3>
                     <PythonRunner :code="solucionCode" />
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- Quiz -->
         <QuizQuestions :preguntas="preguntas" titulo="Quiz recorridos: pre, in y post orden"></QuizQuestions>
@@ -134,7 +133,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
@@ -150,108 +148,100 @@ const ejemplo1Code = `class Nodo:
         self.izquierdo = None
         self.derecho = None
 
+
 def preorden_recursivo(raiz):
     """
     Recorrido Preorden (Raíz, Izquierdo, Derecho) - recursivo.
     Retorna lista con el orden de visita.
     """
     resultado = []
-    
+
     def recorrer(nodo):
         if nodo is not None:
-            resultado.append(nodo.valor)      # Visitar raíz
-            recorrer(nodo.izquierdo)          # Recorrer izquierdo
-            recorrer(nodo.derecho)            # Recorrer derecho
-    
+            resultado.append(nodo.valor)
+            recorrer(nodo.izquierdo)
+            recorrer(nodo.derecho)
+
     recorrer(raiz)
     return resultado
+
 
 def inorden_recursivo(raiz):
     """
     Recorrido Inorden (Izquierdo, Raíz, Derecho) - recursivo.
-    En un ABB, produce valores en orden ascendente.
     """
     resultado = []
-    
+
     def recorrer(nodo):
         if nodo is not None:
-            recorrer(nodo.izquierdo)          # Recorrer izquierdo
-            resultado.append(nodo.valor)      # Visitar raíz
-            recorrer(nodo.derecho)            # Recorrer derecho
-    
+            recorrer(nodo.izquierdo)
+            resultado.append(nodo.valor)
+            recorrer(nodo.derecho)
+
     recorrer(raiz)
     return resultado
+
 
 def postorden_recursivo(raiz):
     """
     Recorrido Postorden (Izquierdo, Derecho, Raíz) - recursivo.
-    Útil para eliminar árboles o evaluar expresiones.
     """
     resultado = []
-    
+
     def recorrer(nodo):
         if nodo is not None:
-            recorrer(nodo.izquierdo)          # Recorrer izquierdo
-            recorrer(nodo.derecho)            # Recorrer derecho
-            resultado.append(nodo.valor)      # Visitar raíz
-    
+            recorrer(nodo.izquierdo)
+            recorrer(nodo.derecho)
+            resultado.append(nodo.valor)
+
     recorrer(raiz)
     return resultado
 
-# Versiones iterativas (usando pilas)
+
+# Versiones iterativas
 def preorden_iterativo(raiz):
-    """
-    Preorden iterativo usando una pila.
-    """
     if raiz is None:
         return []
-    
+
     resultado = []
     pila = [raiz]
-    
+
     while pila:
         nodo = pila.pop()
         resultado.append(nodo.valor)
-        
-        # Agregar derecho primero para que izquierdo se procese primero (pila LIFO)
+
         if nodo.derecho is not None:
             pila.append(nodo.derecho)
         if nodo.izquierdo is not None:
             pila.append(nodo.izquierdo)
-    
+
     return resultado
 
+
 def inorden_iterativo(raiz):
-    """
-    Inorden iterativo usando una pila.
-    """
     resultado = []
     pila = []
     actual = raiz
-    
+
     while actual is not None or pila:
-        # Ir lo más a la izquierda posible
         while actual is not None:
             pila.append(actual)
             actual = actual.izquierdo
-        
-        # Procesar nodo
+
         actual = pila.pop()
         resultado.append(actual.valor)
-        
-        # Moverse al subárbol derecho
         actual = actual.derecho
-    
+
     return resultado
 
-# Crear un árbol de ejemplo
+
 def crear_arbol_ejemplo():
     """
-    Crea un árbol binario de ejemplo:
+    Árbol binario:
             A
-           / \\
+           / \\\\
           B   C
-         / \\   \\
+         / \\\\   \\\\
         D   E   F
     """
     raiz = Nodo('A')
@@ -262,34 +252,35 @@ def crear_arbol_ejemplo():
     raiz.derecho.derecho = Nodo('F')
     return raiz
 
-# Probar los recorridos
+
 print("=== ÁRBOL DE EJEMPLO ===")
 print("      A")
-print("     / \\")
+print("     / \\\\")
 print("    B   C")
-print("   / \\   \\")
+print("   / \\\\   \\\\")
 print("  D   E   F")
 
 arbol = crear_arbol_ejemplo()
 
-print("\\n=== RECORRIDOS RECURSIVOS ===")
+print("\\\\n=== RECORRIDOS RECURSIVOS ===")
 print(f"Preorden:  {preorden_recursivo(arbol)}")
 print(f"Inorden:   {inorden_recursivo(arbol)}")
 print(f"Postorden: {postorden_recursivo(arbol)}")
 
-print("\\n=== RECORRIDOS ITERATIVOS ===")
-print(f"Preorden iterativo:  {preorden_iterativo(arbol)}")
-print(f"Inorden iterativo:   {inorden_iterativo(arbol)}")
+print("\\\\n=== RECORRIDOS ITERATIVOS ===")
+print(f"Preorden iterativo: {preorden_iterativo(arbol)}")
+print(f"Inorden iterativo:  {inorden_iterativo(arbol)}")
 
-print("\\n=== REGLAS MNEMOTÉCNICAS ===")
+print("\\\\n=== REGLAS MNEMOTÉCNICAS ===")
 print("Preorden:  Raíz → Izquierdo → Derecho")
 print("Inorden:   Izquierdo → Raíz → Derecho")
 print("Postorden: Izquierdo → Derecho → Raíz")
 
-print("\\n=== APLICACIONES ===")
+print("\\\\n=== APLICACIONES ===")
 print("Preorden:  Copiar árboles, prefijo (+AB)")
 print("Inorden:   Obtener orden en ABB, infijo (A+B)")
 print("Postorden: Evaluar expresiones, posfijo (AB+)")`
+
 
 // Ejemplo 2: Evaluación de expresiones aritméticas
 const ejemplo2Code = `class NodoExpresion:
@@ -302,55 +293,50 @@ const ejemplo2Code = `class NodoExpresion:
         self.izquierdo = None
         self.derecho = None
 
+
 def construir_arbol_expresion():
     """
     Construye un árbol que representa la expresión: ((2 + 3) * (4 - 1))
-    
+
     Representación:
             *
-           / \\
+           / \\\\
           +   -
-         / \\ / \\
-        2  3 4  1
+         / \\\\ / \\\\
+        2  3  4  1
     """
-    # Nivel 2: operandos
     nodo_2 = NodoExpresion('2')
     nodo_3 = NodoExpresion('3')
     nodo_4 = NodoExpresion('4')
     nodo_1 = NodoExpresion('1')
-    
-    # Nivel 1: operadores
+
     nodo_mas = NodoExpresion('+', es_operador=True)
     nodo_menos = NodoExpresion('-', es_operador=True)
-    
+
     nodo_mas.izquierdo = nodo_2
     nodo_mas.derecho = nodo_3
-    
+
     nodo_menos.izquierdo = nodo_4
     nodo_menos.derecho = nodo_1
-    
-    # Nivel 0: operador principal
+
     nodo_multi = NodoExpresion('*', es_operador=True)
     nodo_multi.izquierdo = nodo_mas
     nodo_multi.derecho = nodo_menos
-    
+
     return nodo_multi
+
 
 def evaluar_expresion_postorden(raiz):
     """
     Evalúa una expresión aritmética usando recorrido postorden.
-    Postorden es ideal porque procesa operandos antes de operadores.
     """
     def evaluar(nodo):
         if not nodo.es_operador:
-            # Es un operando (número)
             return float(nodo.valor)
-        
-        # Es un operador, evaluar subexpresiones primero
+
         izquierdo_val = evaluar(nodo.izquierdo)
         derecho_val = evaluar(nodo.derecho)
-        
-        # Aplicar operación
+
         if nodo.valor == '+':
             return izquierdo_val + derecho_val
         elif nodo.valor == '-':
@@ -361,95 +347,93 @@ def evaluar_expresion_postorden(raiz):
             return izquierdo_val / derecho_val
         else:
             raise ValueError(f"Operador no soportado: {nodo.valor}")
-    
+
     return evaluar(raiz)
+
 
 def expresion_a_string(raiz, formato='infijo'):
     """
-    Convierte árbol de expresión a string en diferentes formatos.
+    Convierte árbol de expresión a string.
     """
     if not raiz.es_operador:
         return raiz.valor
-    
+
     izquierdo = expresion_a_string(raiz.izquierdo, formato)
     derecho = expresion_a_string(raiz.derecho, formato)
-    
+
     if formato == 'infijo':
-        # Formato infijo: (izquierdo operador derecho)
         return f"({izquierdo} {raiz.valor} {derecho})"
     elif formato == 'prefijo':
-        # Formato prefijo: operador izquierdo derecho
         return f"{raiz.valor} {izquierdo} {derecho}"
     elif formato == 'postfijo':
-        # Formato postfijo: izquierdo derecho operador
         return f"{izquierdo} {derecho} {raiz.valor}"
     else:
         raise ValueError(f"Formato no válido: {formato}")
 
-# Crear y evaluar expresión
+
 print("=== EVALUACIÓN DE EXPRESIÓN ARITMÉTICA ===")
 expresion_arbol = construir_arbol_expresion()
 
-print("\\nExpresión representada:")
+print("\\\\nExpresión representada:")
 print("      *")
-print("     / \\")
+print("     / \\\\")
 print("    +   -")
-print("   / \\ / \\")
-print("  2  3 4  1")
+print("   / \\\\ / \\\\")
+print("  2  3  4  1")
 
-print("\\n=== DIFERENTES REPRESENTACIONES ===")
+print("\\\\n=== DIFERENTES REPRESENTACIONES ===")
 print(f"Infijo:   {expresion_a_string(expresion_arbol, 'infijo')}")
 print(f"Prefijo:  {expresion_a_string(expresion_arbol, 'prefijo')}")
 print(f"Postfijo: {expresion_a_string(expresion_arbol, 'postfijo')}")
 
-print("\\n=== EVALUACIÓN ===")
+print("\\\\n=== EVALUACIÓN ===")
 resultado = evaluar_expresion_postorden(expresion_arbol)
 print(f"Resultado: {resultado}")
-print(f"Verificación: (2 + 3) * (4 - 1) = 5 * 3 = 15")
+print("Verificación: (2 + 3) * (4 - 1) = 5 * 3 = 15")
 
-# Ejemplo adicional: expresión más compleja
+
 def construir_expresion_compleja():
     """
     Expresión: (3 * (4 + 5)) / (6 - 2)
     """
-    # Operandos
     nodo_3 = NodoExpresion('3')
     nodo_4 = NodoExpresion('4')
     nodo_5 = NodoExpresion('5')
     nodo_6 = NodoExpresion('6')
     nodo_2 = NodoExpresion('2')
-    
-    # Subexpresiones
+
     nodo_mas = NodoExpresion('+', es_operador=True)
     nodo_mas.izquierdo = nodo_4
     nodo_mas.derecho = nodo_5
-    
+
     nodo_mult = NodoExpresion('*', es_operador=True)
     nodo_mult.izquierdo = nodo_3
     nodo_mult.derecho = nodo_mas
-    
+
     nodo_menos = NodoExpresion('-', es_operador=True)
     nodo_menos.izquierdo = nodo_6
     nodo_menos.derecho = nodo_2
-    
+
     nodo_div = NodoExpresion('/', es_operador=True)
     nodo_div.izquierdo = nodo_mult
     nodo_div.derecho = nodo_menos
-    
+
     return nodo_div
 
-print("\\n=== EXPRESIÓN COMPLEJA ===")
+
+print("\\\\n=== EXPRESIÓN COMPLEJA ===")
 exp_compleja = construir_expresion_compleja()
-print(f"Infijo: {expresion_a_string(exp_compleja, 'infijo')}")
+print(f"Infijo:   {expresion_a_string(exp_compleja, 'infijo')}")
 print(f"Postfijo: {expresion_a_string(exp_compleja, 'postfijo')}")
 resultado_complejo = evaluar_expresion_postorden(exp_compleja)
 print(f"Resultado: {resultado_complejo}")
-print(f"Verificación: (3 * (4 + 5)) / (6 - 2) = (3 * 9) / 4 = 27 / 4 = 6.75")
+print("Verificación: (3 * (4 + 5)) / (6 - 2) = 27 / 4 = 6.75")
 
-print("\\n=== RELACIÓN CON RECORRIDOS ===")
+print("\\\\n=== RELACIÓN CON RECORRIDOS ===")
 print("Postfijo = Postorden del árbol de expresión")
 print("Prefijo  = Preorden del árbol de expresión")
 print("Infijo   = Inorden del árbol de expresión")`
+
 
 // Ejemplo 3: Serialización y deserialización
 const ejemplo3Code = `class Nodo:
@@ -457,6 +441,7 @@ const ejemplo3Code = `class Nodo:
         self.valor = valor
         self.izquierdo = None
         self.derecho = None
+
 
 def serializar_preorden(raiz):
     """
@@ -467,13 +452,13 @@ def serializar_preorden(raiz):
         if nodo is None:
             return '# '
         
-        # Preorden: raíz, izquierdo, derecho
         resultado = f"{nodo.valor} "
         resultado += serializar(nodo.izquierdo)
         resultado += serializar(nodo.derecho)
         return resultado
     
     return serializar(raiz).strip()
+
 
 def deserializar_preorden(serializado):
     """
@@ -497,9 +482,10 @@ def deserializar_preorden(serializado):
     
     return deserializar()
 
+
 def serializar_inorden(raiz):
     """
-    Serializa usando inorden (no suficiente para reconstruir árbol único).
+    Serializa usando inorden (NO suficiente para reconstruir árbol único).
     """
     def serializar(nodo):
         if nodo is None:
@@ -512,22 +498,23 @@ def serializar_inorden(raiz):
     
     return serializar(raiz).strip()
 
+
 def serializar_pre_in(raiz):
     """
-    Serializa usando preorden e inorden juntos (suficiente para reconstrucción única).
+    Serializa usando preorden e inorden juntos.
     """
     preorden = serializar_preorden(raiz)
     inorden = serializar_inorden(raiz)
-    return f"Preorden: {preorden}\\nInorden: {inorden}"
+    return f"Preorden: {preorden}\\\\nInorden: {inorden}"
 
-# Crear árbol de prueba
+
 def crear_arbol_prueba():
     """
-    Crea árbol de prueba:
+    Árbol:
             A
-           / \\
+           / \\\\
           B   C
-         /   / \\
+         /   / \\\\
         D   E   F
     """
     raiz = Nodo('A')
@@ -538,24 +525,25 @@ def crear_arbol_prueba():
     raiz.derecho.derecho = Nodo('F')
     return raiz
 
+
 print("=== SERIALIZACIÓN DE ÁRBOLES ===")
 arbol_original = crear_arbol_prueba()
 
-print("\\nÁrbol original:")
+print("\\\\nÁrbol original:")
 print("      A")
-print("     / \\")
+print("     / \\\\")
 print("    B   C")
-print("   /   / \\")
+print("   /   / \\\\")
 print("  D   E   F")
 
-print("\\n=== SERIALIZACIÓN PREORDEN ===")
+print("\\\\n=== SERIALIZACIÓN PREORDEN ===")
 serializado = serializar_preorden(arbol_original)
 print(f"Serializado: {serializado}")
 
-print("\\n=== DESERIALIZACIÓN ===")
+print("\\\\n=== DESERIALIZACIÓN ===")
 arbol_reconstruido = deserializar_preorden(serializado)
 
-# Verificar que los recorridos son iguales
+
 def preorden_lista(raiz):
     resultado = []
     def recorrer(nodo):
@@ -566,19 +554,19 @@ def preorden_lista(raiz):
     recorrer(raiz)
     return resultado
 
+
 original_pre = preorden_lista(arbol_original)
 reconstruido_pre = preorden_lista(arbol_reconstruido)
 
-print(f"Preorden original:    {original_pre}")
+print(f"Preorden original:     {original_pre}")
 print(f"Preorden reconstruido: {reconstruido_pre}")
 print(f"¿Son iguales? {original_pre == reconstruido_pre}")
 
-print("\\n=== SERIALIZACIÓN PREORDEN + INORDEN ===")
+print("\\\\n=== SERIALIZACIÓN PREORDEN + INORDEN ===")
 pre_in = serializar_pre_in(arbol_original)
 print(pre_in)
 
-# Ejemplo con árbol más simple
-print("\\n=== EJEMPLO MÁS SIMPLE ===")
+print("\\\\n=== EJEMPLO MÁS SIMPLE ===")
 arbol_simple = Nodo('R')
 arbol_simple.izquierdo = Nodo('I')
 arbol_simple.derecho = Nodo('D')
@@ -587,240 +575,34 @@ print("Árbol simple: R -> I, D")
 serializado_simple = serializar_preorden(arbol_simple)
 print(f"Serializado: {serializado_simple}")
 
-# Deserializar y verificar
 arbol_simple_reconst = deserializar_preorden(serializado_simple)
 print(f"Preorden reconstruido: {preorden_lista(arbol_simple_reconst)}")
 
-print("\\n=== LÍMITES DE LA SERIALIZACIÓN ===")
-print("1. Solo preorden o solo inorden NO son suficientes para reconstruir único árbol")
+print("\\\\n=== LÍMITES DE LA SERIALIZACIÓN ===")
+print("1. Solo preorden o solo inorden NO son suficientes")
 print("2. Preorden + Inorden SÍ son suficientes")
 print("3. Postorden + Inorden también son suficientes")
 
-print("\\n=== EJEMPLO: DOS ÁRBOLES CON MISMO PREORDEN ===")
-# Árbol 1
+print("\\\\n=== EJEMPLO: DOS ÁRBOLES CON MISMO PREORDEN ===")
+
 arbol1 = Nodo('A')
 arbol1.izquierdo = Nodo('B')
 arbol1.izquierdo.izquierdo = Nodo('C')
 
-# Árbol 2
 arbol2 = Nodo('A')
 arbol2.izquierdo = Nodo('B')
 arbol2.izquierdo.derecho = Nodo('C')
 
-print("\\nÁrbol 1 (C es hijo izquierdo de B):")
+print("\\\\nÁrbol 1 (C hijo izquierdo de B):")
 print("Preorden:", preorden_lista(arbol1))
 print("Inorden:", serializar_inorden(arbol1))
 
-print("\\nÁrbol 2 (C es hijo derecho de B):")
+print("\\\\nÁrbol 2 (C hijo derecho de B):")
 print("Preorden:", preorden_lista(arbol2))
 print("Inorden:", serializar_inorden(arbol2))
 
-print("\\nMismo preorden (A B C) pero diferente inorden → árboles diferentes")`
+print("\\\\nMismo preorden (A B C) pero diferente inorden → árboles distintos")`
 
-// Ejercicio práctico - Solución
-const solucionCode = `class NodoExpresion:
-    def __init__(self, valor, es_operador=False):
-        self.valor = valor
-        self.es_operador = es_operador
-        self.izquierdo = None
-        self.derecho = None
-
-def construir_desde_pre_in(preorden, inorden):
-    """
-    Reconstruye un árbol binario a partir de sus recorridos preorden e inorden.
-    Asume que no hay valores duplicados en el árbol.
-    """
-    if not preorden or not inorden:
-        return None
-    
-    # El primer elemento de preorden es la raíz
-    valor_raiz = preorden[0]
-    es_operador = valor_raiz in '+-*/'
-    raiz = NodoExpresion(valor_raiz, es_operador)
-    
-    # Encontrar la raíz en inorden
-    indice_raiz = inorden.index(valor_raiz)
-    
-    # Subárbol izquierdo: elementos a la izquierda de la raíz en inorden
-    inorden_izq = inorden[:indice_raiz]
-    # Subárbol derecho: elementos a la derecha de la raíz en inorden
-    inorden_der = inorden[indice_raiz + 1:]
-    
-    # Los siguientes len(inorden_izq) elementos en preorden son el preorden del subárbol izquierdo
-    preorden_izq = preorden[1:1 + len(inorden_izq)]
-    # El resto son el preorden del subárbol derecho
-    preorden_der = preorden[1 + len(inorden_izq):]
-    
-    # Construir recursivamente
-    raiz.izquierdo = construir_desde_pre_in(preorden_izq, inorden_izq)
-    raiz.derecho = construir_desde_pre_in(preorden_der, inorden_der)
-    
-    return raiz
-
-def evaluar_postorden(raiz):
-    """
-    Evalúa una expresión usando recorrido postorden.
-    """
-    if not raiz.es_operador:
-        return float(raiz.valor)
-    
-    izquierdo = evaluar_postorden(raiz.izquierdo)
-    derecho = evaluar_postorden(raiz.derecho)
-    
-    if raiz.valor == '+':
-        return izquierdo + derecho
-    elif raiz.valor == '-':
-        return izquierdo - derecho
-    elif raiz.valor == '*':
-        return izquierdo * derecho
-    elif raiz.valor == '/':
-        return izquierdo / derecho
-    else:
-        raise ValueError(f"Operador no soportado: {raiz.valor}")
-
-def obtener_preorden(raiz):
-    """
-    Obtiene el recorrido preorden de un árbol.
-    """
-    if raiz is None:
-        return []
-    
-    resultado = [raiz.valor]
-    resultado.extend(obtener_preorden(raiz.izquierdo))
-    resultado.extend(obtener_preorden(raiz.derecho))
-    return resultado
-
-def obtener_inorden(raiz):
-    """
-    Obtiene el recorrido inorden de un árbol.
-    """
-    if raiz is None:
-        return []
-    
-    resultado = []
-    resultado.extend(obtener_inorden(raiz.izquierdo))
-    resultado.append(raiz.valor)
-    resultado.extend(obtener_inorden(raiz.derecho))
-    return resultado
-
-def obtener_postorden(raiz):
-    """
-    Obtiene el recorrido postorden de un árbol.
-    """
-    if raiz is None:
-        return []
-    
-    resultado = []
-    resultado.extend(obtener_postorden(raiz.izquierdo))
-    resultado.extend(obtener_postorden(raiz.derecho))
-    resultado.append(raiz.valor)
-    return resultado
-
-# Prueba con la expresión del ejemplo 2: ((2 + 3) * (4 - 1))
-print("=== RECONSTRUCCIÓN DE ÁRBOL DE EXPRESIÓN ===")
-
-# Para la expresión ((2 + 3) * (4 - 1))
-# Preorden: * + 2 3 - 4 1
-# Inorden: 2 + 3 * 4 - 1
-
-preorden_exp = ['*', '+', '2', '3', '-', '4', '1']
-inorden_exp = ['2', '+', '3', '*', '4', '-', '1']
-
-print(f"Preorden dado: {preorden_exp}")
-print(f"Inorden dado:  {inorden_exp}")
-
-print("\\nReconstruyendo árbol...")
-arbol_reconstruido = construir_desde_pre_in(preorden_exp, inorden_exp)
-
-print("\\n=== VERIFICACIÓN ===")
-preorden_calculado = obtener_preorden(arbol_reconstruido)
-inorden_calculado = obtener_inorden(arbol_reconstruido)
-postorden_calculado = obtener_postorden(arbol_reconstruido)
-
-print(f"Preorden calculado:  {preorden_calculado}")
-print(f"Inorden calculado:   {inorden_calculado}")
-print(f"Postorden calculado: {postorden_calculado}")
-
-print("\\n¿Coincide con el preorden original?", preorden_calculado == preorden_exp)
-print("¿Coincide con el inorden original?", inorden_calculado == inorden_exp)
-
-print("\\n=== EVALUACIÓN DE LA EXPRESIÓN ===")
-resultado = evaluar_postorden(arbol_reconstruido)
-print(f"Resultado de la evaluación: {resultado}")
-print(f"Verificación: (2 + 3) * (4 - 1) = 5 * 3 = 15")
-
-# Prueba con expresión más compleja
-print("\\n=== PRUEBA CON EXPRESIÓN COMPLEJA ===")
-# Expresión: (3 + (4 * 5)) / (6 - 2)
-# Preorden: / + 3 * 4 5 - 6 2
-# Inorden: 3 + 4 * 5 / 6 - 2
-
-preorden_complejo = ['/', '+', '3', '*', '4', '5', '-', '6', '2']
-inorden_complejo = ['3', '+', '4', '*', '5', '/', '6', '-', '2']
-
-print(f"\\nExpresión: (3 + (4 * 5)) / (6 - 2)")
-print(f"Preorden: {preorden_complejo}")
-print(f"Inorden:  {inorden_complejo}")
-
-arbol_complejo = construir_desde_pre_in(preorden_complejo, inorden_complejo)
-resultado_complejo = evaluar_postorden(arbol_complejo)
-
-print(f"\\nResultado: {resultado_complejo}")
-print(f"Verificación: (3 + (4*5)) / (6-2) = (3+20)/4 = 23/4 = 5.75")
-
-# Función para mostrar el árbol de forma gráfica
-def mostrar_arbol(raiz, nivel=0, prefijo="Raíz: "):
-    """
-    Muestra el árbol de forma jerárquica.
-    """
-    if raiz is not None:
-        print("   " * nivel + prefijo + raiz.valor + (" (op)" if raiz.es_operador else ""))
-        if raiz.izquierdo is not None or raiz.derecho is not None:
-            mostrar_arbol(raiz.izquierdo, nivel + 1, "Izq: ")
-            mostrar_arbol(raiz.derecho, nivel + 1, "Der: ")
-
-print("\\n=== REPRESENTACIÓN DEL ÁRBOL ===")
-print("\\nPrimer árbol (simple):")
-mostrar_arbol(arbol_reconstruido)
-
-print("\\n\\nSegundo árbol (complejo):")
-mostrar_arbol(arbol_complejo)
-
-# Demostración del proceso paso a paso
-print("\\n=== PROCESO DE RECONSTRUCCIÓN (explicado) ===")
-print("\\nPara preorden: *, +, 2, 3, -, 4, 1")
-print("Para inorden: 2, +, 3, *, 4, -, 1")
-print("\\nPaso 1: Raíz es '*' (primer elemento de preorden)")
-print("Paso 2: En inorden, '*' está en posición 3")
-print("   - Izquierda: 2, +, 3")
-print("   - Derecha: 4, -, 1")
-print("Paso 3: Para subárbol izquierdo:")
-print("   - Preorden: +, 2, 3 (siguientes 3 elementos)")
-print("   - Inorden: 2, +, 3")
-print("   - Raíz: '+'")
-print("Paso 4: Continuar recursivamente...")
-
-# Verificación de casos límite
-print("\\n=== CASOS LÍMITE ===")
-print("\\nCaso 1: Árbol vacío")
-arbol_vacio = construir_desde_pre_in([], [])
-print("Árbol vacío reconstruido:", "Sí" if arbol_vacio is None else "No")
-
-print("\\nCaso 2: Solo raíz")
-arbol_raiz = construir_desde_pre_in(['5'], ['5'])
-print("Árbol con solo raíz 5:")
-print("  Es operador?", arbol_raiz.es_operador)
-print("  Valor:", arbol_raiz.valor)
-
-print("\\nCaso 3: Expresión inválida (preorden e inorden inconsistentes)")
-try:
-    arbol_invalido = construir_desde_pre_in(['+', '2', '3'], ['2', '3', '+'])
-    print("Reconstrucción exitosa (inesperado)")
-except ValueError as e:
-    print(f"Error esperado: {e}")`
-
-// Estado del ejercicio
-const mostrarSolucion = ref(false)
 
 // Quiz
 const preguntas = [

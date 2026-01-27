@@ -53,35 +53,26 @@
       <div class="space-y-10">
         <!-- Ejemplo 1 -->
         <div>
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 1: Factorial Recursivo</h3>
-          <div class="bg-gray-800 text-gray-200 p-4 rounded-t-lg font-mono text-sm">
-            # Cálculo factorial usando recursividad
-          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 1: Factorial Recursivo</h3>        
           <PythonRunner :code="ejemplo1Code" />
         </div>
 
         <!-- Ejemplo 2 -->
         <div>
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 2: Conteo Regresivo</h3>
-          <div class="bg-gray-800 text-gray-200 p-4 rounded-t-lg font-mono text-sm">
-            # Visualización de la pila de llamadas recursivas
-          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 2: Conteo Regresivo</h3>     
           <PythonRunner :code="ejemplo2Code" />
         </div>
 
         <!-- Ejemplo 3 -->
         <div>
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 3: Fibonacci Recursivo</h3>
-          <div class="bg-gray-800 text-gray-200 p-4 rounded-t-lg font-mono text-sm">
-            # Serie Fibonacci con y sin memoización
-          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 3: Fibonacci Recursivo</h3>        
           <PythonRunner :code="ejemplo3Code" />
         </div>
       </div>
     </section>
 
     <!-- Ejercicio Práctico -->
-    <section>
+    <!-- <section>
       <h2 class="text-2xl font-bold text-gray-800 mb-6">Ejercicio: Suma de Dígitos</h2>
       <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
         <div class="mb-6">
@@ -114,7 +105,7 @@
           <PythonRunner :code="solucionCode" />
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- Quiz -->
     <QuizQuestions :preguntas="preguntas" titulo="Quiz descripción"></QuizQuestions>
@@ -322,128 +313,6 @@ print("fib(3) = fib(2) + fib(1)")
 print("fib(2) = fib(1) + fib(0)")
 print("\\nLa memoización evita recalcular valores ya conocidos.")`
 
-// Ejercicio y solución
-const ejercicioCode = `# Suma recursiva de dígitos
-# Completa la función suma_digitos según las especificaciones
-
-def suma_digitos(n):
-    """
-    Calcula la suma de los dígitos de un número entero positivo.
-    
-    Args:
-        n: número entero positivo
-        
-    Returns:
-        Suma de los dígitos de n
-    
-    Ejemplos:
-        suma_digitos(123) -> 6
-        suma_digitos(9876) -> 30
-    """
-    # TODO: Implementar la función recursiva
-    # Caso base: si n es menor que 10, retornar n
-    # Caso recursivo: último dígito + suma_digitos(resto del número)
-    pass
-
-# Pruebas básicas
-print("=== PRUEBAS DE SUMA DE DÍGITOS ===\\n")
-
-# Prueba 1
-numero = 123
-print(f"suma_digitos({numero}) debería ser 6")
-print(f"Tu resultado: {suma_digitos(numero) if suma_digitos(numero) else 'No implementado'}")
-
-# Prueba 2
-numero = 9876
-print(f"\\nsuma_digitos({numero}) debería ser 30")
-print(f"Tu resultado: {suma_digitos(numero) if suma_digitos(numero) else 'No implementado'}")
-
-# Prueba 3
-numero = 7
-print(f"\\nsuma_digitos({numero}) debería ser 7 (caso base)")
-print(f"Tu resultado: {suma_digitos(numero) if suma_digitos(numero) else 'No implementado'}")`
-
-const solucionCode = `# Solución: Suma recursiva de dígitos
-
-def suma_digitos(n):
-    """
-    Calcula la suma de los dígitos de un número entero positivo.
-    
-    Estrategia:
-    1. Caso base: si n < 10, retornar n (solo un dígito)
-    2. Caso recursivo: último_digito + suma_digitos(resto)
-       - último_digito = n % 10 (resto de división por 10)
-       - resto = n // 10 (división entera por 10)
-    """
-    # Caso base: si el número tiene un solo dígito
-    if n < 10:
-        print(f"suma_digitos({n}) -> {n} (caso base)")
-        return n
-    
-    # Caso recursivo: separar último dígito y llamar recursivamente
-    ultimo_digito = n % 10
-    resto_numero = n // 10
-    
-    print(f"suma_digitos({n}) = {ultimo_digito} + suma_digitos({resto_numero})")
-    
-    # Llamada recursiva
-    suma_resto = suma_digitos(resto_numero)
-    resultado = ultimo_digito + suma_resto
-    
-    print(f"suma_digitos({n}) = {ultimo_digito} + {suma_resto} = {resultado}")
-    return resultado
-
-# Pruebas exhaustivas
-print("=== SOLUCIÓN: SUMA RECURSIVA DE DÍGITOS ===\\n")
-
-# Prueba 1: Número pequeño
-print("Prueba 1: suma_digitos(123)")
-resultado1 = suma_digitos(123)
-print(f"Resultado: {resultado1}\\n")
-
-# Prueba 2: Número más grande
-print("Prueba 2: suma_digitos(9876)")
-resultado2 = suma_digitos(9876)
-print(f"Resultado: {resultado2}\\n")
-
-# Prueba 3: Caso base
-print("Prueba 3: suma_digitos(7)")
-resultado3 = suma_digitos(7)
-print(f"Resultado: {resultado3}\\n")
-
-# Prueba 4: Número de un solo dígito
-print("Prueba 4: suma_digitos(9)")
-resultado4 = suma_digitos(9)
-print(f"Resultado: {resultado4}\\n")
-
-# Prueba 5: Número grande
-print("Prueba 5: suma_digitos(123456789)")
-resultado5 = suma_digitos(123456789)
-print(f"Resultado: {resultado5}\\n")
-
-# Versión alternativa más compacta
-print("=== VERSIÓN ALTERNATIVA COMPACTA ===")
-
-def suma_digitos_compacta(n):
-    """Versión más compacta de la misma función."""
-    return n if n < 10 else (n % 10) + suma_digitos_compacta(n // 10)
-
-# Demostración de la versión compacta
-test_cases = [123, 9876, 7, 555, 1001]
-print("\\nPruebas con versión compacta:")
-for num in test_cases:
-    resultado = suma_digitos_compacta(num)
-    print(f"suma_digitos_compacta({num}) = {resultado}")
-
-# Análisis del proceso recursivo
-print("\\n=== ANÁLISIS DEL PROCESO RECURSIVO ===")
-print("Para suma_digitos(123):")
-print("1. 123 < 10? No -> 3 + suma_digitos(12)")
-print("2. 12 < 10? No -> 2 + suma_digitos(1)")
-print("3. 1 < 10? Sí -> 1 (caso base)")
-print("4. Regreso: 2 + 1 = 3")
-print("5. Regreso: 3 + 3 = 6")
-print("Resultado final: 6")`
 
 // Quiz
 const preguntas = [

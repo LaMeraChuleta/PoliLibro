@@ -57,35 +57,26 @@
       <div class="space-y-10">
         <!-- Ejemplo 1 -->
         <div>
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 1: Operaciones Básicas</h3>
-          <div class="bg-gray-800 text-gray-200 p-4 rounded-t-lg font-mono text-sm">
-            # Creación y manipulación básica de una cola
-          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 1: Operaciones Básicas</h3>       
           <PythonRunner :code="ejemplo1Code" />
         </div>
 
         <!-- Ejemplo 2 -->
         <div>
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 2: Fila de Banco</h3>
-          <div class="bg-gray-800 text-gray-200 p-4 rounded-t-lg font-mono text-sm">
-            # Simulación de fila de atención en banco
-          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 2: Fila de Banco</h3>       
           <PythonRunner :code="ejemplo2Code" />
         </div>
 
         <!-- Ejemplo 3 -->
         <div>
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 3: Búsqueda y Verificación</h3>
-          <div class="bg-gray-800 text-gray-200 p-4 rounded-t-lg font-mono text-sm">
-            # Operaciones de consulta en colas
-          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 3: Búsqueda y Verificación</h3>       
           <PythonRunner :code="ejemplo3Code" />
         </div>
       </div>
     </section>
 
     <!-- Ejercicio Práctico -->
-    <section class="mb-12">
+    <!-- <section class="mb-12">
       <h2 class="text-2xl font-bold text-gray-800 mb-6">Ejercicio Práctico</h2>
       <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
         <div class="mb-6">
@@ -118,7 +109,7 @@
           <PythonRunner :code="solucionCode" />
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- Quiz -->
     <QuizQuestions :preguntas="preguntas" titulo="Quiz de Operaciones"></QuizQuestions>

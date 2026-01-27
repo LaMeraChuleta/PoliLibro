@@ -92,7 +92,7 @@
         </section>
 
         <!-- Ejercicio práctico -->
-        <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
+        <!-- <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
             <h2 class="text-2xl font-bold text-gray-800 mb-4">Ejercicio Práctico</h2>
             <div class="space-y-4">
                 <p class="text-gray-700">
@@ -111,15 +111,15 @@
                         class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
                         Ver pista
                     </a>
-                </div>
+                </div> -->
 
                 <!-- Solución oculta -->
-                <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
+                <!-- <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
                     <h3 class="font-bold text-green-800 mb-3">Solución:</h3>
                     <PythonRunner :code="solucionCode" />
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- Quiz -->
         <QuizQuestions :preguntas="preguntas" titulo="Quiz búsqueda en profundidad (DFS)"></QuizQuestions>
@@ -133,7 +133,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
@@ -402,178 +401,6 @@ try:
 except Exception as e:
     print(f"No se puede ordenar: {e}")
     print("(Este es el comportamiento esperado para grafos con ciclos)")`
-
-// Ejercicio práctico - Solución
-const solucionCode = `def encontrar_ciclos_dfs(grafo):
-    """
-    Detecta si un grafo dirigido contiene ciclos usando DFS.
-    Retorna True si hay al menos un ciclo, False en caso contrario.
-    """
-    visitados = set()
-    en_recursion = set()  # Para detectar ciclos en el camino actual
-    
-    def dfs_ciclo(vertice):
-        visitados.add(vertice)
-        en_recursion.add(vertice)
-        
-        for vecino in grafo.get(vertice, []):
-            if vecino not in visitados:
-                if dfs_ciclo(vecino):
-                    return True
-            elif vecino in en_recursion:
-                # Encontramos un ciclo: el vecino está en el camino actual
-                return True
-        
-        en_recursion.remove(vertice)
-        return False
-    
-    for vertice in grafo:
-        if vertice not in visitados:
-            if dfs_ciclo(vertice):
-                return True
-    
-    return False
-
-def encontrar_ciclos_detallado(grafo):
-    """
-    Versión detallada que también muestra información sobre los ciclos encontrados.
-    """
-    visitados = set()
-    en_recursion = set()
-    padres = {}
-    ciclos = []
-    
-    def dfs_ciclo_detalle(vertice, padre):
-        visitados.add(vertice)
-        en_recursion.add(vertice)
-        padres[vertice] = padre
-        
-        for vecino in grafo.get(vertice, []):
-            if vecino not in visitados:
-                if dfs_ciclo_detalle(vecino, vertice):
-                    return True
-            elif vecino in en_recursion:
-                # Encontramos un ciclo, podemos reconstruirlo
-                ciclo = []
-                actual = vertice
-                while actual != vecino:
-                    ciclo.append(actual)
-                    actual = padres[actual]
-                ciclo.append(vecino)
-                ciclo.append(vertice)  # Para cerrar el ciclo
-                ciclos.append(ciclo[::-1])  # Invertir para orden correcto
-                return True
-        
-        en_recursion.remove(vertice)
-        return False
-    
-    for vertice in grafo:
-        if vertice not in visitados:
-            if dfs_ciclo_detalle(vertice, None):
-                return True, ciclos
-    
-    return False, ciclos
-
-# Prueba con el grafo de dependencias (sin ciclos)
-print("=== PRUEBA 1: GRAFO ACÍCLICO ===")
-dependencias_aciclicas = {
-    'A': ['B', 'C'],
-    'B': ['D', 'E'],
-    'C': ['F'],
-    'D': [],
-    'E': ['F'],
-    'F': []
-}
-
-print("Grafo:")
-for vertice, vecinos in dependencias_aciclicas.items():
-    print(f"  {vertice} -> {vecinos}")
-
-tiene_ciclo = encontrar_ciclos_dfs(dependencias_aciclicas)
-print(f"\\n¿Tiene ciclos? {tiene_ciclo}")
-
-# Prueba con grafo con ciclos
-print("\\n=== PRUEBA 2: GRAFO CON CICLO ===")
-dependencias_ciclicas = {
-    'A': ['B'],
-    'B': ['C', 'D'],
-    'C': ['A'],  # Ciclo A -> B -> C -> A
-    'D': ['E'],
-    'E': ['D']   # Ciclo D <-> E
-}
-
-print("Grafo:")
-for vertice, vecinos in dependencias_ciclicas.items():
-    print(f"  {vertice} -> {vecinos}")
-
-tiene_ciclo, ciclos = encontrar_ciclos_detallado(dependencias_ciclicas)
-print(f"\\n¿Tiene ciclos? {tiene_ciclo}")
-if ciclos:
-    print("Ciclos encontrados:")
-    for i, ciclo in enumerate(ciclos):
-        print(f"  Ciclo {i+1}: {' -> '.join(ciclo)}")
-
-# Prueba con el grafo del ejemplo 3
-print("\\n=== PRUEBA 3: GRAFO DE DEPENDENCIAS (EJEMPLO 3) ===")
-dependencias_ejemplo = {
-    'Desayunar': ['Vestirse'],
-    'Vestirse': ['Salir de casa'],
-    'Cepillarse dientes': ['Vestirse'],
-    'Ducharse': ['Vestirse'],
-    'Preparar mochila': ['Salir de casa'],
-    'Revisar agenda': ['Preparar mochila'],
-    'Salir de casa': []
-}
-
-print("Grafo de dependencias:")
-for vertice, vecinos in dependencias_ejemplo.items():
-    print(f"  {vertice} -> {vecinos}")
-
-tiene_ciclo = encontrar_ciclos_dfs(dependencias_ejemplo)
-print(f"\\n¿Tiene ciclos? {tiene_ciclo}")
-
-# Función adicional: encontrar todos los ciclos
-def encontrar_todos_ciclos(grafo):
-    """
-    Encuentra todos los ciclos en un grafo dirigido.
-    """
-    todos_ciclos = []
-    visitados = set()
-    camino_actual = []
-    
-    def dfs_todos(vertice):
-        if vertice in camino_actual:
-            # Encontramos un ciclo
-            inicio = camino_actual.index(vertice)
-            ciclo = camino_actual[inicio:] + [vertice]
-            todos_ciclos.append(ciclo)
-            return
-        
-        if vertice in visitados:
-            return
-        
-        visitados.add(vertice)
-        camino_actual.append(vertice)
-        
-        for vecino in grafo.get(vertice, []):
-            dfs_todos(vecino)
-        
-        camino_actual.pop()
-    
-    for vertice in grafo:
-        if vertice not in visitados:
-            dfs_todos(vertice)
-    
-    return todos_ciclos
-
-print("\\n=== TODOS LOS CICLOS EN GRAFO CÍCLICO ===")
-todos_ciclos = encontrar_todos_ciclos(dependencias_ciclicas)
-print(f"Total ciclos encontrados: {len(todos_ciclos)}")
-for i, ciclo in enumerate(todos_ciclos):
-    print(f"  Ciclo {i+1}: {' -> '.join(ciclo)}")`
-
-// Estado del ejercicio
-const mostrarSolucion = ref(false)
 
 // Quiz
 const preguntas = [

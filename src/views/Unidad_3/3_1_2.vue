@@ -55,35 +55,26 @@
       <div class="space-y-10">
         <!-- Ejemplo 1 -->
         <div>
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 1: Factorial - Recursivo vs Iterativo</h3>
-          <div class="bg-gray-800 text-gray-200 p-4 rounded-t-lg font-mono text-sm">
-            # Implementación comparativa del cálculo factorial
-          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 1: Factorial - Recursivo vs Iterativo</h3>      
           <PythonRunner :code="ejemplo1Code" />
         </div>
 
         <!-- Ejemplo 2 -->
         <div>
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 2: Fibonacci - Tres Enfoques</h3>
-          <div class="bg-gray-800 text-gray-200 p-4 rounded-t-lg font-mono text-sm">
-            # Recursivo simple, recursivo con memoización e iterativo
-          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 2: Fibonacci - Tres Enfoques</h3>  
           <PythonRunner :code="ejemplo2Code" />
         </div>
 
         <!-- Ejemplo 3 -->
         <div>
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 3: Recorrido de Directorios</h3>
-          <div class="bg-gray-800 text-gray-200 p-4 rounded-t-lg font-mono text-sm">
-            # Solución recursiva natural vs iterativa con pila explícita
-          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Ejemplo 3: Recorrido de Directorios</h3>     
           <PythonRunner :code="ejemplo3Code" />
         </div>
       </div>
     </section>
 
     <!-- Ejercicio Práctico -->
-    <section>
+    <!-- <section>
       <h2 class="text-2xl font-bold text-gray-800 mb-6">Ejercicio: Búsqueda Binaria</h2>
       <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
         <div class="mb-6">
@@ -118,7 +109,7 @@
           <PythonRunner :code="solucionCode" />
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- Quiz -->
     <QuizQuestions :preguntas="preguntas" titulo="Quiz descripción"></QuizQuestions>
@@ -226,128 +217,132 @@ print("          resultado *= i")
 print("      return resultado")`
 
 // Ejemplo 2: Fibonacci comparativo
-const ejemplo2Code = `# Fibonacci: Recursivo, Memoización e Iterativo
-
+const ejemplo2Code = `
+# Fibonacci: Recursivo, Memoización e Iterativo
 import time
 
-# Versión 1: Fibonacci recursivo simple (ineficiente)
+# ===============================
+# IMPLEMENTACIONES
+# ===============================
+
 def fib_recursivo_simple(n):
-    """Fibonacci recursivo sin optimización."""
+    if n < 0:
+        raise ValueError("n debe ser >= 0")
     if n <= 1:
         return n
     return fib_recursivo_simple(n-1) + fib_recursivo_simple(n-2)
 
-# Versión 2: Fibonacci con memoización
+
 def fib_memoizacion(n, memo=None):
-    """Fibonacci recursivo con memoización."""
+    if n < 0:
+        raise ValueError("n debe ser >= 0")
     if memo is None:
         memo = {}
-    
     if n in memo:
         return memo[n]
-    
     if n <= 1:
         return n
-    
-    resultado = fib_memoizacion(n-1, memo) + fib_memoizacion(n-2, memo)
-    memo[n] = resultado
-    return resultado
+    memo[n] = fib_memoizacion(n-1, memo) + fib_memoizacion(n-2, memo)
+    return memo[n]
 
-# Versión 3: Fibonacci iterativo
+
 def fib_iterativo(n):
-    """Fibonacci iterativo eficiente."""
+    if n < 0:
+        raise ValueError("n debe ser >= 0")
     if n <= 1:
         return n
-    
     a, b = 0, 1
     for _ in range(2, n + 1):
         a, b = b, a + b
     return b
 
-# Versión 4: Fibonacci iterativo con lista
+
 def fib_iterativo_lista(n):
-    """Fibonacci iterativo almacenando todos los valores."""
+    if n < 0:
+        raise ValueError("n debe ser >= 0")
     if n <= 1:
         return n
-    
     fib = [0] * (n + 1)
     fib[1] = 1
-    
     for i in range(2, n + 1):
         fib[i] = fib[i-1] + fib[i-2]
-    
     return fib[n]
 
-# Comparación de rendimiento
-print("=== COMPARACIÓN: FIBONACCI DIFERENTES IMPLEMENTACIONES ===\\n")
 
-# Función para medir tiempo
-def medir_tiempo(func, n, nombre):
-    inicio = time.time()
+# ===============================
+# MEDICIÓN DE TIEMPO
+# ===============================
+
+def medir_tiempo(func, n):
+    inicio = time.perf_counter()
     resultado = func(n)
-    tiempo = time.time() - inicio
-    return resultado, tiempo
+    fin = time.perf_counter()
+    return resultado, fin - inicio
 
-valores_prueba = [5, 10, 20, 30, 35]
 
-print(f"{'n':<5} {'Rec. Simple':<15} {'Memoización':<15} {'Iterativo':<15} {'Iter. Lista':<15}")
-print("-" * 70)
+# ===============================
+# COMPARACIÓN
+# ===============================
+
+print("=== COMPARACIÓN: FIBONACCI ===\\n")
+
+valores_prueba = [5, 10, 20, 25, 30]
+
+print(f"{'n':<5} {'Recursivo':<14} {'Memoización':<14} {'Iterativo':<14} {'Lista':<14}")
+print("-" * 65)
 
 for n in valores_prueba:
-    # Solo probar recursivo simple para valores pequeños
-    if n <= 30:
-        _, tiempo_rec = medir_tiempo(fib_recursivo_simple, n, "Rec. Simple")
+    if n <= 25:
+        _, t_rec = medir_tiempo(fib_recursivo_simple, n)
+        rec_txt = f"{t_rec:.6f}s"
     else:
-        tiempo_rec = float('inf')
-    
-    _, tiempo_memo = medir_tiempo(fib_memoizacion, n, "Memoización")
-    _, tiempo_iter = medir_tiempo(fib_iterativo, n, "Iterativo")
-    _, tiempo_lista = medir_tiempo(fib_iterativo_lista, n, "Iter. Lista")
-    
-    print(f"{n:<5} {tiempo_rec:.8f}s     {tiempo_memo:.8f}s     {tiempo_iter:.8f}s     {tiempo_lista:.8f}s")
+        rec_txt = "N/A"
 
-# Análisis de complejidad
+    _, t_memo = medir_tiempo(fib_memoizacion, n)
+    _, t_iter = medir_tiempo(fib_iterativo, n)
+    _, t_lista = medir_tiempo(fib_iterativo_lista, n)
+
+    print(f"{n:<5} {rec_txt:<14} {t_memo:.6f}s     {t_iter:.6f}s     {t_lista:.6f}s")
+
+
+# ===============================
+# ANÁLISIS
+# ===============================
+
 print("\\n=== ANÁLISIS DE COMPLEJIDAD ===")
-print("Recursivo simple: O(2^n) - Exponencial, muy ineficiente")
-print("Memoización: O(n) - Lineal, buena mejora")
-print("Iterativo: O(n) - Lineal, eficiente en memoria")
-print("Iterativo con lista: O(n) - Lineal, usa más memoria pero útil para accesos múltiples")
+print("Recursivo simple: O(2^n) - Muy ineficiente")
+print("Memoización: O(n) - Buen rendimiento")
+print("Iterativo: O(n) - Mejor uso de memoria")
+print("Iterativo con lista: O(n) - Más memoria")
 
-# Demostración de llamadas repetidas
-print("\\n=== DEMOSTRACIÓN DE LLAMADAS REPETIDAS ===")
-print("Para fib_recursivo_simple(5):")
-print("fib(5) = fib(4) + fib(3)")
-print("fib(4) = fib(3) + fib(2)  // fib(3) se calcula DOS veces")
-print("fib(3) = fib(2) + fib(1)  // fib(2) se calcula TRES veces")
-print("fib(2) = fib(1) + fib(0)")
-print("")
-print("Con memoización, cada fib(i) se calcula solo UNA vez.")
 
-# Uso de memoria comparativo
-print("\\n=== USO DE MEMORIA COMPARATIVO ===")
-print("Recursivo simple: O(n) pila, pero O(2^n) cálculos")
-print("Memoización: O(n) memoria para cache + O(n) pila")
-print("Iterativo: O(1) memoria (solo 2 variables)")
-print("Iterativo lista: O(n) memoria para la lista")
+# ===============================
+# CASO PRÁCTICO (CORREGIDO)
+# ===============================
 
-# Caso práctico: calcular Fibonacci de 40
 print("\\n=== CASO PRÁCTICO: FIBONACCI(40) ===")
 n = 40
+repeticiones = 1000
 
-print(f"Calculando Fibonacci({n}) con diferentes métodos:")
+inicio = time.perf_counter()
+for _ in range(repeticiones):
+    fib_memoizacion(n)
+tiempo_memo = time.perf_counter() - inicio
 
-# Solo métodos eficientes para n=40
-inicio = time.time()
-resultado_memo = fib_memoizacion(n)
-tiempo_memo = time.time() - inicio
-print(f"Memoización: {resultado_memo} en {tiempo_memo:.4f} segundos")
+inicio = time.perf_counter()
+for _ in range(repeticiones):
+    fib_iterativo(n)
+tiempo_iter = time.perf_counter() - inicio
 
-inicio = time.time()
-resultado_iter = fib_iterativo(n)
-tiempo_iter = time.time() - inicio
-print(f"Iterativo: {resultado_iter} en {tiempo_iter:.4f} segundos")
+print(f"Memoización ({repeticiones} repeticiones): {tiempo_memo:.6f} segundos")
+print(f"Iterativo   ({repeticiones} repeticiones): {tiempo_iter:.6f} segundos")
 
-print(f"\\nEl iterativo es {tiempo_memo/tiempo_iter:.1f} veces más rápido que la memoización")`
+if tiempo_iter > 0:
+    print(f"El iterativo es ~{tiempo_memo / tiempo_iter:.2f} veces más rápido")
+else:
+    print("El iterativo fue prácticamente instantáneo")
+`
+
 
 // Ejemplo 3: Recorrido de directorios
 const ejemplo3Code = `# Recorrido de directorios: Recursivo vs Iterativo
@@ -542,259 +537,6 @@ print("Para estructuras más profundas, necesitamos:")
 print("1. Usar iteración")
 print("2. Aumentar sys.setrecursionlimit() (no recomendado)")`
 
-// Ejercicio y solución
-const ejercicioCode = `# Búsqueda Binaria: Implementación Recursiva e Iterativa
-
-def busqueda_binaria_recursiva(lista, elemento, inicio=0, fin=None):
-    """
-    Implementa búsqueda binaria de manera recursiva.
-    
-    Args:
-        lista: lista ordenada de elementos
-        elemento: elemento a buscar
-        inicio: índice inicial del segmento (para recursión)
-        fin: índice final del segmento (para recursión)
-    
-    Returns:
-        Índice del elemento si se encuentra, -1 en caso contrario
-    """
-    # TODO: Implementar versión recursiva
-    # Caso base: segmento vacío -> retornar -1
-    # Calcular punto medio
-    # Si elemento == lista[medio]: retornar medio
-    # Si elemento < lista[medio]: buscar en mitad izquierda
-    # Si elemento > lista[medio]: buscar en mitad derecha
-    pass
-
-def busqueda_binaria_iterativa(lista, elemento):
-    """
-    Implementa búsqueda binaria de manera iterativa.
-    
-    Args:
-        lista: lista ordenada de elementos
-        elemento: elemento a buscar
-    
-    Returns:
-        Índice del elemento si se encuentra, -1 en caso contrario
-    """
-    # TODO: Implementar versión iterativa
-    # Usar while inicio <= fin
-    # Calcular punto medio en cada iteración
-    # Ajustar inicio o fin según comparación
-    # Retornar índice si encuentra, -1 si termina el bucle
-    pass
-
-# Pruebas básicas
-print("=== PRUEBAS DE BÚSQUEDA BINARIA ===\\n")
-
-lista_prueba = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
-
-print(f"Lista ordenada: {lista_prueba}")
-
-# Prueba 1: Elemento en la lista
-elemento = 7
-print(f"\\nBuscando {elemento}:")
-print(f"Recursiva: {busqueda_binaria_recursiva(lista_prueba, elemento)}")
-print(f"Iterativa: {busqueda_binaria_iterativa(lista_prueba, elemento)}")
-
-# Prueba 2: Elemento no en la lista
-elemento = 8
-print(f"\\nBuscando {elemento} (no está en la lista):")
-print(f"Recursiva: {busqueda_binaria_recursiva(lista_prueba, elemento)}")
-print(f"Iterativa: {busqueda_binaria_iterativa(lista_prueba, elemento)}")
-
-# Prueba 3: Primer elemento
-elemento = 1
-print(f"\\nBuscando {elemento} (primero):")
-print(f"Recursiva: {busqueda_binaria_recursiva(lista_prueba, elemento)}")
-print(f"Iterativa: {busqueda_binaria_iterativa(lista_prueba, elemento)}")
-
-# Prueba 4: Último elemento
-elemento = 19
-print(f"\\nBuscando {elemento} (último):")
-print(f"Recursiva: {busqueda_binaria_recursiva(lista_prueba, elemento)}")
-print(f"Iterativa: {busqueda_binaria_iterativa(lista_prueba, elemento)}")
-
-# Prueba 5: Lista vacía
-lista_vacia = []
-elemento = 5
-print(f"\\nBuscando {elemento} en lista vacía:")
-print(f"Recursiva: {busqueda_binaria_recursiva(lista_vacia, elemento)}")
-print(f"Iterativa: {busqueda_binaria_iterativa(lista_vacia, elemento)}")`
-
-const solucionCode = `# Solución: Búsqueda Binaria Recursiva e Iterativa
-
-def busqueda_binaria_recursiva(lista, elemento, inicio=0, fin=None):
-    """
-    Implementa búsqueda binaria de manera recursiva.
-    
-    Complejidad: O(log n) tiempo, O(log n) memoria (por pila de recursión)
-    """
-    # Inicializar fin si no se proporciona
-    if fin is None:
-        fin = len(lista) - 1
-    
-    # Caso base: segmento vacío (elemento no encontrado)
-    if inicio > fin:
-        return -1
-    
-    # Calcular punto medio
-    medio = (inicio + fin) // 2
-    
-    # Debug: mostrar segmento actual
-    print(f"  Recursivo: buscando en [{inicio}-{fin}], medio={medio}, valor={lista[medio] if inicio <= fin <= len(lista)-1 else 'N/A'}")
-    
-    # Caso 1: elemento encontrado
-    if lista[medio] == elemento:
-        return medio
-    
-    # Caso 2: buscar en mitad izquierda (elemento es menor)
-    elif elemento < lista[medio]:
-        return busqueda_binaria_recursiva(lista, elemento, inicio, medio - 1)
-    
-    # Caso 3: buscar en mitad derecha (elemento es mayor)
-    else:
-        return busqueda_binaria_recursiva(lista, elemento, medio + 1, fin)
-
-def busqueda_binaria_iterativa(lista, elemento):
-    """
-    Implementa búsqueda binaria de manera iterativa.
-    
-    Complejidad: O(log n) tiempo, O(1) memoria
-    """
-    inicio = 0
-    fin = len(lista) - 1
-    
-    while inicio <= fin:
-        # Calcular punto medio
-        medio = (inicio + fin) // 2
-        
-        # Debug: mostrar segmento actual
-        print(f"  Iterativo: buscando en [{inicio}-{fin}], medio={medio}, valor={lista[medio]}")
-        
-        # Caso 1: elemento encontrado
-        if lista[medio] == elemento:
-            return medio
-        
-        # Caso 2: buscar en mitad izquierda
-        elif elemento < lista[medio]:
-            fin = medio - 1
-        
-        # Caso 3: buscar en mitad derecha
-        else:
-            inicio = medio + 1
-    
-    # Elemento no encontrado
-    return -1
-
-# Versión mejorada con manejo de errores
-def busqueda_binaria_iterativa_mejorada(lista, elemento):
-    """Versión iterativa con mejor manejo de casos bordes."""
-    if not lista:  # Lista vacía
-        return -1
-    
-    inicio = 0
-    fin = len(lista) - 1
-    
-    while inicio <= fin:
-        medio = inicio + (fin - inicio) // 2  # Evita posible overflow en otros lenguajes
-        
-        if lista[medio] == elemento:
-            return medio
-        elif lista[medio] < elemento:
-            inicio = medio + 1
-        else:
-            fin = medio - 1
-    
-    return -1
-
-# Pruebas exhaustivas
-print("=== SOLUCIÓN: BÚSQUEDA BINARIA ===\\n")
-
-lista_prueba = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
-print(f"Lista ordenada: {lista_prueba}")
-print(f"Tamaño: {len(lista_prueba)} elementos\\n")
-
-# Prueba 1: Elemento en medio
-print("Prueba 1: Buscando 7 (en medio)")
-print("Recursiva:")
-indice_rec = busqueda_binaria_recursiva(lista_prueba, 7)
-print(f"Resultado: índice {indice_rec}\\n")
-
-print("Iterativa:")
-indice_iter = busqueda_binaria_iterativa(lista_prueba, 7)
-print(f"Resultado: índice {indice_iter}\\n")
-
-# Prueba 2: Elemento no existente
-print("Prueba 2: Buscando 8 (no existe)")
-print("Recursiva:")
-indice_rec = busqueda_binaria_recursiva(lista_prueba, 8)
-print(f"Resultado: índice {indice_rec}\\n")
-
-print("Iterativa:")
-indice_iter = busqueda_binaria_iterativa(lista_prueba, 8)
-print(f"Resultado: índice {indice_iter}\\n")
-
-# Prueba 3: Primer elemento
-print("Prueba 3: Buscando 1 (primero)")
-print("Recursiva:")
-indice_rec = busqueda_binaria_recursiva(lista_prueba, 1)
-print(f"Resultado: índice {indice_rec}\\n")
-
-print("Iterativa:")
-indice_iter = busqueda_binaria_iterativa(lista_prueba, 1)
-print(f"Resultado: índice {indice_iter}\\n")
-
-# Prueba 4: Último elemento
-print("Prueba 4: Buscando 19 (último)")
-print("Recursiva:")
-indice_rec = busqueda_binaria_recursiva(lista_prueba, 19)
-print(f"Resultado: índice {indice_rec}\\n")
-
-print("Iterativa:")
-indice_iter = busqueda_binaria_iterativa(lista_prueba, 19)
-print(f"Resultado: índice {indice_iter}\\n")
-
-# Prueba 5: Lista más grande
-print("Prueba 5: Lista más grande (100 elementos)")
-lista_grande = list(range(0, 100, 2))  # Números pares de 0 a 98
-elemento = 42
-
-print(f"Buscando {elemento} en lista de {len(lista_grande)} elementos")
-
-indice_rec = busqueda_binaria_recursiva(lista_grande, elemento)
-print(f"Recursiva: índice {indice_rec}")
-
-indice_iter = busqueda_binaria_iterativa(lista_grande, elemento)
-print(f"Iterativa: índice {indice_iter}")
-
-# Análisis de rendimiento
-print("\\n=== ANÁLISIS DE RENDIMIENTO ===")
-print("\\nAmbas versiones tienen complejidad O(log n) en tiempo")
-print("\\nRecursiva:")
-print("- Ventaja: Código más elegante y cercano al algoritmo matemático")
-print("- Desventaja: Usa O(log n) memoria para la pila de llamadas")
-print("- Riesgo: Desbordamiento de pila para listas muy grandes (en teoría)")
-
-print("\\nIterativa:")
-print("- Ventaja: Usa O(1) memoria (solo variables locales)")
-print("- Desventaja: Código ligeramente más complejo")
-print("- Recomendada: Para producción y listas muy grandes")
-
-print("\\nEn Python, la recursión es menos eficiente en memoria,")
-print("pero para búsqueda binaria en listas normales, ambas son aceptables.")
-
-# Demostración de máximo número de llamadas recursivas
-print("\\n=== PROFUNDIDAD DE RECURSIÓN ===")
-print("Para una lista de tamaño n, la profundidad máxima de recursión es log2(n)")
-print(f"Para n=1,000,000: log2(1,000,000) ≈ {int(1000000**0.5)} llamadas")
-print("Muy por debajo del límite de recursión de Python (1000 por defecto)")
-
-# Casos especiales
-print("\\n=== CASOS ESPECIALES ===")
-print("Lista vacía: ambas versiones retornan -1 inmediatamente")
-print("Un solo elemento: máximo 1 comparación")
-print("Elemento ausente: log2(n) comparaciones")`
 
 // Quiz
 const preguntas = [

@@ -78,7 +78,7 @@
     </div>
 
     <!-- Ejercicio práctico -->
-    <div class="mb-8 p-6 bg-blue-50 rounded-lg">
+    <!-- <div class="mb-8 p-6 bg-blue-50 rounded-lg">
       <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio práctico: Gestión de inventario</h3>
       <p class="text-gray-700 mb-4">
         <strong>Situación:</strong> Implementa un sistema de inventario para una tienda usando todas las operaciones de
@@ -87,7 +87,7 @@
 
       <PythonRunner :code="ejercicioCode" title="inventario_tienda.py" :showLineNumbers="true" initialHeight="280px"
         :showReset="true" :showSolution="true" :solutionCode="solucionCode" />
-    </div>
+    </div> -->
 
     <!-- Comparación de métodos -->
     <div class="mb-8 p-6 bg-gray-50 rounded-lg">

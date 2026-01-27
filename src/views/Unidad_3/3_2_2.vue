@@ -89,7 +89,7 @@
     </section>
 
     <!-- Ejercicio práctico -->
-    <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
+    <!-- <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
       <h2 class="text-2xl font-bold text-gray-800 mb-4">Ejercicio Práctico</h2>
       <div class="space-y-4">
         <p class="text-gray-700">
@@ -105,15 +105,15 @@
           <a href="#" class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
             Ver pista
           </a>
-        </div>
+        </div> -->
 
         <!-- Solución oculta -->
-        <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
+        <!-- <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
           <h3 class="font-bold text-green-800 mb-3">Solución:</h3>
           <PythonRunner :code="solucionCode" />
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- Quiz -->
     <QuizQuestions :preguntas="preguntas" titulo="Quiz grafos dirigidos y no dirigidos"></QuizQuestions>
@@ -126,7 +126,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
@@ -260,66 +259,6 @@ for tarea, distancia in distancias.items():
 print("\\n=== BFS DESDE 'A' ===")
 orden, distancias = bfs_dirigido(grafo_tareas, 'A')
 print(f"Orden de visita: {orden}")`
-
-// Ejercicio práctico - Solución
-const solucionCode = `def obtener_influencers(grafo_dirigido, min_seguidores=3):
-    """
-    Identifica los usuarios con al menos min_seguidores en un grafo dirigido.
-    Retorna lista de tuplas (usuario, num_seguidores)
-    """
-    # Calcular grado de entrada (seguidores)
-    seguidores = {}
-    
-    for usuario, seguidos in grafo_dirigido.items():
-        # Inicializar contador si no existe
-        if usuario not in seguidores:
-            seguidores[usuario] = 0
-        
-        # Cada vez que alguien sigue a otro, aumentar su contador
-        for seguido in seguidos:
-            if seguido in seguidores:
-                seguidores[seguido] += 1
-            else:
-                seguidores[seguido] = 1
-    
-    # Filtrar por mínimo de seguidores
-    influencers = []
-    for usuario, num_seguidores in seguidores.items():
-        if num_seguidores >= min_seguidores:
-            influencers.append((usuario, num_seguidores))
-    
-    # Ordenar por número de seguidores (descendente)
-    influencers.sort(key=lambda x: x[1], reverse=True)
-    return influencers
-
-# Grafo de redes sociales (mismo del ejemplo 2)
-red_social = {
-    'Alice': ['Bob', 'Charlie'],
-    'Bob': ['Charlie', 'David'],
-    'Charlie': ['David'],
-    'David': ['Alice'],
-    'Eve': ['Alice', 'Bob', 'Charlie', 'David']
-}
-
-print("Red social (quién sigue a quién):")
-for usuario, seguidos in red_social.items():
-    print(f"  {usuario} sigue a: {seguidos}")
-
-print("\\n=== INFLUENCERS (≥ 3 seguidores) ===")
-influencers = obtener_influencers(red_social, 3)
-if influencers:
-    for usuario, seguidores in influencers:
-        print(f"  {usuario}: {seguidores} seguidores")
-else:
-    print("  No hay usuarios con 3 o más seguidores")
-
-print("\\n=== TODOS LOS USUARIOS ===")
-influencers_todos = obtener_influencers(red_social, 0)
-for usuario, seguidores in sorted(influencers_todos, key=lambda x: x[1], reverse=True):
-    print(f"  {usuario}: {seguidores} seguidores")`
-
-// Estado del ejercicio
-const mostrarSolucion = ref(false)
 
 // Quiz
 const preguntas = [

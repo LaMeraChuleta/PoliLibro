@@ -71,7 +71,7 @@
     </div>
 
     <!-- Ejercicio práctico -->
-    <div class="mb-8 p-6 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg">
+    <!-- <div class="mb-8 p-6 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg">
       <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio práctico: Sistema de Votación</h3>
       <p class="text-gray-700 mb-4">
         <strong>Situación:</strong> Crea un sistema para contar votos en una elección estudiantil.
@@ -79,7 +79,7 @@
 
       <PythonRunner :code="ejercicioCode" title="sistema_votacion.py" :show-line-numbers="true" :initial-height="260"
         :show-reset="true" :show-solution="true" :solution-code="solucionCode" />
-    </div>
+    </div> -->
 
     <!-- Quiz funcional -->
     <QuizQuestions :preguntas="preguntas" titulo="Quiz de Aplicaciones de Diccionarios"></QuizQuestions>
@@ -389,7 +389,6 @@ def agrupar_estudiantes_por_carrera(estudiantes):
     for estudiante in estudiantes:
         carrera = estudiante["carrera"]
         
-        # Si la carrera no existe en el diccionario, crearla
         if carrera not in agrupacion:
             agrupacion[carrera] = {
                 "estudiantes": [],
@@ -398,20 +397,16 @@ def agrupar_estudiantes_por_carrera(estudiantes):
                 "edad_promedio": 0
             }
         
-        # Agregar estudiante a la carrera
         agrupacion[carrera]["estudiantes"].append(estudiante)
         agrupacion[carrera]["total_estudiantes"] += 1
     
-    # Calcular estadisticas para cada carrera
     for carrera, datos in agrupacion.items():
         if datos["total_estudiantes"] > 0:
-            # Calcular promedio general
             total_promedio = sum(e["promedio"] for e in datos["estudiantes"])
-            agrupacion[carrera]["promedio_general"] = total_promedio / datos["total_estudiantes"]
+            datos["promedio_general"] = total_promedio / datos["total_estudiantes"]
             
-            # Calcular edad promedio
             total_edad = sum(e["edad"] for e in datos["estudiantes"])
-            agrupacion[carrera]["edad_promedio"] = total_edad / datos["total_estudiantes"]
+            datos["edad_promedio"] = total_edad / datos["total_estudiantes"]
     
     return agrupacion
 
@@ -423,14 +418,11 @@ def encontrar_mejor_estudiante_por_carrera(agrupacion):
     
     for carrera, datos in agrupacion.items():
         if datos["estudiantes"]:
-            mejor_estudiante = max(
-                datos["estudiantes"],
-                key=lambda e: e["promedio"]
-            )
+            mejor = max(datos["estudiantes"], key=lambda e: e["promedio"])
             mejores[carrera] = {
-                "nombre": mejor_estudiante["nombre"],
-                "promedio": mejor_estudiante["promedio"],
-                "matricula": mejor_estudiante["matricula"]
+                "nombre": mejor["nombre"],
+                "promedio": mejor["promedio"],
+                "matricula": mejor["matricula"]
             }
     
     return mejores
@@ -447,18 +439,16 @@ def generar_reporte_estadistico(agrupacion):
     print(f"Total de carreras: {len(agrupacion)}")
     print()
     
-    # Mostrar datos por carrera
-    for carrera, datos in sorted(agrupacion.items()):
+    for carrera, datos in sorted(agrupacion.items(), key=lambda x: x[0]):
         print(f"CARRERA: {carrera.upper()}")
         print("-" * 40)
-        print(f"  Estudiantes: {datos['total_estudiantes']}")
+        print(f"  Total de estudiantes: {datos['total_estudiantes']}")
         print(f"  Promedio general: {datos['promedio_general']:.2f}")
         print(f"  Edad promedio: {datos['edad_promedio']:.1f} años")
         
-        # Mostrar estudiantes de esta carrera
-        print(f"  Estudiantes:")
-        for estudiante in datos["estudiantes"]:
-            print(f"    - {estudiante['nombre']} (Matricula: {estudiante['matricula']})")
+        print("  Lista de estudiantes:")
+        for e in datos["estudiantes"]:
+            print(f"    - {e['nombre']} (Matricula: {e['matricula']})")
         print()
 
 # Datos de estudiantes
@@ -478,273 +468,52 @@ estudiantes = [
 print("APLICACION: AGRUPACION DE ESTUDIANTES")
 print("=" * 50)
 
-# Agrupar estudiantes
 agrupacion = agrupar_estudiantes_por_carrera(estudiantes)
-
-# Generar reporte
 generar_reporte_estadistico(agrupacion)
 
-# Encontrar mejores estudiantes
 print("MEJORES ESTUDIANTES POR CARRERA")
 print("=" * 40)
 mejores = encontrar_mejor_estudiante_por_carrera(agrupacion)
 
-for carrera, datos_mejor in mejores.items():
+for carrera, datos in mejores.items():
     print(f"{carrera}:")
-    print(f"  Nombre: {datos_mejor['nombre']}")
-    print(f"  Promedio: {datos_mejor['promedio']:.2f}")
-    print(f"  Matricula: {datos_mejor['matricula']}")
+    print(f"  Nombre: {datos['nombre']}")
+    print(f"  Promedio: {datos['promedio']:.2f}")
+    print(f"  Matricula: {datos['matricula']}")
     print()
 
-# Estadisticas adicionales
 print("ESTADISTICAS ADICIONALES")
 print("-" * 30)
 
-# Carrera con mas estudiantes
-carrera_mas_estudiantes = max(
-    agrupacion.items(),
-    key=lambda item: item[1]["total_estudiantes"]
-)
-print(f"Carrera con mas estudiantes: {carrera_mas_estudiantes[0]} ({carrera_mas_estudiantes[1]['total_estudiantes']})")
+if agrupacion:
+    carrera_mas = max(agrupacion.items(), key=lambda i: i[1]["total_estudiantes"])
+    print(f"Carrera con mas estudiantes: {carrera_mas[0]} ({carrera_mas[1]['total_estudiantes']})")
 
-# Carrera con mejor promedio
-carrera_mejor_promedio = max(
-    agrupacion.items(),
-    key=lambda item: item[1]["promedio_general"]
-)
-print(f"Carrera con mejor promedio: {carrera_mejor_promedio[0]} ({carrera_mejor_promedio[1]['promedio_general']:.2f})")
+    carrera_mejor = max(agrupacion.items(), key=lambda i: i[1]["promedio_general"])
+    print(f"Carrera con mejor promedio: {carrera_mejor[0]} ({carrera_mejor[1]['promedio_general']:.2f})")
 
-# Estudiantes por rango de edad
 print("\\nESTUDIANTES POR EDAD:")
 edades = {}
-for estudiante in estudiantes:
-    edad = estudiante["edad"]
-    if edad not in edades:
-        edades[edad] = 0
-    edades[edad] += 1
+for e in estudiantes:
+    edades[e["edad"]] = edades.get(e["edad"], 0) + 1
 
 for edad, cantidad in sorted(edades.items()):
     print(f"  {edad} años: {cantidad} estudiantes")
 
-# Buscar estudiantes por criterios
 print("\\nBUSQUEDA POR CRITERIOS:")
 print("-" * 30)
 
-# Estudiantes con promedio > 9.0
-estudiantes_excelentes = [
-    e for e in estudiantes if e["promedio"] > 9.0
-]
-print(f"Estudiantes con promedio > 9.0: {len(estudiantes_excelentes)}")
+excelentes = [e for e in estudiantes if e["promedio"] > 9.0]
+print(f"Estudiantes con promedio > 9.0: {len(excelentes)}")
 
-# Estudiantes de Ingenieria mayores de 21
-estudiantes_ingenieria = [
-    e for e in estudiantes 
+ing_mayores = [
+    e for e in estudiantes
     if e["carrera"] == "Ingenieria" and e["edad"] > 21
 ]
-print(f"Estudiantes de Ingenieria mayores de 21: {len(estudiantes_ingenieria)}")`
+print(f"Estudiantes de Ingenieria mayores de 21: {len(ing_mayores)}")
+`
 
-// Ejercicio práctico
-const ejercicioCode = `# EJERCICIO: Sistema de Votacion
-# Implementa un sistema para contar votos en una eleccion
 
-print("SISTEMA DE VOTACION ESTUDIANTIL")
-print("=" * 50)
-
-# Base de datos de candidatos
-candidatos = {
-    "A001": {
-        "nombre": "Ana Garcia",
-        "partido": "Tecnologia",
-        "votos": 0
-    },
-    "B002": {
-        "nombre": "Carlos Ruiz",
-        "partido": "Deportes",
-        "votos": 0
-    },
-    "C003": {
-        "nombre": "Maria Lopez",
-        "partido": "Cultura",
-        "votos": 0
-    }
-}
-
-# Votos registrados (estudiante: candidato_votado)
-votos_registrados = {}
-
-# INSTRUCCIONES:
-# 1. Implementa la funcion registrar_voto(estudiante_id, candidato_id)
-#    que registre un voto para un candidato
-
-# 2. Implementa la funcion mostrar_resultados()
-#    que muestre los resultados ordenados por votos
-
-# 3. Implementa la funcion buscar_ganador()
-#    que retorne el candidato con mas votos
-
-# 4. Implementa la funcion estadisticas_por_partido()
-#    que agrupe votos por partido politico
-
-# 5. Simula una eleccion con al menos 10 votos
-
-print("\\nEstado inicial de candidatos:")
-for id_candidato, datos in candidatos.items():
-    print(f"  {id_candidato}: {datos['nombre']} ({datos['partido']}) - Votos: {datos['votos']}")
-
-# Tu codigo aqui...
-
-# Mostrar resultados finales`
-
-const solucionCode = `# SOLUCION: Sistema de Votacion
-
-print("SISTEMA DE VOTACION ESTUDIANTIL")
-print("=" * 50)
-
-# Base de datos de candidatos
-candidatos = {
-    "A001": {
-        "nombre": "Ana Garcia",
-        "partido": "Tecnologia",
-        "votos": 0
-    },
-    "B002": {
-        "nombre": "Carlos Ruiz",
-        "partido": "Deportes",
-        "votos": 0
-    },
-    "C003": {
-        "nombre": "Maria Lopez",
-        "partido": "Cultura",
-        "votos": 0
-    }
-}
-
-# Votos registrados (estudiante: candidato_votado)
-votos_registrados = {}
-
-def registrar_voto(estudiante_id, candidato_id):
-    """
-    Registra un voto para un candidato
-    """
-    # Verificar que el candidato existe
-    if candidato_id not in candidatos:
-        print(f"Error: Candidato {candidato_id} no existe")
-        return False
-    
-    # Verificar que el estudiante no haya votado
-    if estudiante_id in votos_registrados:
-        print(f"Error: Estudiante {estudiante_id} ya voto")
-        return False
-    
-    # Registrar voto
-    votos_registrados[estudiante_id] = candidato_id
-    candidatos[candidato_id]["votos"] += 1
-    
-    print(f"Voto registrado: Estudiante {estudiante_id} voto por {candidatos[candidato_id]['nombre']}")
-    return True
-
-def mostrar_resultados():
-    """
-    Muestra los resultados ordenados por votos
-    """
-    print("\\nRESULTADOS DE LA ELECCION")
-    print("-" * 40)
-    
-    # Ordenar candidatos por votos (descendente)
-    candidatos_ordenados = sorted(
-        candidatos.items(),
-        key=lambda item: item[1]["votos"],
-        reverse=True
-    )
-    
-    for i, (id_candidato, datos) in enumerate(candidatos_ordenados, 1):
-        porcentaje = (datos["votos"] / len(votos_registrados) * 100) if votos_registrados else 0
-        print(f"{i}. {datos['nombre']} ({datos['partido']}): {datos['votos']} votos ({porcentaje:.1f}%)")
-    
-    print(f"\\nTotal de votos: {len(votos_registrados)}")
-
-def buscar_ganador():
-    """
-    Retorna el candidato con mas votos
-    """
-    if not votos_registrados:
-        return None
-    
-    ganador = max(candidatos.items(), key=lambda item: item[1]["votos"])
-    return ganador
-
-def estadisticas_por_partido():
-    """
-    Agrupa votos por partido politico
-    """
-    votos_partido = {}
-    
-    for datos in candidatos.values():
-        partido = datos["partido"]
-        if partido not in votos_partido:
-            votos_partido[partido] = 0
-        votos_partido[partido] += datos["votos"]
-    
-    return votos_partido
-
-print("\\nEstado inicial de candidatos:")
-for id_candidato, datos in candidatos.items():
-    print(f"  {id_candidato}: {datos['nombre']} ({datos['partido']}) - Votos: {datos['votos']}")
-
-# Simulacion de eleccion
-print("\\nINICIANDO VOTACION...")
-print("-" * 30)
-
-# Registro de votos
-votos_simulados = [
-    ("E001", "A001"), ("E002", "B002"), ("E003", "C003"),
-    ("E004", "A001"), ("E005", "A001"), ("E006", "B002"),
-    ("E007", "C003"), ("E008", "A001"), ("E009", "B002"),
-    ("E010", "A001"), ("E011", "C003"), ("E012", "B002"),
-    ("E013", "A001"), ("E014", "A001"), ("E015", "C003")
-]
-
-for estudiante, candidato in votos_simulados:
-    registrar_voto(estudiante, candidato)
-
-# Mostrar resultados
-mostrar_resultados()
-
-# Buscar ganador
-print("\\nBUSCANDO GANADOR...")
-ganador = buscar_ganador()
-if ganador:
-    id_ganador, datos_ganador = ganador
-    print(f"GANADOR: {datos_ganador['nombre']} ({datos_ganador['partido']})")
-    print(f"Votos obtenidos: {datos_ganador['votos']}")
-
-# Estadisticas por partido
-print("\\nESTADISTICAS POR PARTIDO:")
-print("-" * 30)
-votos_por_partido = estadisticas_por_partido()
-
-for partido, votos in votos_por_partido.items():
-    porcentaje = (votos / len(votos_registrados) * 100)
-    print(f"{partido}: {votos} votos ({porcentaje:.1f}%)")
-
-# Informacion adicional
-print("\\nINFORMACION ADICIONAL:")
-print("-" * 30)
-print(f"Total de votantes unicos: {len(votos_registrados)}")
-print(f"Participacion: {(len(votos_registrados) / 15 * 100):.1f}% (de 15 estudiantes)")
-
-# Votos por candidato en detalle
-print("\\nDETALLE DE VOTOS POR CANDIDATO:")
-for id_candidato, datos in candidatos.items():
-    estudiantes_votaron = [
-        estudiante for estudiante, candidato in votos_registrados.items()
-        if candidato == id_candidato
-    ]
-    print(f"\\n{datos['nombre']}:")
-    print(f"  Votos: {len(estudiantes_votaron)}")
-    if estudiantes_votaron:
-        print(f"  Votantes: {', '.join(estudiantes_votaron[:3])}" + 
-              ("..." if len(estudiantes_votaron) > 3 else ""))`
 
 // QUIZ FUNCIONAL
 const preguntas = [

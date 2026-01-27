@@ -94,7 +94,7 @@
         </section>
 
         <!-- Ejercicio práctico -->
-        <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
+        <!-- <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
             <h2 class="text-2xl font-bold text-gray-800 mb-4">Ejercicio Práctico</h2>
             <div class="space-y-4">
                 <p class="text-gray-700">
@@ -113,15 +113,15 @@
                         class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
                         Ver pista
                     </a>
-                </div>
+                </div> -->
 
                 <!-- Solución oculta -->
-                <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
+                <!-- <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
                     <h3 class="font-bold text-green-800 mb-3">Solución:</h3>
                     <PythonRunner :code="solucionCode" />
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- Quiz -->
         <QuizQuestions :preguntas="preguntas" titulo="Quiz descripcion de arboles binario"></QuizQuestions>
@@ -134,7 +134,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
@@ -303,76 +302,99 @@ print(f"  - ABB: ≈ {int(altura_arbol)} comparaciones (peor caso)")
 print(f"  - Lista: hasta {len(calificaciones)} comparaciones")`
 
 // Ejemplo 3: Recorridos en ABB
-const ejemplo3Code = `class NodoABB:
+const ejemplo3Code = `
+from collections import deque
+
+class NodoABB:
     def __init__(self, valor):
         self.valor = valor
         self.izquierdo = None
         self.derecho = None
 
+
 def insertar(raiz, valor):
     if raiz is None:
         return NodoABB(valor)
-    
+
     if valor < raiz.valor:
         raiz.izquierdo = insertar(raiz.izquierdo, valor)
     elif valor > raiz.valor:
         raiz.derecho = insertar(raiz.derecho, valor)
-    
+
     return raiz
 
+
 def recorrido_inorden(raiz):
-    """
-    Recorrido Inorden: izquierdo, raíz, derecho.
-    Produce los valores en orden ascendente en un ABB.
-    """
     if raiz is not None:
         yield from recorrido_inorden(raiz.izquierdo)
         yield raiz.valor
         yield from recorrido_inorden(raiz.derecho)
 
+
 def recorrido_preorden(raiz):
-    """
-    Recorrido Preorden: raíz, izquierdo, derecho.
-    Útil para crear una copia del árbol.
-    """
     if raiz is not None:
         yield raiz.valor
         yield from recorrido_preorden(raiz.izquierdo)
         yield from recorrido_preorden(raiz.derecho)
 
+
 def recorrido_postorden(raiz):
-    """
-    Recorrido Postorden: izquierdo, derecho, raíz.
-    Útil para eliminar el árbol o evaluar expresiones.
-    """
     if raiz is not None:
         yield from recorrido_postorden(raiz.izquierdo)
         yield from recorrido_postorden(raiz.derecho)
         yield raiz.valor
 
+
 def recorrido_por_niveles(raiz):
-    """
-    Recorrido por niveles (BFS).
-    Visita los nodos nivel por nivel.
-    """
-    from collections import deque
-    
     if raiz is None:
-        return
-    
+        return []
+
+    resultado = []
     cola = deque([raiz])
-    
+
     while cola:
         nodo = cola.popleft()
-        yield nodo.valor
-        
-        if nodo.izquierdo is not None:
+        resultado.append(nodo.valor)
+
+        if nodo.izquierdo:
             cola.append(nodo.izquierdo)
-        if nodo.derecho is not None:
+        if nodo.derecho:
             cola.append(nodo.derecho)
 
-# Crear un ABB de ejemplo
+    return resultado
+
+
+def imprimir_por_niveles(raiz):
+    if raiz is None:
+        return
+
+    cola = deque([(raiz, 0)])
+    nivel_actual = 0
+    print("Nivel 0:", end=" ")
+
+    while cola:
+        nodo, nivel = cola.popleft()
+
+        if nivel != nivel_actual:
+            nivel_actual = nivel
+            print(f"\\nNivel {nivel}:", end=" ")
+
+        print(nodo.valor, end=" ")
+
+        if nodo.izquierdo:
+            cola.append((nodo.izquierdo, nivel + 1))
+        if nodo.derecho:
+            cola.append((nodo.derecho, nivel + 1))
+
+    print()
+
+
+# ===============================
+# EJEMPLO
+# ===============================
+
 print("=== ABB DE EJEMPLO (ordenamiento de palabras) ===")
+
 palabras = ["manzana", "banana", "cereza", "dátil", "frambuesa", "guinda", "higo"]
 
 raiz = None
@@ -387,46 +409,24 @@ print("Resultado:", inorden)
 print("Verificación:", inorden == sorted(palabras))
 
 print("\\n=== RECORRIDO PREORDEN ===")
-preorden = list(recorrido_preorden(raiz))
-print("Resultado:", preorden)
+print(list(recorrido_preorden(raiz)))
 
 print("\\n=== RECORRIDO POSTORDEN ===")
-postorden = list(recorrido_postorden(raiz))
-print("Resultado:", postorden)
+print(list(recorrido_postorden(raiz)))
 
 print("\\n=== RECORRIDO POR NIVELES ===")
-por_niveles = list(recorrido_por_niveles(raiz))
-print("Resultado:", por_niveles)
+print(recorrido_por_niveles(raiz))
 
-# Visualización del árbol
-print("\\n=== ESTRUCTURA DEL ÁRBOL (aproximada) ===")
-print("       manzana")
-print("      /       \\")
-print("  banana     frambuesa")
-print("  /   \\         /    \\")
-print("cereza dátil  guinda higo")
+print("\\n=== ESTRUCTURA REAL DEL ÁRBOL POR NIVELES ===")
+imprimir_por_niveles(raiz)
 
-# Aplicaciones prácticas
 print("\\n=== APLICACIONES DE LOS RECORRIDOS ===")
-print("1. Inorden:")
-print("   - Obtener elementos ordenados")
-print("   - Validar si un árbol es ABB")
+print("Inorden  → obtener elementos ordenados")
+print("Preorden → serializar o copiar el árbol")
+print("Postorden→ eliminar el árbol o evaluar expresiones")
+print("Por niveles → análisis de altura y balance")
 
-print("\\n2. Preorden:")
-print("   - Serializar el árbol")
-print("   - Crear una copia")
-
-print("\\n3. Postorden:")
-print("   - Eliminar el árbol")
-print("   - Evaluar expresiones aritméticas")
-
-print("\\n4. Por niveles:")
-print("   - Encontrar el camino más corto a un nodo")
-print("   - Imprimir el árbol por niveles")
-
-# Ejemplo de uso: obtener palabras en orden inverso
-print("\\n=== PALABRAS EN ORDEN INVERSO ===")
-print("Método: recorrido inorden inverso (derecho, raíz, izquierdo)")
+print("\\n=== INORDEN INVERSO (orden descendente) ===")
 
 def recorrido_inorden_inverso(raiz):
     if raiz is not None:
@@ -434,164 +434,7 @@ def recorrido_inorden_inverso(raiz):
         yield raiz.valor
         yield from recorrido_inorden_inverso(raiz.izquierdo)
 
-inorden_inverso = list(recorrido_inorden_inverso(raiz))
-print("Resultado:", inorden_inverso)`
-
-// Ejercicio práctico - Solución
-const solucionCode = `class NodoABB:
-    def __init__(self, valor):
-        self.valor = valor
-        self.izquierdo = None
-        self.derecho = None
-
-def insertar(raiz, valor):
-    if raiz is None:
-        return NodoABB(valor)
-    
-    if valor < raiz.valor:
-        raiz.izquierdo = insertar(raiz.izquierdo, valor)
-    elif valor > raiz.valor:
-        raiz.derecho = insertar(raiz.derecho, valor)
-    
-    return raiz
-
-def es_abb_valido(raiz):
-    """
-    Verifica si un árbol binario es un ABB válido.
-    Retorna True si cumple la propiedad de ABB, False en caso contrario.
-    """
-    
-    def es_valido_interno(nodo, min_valor, max_valor):
-        """
-        Función interna recursiva que verifica la propiedad de ABB.
-        min_valor y max_valor definen el rango permitido para el nodo actual.
-        """
-        if nodo is None:
-            return True
-        
-        # El valor del nodo debe estar entre min_valor y max_valor
-        if min_valor is not None and nodo.valor <= min_valor:
-            return False
-        if max_valor is not None and nodo.valor >= max_valor:
-            return False
-        
-        # Verificar recursivamente los subárboles
-        # Izquierdo: máximo valor es el valor actual
-        # Derecho: mínimo valor es el valor actual
-        return (es_valido_interno(nodo.izquierdo, min_valor, nodo.valor) and
-                es_valido_interno(nodo.derecho, nodo.valor, max_valor))
-    
-    return es_valido_interno(raiz, None, None)
-
-def es_abb_valido_alternativo(raiz):
-    """
-    Versión alternativa usando recorrido inorden.
-    Un ABB válido debe producir valores en orden ascendente.
-    """
-    valores = []
-    
-    def inorden(nodo):
-        if nodo is not None:
-            inorden(nodo.izquierdo)
-            valores.append(nodo.valor)
-            inorden(nodo.derecho)
-    
-    inorden(raiz)
-    
-    # Verificar si la lista está ordenada ascendentemente
-    for i in range(1, len(valores)):
-        if valores[i] <= valores[i-1]:
-            return False
-    
-    return True
-
-# Prueba 1: ABB válido
-print("=== PRUEBA 1: ABB VÁLIDO ===")
-raiz_valido = None
-valores_validos = [50, 30, 70, 20, 40, 60, 80]
-
-for valor in valores_validos:
-    raiz_valido = insertar(raiz_valido, valor)
-
-print("Árbol con valores:", valores_validos)
-print("Método 1 (rangos):", es_abb_valido(raiz_valido))
-print("Método 2 (inorden):", es_abb_valido_alternativo(raiz_valido))
-
-# Prueba 2: Árbol que NO es ABB
-print("\\n=== PRUEBA 2: ÁRBOL NO VÁLIDO (no es ABB) ===")
-# Crear un árbol manualmente que viole la propiedad
-raiz_invalido = NodoABB(50)
-raiz_invalido.izquierdo = NodoABB(30)
-raiz_invalido.derecho = NodoABB(70)
-raiz_invalido.izquierdo.izquierdo = NodoABB(20)
-raiz_invalido.izquierdo.derecho = NodoABB(60)  # ¡60 > 50 pero está en subárbol izquierdo!
-
-print("Estructura problemática:")
-print("      50")
-print("     /  \\")
-print("   30    70")
-print("  /  \\")
-print("20    60   <-- ¡Problema! 60 > 50 pero está a la izquierda")
-
-print("\\nMétodo 1 (rangos):", es_abb_valido(raiz_invalido))
-print("Método 2 (inorden):", es_abb_valido_alternativo(raiz_invalido))
-
-# Prueba 3: Árbol con valores duplicados
-print("\\n=== PRUEBA 3: ÁRBOL CON VALORES DUPLICADOS ===")
-raiz_duplicados = NodoABB(50)
-raiz_duplicados.izquierdo = NodoABB(30)
-raiz_duplicados.derecho = NodoABB(50)  # Duplicado
-
-print("Estructura con duplicado (50 aparece dos veces):")
-print("      50")
-print("     /  \\")
-print("   30    50")
-
-print("\\nMétodo 1 (rangos):", es_abb_valido(raiz_duplicados))
-print("Método 2 (inorden):", es_abb_valido_alternativo(raiz_duplicados))
-print("Nota: Dependiendo de la definición, los duplicados pueden o no ser permitidos.")
-
-# Prueba 4: Árbol vacío
-print("\\n=== PRUEBA 4: ÁRBOL VACÍO ===")
-raiz_vacia = None
-print("Árbol vacío siempre es ABB válido:", es_abb_valido(raiz_vacia))
-
-# Prueba 5: Árbol del ejemplo 2 (calificaciones)
-print("\\n=== PRUEBA 5: ÁRBOL DEL EJEMPLO 2 (calificaciones) ===")
-calificaciones = [85, 70, 95, 60, 75, 90, 100, 65, 80, 55]
-
-raiz_calif = None
-for calif in calificaciones:
-    raiz_calif = insertar(raiz_calif, calif)
-
-print("Valores insertados:", sorted(calificaciones))
-print("¿Es ABB válido?", es_abb_valido(raiz_calif))
-
-# Función para mostrar el árbol en orden (verificación manual)
-print("\\n=== VERIFICACIÓN MANUAL ===")
-print("Recorrido inorden del árbol:")
-def inorden_lista(raiz):
-    if raiz is not None:
-        inorden_lista(raiz.izquierdo)
-        print(f"  {raiz.valor}")
-        inorden_lista(raiz.derecho)
-
-inorden_lista(raiz_calif)
-
-# Comparación de eficiencia
-print("\\n=== COMPARACIÓN DE MÉTODOS ===")
-print("Método 1 (rangos):")
-print("  - Complejidad: O(n)")
-print("  - Ventaja: Detecta violaciones temprano")
-print("  - Desventaja: Requiere manejar valores mínimo/máximo")
-
-print("\\nMétodo 2 (inorden):")
-print("  - Complejidad: O(n)")
-print("  - Ventaja: Simple de implementar")
-print("  - Desventaja: Requiere almacenar todos los valores")`
-
-// Estado del ejercicio
-const mostrarSolucion = ref(false)
+print(list(recorrido_inorden_inverso(raiz)))`
 
 // Quiz
 const preguntas = [

@@ -130,7 +130,7 @@
     </div>
 
     <!-- Ejercicio práctico -->
-    <div class="mb-8 p-6 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg">
+    <!-- <div class="mb-8 p-6 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg">
       <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio práctico: Análisis de habilidades</h3>
       <p class="text-gray-700 mb-4">
         <strong>Situación:</strong> Analiza las habilidades de dos equipos de desarrollo para planificar capacitaciones.
@@ -138,7 +138,7 @@
 
       <PythonRunner :code="ejercicioCode" title="analisis_habilidades.py" :showLineNumbers="true" initialHeight="280px"
         :showReset="true" :showSolution="true" :solutionCode="solucionCode" />
-    </div>
+    </div> -->
 
     <!-- Tabla de métodos -->
     <div class="mb-8 p-6 bg-gray-50 rounded-xl">

@@ -86,7 +86,7 @@
     </section>
 
     <!-- Ejercicio práctico -->
-    <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
+    <!-- <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
       <h2 class="text-2xl font-bold text-gray-800 mb-4">Ejercicio Práctico</h2>
       <div class="space-y-4">
         <p class="text-gray-700">
@@ -103,15 +103,15 @@
           <a href="#" class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
             Ver pista
           </a>
-        </div>
+        </div> -->
 
         <!-- Solución oculta -->
-        <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
+        <!-- <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
           <h3 class="font-bold text-green-800 mb-3">Solución:</h3>
           <PythonRunner :code="solucionCode" />
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- Quiz -->
     <QuizQuestions :preguntas="preguntas" titulo="Quiz matriz de adyacencia"></QuizQuestions>
@@ -282,99 +282,6 @@ for i, vecinos in enumerate(lista_reconstruida):
 # Verificación
 print("\\n¿Las listas son iguales?", lista_original == lista_reconstruida)`
 
-// Ejercicio práctico - Solución
-const solucionCode = `# Solución del ejercicio: conversión y cálculo de grados
-
-def matriz_a_lista_adyacencia(matriz):
-    """
-    Convierte matriz de adyacencia a lista de adyacencia.
-    Versión mejorada que funciona con grafos no dirigidos.
-    """
-    n = len(matriz)
-    lista = [[] for _ in range(n)]
-    
-    for i in range(n):
-        for j in range(n):
-            # Solo considerar conexiones existentes
-            if matriz[i][j] != 0:
-                lista[i].append(j)
-    
-    return lista
-
-def calcular_grados_desde_matriz(matriz):
-    """
-    Calcula el grado de cada vértice a partir de una matriz de adyacencia.
-    Para grafos no dirigidos.
-    """
-    n = len(matriz)
-    grados = [0] * n
-    
-    for i in range(n):
-        for j in range(n):
-            if matriz[i][j] == 1:
-                grados[i] += 1
-    
-    return grados
-
-def calcular_grados_entrada_salida(matriz):
-    """
-    Calcula grado de entrada y salida para grafos dirigidos.
-    """
-    n = len(matriz)
-    entrada = [0] * n
-    salida = [0] * n
-    
-    for i in range(n):
-        for j in range(n):
-            if matriz[i][j] == 1:
-                salida[i] += 1
-                entrada[j] += 1
-    
-    return entrada, salida
-
-# Grafo no dirigido del ejemplo 1
-matriz_ejemplo = [
-    [0, 1, 1, 0],
-    [1, 0, 1, 0],
-    [1, 1, 0, 1],
-    [0, 0, 1, 0]
-]
-
-print("=== MATRIZ DE ADYACENCIA ORIGINAL ===")
-for fila in matriz_ejemplo:
-    print(fila)
-
-print("\\n=== CONVERSIÓN A LISTA DE ADYACENCIA ===")
-lista_resultante = matriz_a_lista_adyacencia(matriz_ejemplo)
-for i, vecinos in enumerate(lista_resultante):
-    print(f"Vértice {i}: {vecinos}")
-
-print("\\n=== CÁLCULO DE GRADOS (grafo no dirigido) ===")
-grados = calcular_grados_desde_matriz(matriz_ejemplo)
-for i, grado in enumerate(grados):
-    print(f"Vértice {i}: grado = {grado}")
-
-print("\\n=== VERIFICACIÓN CON MATRIZ SIMULADA DIRIGIDA ===")
-# Matriz dirigida para comparación
-matriz_dirigida = [
-    [0, 1, 1, 0],
-    [0, 0, 1, 0],
-    [0, 0, 0, 1],
-    [0, 0, 0, 0]
-]
-
-print("Matriz dirigida:")
-for fila in matriz_dirigida:
-    print(fila)
-
-entrada, salida = calcular_grados_entrada_salida(matriz_dirigida)
-print("\\nGrados de entrada y salida:")
-for i in range(len(entrada)):
-    print(f"Vértice {i}: entrada={entrada[i]}, salida={salida[i]}")`
-
-// Estado del ejercicio
-const mostrarSolucion = ref(false)
-
 // Quiz
 const preguntas = [
   {
@@ -405,6 +312,5 @@ const preguntas = [
     ]
   }
 ]
-
 
 </script>

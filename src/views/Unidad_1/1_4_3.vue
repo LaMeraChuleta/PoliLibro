@@ -74,7 +74,7 @@
         </div>
 
         <!-- Ejercicio práctico -->
-        <div class="mb-8 p-6 bg-gradient-to-r from-blue-50 to-green-50 rounded-lg">
+        <!-- <div class="mb-8 p-6 bg-gradient-to-r from-blue-50 to-green-50 rounded-lg">
             <h3 class="text-xl font-semibold mb-4 text-gray-800">Ejercicio práctico: Gestión de Estudiantes</h3>
             <p class="text-gray-700 mb-4">
                 <strong>Situación:</strong> Crea un sistema para gestionar las calificaciones de estudiantes en
@@ -84,7 +84,7 @@
 
             <PythonRunner :code="ejercicioCode" title="gestion_estudiantes.py" :show-line-numbers="true"
                 :initial-height="260" :show-reset="true" :show-solution="true" :solution-code="solucionCode" />
-        </div>
+        </div> -->
 
         <QuizQuestions :preguntas="preguntas" titulo="Quiz de Operaciones con Diccionarios"></QuizQuestions>
 
@@ -276,222 +276,84 @@ const ejemplo3Code = `# Metodos Utiles de Diccionarios
 print("METODOS DE DICCIONARIOS")
 print("=" * 50)
 
-# Diccionario de ejemplo
 productos = {
     "P001": {"nombre": "Laptop", "precio": 899.99, "stock": 15},
     "P002": {"nombre": "Mouse", "precio": 24.99, "stock": 50},
     "P003": {"nombre": "Teclado", "precio": 49.99, "stock": 30}
 }
 
-# 1. keys() - Obtener todas las claves
-print("METODO keys():")
-claves = productos.keys()
-print(f"Claves: {list(claves)}")
+# 1. keys()
+print("\\nMETODO keys():")
+print(f"Claves: {list(productos.keys())}")
 
-# 2. values() - Obtener todos los valores
-print("METODO values():")
-valores = productos.values()
-print(f"Cantidad de valores: {len(list(valores))}")
+# 2. values()
+print("\\nMETODO values():")
+valores = list(productos.values())
+print(f"Cantidad de valores: {len(valores)}")
 for valor in valores:
     print(f"  Producto: {valor['nombre']}")
 
-# 3. items() - Obtener pares clave-valor
-print("METODO items():")
+# 3. items()
+print("\\nMETODO items():")
 for codigo, producto in productos.items():
     print(f"{codigo}: {producto['nombre']} - $ {producto['precio']}")
 
-# 4. get() - Acceso seguro
-print("METODO get():")
+# 4. get()
+print("\\nMETODO get():")
 print(f"P001: {productos.get('P001', 'No encontrado')}")
 print(f"P999: {productos.get('P999', 'No encontrado')}")
 print(f"P001 stock: {productos.get('P001', {}).get('stock', 'N/A')}")
 
-# 5. setdefault() - Agregar con valor por defecto
-print("METODO setdefault():")
-# Si la clave existe, devuelve su valor
+# 5. setdefault()
+print("\\nMETODO setdefault():")
 valor_existente = productos.setdefault("P002", {"nombre": "Nuevo", "precio": 0})
 print(f"P002 (existente): {valor_existente['nombre']}")
 
-# Si la clave no existe, la crea con valor por defecto
-valor_nuevo = productos.setdefault("P004", {"nombre": "Monitor", "precio": 199.99, "stock": 10})
+valor_nuevo = productos.setdefault(
+    "P004", {"nombre": "Monitor", "precio": 199.99, "stock": 10}
+)
 print(f"P004 (nuevo): {valor_nuevo['nombre']}")
 
-# 6. update() - Actualizar multiples elementos
-print("METODO update():")
-actualizaciones = {
-    "P001": {"stock": 10},  # Actualizar stock
-    "P005": {"nombre": "Tablet", "precio": 299.99, "stock": 20}  # Agregar nuevo
-}
-
-productos.update(actualizaciones)
-print("Diccionario actualizado")
+# 6. update() (forma correcta)
+print("\\nMETODO update():")
+productos["P001"].update({"stock": 10})
+productos["P005"] = {"nombre": "Tablet", "precio": 299.99, "stock": 20}
 print(f"Nuevas claves: {list(productos.keys())}")
 
-# 7. pop() - Eliminar y obtener valor
-print("METODO pop():")
-producto_eliminado = productos.pop("P002", "No encontrado")
-print(f"Producto eliminado: {producto_eliminado['nombre']}")
+# 7. pop()
+print("\\nMETODO pop():")
+producto_eliminado = productos.pop("P002", None)
+if producto_eliminado:
+    print(f"Producto eliminado: {producto_eliminado['nombre']}")
+else:
+    print("Producto no encontrado")
+
 print(f"Claves restantes: {list(productos.keys())}")
 
-# 8. popitem() - Eliminar ultimo elemento
-print("METODO popitem():")
-ultimo_clave, ultimo_valor = productos.popitem()
-print(f"Ultimo eliminado: {ultimo_clave} = {ultimo_valor['nombre']}")
+# 8. popitem()
+print("\\nMETODO popitem():")
+clave, valor = productos.popitem()
+print(f"Ultimo eliminado: {clave} = {valor.get('nombre', 'Sin nombre')}")
 
-# 9. clear() - Limpiar todo el diccionario
-print("METODO clear():")
-copia_productos = productos.copy()  # Copia para no perder los datos
+# 9. clear()
+print("\\nMETODO clear():")
+copia_productos = productos.copy()
 copia_productos.clear()
 print(f"Diccionario copiado despues de clear(): {copia_productos}")
 print(f"Diccionario original intacto: {len(productos)} elementos")
 
-# 10. copy() - Copia superficial
-print("METODO copy():")
+# 10. copy() (copia superficial)
+print("\\nMETODO copy():")
 copia = productos.copy()
-copia["P001"]["stock"] = 999  # Esto afecta al original tambien
+copia["P001"]["stock"] = 999
+
 print(f"Original P001 stock: {productos['P001']['stock']}")
 print(f"Copia P001 stock: {copia['P001']['stock']}")
 
-print("ESTADO FINAL DEL DICCIONARIO:")
+print("\\nESTADO FINAL DEL DICCIONARIO:")
 for codigo, producto in productos.items():
-    print(f"{codigo}: {producto['nombre']} - Stock: {producto['stock']}")`
-
-const ejercicioCode = `# EJERCICIO: Gestion de Calificaciones de Estudiantes
-
-# Base de datos inicial de estudiantes
-estudiantes = {
-    "A001": {
-        "nombre": "Ana Lopez",
-        "calificaciones": {
-            "Matematicas": 8.5,
-            "Historia": 7.0,
-            "Programacion": 9.0
-        }
-    },
-    "A002": {
-        "nombre": "Carlos Ruiz",
-        "calificaciones": {
-            "Matematicas": 6.5,
-            "Historia": 8.0
-        }
-    }
-}
-
-# INSTRUCCIONES:
-# 1. Agrega un nuevo estudiante "Beatriz Morales" con codigo "A003"
-#    que tenga calificaciones en Matematicas (9.0) y Fisica (8.5)
-
-# 2. Actualiza la calificacion de Historia de "Ana Lopez" a 7.5
-
-# 3. Elimina la calificacion de Historia de "Carlos Ruiz"
-
-# 4. Agrega una nueva materia "Ingles" a todos los estudiantes
-#    con calificacion inicial 0.0
-
-# 5. Calcula el promedio de calificaciones de cada estudiante
-
-# 6. Encuentra al estudiante con el promedio mas alto
-
-print("Sistema de Gestion de Calificaciones")
-print("=" * 50)
-
-# Tu codigo aqui...
-
-# Mostrar resultados finales`
-
-const solucionCode = `# SOLUCION: Gestion de Calificaciones de Estudiantes
-
-estudiantes = {
-    "A001": {
-        "nombre": "Ana Lopez",
-        "calificaciones": {
-            "Matematicas": 8.5,
-            "Historia": 7.0,
-            "Programacion": 9.0
-        }
-    },
-    "A002": {
-        "nombre": "Carlos Ruiz",
-        "calificaciones": {
-            "Matematicas": 6.5,
-            "Historia": 8.0
-        }
-    }
-}
-
-print("Sistema de Gestion de Calificaciones")
-print("=" * 50)
-
-# 1. Agregar nuevo estudiante
-print("AGREGANDO NUEVO ESTUDIANTE...")
-estudiantes["A003"] = {
-    "nombre": "Beatriz Morales",
-    "calificaciones": {
-        "Matematicas": 9.0,
-        "Fisica": 8.5
-    }
-}
-print("Estudiante A003 agregado")
-
-# 2. Actualizar calificacion
-print("ACTUALIZANDO CALIFICACION...")
-if "A001" in estudiantes and "Historia" in estudiantes["A001"]["calificaciones"]:
-    estudiantes["A001"]["calificaciones"]["Historia"] = 7.5
-    print("Calificacion de Historia de Ana Lopez actualizada a 7.5")
-
-# 3. Eliminar calificacion
-print("ELIMINANDO CALIFICACION...")
-if "A002" in estudiantes and "Historia" in estudiantes["A002"]["calificaciones"]:
-    del estudiantes["A002"]["calificaciones"]["Historia"]
-    print("Calificacion de Historia de Carlos Ruiz eliminada")
-
-# 4. Agregar nueva materia a todos
-print("AGREGANDO NUEVA MATERIA A TODOS...")
-for codigo, estudiante in estudiantes.items():
-    estudiante["calificaciones"]["Ingles"] = 0.0
-print("Materia 'Ingles' agregada a todos los estudiantes con calificacion 0.0")
-
-# 5. Calcular promedios
-print("CALCULANDO PROMEDIOS...")
-for codigo, estudiante in estudiantes.items():
-    calificaciones = estudiante["calificaciones"].values()
-    if calificaciones:
-        promedio = sum(calificaciones) / len(calificaciones)
-        estudiante["promedio"] = round(promedio, 2)
-    else:
-        estudiante["promedio"] = 0.0
-    print(f"{estudiante['nombre']}: {estudiante['promedio']}")
-
-# 6. Encontrar estudiante con mejor promedio
-print("ESTUDIANTE CON MEJOR PROMEDIO...")
-mejor_estudiante = None
-mejor_promedio = -1
-
-for codigo, estudiante in estudiantes.items():
-    if estudiante["promedio"] > mejor_promedio:
-        mejor_promedio = estudiante["promedio"]
-        mejor_estudiante = estudiante["nombre"]
-
-print(f"Mejor promedio: {mejor_estudiante} ({mejor_promedio})")
-
-# Mostrar informacion final
-print("INFORMACION COMPLETA DE ESTUDIANTES:")
-for codigo, estudiante in estudiantes.items():
-    print(f"{codigo}: {estudiante['nombre']}")
-    print("  Calificaciones:")
-    for materia, nota in estudiante["calificaciones"].items():
-        print(f"    {materia}: {nota}")
-    print(f"  Promedio: {estudiante['promedio']}")
-
-# Estadisticas
-print("ESTADISTICAS FINALES:")
-total_estudiantes = len(estudiantes)
-total_materias = sum(len(e["calificaciones"]) for e in estudiantes.values())
-promedio_general = sum(e["promedio"] for e in estudiantes.values()) / total_estudiantes
-
-print(f"Total estudiantes: {total_estudiantes}")
-print(f"Total materias evaluadas: {total_materias}")
-print(f"Promedio general: {round(promedio_general, 2)}")`
+    print(f"{codigo}: {producto['nombre']} - Stock: {producto['stock']}")
+`
 
 // QUIZ FUNCIONAL
 const preguntas = [
