@@ -92,7 +92,7 @@
         </section>
 
         <!-- Ejercicio práctico -->
-        <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
+        <!-- <section class="border border-gray-300 rounded-xl p-6 bg-gray-50">
             <h2 class="text-2xl font-bold text-gray-800 mb-4">Ejercicio Práctico</h2>
             <div class="space-y-4">
                 <p class="text-gray-700">
@@ -111,18 +111,18 @@
                         class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
                         Ver pista
                     </a>
-                </div>
+                </div> -->
 
                 <!-- Solución oculta -->
-                <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
+                <!-- <div v-if="mostrarSolucion" class="mt-6 p-5 bg-white border border-green-200 rounded-lg">
                     <h3 class="font-bold text-green-800 mb-3">Solución:</h3>
                     <PythonRunner :code="solucionCode" />
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- Quiz -->
-        <QuizQuestions :preguntas="preguntas" titulo="Quiz de operaciones arboles binarios"></QuizQuestions>
+        <QuizQuestions :preguntas="preguntas" titulo="Quiz de descripcion programacion concurrente"></QuizQuestions>
 
         <!-- Navegación -->
         <NavigationUnidad textoSiguiente="Siguiente" siguiente="/Unidad/5.1.2"
@@ -131,7 +131,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import PythonRunner from '@/components/PythonRun.vue'
 import HeaderTitle from "@/components/HeaderTitle.vue"
 import QuizQuestions from '@/components/QuizQuestions.vue'
@@ -142,27 +141,27 @@ const ejemplo1Code = `import asyncio
 import time
 
 async def tarea(nombre, duracion):
-    print(f"[{nombre}] Iniciando ({duracion}s)")
+    print(f"[{nombre}] Iniciando tarea (duración: {duracion}s)")
     await asyncio.sleep(duracion)
-    print(f"[{nombre}] Finalizada")
-    return f"Resultado {nombre}"
+    print(f"[{nombre}] Tarea completada")
+    return f"Resultado de {nombre}"
 
 async def ejecucion_secuencial(tareas):
     print("=== EJECUCIÓN SECUENCIAL ===")
-    inicio = time.perf_counter()
+    inicio = time.time()
     resultados = []
 
     for nombre, duracion in tareas:
         resultado = await tarea(nombre, duracion)
         resultados.append(resultado)
 
-    tiempo_total = time.perf_counter() - inicio
-    print(f"Tiempo secuencial: {tiempo_total:.3f}s")
+    tiempo_total = time.time() - inicio
+    print(f"Tiempo total secuencial: {tiempo_total:.2f} segundos")
     return resultados, tiempo_total
 
 async def ejecucion_concurrente(tareas):
     print("\\n=== EJECUCIÓN CONCURRENTE (ASYNCIO) ===")
-    inicio = time.perf_counter()
+    inicio = time.time()
 
     corutinas = [
         tarea(nombre, duracion)
@@ -171,151 +170,113 @@ async def ejecucion_concurrente(tareas):
 
     resultados = await asyncio.gather(*corutinas)
 
-    tiempo_total = time.perf_counter() - inicio
-    print(f"Tiempo concurrente: {tiempo_total:.3f}s")
+    tiempo_total = time.time() - inicio
+    print(f"Tiempo total concurrente: {tiempo_total:.2f} segundos")
     return resultados, tiempo_total
 
 async def main():
     tareas = [
-        ("Tarea A", 1.5),
-        ("Tarea B", 2.0),
-        ("Tarea C", 1.0),
-        ("Tarea D", 1.5),
-        ("Tarea E", 1.0)
+        ("Tarea A", 2),
+        ("Tarea B", 3),
+        ("Tarea C", 1),
+        ("Tarea D", 2),
+        ("Tarea E", 1)
     ]
 
-    print("Tareas:")
-    for n, d in tareas:
-        print(f"  {n}: {d}s")
+    print("Tareas a ejecutar:")
+    for nombre, duracion in tareas:
+        print(f"  {nombre}: {duracion}s")
 
-    _, t_sec = await ejecucion_secuencial(tareas)
-    _, t_conc = await ejecucion_concurrente(tareas)
+    resultados_sec, tiempo_sec = await ejecucion_secuencial(tareas)
+    resultados_conc, tiempo_conc = await ejecucion_concurrente(tareas)
 
-    print("\\n=== COMPARACIÓN ===")
-    print(f"Secuencial:  {t_sec:.3f}s")
-    print(f"Concurrente: {t_conc:.3f}s")
-    print(f"Aceleración: {t_sec / t_conc:.2f}x")
+    print("\\n=== ANÁLISIS COMPARATIVO ===")
+    print(f"Tiempo secuencial: {tiempo_sec:.2f}s")
+    print(f"Tiempo concurrente: {tiempo_conc:.2f}s")
+    print(f"Mejora: {tiempo_sec/tiempo_conc:.2f}x más rápido")
 
-    print("\\n=== TEORÍA ===")
-    print("Secuencial ≈ suma de duraciones")
-    print("Concurrente ≈ duración máxima")
+    print("\\n=== EXPLICACIÓN ===")
+    print("En asyncio, las tareas cooperan:")
+    print("cuando una espera (await), otra puede avanzar.")
 
-asyncio.run(main())
-`;
+await main()`
 
 
 // Ejemplo 2: Hilos para operaciones I/O
-const ejemplo2Code = `import threading
+const ejemplo2Code = `import asyncio
 import time
 import random
-from queue import Queue
 
 class DescargadorConcurrente:
     """
-    Sistema de descarga concurrente de múltiples archivos usando hilos.
+    Sistema de descarga concurrente de múltiples archivos usando asyncio.
     """
-    def __init__(self, max_hilos=3):
-        self.max_hilos = max_hilos
-        self.cola = Queue()
+    def __init__(self, max_concurrentes=3):
+        self.max_concurrentes = max_concurrentes
         self.resultados = {}
-        self.lock = threading.Lock()
-    
-    def simular_descarga(self, url, tamano_mb):
+        self.semaforo = asyncio.Semaphore(max_concurrentes)
+
+    async def simular_descarga(self, url, tamano_mb):
         """
         Simula la descarga de un archivo con tiempo proporcional al tamaño.
         """
-        tiempo_descarga = tamano_mb * 0.5  # 0.5 segundos por MB
-        print(f"  Descargando {url} ({tamano_mb}MB) - estimado: {tiempo_descarga:.1f}s")
-        
-        # Simular tiempo de descarga
-        time.sleep(tiempo_descarga)
-        
-        # Simular posible fallo (10% de probabilidad)
-        if random.random() < 0.1:
-            raise Exception(f"Error de conexión en {url}")
-        
-        return f"{url} descargado ({tamano_mb}MB, {tiempo_descarga:.1f}s)"
-    
-    def trabajador(self):
-        """
-        Función ejecutada por cada hilo trabajador.
-        """
-        while True:
-            try:
-                # Obtener tarea de la cola
-                url, tamano = self.cola.get(timeout=1)
-                
-                try:
-                    resultado = self.simular_descarga(url, tamano)
-                    with self.lock:
-                        self.resultados[url] = ("éxito", resultado)
-                    print(f"  ✓ {url} completado")
-                except Exception as e:
-                    with self.lock:
-                        self.resultados[url] = ("error", str(e))
-                    print(f"  ✗ {url} falló: {e}")
-                
-                # Marcar tarea como completada
-                self.cola.task_done()
-                
-            except:
-                # Timeout - no hay más tareas
-                break
-    
-    def descargar_archivos(self, archivos):
+        async with self.semaforo:
+            tiempo_descarga = tamano_mb * 0.5  # 0.5 segundos por MB
+            print(f"  Descargando {url} ({tamano_mb}MB) - estimado: {tiempo_descarga:.1f}s")
+
+            # Simular tiempo de descarga (NO bloqueante)
+            await asyncio.sleep(tiempo_descarga)
+
+            # Simular posible fallo (10%)
+            if random.random() < 0.1:
+                raise Exception(f"Error de conexión en {url}")
+
+            return f"{url} descargado ({tamano_mb}MB, {tiempo_descarga:.1f}s)"
+
+    async def descargar_archivos(self, archivos):
         """
         Descarga múltiples archivos concurrentemente.
-        archivos: lista de tuplas (url, tamaño_mb)
         """
-        print(f"=== DESCARGA CONCURRENTE DE ARCHIVOS ===")
-        print(f"Usando {self.max_hilos} hilos concurrentes")
+        print("=== DESCARGA CONCURRENTE DE ARCHIVOS (ASYNCIO) ===")
+        print(f"Máximo de descargas simultáneas: {self.max_concurrentes}")
         print(f"Total archivos: {len(archivos)}")
-        
+
         inicio = time.time()
-        
-        # Agregar archivos a la cola
-        for url, tamano in archivos:
-            self.cola.put((url, tamano))
-        
-        # Crear y comenzar hilos trabajadores
-        hilos = []
-        for i in range(self.max_hilos):
-            hilo = threading.Thread(target=self.trabajador, name=f"Trabajador-{i}")
-            hilos.append(hilo)
-            hilo.start()
-        
-        # Esperar a que se completen todas las tareas
-        self.cola.join()
-        
-        # Esperar a que todos los hilos terminen
-        for hilo in hilos:
-            hilo.join()
-        
+
+        async def tarea_descarga(url, tamano):
+            try:
+                resultado = await self.simular_descarga(url, tamano)
+                self.resultados[url] = ("éxito", resultado)
+                print(f"  ✓ {url} completado")
+            except Exception as e:
+                self.resultados[url] = ("error", str(e))
+                print(f"  ✗ {url} falló: {e}")
+
+        tareas = [
+            tarea_descarga(url, tamano)
+            for url, tamano in archivos
+        ]
+
+        await asyncio.gather(*tareas)
+
         tiempo_total = time.time() - inicio
-        
-        # Mostrar resultados
-        print(f"\\n=== RESULTADOS ===")
+
+        print("\\n=== RESULTADOS ===")
         print(f"Tiempo total: {tiempo_total:.2f} segundos")
-        
+
         exito = sum(1 for estado, _ in self.resultados.values() if estado == "éxito")
         error = len(archivos) - exito
-        
+
         print(f"Archivos exitosos: {exito}")
         print(f"Archivos con error: {error}")
-        
-        # Tiempo si fuera secuencial
+
         tiempo_secuencial = sum(tamano for _, tamano in archivos) * 0.5
         print(f"\\nTiempo estimado secuencial: {tiempo_secuencial:.2f}s")
-        print(f"Mejora: {tiempo_secuencial/tiempo_total:.2f}x más rápido")
-        
+        print(f"Mejora: {tiempo_secuencial / tiempo_total:.2f}x más rápido")
+
         return self.resultados
 
-# Ejemplo de uso
-def ejemplo_descargas():
-    """
-    Ejemplo de descarga concurrente de archivos.
-    """
-    # Lista de archivos a descargar (URL, tamaño en MB)
+async def ejemplo_descargas():
     archivos = [
         ("https://ejemplo.com/imagen1.jpg", 2),
         ("https://ejemplo.com/imagen2.jpg", 5),
@@ -326,508 +287,137 @@ def ejemplo_descargas():
         ("https://ejemplo.com/presentacion.pptx", 15),
         ("https://ejemplo.com/libro.epub", 3)
     ]
-    
+
     print("Archivos a descargar:")
     for url, tamano in archivos:
         print(f"  {url}: {tamano}MB")
-    
-    # Crear descargador con 3 hilos concurrentes
-    descargador = DescargadorConcurrente(max_hilos=3)
-    
-    # Ejecutar descargas
-    resultados = descargador.descargar_archivos(archivos)
-    
-    # Mostrar detalles
+
+    descargador = DescargadorConcurrente(max_concurrentes=3)
+    resultados = await descargador.descargar_archivos(archivos)
+
     print("\\n=== DETALLES POR ARCHIVO ===")
     for url, (estado, mensaje) in resultados.items():
         print(f"{url}: {estado} - {mensaje}")
 
-# Ejecutar ejemplo
-ejemplo_descargas()
+await ejemplo_descargas()
 
 print("\\n=== OBSERVACIONES ===")
-print("1. Los hilos son ideales para operaciones I/O (como descargas)")
-print("2. Mientras un hilo espera la red, otros pueden ejecutarse")
-print("3. El GIL de Python no limita las operaciones I/O")
-print("4. Usar colas (Queue) es thread-safe y evita condiciones de carrera")`
+print("1. asyncio es ideal para I/O en Pyodide")
+print("2. Semaphore limita concurrencia sin hilos")
+print("3. No se bloquea el navegador")
+print("4. Modelo basado en event loop")`
+
 
 // Ejemplo 3: Procesos para CPU intensivas
 const ejemplo3Code = `import time
-import multiprocessing
 import math
-import concurrent.futures
+import asyncio
 
 def calcular_primos_hasta(n):
-    """
-    Calcula todos los números primos hasta n (operación CPU intensiva).
-    """
     print(f"Calculando primos hasta {n}...")
-    
-    def es_primo(num):
-        if num < 2:
-            return False
-        if num == 2:
-            return True
-        if num % 2 == 0:
-            return False
-        
+    primos = []
+
+    for num in range(2, n + 1):
+        es_primo = True
         limite = int(math.sqrt(num)) + 1
-        for i in range(3, limite, 2):
+        for i in range(2, limite):
             if num % i == 0:
-                return False
-        return True
-    
-    primos = [i for i in range(2, n + 1) if es_primo(i)]
-    return len(primos), primos[:5]  # Retornar cantidad y primeros 5
+                es_primo = False
+                break
+        if es_primo:
+            primos.append(num)
+
+    return len(primos), primos[:5]
 
 def calcular_factorial(n):
-    """
-    Calcula factorial de n (operación CPU intensiva).
-    """
     print(f"Calculando factorial de {n}...")
     resultado = 1
     for i in range(1, n + 1):
         resultado *= i
-    return n, len(str(resultado))  # Retornar n y número de dígitos
+    return n, len(str(resultado))
 
 def calcular_sumatoria_cuadrados(hasta):
-    """
-    Calcula sumatoria de cuadrados hasta n.
-    """
     print(f"Calculando sumatoria de cuadrados hasta {hasta}...")
     return sum(i * i for i in range(1, hasta + 1))
 
 def ejecucion_secuencial_cpu(tareas_primos, tareas_factorial, tareas_sumatoria):
-    """
-    Ejecuta tareas CPU intensivas de forma secuencial.
-    """
     print("=== EJECUCIÓN SECUENCIAL (CPU) ===")
     inicio = time.time()
     resultados = {}
-    
-    # Primos
+
     for n in tareas_primos:
         resultados[f"primos_{n}"] = calcular_primos_hasta(n)
-    
-    # Factoriales
+
     for n in tareas_factorial:
         resultados[f"factorial_{n}"] = calcular_factorial(n)
-    
-    # Sumatorias
+
     for n in tareas_sumatoria:
         resultados[f"sumatoria_{n}"] = calcular_sumatoria_cuadrados(n)
-    
+
     tiempo = time.time() - inicio
     print(f"Tiempo total secuencial: {tiempo:.2f} segundos")
     return resultados, tiempo
 
-def ejecucion_concurrente_procesos(tareas_primos, tareas_factorial, tareas_sumatoria):
+async def ejecucion_async_cpu(tareas_primos, tareas_factorial, tareas_sumatoria):
     """
-    Ejecuta tareas CPU intensivas usando procesos (multiprocessing).
+    Intento de ejecución 'concurrente' con asyncio.
+    NO mejora CPU-bound (demostración).
     """
-    print("\\n=== EJECUCIÓN CONCURRENTE (PROCESOS) ===")
+    print("\\n=== EJECUCIÓN ASYNC (CPU-bound) ===")
     inicio = time.time()
-    resultados = {}
-    
-    # Usar ProcessPoolExecutor para gestión automática
-    with concurrent.futures.ProcessPoolExecutor(max_workers=4) as executor:
-        # Enviar tareas de primos
-        futuros_primos = {
-            executor.submit(calcular_primos_hasta, n): f"primos_{n}"
-            for n in tareas_primos
-        }
-        
-        # Enviar tareas de factoriales
-        futuros_factorial = {
-            executor.submit(calcular_factorial, n): f"factorial_{n}"
-            for n in tareas_factorial
-        }
-        
-        # Enviar tareas de sumatorias
-        futuros_sumatoria = {
-            executor.submit(calcular_sumatoria_cuadrados, n): f"sumatoria_{n}"
-            for n in tareas_sumatoria
-        }
-        
-        # Combinar todos los futuros
-        todos_futuros = {**futuros_primos, **futuros_factorial, **futuros_sumatoria}
-        
-        # Recoger resultados
-        for futuro in concurrent.futures.as_completed(todos_futuros):
-            nombre = todos_futuros[futuro]
-            try:
-                resultados[nombre] = futuro.result()
-            except Exception as e:
-                resultados[nombre] = f"Error: {e}"
-    
+
+    async def wrapper(func, *args):
+        return func(*args)
+
+    tareas = []
+
+    for n in tareas_primos:
+        tareas.append(wrapper(calcular_primos_hasta, n))
+
+    for n in tareas_factorial:
+        tareas.append(wrapper(calcular_factorial, n))
+
+    for n in tareas_sumatoria:
+        tareas.append(wrapper(calcular_sumatoria_cuadrados, n))
+
+    resultados = await asyncio.gather(*tareas)
+
     tiempo = time.time() - inicio
-    print(f"Tiempo total con procesos: {tiempo:.2f} segundos")
+    print(f"Tiempo total async: {tiempo:.2f} segundos")
     return resultados, tiempo
 
-# Tareas CPU intensivas
-tareas_primos = [10000, 20000, 15000, 25000]
-tareas_factorial = [1000, 1500, 2000]
-tareas_sumatoria = [1000000, 2000000, 3000000]
+async def main():
+    # Cargas reducidas (navegador)
+    tareas_primos = [3000, 4000, 5000]
+    tareas_factorial = [800, 1000]
+    tareas_sumatoria = [300000, 500000]
 
-print("Tareas CPU intensivas a ejecutar:")
-print(f"  Cálculo de primos hasta: {tareas_primos}")
-print(f"  Cálculo de factoriales de: {tareas_factorial}")
-print(f"  Sumatoria de cuadrados hasta: {tareas_sumatoria}")
+    print("Tareas CPU intensivas a ejecutar:")
+    print(f"  Primos hasta: {tareas_primos}")
+    print(f"  Factoriales de: {tareas_factorial}")
+    print(f"  Sumatoria hasta: {tareas_sumatoria}")
 
-# Ejecutar secuencialmente (un núcleo)
-resultados_sec, tiempo_sec = ejecucion_secuencial_cpu(
-    tareas_primos, tareas_factorial, tareas_sumatoria
-)
+    resultados_sec, tiempo_sec = ejecucion_secuencial_cpu(
+        tareas_primos, tareas_factorial, tareas_sumatoria
+    )
 
-# Ejecutar con procesos (múltiples núcleos)
-resultados_proc, tiempo_proc = ejecucion_concurrente_procesos(
-    tareas_primos, tareas_factorial, tareas_sumatoria
-)
+    resultados_async, tiempo_async = await ejecucion_async_cpu(
+        tareas_primos, tareas_factorial, tareas_sumatoria
+    )
 
-# Comparación
-print("\\n=== COMPARACIÓN ===")
-print(f"Tiempo secuencial: {tiempo_sec:.2f}s")
-print(f"Tiempo con procesos: {tiempo_proc:.2f}s")
-print(f"Mejora: {tiempo_sec/tiempo_proc:.2f}x más rápido")
+    print("\\n=== COMPARACIÓN ===")
+    print(f"Tiempo secuencial: {tiempo_sec:.2f}s")
+    print(f"Tiempo async: {tiempo_async:.2f}s")
+    print(f"Mejora: {tiempo_sec / tiempo_async:.2f}x")
 
-# Mostrar algunos resultados
-print("\\n=== ALGUNOS RESULTADOS ===")
-print("(Primeros 5 primos de cada cálculo):")
+    print("\\n=== CONCLUSIÓN ===")
+    print("1. asyncio NO mejora tareas CPU-bound")
+    print("2. El navegador no permite multiprocessing")
+    print("3. CPU-bound requiere procesos reales")
+    print("4. Pyodide es ideal para I/O, no para cómputo pesado")
 
-for clave, valor in resultados_proc.items():
-    if clave.startswith("primos"):
-        n = int(clave.split("_")[1])
-        cantidad, primeros = valor
-        print(f"  Primos hasta {n}: {cantidad} primos, primeros: {primeros}")
+await main()`
 
-print("\\n=== EXPLICACIÓN ===")
-print("Para operaciones CPU intensivas en Python:")
-print("1. Los hilos NO son efectivos debido al GIL (Global Interpreter Lock)")
-print("2. Los procesos SÍ son efectivos porque cada proceso tiene su propio GIL")
-print("3. Multiprocessing usa múltiples núcleos de CPU reales")
-print("4. Ideal para cálculos matemáticos, procesamiento de datos, etc.")
-
-# Ejemplo adicional: usando Pool.map
-print("\\n=== EJEMPLO ADICIONAL: POOL.MAP ===")
-
-def cuadrado(x):
-    """Calcula el cuadrado de un número."""
-    return x * x
-
-def ejemplo_pool_map():
-    """Ejemplo simple usando Pool.map."""
-    numeros = list(range(1, 1000001))
-    
-    # Secuencial
-    inicio = time.time()
-    resultados_sec = [cuadrado(x) for x in numeros[:1000]]  # Muestra más pequeña
-    tiempo_sec = time.time() - inicio
-    
-    # Con Pool
-    inicio = time.time()
-    with multiprocessing.Pool(processes=4) as pool:
-        resultados_pool = pool.map(cuadrado, numeros[:1000])
-    tiempo_pool = time.time() - inicio
-    
-    print(f"Cuadrados de 1000 números:")
-    print(f"  Secuencial: {tiempo_sec:.3f}s")
-    print(f"  Con Pool(4): {tiempo_pool:.3f}s")
-    print(f"  Mejora: {tiempo_sec/tiempo_pool:.2f}x")
-
-ejemplo_pool_map()`
-
-// Ejercicio práctico - Solución
-const solucionCode = `import threading
-import multiprocessing
-import time
-import random
-from queue import Queue
-
-class MonitorServidores:
-    """
-    Sistema de monitoreo de servidores usando concurrencia.
-    """
-    def __init__(self):
-        self.servidores = [
-            ("servidor1.com", 80),
-            ("servidor2.com", 443),
-            ("servidor3.com", 8080),
-            ("servidor4.com", 22),
-            ("servidor5.com", 3306),
-            ("servidor6.com", 5432),
-            ("servidor7.com", 27017),
-            ("servidor8.com", 6379)
-        ]
-    
-    def verificar_servidor(self, servidor, puerto):
-        """
-        Simula la verificación de un servidor con tiempo de red variable.
-        """
-        # Simular tiempo de verificación (100ms a 2s)
-        tiempo_verificacion = random.uniform(0.1, 2.0)
-        time.sleep(tiempo_verificacion)
-        
-        # Simular estado (90% online, 10% offline)
-        if random.random() < 0.9:
-            return servidor, puerto, "online", tiempo_verificacion
-        else:
-            return servidor, puerto, "offline", tiempo_verificacion
-    
-    def monitorear_secuencial(self):
-        """
-        Monitoreo secuencial de todos los servidores.
-        """
-        print("=== MONITOREO SECUENCIAL ===")
-        inicio = time.time()
-        resultados = []
-        
-        for servidor, puerto in self.servidores:
-            print(f"Verificando {servidor}:{puerto}...")
-            resultado = self.verificar_servidor(servidor, puerto)
-            resultados.append(resultado)
-            print(f"  {servidor}:{puerto} -> {resultado[2]} ({resultado[3]:.2f}s)")
-        
-        tiempo_total = time.time() - inicio
-        return resultados, tiempo_total
-    
-    def monitorear_con_hilos(self, max_hilos=4):
-        """
-        Monitoreo concurrente usando hilos.
-        """
-        print(f"\\n=== MONITOREO CON HILOS ({max_hilos} hilos) ===")
-        inicio = time.time()
-        resultados = []
-        lock = threading.Lock()
-        
-        def tarea_verificacion(servidor, puerto):
-            resultado = self.verificar_servidor(servidor, puerto)
-            with lock:
-                resultados.append(resultado)
-            print(f"  {servidor}:{puerto} -> {resultado[2]} ({resultado[3]:.2f}s)")
-        
-        # Crear y comenzar hilos
-        hilos = []
-        for servidor, puerto in self.servidores:
-            while threading.active_count() - 1 >= max_hilos:  # -1 por el hilo main
-                time.sleep(0.01)  # Esperar si hay muchos hilos activos
-            
-            hilo = threading.Thread(target=tarea_verificacion, args=(servidor, puerto))
-            hilos.append(hilo)
-            print(f"Verificando {servidor}:{puerto}...")
-            hilo.start()
-        
-        # Esperar a que todos los hilos terminen
-        for hilo in hilos:
-            hilo.join()
-        
-        tiempo_total = time.time() - inicio
-        return resultados, tiempo_total
-    
-    def monitorear_con_procesos(self, max_procesos=4):
-        """
-        Monitoreo concurrente usando procesos.
-        Nota: En realidad para I/O los hilos son suficientes,
-        pero mostramos cómo sería con procesos.
-        """
-        print(f"\\n=== MONITOREO CON PROCESOS ({max_procesos} procesos) ===")
-        inicio = time.time()
-        
-        # Función auxiliar que puede ser pickled (requerido por multiprocessing)
-        def verificar_servidor_wrapper(args):
-            servidor, puerto = args
-            tiempo_verificacion = random.uniform(0.1, 2.0)
-            time.sleep(tiempo_verificacion)
-            
-            if random.random() < 0.9:
-                return servidor, puerto, "online", tiempo_verificacion
-            else:
-                return servidor, puerto, "offline", tiempo_verificacion
-        
-        # Usar Pool de procesos
-        with multiprocessing.Pool(processes=max_procesos) as pool:
-            print(f"Verificando {len(self.servidores)} servidores...")
-            resultados = pool.map(verificar_servidor_wrapper, self.servidores)
-        
-        # Imprimir resultados
-        for servidor, puerto, estado, tiempo in resultados:
-            print(f"  {servidor}:{puerto} -> {estado} ({tiempo:.2f}s)")
-        
-        tiempo_total = time.time() - inicio
-        return resultados, tiempo_total
-    
-    def analizar_resultados(self, resultados):
-        """
-        Analiza y muestra estadísticas de los resultados.
-        """
-        online = sum(1 for _, _, estado, _ in resultados if estado == "online")
-        offline = len(resultados) - online
-        
-        tiempo_promedio = sum(tiempo for _, _, _, tiempo in resultados) / len(resultados)
-        tiempo_max = max(tiempo for _, _, _, tiempo in resultados)
-        tiempo_min = min(tiempo for _, _, _, tiempo in resultados)
-        
-        print("\\n=== ESTADÍSTICAS ===")
-        print(f"Servidores online: {online}")
-        print(f"Servidores offline: {offline}")
-        print(f"Tiempo promedio por verificación: {tiempo_promedio:.2f}s")
-        print(f"Tiempo mínimo: {tiempo_min:.2f}s")
-        print(f"Tiempo máximo: {tiempo_max:.2f}s")
-        
-        return {
-            "online": online,
-            "offline": offline,
-            "tiempo_promedio": tiempo_promedio,
-            "tiempo_max": tiempo_max,
-            "tiempo_min": tiempo_min
-        }
-
-# Ejecutar y comparar los tres métodos
-def comparar_metodos():
-    """
-    Compara los tres métodos de monitoreo.
-    """
-    monitor = MonitorServidores()
-    
-    print("Servidores a monitorear:")
-    for servidor, puerto in monitor.servidores:
-        print(f"  {servidor}:{puerto}")
-    
-    # 1. Monitoreo secuencial
-    print("\\n" + "="*50)
-    resultados_sec, tiempo_sec = monitor.monitorear_secuencial()
-    stats_sec = monitor.analizar_resultados(resultados_sec)
-    
-    # 2. Monitoreo con hilos
-    print("\\n" + "="*50)
-    resultados_hilos, tiempo_hilos = monitor.monitorear_con_hilos(max_hilos=4)
-    stats_hilos = monitor.analizar_resultados(resultados_hilos)
-    
-    # 3. Monitoreo con procesos
-    print("\\n" + "="*50)
-    resultados_proc, tiempo_proc = monitor.monitorear_con_procesos(max_procesos=4)
-    stats_proc = monitor.analizar_resultados(resultados_proc)
-    
-    # Comparación de tiempos
-    print("\\n" + "="*50)
-    print("=== COMPARACIÓN DE TIEMPOS ===")
-    print(f"Método secuencial:      {tiempo_sec:.2f}s")
-    print(f"Método con hilos (4):   {tiempo_hilos:.2f}s")
-    print(f"Método con procesos (4): {tiempo_proc:.2f}s")
-    
-    print(f"\\nHilos vs Secuencial:   {tiempo_sec/tiempo_hilos:.2f}x más rápido")
-    print(f"Procesos vs Secuencial: {tiempo_sec/tiempo_proc:.2f}x más rápido")
-    print(f"Procesos vs Hilos:      {tiempo_hilos/tiempo_proc:.2f}x más rápido")
-    
-    # Análisis
-    print("\\n=== ANÁLISIS ===")
-    print("Para operaciones I/O (como verificación de red):")
-    print("1. Hilos son muy efectivos (GIL no limita I/O)")
-    print("2. Procesos tienen overhead mayor (creación más lenta)")
-    print("3. Secuencial es ineficiente (no aprovecha tiempos de espera)")
-    
-    print("\\nNota: Los procesos muestran mejor tiempo en este ejemplo")
-    print("porque Python puede ejecutar múltiples time.sleep() en paralelo.")
-    print("En casos reales de red, los hilos son generalmente suficientes.")
-    
-    # Comparación de resultados (deberían ser similares)
-    print("\\n=== VERIFICACIÓN DE RESULTADOS ===")
-    print("¿Todos los métodos obtuvieron los mismos estados?")
-    
-    estados_sec = [estado for _, _, estado, _ in resultados_sec]
-    estados_hilos = [estado for _, _, estado, _ in resultados_hilos]
-    estados_proc = [estado for _, _, estado, _ in resultados_proc]
-    
-    # Ordenar para comparar (los servidores son los mismos)
-    estados_sec.sort()
-    estados_hilos.sort()
-    estados_proc.sort()
-    
-    print(f"Secuencial == Hilos:    {estados_sec == estados_hilos}")
-    print(f"Secuencial == Procesos: {estados_sec == estados_proc}")
-    
-    # Si hay diferencias, mostrar
-    if estados_sec != estados_hilos or estados_sec != estados_proc:
-        print("\\nNota: Las diferencias se deben a la aleatoriedad en la simulación")
-        print("(10% de probabilidad de estar offline en cada verificación)")
-
-# Versión mejorada con timeout
-class MonitorAvanzado(MonitorServidores):
-    """
-    Monitor con timeout y reintentos.
-    """
-    def verificar_servidor_con_timeout(self, servidor, puerto, timeout=1.0):
-        """
-        Verifica servidor con timeout.
-        """
-        import threading
-        
-        resultado = [None]
-        
-        def tarea():
-            try:
-                resultado[0] = self.verificar_servidor(servidor, puerto)
-            except Exception as e:
-                resultado[0] = (servidor, puerto, "error", str(e))
-        
-        hilo = threading.Thread(target=tarea)
-        hilo.start()
-        hilo.join(timeout)
-        
-        if hilo.is_alive():
-            return servidor, puerto, "timeout", timeout
-        else:
-            return resultado[0]
-    
-    def monitorear_con_timeout(self):
-        """
-        Monitoreo con timeout usando hilos.
-        """
-        print("\\n=== MONITOREO CON TIMEOUT (1s) ===")
-        inicio = time.time()
-        resultados = []
-        
-        hilos = []
-        for servidor, puerto in self.servidores:
-            hilo = threading.Thread(
-                target=lambda s=servidor, p=puerto: resultados.append(
-                    self.verificar_servidor_con_timeout(s, p, timeout=1.0)
-                )
-            )
-            hilos.append(hilo)
-            hilo.start()
-        
-        for hilo in hilos:
-            hilo.join()
-        
-        tiempo_total = time.time() - inicio
-        
-        for servidor, puerto, estado, info in resultados:
-            if isinstance(info, str):  # Error o timeout
-                print(f"  {servidor}:{puerto} -> {estado} ({info})")
-            else:
-                print(f"  {servidor}:{puerto} -> {estado} ({info:.2f}s)")
-        
-        print(f"\\nTiempo total: {tiempo_total:.2f}s")
-        return resultados, tiempo_total
-
-# Ejecutar comparación principal
-comparar_metodos()
-
-# Ejecutar versión con timeout
-print("\\n" + "="*50)
-print("VERSIÓN AVANZADA CON TIMEOUT")
-print("="*50)
-
-monitor_avanzado = MonitorAvanzado()
-resultados_timeout, tiempo_timeout = monitor_avanzado.monitorear_con_timeout()
-
-# Análisis de timeout
-timeouts = sum(1 for _, _, estado, _ in resultados_timeout if estado == "timeout")
-print(f"\\nServidores con timeout: {timeouts}")
-print("Conclusión: El timeout evita que una verificación lenta bloquee todo el sistema.")`
-
-// Estado del ejercicio
-const mostrarSolucion = ref(false)
 
 // Quiz
 const preguntas = [
